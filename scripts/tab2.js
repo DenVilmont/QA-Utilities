@@ -1,14 +1,14 @@
 import {copyToClipboard} from './utils.js';
 import {applyTranslations} from './languages.js';
-
-let savedValuesArray = JSON.parse(localStorage.getItem('savedValues')) || [];
+import {getNotebookContent, getSavedValues, setNotebookContent, setSavedValues} from './storage.js';
 
 export function saveValue() {
     const inputValue = document.getElementById('valueInput').value;
     if (inputValue.trim() !== "") {
-        if (!savedValuesArray.includes(inputValue)) {
-            savedValuesArray.push(inputValue);
-            localStorage.setItem('savedValues', JSON.stringify(savedValuesArray));
+        const savedValues = getSavedValues();
+        if (!savedValues.includes(inputValue)) {
+            savedValues.push(inputValue);
+            setSavedValues(savedValues);
             addValueToDOM(inputValue);
         } else {
             flashExistingValue(inputValue);
@@ -42,8 +42,8 @@ export function handleValueClick(event) {
 }
 
 function deleteValue(value) {
-    savedValuesArray = savedValuesArray.filter(item => item !== value);
-    localStorage.setItem('savedValues', JSON.stringify(savedValuesArray));
+    const savedValues = getSavedValues().filter(item => item !== value);
+    setSavedValues(savedValues);
     displaySavedValues();
 }
 
@@ -78,7 +78,7 @@ function addValueToDOM(value) {
 export function displaySavedValues() {
     const savedValuesContainer = document.getElementById('savedValues');
     savedValuesContainer.innerHTML = '';
-    savedValuesArray.forEach(value => {
+    getSavedValues().forEach(value => {
         addValueToDOM(value);
     });
 }
@@ -89,12 +89,9 @@ export function saveNotebookContent() {
 }
 
 export function saveNotebookText(text) {
-    localStorage.setItem('notebookContent', text);
+    setNotebookContent(text);
 }
 
 export function loadNotebookContent() {
-    const savedContent = localStorage.getItem('notebookContent');
-    if (savedContent) {
-        document.getElementById('notebook').value = savedContent;
-    }
+    document.getElementById('notebook').value = getNotebookContent();
 }

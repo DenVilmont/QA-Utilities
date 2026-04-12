@@ -1,14 +1,14 @@
 import * as languages from './languages.js';
+import * as storage from './storage.js';
 import * as utils from './utils.js';
 import * as tab1 from './tab1.js';
 import * as tab2 from './tab2.js';
 
-const DEFAULT_TAB_ID = 'tab1';
 const elements = {};
 
 let appState = {
-  checkedTabId: DEFAULT_TAB_ID,
-  language: 'en'
+  checkedTabId: storage.DEFAULT_CHECKED_TAB_ID,
+  language: storage.DEFAULT_LANGUAGE
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -114,10 +114,10 @@ function handleHexWheel(event) {
 }
 
 function getStoredTabId() {
-  const storedTabId = localStorage.getItem('checkedTabId');
+  const storedTabId = storage.getCheckedTabId();
   const hasStoredTab = Array.from(elements.tabHeaders).some(tabHeader => tabHeader.id === storedTabId);
 
-  return hasStoredTab ? storedTabId : DEFAULT_TAB_ID;
+  return hasStoredTab ? storedTabId : storage.DEFAULT_CHECKED_TAB_ID;
 }
 
 function activateTab(tabId) {
@@ -138,7 +138,7 @@ function activateTab(tabId) {
 
   activeTabContent.style.display = 'block';
   appState.checkedTabId = tabId;
-  localStorage.setItem('checkedTabId', tabId);
+  storage.setCheckedTabId(tabId);
 }
 
 function getTabIdForContent(tabContent) {

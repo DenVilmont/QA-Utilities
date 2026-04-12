@@ -1,8 +1,8 @@
-const DEFAULT_LANGUAGE = 'en';
-const LANGUAGE_STORAGE_KEY = 'language';
+import {DEFAULT_LANGUAGE, getLanguage, setLanguage} from './storage.js';
+
 const SUPPORTED_LANGUAGES = new Set(['en', 'zh', 'fr', 'de', 'pt', 'ru', 'ro', 'es']);
 
-let currentLanguage = normalizeLanguage(localStorage.getItem(LANGUAGE_STORAGE_KEY) || DEFAULT_LANGUAGE);
+let currentLanguage = normalizeLanguage(getLanguage());
 let currentMessages = {};
 let englishMessages = {};
 let latestLoadRequestId = 0;
@@ -121,7 +121,7 @@ export async function loadMessages(lang) {
 
 export async function setCurrentLanguage(lang) {
     const normalizedLang = normalizeLanguage(lang);
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, normalizedLang);
+    setLanguage(normalizedLang);
     return loadMessages(normalizedLang);
 }
 
