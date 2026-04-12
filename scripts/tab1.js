@@ -1,17 +1,21 @@
 import {t} from './languages.js';
+import {copyTextToClipboard} from './clipboard.js';
+import {getCharacterFromHexInput, getSteppedHexInputValue} from './hex.js';
+import {generateRandomText, getTextLength} from './text.js';
 
 export async function generateText() {
-    const textLength = parseInt(document.getElementById('textLength').value);
+    const textLength = Number.parseInt(document.getElementById('textLength').value, 10);
     const isMeaningful = document.getElementById('meaningfulText').checked;
 
-    if (isNaN(textLength) || textLength <= 0) {
+    if (Number.isNaN(textLength) || textLength <= 0) {
         alert(t('EnterValidPositiveNumber'));
         return;
     }
+
     const text = isMeaningful ? await generateMeaningfulTextFromBaconIpsum(textLength) : generateRandomText(textLength);
     document.getElementById('randomTextTextarea').value = text;
-    countTheLengthOfTheText();
-};
+    updateGeneratedTextLengthIndicator();
+}
 
 export async function generateMeaningfulTextFromBaconIpsum(length) {
     let result = '';
@@ -51,39 +55,32 @@ function generateLocalMeaningfulText(length) {
     }
 
     return result.trim().slice(0, length);
-};
-
-function generateRandomText(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-};
-
-export function generateHexSymbol(charCode) {
-    const symbol = String.fromCharCode(charCode);  
-    const hexValue = symbol.toString(16).toUpperCase();
-    return hexValue;
-};
-
-export function countTheLengthOfTheText(){
-    const textLength = document.getElementById('randomTextTextarea').value.length;
-    if (textLength > 0) {
-        document.getElementById('textLengthResult').textContent = ' (' + textLength + ')';
-    } else {
-        document.getElementById('textLengthResult').textContent = '';
-    }
 }
 
-export function updateHex(delta) {
+export function updateGeneratedTextLengthIndicator() {
+    const textLength = getTextLength(document.getElementById('randomTextTextarea').value);
+    document.getElementById('textLengthResult').textContent = textLength > 0 ? ` (${textLength})` : '';
+}
+
+export async function copyGeneratedText() {
+    return copyTextToClipboard(document.getElementById('randomTextTextarea').value);
+}
+
+export function clearGeneratedText() {
+    document.getElementById('randomTextTextarea').value = '';
+    document.getElementById('textLength').value = '';
+    document.getElementById('textLengthResult').textContent = '';
+}
+
+export async function copyHexCharacter() {
+    return copyTextToClipboard(getCharacterFromHexInput(document.getElementById('hexCharText').value));
+}
+
+export function clearHexInput() {
+    document.getElementById('hexCharText').value = '';
+}
+
+export function stepHexInput(delta) {
     const hexInput = document.getElementById('hexCharText');
-    let currentValue = hexInput.value.trim();
-    let hexNumber = parseInt(currentValue, 16);
-  
-    if (isNaN(hexNumber)) hexNumber = 0;
-    hexNumber = Math.max(0, Math.min(0xFF, hexNumber + delta));
-  
-    hexInput.value = `0x${hexNumber.toString(16).toUpperCase().padStart(2, "0")}`;
-  }
+    hexInput.value = getSteppedHexInputValue(hexInput.value, delta);
+}

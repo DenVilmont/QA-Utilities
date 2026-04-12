@@ -12,16 +12,11 @@
       <div class="tabs-header">
         <span class="tab-header i18n" id="tab1" data-i18n="utils"></span>
         <span class="tab-header i18n" id="tab2" data-i18n="notes"></span>
-        <!--<span class="tab-header i18n" id="tab3" data-i18n="tasks"></span>-->
       </div>
       <div class="divider"></div>
     </div>
     <div class="content">
-      
-      <!--------------------------------------------TAB 1-------------------------------------------->
-
       <div class="tab-content tab1">
-
         <div class="randomText">
           <h3><span class="i18n" data-i18n="generateTextLine"></span></h3>
           <div class="flex-height-container">
@@ -38,8 +33,8 @@
           </h4>
           <div class="flex-height-container">
             <textarea id="randomTextTextarea" rows="5" cols="30"></textarea>
-            <button class="copyTextButton" data-target="randomTextTextarea" data-i18n-title="copy">&#x1f5d0;</button>
-            <button class="clearTextButton" data-target="randomTextTextarea textLength" data-i18n-title="clear">&#x26cc;</button>
+            <button id="copyRandomTextButton" class="copyTextButton" data-i18n-title="copy">&#x1f5d0;</button>
+            <button id="clearRandomTextButton" class="clearTextButton" data-i18n-title="clear">&#x26cc;</button>
           </div>
         </div>
 
@@ -59,17 +54,17 @@
                 </svg>
               </button>
             </div>
-            <button class="copyTextButton" data-target="hexCharText" data-i18n-title="copy">&#x1f5d0;</button>
-            <button class="clearTextButton" data-target="hexCharText" data-i18n-title="clear">&#x26cc;</button>
+            <button id="copyHexButton" class="copyTextButton" data-i18n-title="copy">&#x1f5d0;</button>
+            <button id="clearHexButton" class="clearTextButton" data-i18n-title="clear">&#x26cc;</button>
           </div>
         </div>
         <div class="divider"></div>
       </div>
-      <!--------------------------------------------TAB 2-------------------------------------------->
+
       <div class="tab-content tab2">
         <h3 class="notepad-header">
           <span class="i18n" data-i18n="notepad"></span>
-          <button class="clearTextButton" data-target="notebook" data-i18n-title="clear">&#x26cc;</button>
+          <button id="clearNotebookButton" class="clearTextButton" data-i18n-title="clear">&#x26cc;</button>
         </h3>
         <textarea id="notebook" rows="10" cols="30" data-i18n-placeholder="WriteYourNotesHere"></textarea>
         <h3><span class="i18n" data-i18n="SaveAndCopyValues"></span></h3>
@@ -79,21 +74,6 @@
         </div>
         <div id="savedValues" class="list-items"></div>
       </div>
-      <!--------------------------------------------TAB 3 https://www.w3schools.com/howto/howto_js_todolist.asp -------------------------------------------->
-
-      <!--
-      <div class="tab-content tab3">        
-        <h3>To Do List</h3>
-        <div class="flex-height-container">
-          <input id="taskInput" class="flex-height" type="text" data-i18n-placeholder="task">
-          <button id="addNewTaskBtn" class="i18n" data-i18n-title="save" data-i18n="save"></button>
-        </div>
-        <ul class="list-items" id="todolist">
-          <li class="list-item">Item 1</li>
-        </ul>
-      </div>
-      -->
-
     </div>
     <div class="footer">
         <div class="version">

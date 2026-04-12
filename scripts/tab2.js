@@ -1,12 +1,13 @@
-import {copyToClipboard} from './utils.js';
 import {applyTranslations} from './languages.js';
+import {copyTextToClipboard} from './clipboard.js';
 import {getNotebookContent, getSavedValues, setNotebookContent, setSavedValues} from './storage.js';
 
 export function saveValue() {
     const inputValue = document.getElementById('valueInput').value;
-    if (inputValue.trim() !== "") {
+    if (inputValue.trim() !== '') {
         const savedValues = getSavedValues();
-        if (!savedValues.includes(inputValue)) {
+
+        if (!findDuplicateSavedValue(savedValues, inputValue)) {
             savedValues.push(inputValue);
             setSavedValues(savedValues);
             addValueToDOM(inputValue);
@@ -16,6 +17,10 @@ export function saveValue() {
     }
     document.getElementById('valueInput').value = '';
     document.getElementById('valueInput').focus();
+}
+
+function findDuplicateSavedValue(savedValues, candidateValue) {
+    return savedValues.find(savedValue => savedValue === candidateValue);
 }
 
 function flashExistingValue(value) {
@@ -30,14 +35,15 @@ function flashExistingValue(value) {
     });
 }
 
-export function handleValueClick(event) {
+export function handleSavedValueClick(event) {
     const target = event.target;
+
     if (target.classList.contains('copy-btn')) {
-        copyToClipboard(target.parentElement.querySelector('.saved-value').textContent);
+        copyTextToClipboard(target.parentElement.querySelector('.saved-value').textContent);
     } else if (target.classList.contains('delete-btn')) {
         deleteValue(target.parentElement.querySelector('.saved-value').textContent);
     } else if (target.classList.contains('saved-value')) {
-        copyToClipboard(target.textContent);
+        copyTextToClipboard(target.textContent);
     }
 }
 
@@ -85,11 +91,12 @@ export function displaySavedValues() {
 
 export function saveNotebookContent() {
     const notebookContent = document.getElementById('notebook').value;
-    saveNotebookText(notebookContent);
+    setNotebookContent(notebookContent);
 }
 
-export function saveNotebookText(text) {
-    setNotebookContent(text);
+export function clearNotebook() {
+    document.getElementById('notebook').value = '';
+    setNotebookContent('');
 }
 
 export function loadNotebookContent() {

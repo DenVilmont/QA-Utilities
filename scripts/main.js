@@ -1,6 +1,5 @@
 import * as languages from './languages.js';
 import * as storage from './storage.js';
-import * as utils from './utils.js';
 import * as tab1 from './tab1.js';
 import * as tab2 from './tab2.js';
 
@@ -25,43 +24,45 @@ async function bootstrapApp() {
 
 function cacheElements() {
   elements.languageSelect = document.getElementById('languageSelect');
-  elements.copyTextButtons = document.querySelectorAll('.copyTextButton');
-  elements.clearTextButtons = document.querySelectorAll('.clearTextButton');
   elements.tabHeaders = document.querySelectorAll('.tab-header');
   elements.tabContents = document.querySelectorAll('.tab-content');
   elements.tabContentsById = new Map(
     Array.from(elements.tabContents).map(tabContent => [getTabIdForContent(tabContent), tabContent])
   );
+  elements.copyRandomTextButton = document.getElementById('copyRandomTextButton');
+  elements.clearRandomTextButton = document.getElementById('clearRandomTextButton');
   elements.generateTextButton = document.getElementById('generateText');
   elements.randomTextTextarea = document.getElementById('randomTextTextarea');
+  elements.copyHexButton = document.getElementById('copyHexButton');
+  elements.clearHexButton = document.getElementById('clearHexButton');
   elements.saveValueButton = document.getElementById('saveValueButton');
   elements.valueInput = document.getElementById('valueInput');
   elements.savedValues = document.getElementById('savedValues');
   elements.notebook = document.getElementById('notebook');
+  elements.clearNotebookButton = document.getElementById('clearNotebookButton');
   elements.hexUpButton = document.getElementById('hexUp');
   elements.hexDownButton = document.getElementById('hexDown');
   elements.hexCharText = document.getElementById('hexCharText');
 }
 
 function bindEvents() {
-  elements.copyTextButtons.forEach(button => {
-    button.addEventListener('click', utils.copyText);
-  });
-  elements.clearTextButtons.forEach(button => {
-    button.addEventListener('click', utils.clearText);
-  });
   elements.languageSelect.addEventListener('change', handleLanguageChange);
   elements.tabHeaders.forEach(tabHeader => {
     tabHeader.addEventListener('click', handleTabHeaderClick);
   });
+  elements.copyRandomTextButton.addEventListener('click', tab1.copyGeneratedText);
+  elements.clearRandomTextButton.addEventListener('click', tab1.clearGeneratedText);
   elements.generateTextButton.addEventListener('click', tab1.generateText);
-  elements.randomTextTextarea.addEventListener('input', tab1.countTheLengthOfTheText);
+  elements.randomTextTextarea.addEventListener('input', tab1.updateGeneratedTextLengthIndicator);
+  elements.copyHexButton.addEventListener('click', tab1.copyHexCharacter);
+  elements.clearHexButton.addEventListener('click', tab1.clearHexInput);
   elements.saveValueButton.addEventListener('click', tab2.saveValue);
   elements.valueInput.addEventListener('keydown', handleValueInputKeydown);
-  elements.savedValues.addEventListener('click', tab2.handleValueClick);
+  elements.savedValues.addEventListener('click', tab2.handleSavedValueClick);
   elements.notebook.addEventListener('input', tab2.saveNotebookContent);
-  elements.hexUpButton.addEventListener('click', () => tab1.updateHex(1));
-  elements.hexDownButton.addEventListener('click', () => tab1.updateHex(-1));
+  elements.clearNotebookButton.addEventListener('click', tab2.clearNotebook);
+  elements.hexUpButton.addEventListener('click', () => tab1.stepHexInput(1));
+  elements.hexDownButton.addEventListener('click', () => tab1.stepHexInput(-1));
   elements.hexCharText.addEventListener('wheel', handleHexWheel);
 }
 
@@ -75,7 +76,7 @@ function loadInitialState() {
 }
 
 async function renderInitialUI() {
-  utils.setVersion();
+  renderVersion();
   await languages.setCurrentLanguage(appState.language);
   tab2.displaySavedValues();
   tab2.loadNotebookContent();
@@ -110,7 +111,7 @@ async function handleLanguageChange(event) {
 
 function handleHexWheel(event) {
   event.preventDefault();
-  tab1.updateHex(event.deltaY < 0 ? 1 : -1);
+  tab1.stepHexInput(event.deltaY < 0 ? 1 : -1);
 }
 
 function getStoredTabId() {
@@ -145,9 +146,9 @@ function getTabIdForContent(tabContent) {
   return Array.from(tabContent.classList).find(className => className !== 'tab-content');
 }
 
-
-
-
-
-
+function renderVersion() {
+  const versionElement = document.getElementById('version');
+  const manifestData = chrome.runtime.getManifest();
+  versionElement.textContent = 'v. ' + manifestData.version;
+}
 
