@@ -1,104 +1,211 @@
-import {applyTranslations} from './languages.js';
+import {applyTranslations, t} from './languages.js';
 import {copyTextToClipboard} from './clipboard.js';
 import {getNotebookContent, getSavedValues, setNotebookContent, setSavedValues} from './storage.js';
 
-export function saveValue() {
-    const inputValue = document.getElementById('valueInput').value;
-    if (inputValue.trim() !== '') {
-        const savedValues = getSavedValues();
-
-        if (!findDuplicateSavedValue(savedValues, inputValue)) {
-            savedValues.push(inputValue);
-            setSavedValues(savedValues);
-            addValueToDOM(inputValue);
-        } else {
-            flashExistingValue(inputValue);
-        }
-    }
-    document.getElementById('valueInput').value = '';
-    document.getElementById('valueInput').focus();
+function getSavedValuesContainer() {
+    return document.getElementById('savedValues');
 }
 
-function findDuplicateSavedValue(savedValues, candidateValue) {
-    return savedValues.find(savedValue => savedValue === candidateValue);
+function getValueInput() {
+    return document.getElementById('valueInput');
 }
 
-function flashExistingValue(value) {
-    const elements = document.querySelectorAll('.saved-value');
-    elements.forEach(el => {
-        if (el.textContent === value) {
-            el.classList.add('flash');
-            setTimeout(() => {
-                el.classList.remove('flash');
-            }, 1000);
-        }
-    });
+function getNotebookElement() {
+    return document.getElementById('notebook');
 }
 
-export function handleSavedValueClick(event) {
-    const target = event.target;
-
-    if (target.classList.contains('copy-btn')) {
-        copyTextToClipboard(target.parentElement.querySelector('.saved-value').textContent);
-    } else if (target.classList.contains('delete-btn')) {
-        deleteValue(target.parentElement.querySelector('.saved-value').textContent);
-    } else if (target.classList.contains('saved-value')) {
-        copyTextToClipboard(target.textContent);
-    }
+function normalizeSavedValue(value) {
+    return typeof value === 'string' ? value.trim() : '';
 }
 
-function deleteValue(value) {
-    const savedValues = getSavedValues().filter(item => item !== value);
+function normalizeSavedValues(values) {
+    return Array.isArray(values)
+        ? values
+            .map(normalizeSavedValue)
+            .filter(value => value !== '')
+        : [];
+}
+
+function readSavedValuesState() {
+    return normalizeSavedValues(getSavedValues());
+}
+
+function persistSavedValues(savedValues) {
     setSavedValues(savedValues);
-    displaySavedValues();
+    return savedValues;
 }
 
-function createSavedValueItem(value) {
+function renderSavedValues(savedValues = readSavedValuesState()) {
+    const savedValuesContainer = getSavedValuesContainer();
+    const fragment = document.createDocumentFragment();
+
+    savedValuesContainer.setAttribute('role', 'list');
+
+    savedValues.forEach((value, index) => {
+        fragment.appendChild(createSavedValueItem(value, index));
+    });
+
+    savedValuesContainer.replaceChildren(fragment);
+    applyTranslations(savedValuesContainer);
+}
+
+function persistAndRenderSavedValues(savedValues) {
+    const nextSavedValues = persistSavedValues(savedValues);
+    renderSavedValues(nextSavedValues);
+    return nextSavedValues;
+}
+
+function syncSavedValuesState() {
+    const storedValues = getSavedValues();
+    const normalizedValues = normalizeSavedValues(storedValues);
+
+    if (storedValues.length !== normalizedValues.length ||
+        storedValues.some((value, index) => value !== normalizedValues[index])) {
+        persistSavedValues(normalizedValues);
+    }
+
+    return normalizedValues;
+}
+
+function createSavedValueItem(value, index) {
     const container = document.createElement('div');
     container.className = 'saved-value-container';
+    container.setAttribute('data-saved-value-index', String(index));
+    container.setAttribute('role', 'listitem');
 
-    const saved = document.createElement('div');
+    const saved = document.createElement('button');
+    saved.type = 'button';
     saved.className = 'saved-value';
+    saved.setAttribute('data-action', 'copy-value');
+    saved.setAttribute('data-i18n-title', 'copy');
     saved.textContent = value;
 
     const copyBtn = document.createElement('button');
+    copyBtn.type = 'button';
     copyBtn.className = 'copy-btn';
+    copyBtn.setAttribute('data-action', 'copy-value');
     copyBtn.setAttribute('data-i18n-title', 'copy');
+    copyBtn.setAttribute('aria-label', t('copy'));
     copyBtn.innerHTML = '&#x1f5d0;';
 
     const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
     deleteBtn.className = 'delete-btn';
+    deleteBtn.setAttribute('data-action', 'delete-value');
     deleteBtn.setAttribute('data-i18n-title', 'delete');
+    deleteBtn.setAttribute('aria-label', t('delete'));
     deleteBtn.innerHTML = '&#x26cc;';
 
     container.append(saved, copyBtn, deleteBtn);
     return container;
 }
 
-function addValueToDOM(value) {
-    const el = createSavedValueItem(value);
-    document.getElementById('savedValues').appendChild(el);
-    applyTranslations(el);
+function flashExistingValue(index) {
+    const savedValueElement = getSavedValuesContainer()
+        .querySelector(`[data-saved-value-index="${index}"] .saved-value`);
+
+    if (!savedValueElement) {
+        return;
+    }
+
+    savedValueElement.classList.add('flash');
+    setTimeout(() => {
+        savedValueElement.classList.remove('flash');
+    }, 1000);
 }
 
-export function displaySavedValues() {
-    const savedValuesContainer = document.getElementById('savedValues');
-    savedValuesContainer.innerHTML = '';
-    getSavedValues().forEach(value => {
-        addValueToDOM(value);
-    });
+function focusAndResetValueInput() {
+    const valueInput = getValueInput();
+    valueInput.value = '';
+    valueInput.focus();
+}
+
+function findSavedValueIndex(savedValues, candidateValue) {
+    return savedValues.findIndex(savedValue => savedValue === candidateValue);
+}
+
+function copySavedValue(index) {
+    const savedValues = readSavedValuesState();
+    const value = savedValues[index];
+
+    if (typeof value !== 'string') {
+        return;
+    }
+
+    copyTextToClipboard(value);
+}
+
+function deleteSavedValue(index) {
+    const savedValues = readSavedValuesState();
+
+    if (index < 0 || index >= savedValues.length) {
+        return;
+    }
+
+    const nextSavedValues = savedValues.filter((_, savedValueIndex) => savedValueIndex !== index);
+    persistAndRenderSavedValues(nextSavedValues);
+}
+
+export function saveValue() {
+    const normalizedValue = normalizeSavedValue(getValueInput().value);
+    const savedValues = readSavedValuesState();
+
+    if (normalizedValue === '') {
+        focusAndResetValueInput();
+        return;
+    }
+
+    const duplicateIndex = findSavedValueIndex(savedValues, normalizedValue);
+
+    if (duplicateIndex !== -1) {
+        flashExistingValue(duplicateIndex);
+        focusAndResetValueInput();
+        return;
+    }
+
+    persistAndRenderSavedValues([...savedValues, normalizedValue]);
+    focusAndResetValueInput();
+}
+
+export function handleSavedValueClick(event) {
+    const actionElement = event.target.closest('[data-action]');
+    const savedValueItem = actionElement?.closest('[data-saved-value-index]');
+
+    if (!actionElement || !savedValueItem || !getSavedValuesContainer().contains(savedValueItem)) {
+        return;
+    }
+
+    const index = Number.parseInt(savedValueItem.getAttribute('data-saved-value-index'), 10);
+
+    if (!Number.isInteger(index)) {
+        return;
+    }
+
+    if (actionElement.getAttribute('data-action') === 'delete-value') {
+        deleteSavedValue(index);
+        return;
+    }
+
+    if (actionElement.getAttribute('data-action') === 'copy-value') {
+        copySavedValue(index);
+    }
+}
+
+export function loadSavedValues() {
+    const savedValues = syncSavedValuesState();
+    renderSavedValues(savedValues);
 }
 
 export function saveNotebookContent() {
-    const notebookContent = document.getElementById('notebook').value;
+    const notebookContent = getNotebookElement().value;
     setNotebookContent(notebookContent);
 }
 
 export function clearNotebook() {
-    document.getElementById('notebook').value = '';
+    getNotebookElement().value = '';
     setNotebookContent('');
 }
 
 export function loadNotebookContent() {
-    document.getElementById('notebook').value = getNotebookContent();
+    getNotebookElement().value = getNotebookContent();
 }

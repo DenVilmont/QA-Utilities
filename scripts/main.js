@@ -78,7 +78,7 @@ function loadInitialState() {
 async function renderInitialUI() {
   renderVersion();
   await languages.setCurrentLanguage(appState.language);
-  tab2.displaySavedValues();
+  tab2.loadSavedValues();
   tab2.loadNotebookContent();
   languages.applyTranslations();
 }
@@ -106,6 +106,7 @@ async function handleLanguageChange(event) {
   }
 
   appState.language = languages.getCurrentLanguage();
+  tab2.loadSavedValues();
   languages.applyTranslations();
 }
 
