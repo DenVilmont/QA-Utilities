@@ -1,4 +1,5 @@
 import {copyToClipboard} from './utils.js';
+import {applyTranslations} from './languages.js';
 
 let savedValuesArray = JSON.parse(localStorage.getItem('savedValues')) || [];
 
@@ -24,7 +25,7 @@ function flashExistingValue(value) {
             el.classList.add('flash');
             setTimeout(() => {
                 el.classList.remove('flash');
-            }, 1000); // Длительность анимации
+            }, 1000);
         }
     });
 }
@@ -43,7 +44,7 @@ export function handleValueClick(event) {
 function deleteValue(value) {
     savedValuesArray = savedValuesArray.filter(item => item !== value);
     localStorage.setItem('savedValues', JSON.stringify(savedValuesArray));
-    displaySavedValues(); // Обновить отображение
+    displaySavedValues();
 }
 
 function createSavedValueItem(value) {
@@ -57,12 +58,12 @@ function createSavedValueItem(value) {
     const copyBtn = document.createElement('button');
     copyBtn.className = 'copy-btn';
     copyBtn.setAttribute('data-i18n-title', 'copy');
-    copyBtn.innerHTML = '🗐';
+    copyBtn.innerHTML = '&#x1f5d0;';
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete-btn';
     deleteBtn.setAttribute('data-i18n-title', 'delete');
-    deleteBtn.innerHTML = '⛌';
+    deleteBtn.innerHTML = '&#x26cc;';
 
     container.append(saved, copyBtn, deleteBtn);
     return container;
@@ -71,11 +72,12 @@ function createSavedValueItem(value) {
 function addValueToDOM(value) {
     const el = createSavedValueItem(value);
     document.getElementById('savedValues').appendChild(el);
+    applyTranslations(el);
 }
-  
+
 export function displaySavedValues() {
     const savedValuesContainer = document.getElementById('savedValues');
-    savedValuesContainer.innerHTML = ''; // Очистить предыдущий контент
+    savedValuesContainer.innerHTML = '';
     savedValuesArray.forEach(value => {
         addValueToDOM(value);
     });
@@ -89,17 +91,10 @@ export function saveNotebookContent() {
 export function saveNotebookText(text) {
     localStorage.setItem('notebookContent', text);
 }
-  
+
 export function loadNotebookContent() {
     const savedContent = localStorage.getItem('notebookContent');
     if (savedContent) {
         document.getElementById('notebook').value = savedContent;
     }
 }
-
-
-
-
-
-
-

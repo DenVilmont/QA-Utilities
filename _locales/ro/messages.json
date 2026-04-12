@@ -1,9 +1,9 @@
 {
    "EnterValidPositiveNumber": {
-      "message": "Intmessageduceți un număr pozitiv valid"
+      "message": "Introduceți un număr pozitiv valid"
    },
    "EnterValueToSave": {
-      "message": "Intmessageduceți orice pentru a salva"
+      "message": "Introduceți orice pentru a salva"
    },
    "GenerateHEXsimbolAndCopy": {
       "message": "Generați simbolul HEX și copiați în clipboard"

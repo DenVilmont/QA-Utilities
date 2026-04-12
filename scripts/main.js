@@ -11,13 +11,15 @@ let appState = {
   language: 'en'
 };
 
-document.addEventListener('DOMContentLoaded', bootstrapApp);
+document.addEventListener('DOMContentLoaded', () => {
+  void bootstrapApp();
+});
 
-function bootstrapApp() {
+async function bootstrapApp() {
   cacheElements();
   bindEvents();
   loadInitialState();
-  renderInitialUI();
+  await renderInitialUI();
   activateInitialTab();
 }
 
@@ -48,7 +50,7 @@ function bindEvents() {
   elements.clearTextButtons.forEach(button => {
     button.addEventListener('click', utils.clearText);
   });
-  elements.languageSelect.addEventListener('change', languages.changeLanguage);
+  elements.languageSelect.addEventListener('change', handleLanguageChange);
   elements.tabHeaders.forEach(tabHeader => {
     tabHeader.addEventListener('click', handleTabHeaderClick);
   });
@@ -66,17 +68,18 @@ function bindEvents() {
 function loadInitialState() {
   appState = {
     checkedTabId: getStoredTabId(),
-    language: languages.getLanguage()
+    language: languages.getCurrentLanguage()
   };
 
   elements.languageSelect.value = appState.language;
 }
 
-function renderInitialUI() {
+async function renderInitialUI() {
   utils.setVersion();
-  languages.applyLanguage(appState.language);
+  await languages.setCurrentLanguage(appState.language);
   tab2.displaySavedValues();
   tab2.loadNotebookContent();
+  languages.applyTranslations();
 }
 
 function activateInitialTab() {
@@ -92,6 +95,17 @@ function handleValueInputKeydown(event) {
     event.preventDefault();
     tab2.saveValue();
   }
+}
+
+async function handleLanguageChange(event) {
+  const didLoadLatestLanguage = await languages.setCurrentLanguage(event.target.value);
+
+  if (!didLoadLatestLanguage) {
+    return;
+  }
+
+  appState.language = languages.getCurrentLanguage();
+  languages.applyTranslations();
 }
 
 function handleHexWheel(event) {

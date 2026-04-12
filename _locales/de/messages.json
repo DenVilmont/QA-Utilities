@@ -38,11 +38,11 @@
    "hexUp": {
       "message": "Erhöhen"
    },
-   "lengthOfTheText": {
-      "message": "Länge messages Textes"
-   },
-   "messagelete": {
+   "delete": {
       "message": "Löschen"
+   },
+   "lengthOfTheText": {
+      "message": "Länge des Textes"
    },
    "notepad": {
       "message": "Notizblock"

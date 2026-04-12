@@ -1,20 +1,11 @@
-/*
-export function generateText() {
-    const textLength = parseInt(document.getElementById('textLength').value);
-    if (isNaN(textLength) || textLength <= 0) {
-        alert(chrome.i18n.getMessage("EnterValidPositiveNumber"));
-        return;
-    }
-    const generatedText = generateRandomText(textLength);
-    document.getElementById('randomTextTextarea').value = generatedText;
-};
-*/
+import {t} from './languages.js';
+
 export async function generateText() {
     const textLength = parseInt(document.getElementById('textLength').value);
     const isMeaningful = document.getElementById('meaningfulText').checked;
 
     if (isNaN(textLength) || textLength <= 0) {
-        alert(chrome.i18n.getMessage("EnterValidPositiveNumber"));
+        alert(t('EnterValidPositiveNumber'));
         return;
     }
     const text = isMeaningful ? await generateMeaningfulTextFromBaconIpsum(textLength) : generateRandomText(textLength);
