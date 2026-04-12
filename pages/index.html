@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <head>
+    <title><span class="i18n" data-i18n="appName"></span></title>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <script type="module" src="/scripts/main.js" defer></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1><span class="i18n" data-i18n="appName"></span></h1>
+      <div class="divider"></div>
+      <div class="tabs-header">
+        <span class="tab-header i18n" id="tab1" data-i18n="utils"></span>
+        <span class="tab-header i18n" id="tab2" data-i18n="notes"></span>
+        <!--<span class="tab-header i18n" id="tab3" data-i18n="tasks"></span>-->
+      </div>
+      <div class="divider"></div>
+    </div>
+    <div class="content">
+      
+      <!--------------------------------------------TAB 1-------------------------------------------->
+
+      <div class="tab-content tab1">
+
+        <div class="randomText">
+          <h3><span class="i18n" data-i18n="generateTextLine"></span></h3>
+          <div class="flex-height-container">
+            <input id="textLength" class="flex-height" type="text" data-i18n-placeholder="textLength" />
+            <button id="generateText" data-i18n-title="generate">&#x2b6e;</button>
+          </div>
+          <h4>
+            <span class="i18n" data-i18n="lengthOfTheText"></span>
+            <span id="textLengthResult"></span>
+          </h4>
+          <h4>
+            <input type="checkbox" id="meaningfulText">
+            <label for="meaningfulText" class="i18n" data-i18n="generarMeaningfulText"></label>
+          </h4>
+          <div class="flex-height-container">
+            <textarea id="randomTextTextarea" rows="5" cols="30"></textarea>
+            <button class="copyTextButton" data-target="randomTextTextarea" data-i18n-title="copy">&#x1f5d0;</button>
+            <button class="clearTextButton" data-target="randomTextTextarea textLength" data-i18n-title="clear">&#x26cc;</button>
+          </div>
+        </div>
+
+        <div>
+          <h3><span class="i18n" data-i18n="GenerateHEXsimbolAndCopy"></span></h3>
+          <div class="flex-height-container hex-input-container">
+            <input id="hexCharText" class="flex-height" type="text" placeholder="0x1a" value="0x00"/>
+            <div class="hex-controls">
+              <button id="hexUp" class="hex-btn" data-i18n-title="hexUp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 15l8-8 8 8" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button id="hexDown" class="hex-btn" data-i18n-title="hexDown">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 9l8 8 8-8" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <button class="copyTextButton" data-target="hexCharText" data-i18n-title="copy">&#x1f5d0;</button>
+            <button class="clearTextButton" data-target="hexCharText" data-i18n-title="clear">&#x26cc;</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+      </div>
+      <!--------------------------------------------TAB 2-------------------------------------------->
+      <div class="tab-content tab2">
+        <h3 class="notepad-header">
+          <span class="i18n" data-i18n="notepad"></span>
+          <button class="clearTextButton" data-target="notebook" data-i18n-title="clear">&#x26cc;</button>
+        </h3>
+        <textarea id="notebook" rows="10" cols="30" data-i18n-placeholder="WriteYourNotesHere"></textarea>
+        <h3><span class="i18n" data-i18n="SaveAndCopyValues"></span></h3>
+        <div class="flex-height-container">
+          <input id="valueInput" class="flex-height" type="text" data-i18n-placeholder="EnterValueToSave">
+          <button id="saveValueButton" class="i18n" data-i18n="save"></button>
+        </div>
+        <div id="savedValues" class="list-items"></div>
+      </div>
+      <!--------------------------------------------TAB 3 https://www.w3schools.com/howto/howto_js_todolist.asp -------------------------------------------->
+
+      <!--
+      <div class="tab-content tab3">        
+        <h3>To Do List</h3>
+        <div class="flex-height-container">
+          <input id="taskInput" class="flex-height" type="text" data-i18n-placeholder="task">
+          <button id="addNewTaskBtn" class="i18n" data-i18n-title="save" data-i18n="save"></button>
+        </div>
+        <ul class="list-items" id="todolist">
+          <li class="list-item">Item 1</li>
+        </ul>
+      </div>
+      -->
+
+    </div>
+    <div class="footer">
+        <div class="version">
+          <span id="version"></span>
+        </div>
+        <div class="language-selector">
+          <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="zh">Chinese</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="pt">Portuguese</option>
+            <option value="ru">Russian</option>
+            <option value="ro">Romanian</option>
+            <option value="es">Spanish</option>
+          </select>
+        </div>
+    </div>
+  </body>
+</html>
