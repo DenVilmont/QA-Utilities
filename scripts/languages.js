@@ -18,10 +18,14 @@ function loadMessages(lang) {
 
 export function changeLanguage() {
     const newLang = document.getElementById('languageSelect').value;
-    saveLanguage(newLang);
-    loadMessages(newLang);
-    updateLocalizedTexts();
+    applyLanguage(newLang);
 };
+
+export function applyLanguage(lang) {
+    saveLanguage(lang);
+    loadMessages(lang);
+    updateLocalizedTexts();
+}
 
 function updateLocalizedTexts() {
     document.querySelectorAll('.i18n').forEach(el => {
