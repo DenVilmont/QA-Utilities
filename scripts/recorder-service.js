@@ -13,6 +13,8 @@ import {
 } from './recorder-shared.js';
 
 const RECORDING_BADGE_TEXT = 'REC';
+const CLICK_HIGHLIGHT_SCRIPT_ID = 'qa-utilities-click-highlight';
+const CLICK_HIGHLIGHT_FILE = 'scripts/page/click-highlight.js';
 
 let creatingOffscreenDocument = null;
 
@@ -52,9 +54,40 @@ function setRecordingBadge(isRecording) {
   return chrome.action.setBadgeText({text: isRecording ? RECORDING_BADGE_TEXT : ''});
 }
 
+// Circles on clicks while recording: in the pages that are already open, and (through a registered
+// content script) in every page opened or reloaded during the recording, in any tab.
+// Browser pages (chrome://, the Web Store) cannot be scripted: there are no circles there.
+async function startClickHighlight() {
+  await chrome.scripting.registerContentScripts([{
+    id: CLICK_HIGHLIGHT_SCRIPT_ID,
+    matches: ['<all_urls>'],
+    js: [CLICK_HIGHLIGHT_FILE],
+    runAt: 'document_start',
+    allFrames: true,
+    persistAcrossSessions: false
+  }]).catch(() => {});
+
+  const tabs = await chrome.tabs.query({});
+  await Promise.all(tabs.map(tab => chrome.scripting.executeScript({
+    target: {tabId: tab.id, allFrames: true},
+    files: [CLICK_HIGHLIGHT_FILE]
+  }).catch(() => {})));
+}
+
+async function stopClickHighlight() {
+  await chrome.scripting.unregisterContentScripts({ids: [CLICK_HIGHLIGHT_SCRIPT_ID]}).catch(() => {});
+
+  const tabs = await chrome.tabs.query({});
+  await Promise.all(tabs.map(tab => chrome.scripting.executeScript({
+    target: {tabId: tab.id, allFrames: true},
+    func: () => globalThis.qaUtilitiesClickHighlight?.stop()
+  }).catch(() => {})));
+}
+
 async function finish(state) {
   await setState(state);
   await setRecordingBadge(false);
+  await stopClickHighlight();
   await closeOffscreenDocument();
 }
 
@@ -90,9 +123,11 @@ async function handleOffscreenMessage(message) {
     case RECORDER_MESSAGES.started:
       await setState({status: RECORDER_STATUS.recording, startedAt: message.startedAt});
       await setRecordingBadge(true);
+      await startClickHighlight();
       break;
     case RECORDER_MESSAGES.saving:
       await setState({status: RECORDER_STATUS.saving});
+      await stopClickHighlight();
       break;
     case RECORDER_MESSAGES.saved:
       await chrome.tabs.create({url: chrome.runtime.getURL(`pages/recording.html?id=${encodeURIComponent(message.id)}`)});
