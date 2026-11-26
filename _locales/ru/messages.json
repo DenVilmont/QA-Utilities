@@ -143,6 +143,12 @@
    "downloadTip": {
       "message": "Скачать (Ctrl+S)"
    },
+   "downloadVideo": {
+      "message": "Скачать видео"
+   },
+   "downloadVideoTip": {
+      "message": "Сохранить запись как видео WebM"
+   },
    "downloadedAs": {
       "message": "Скачано: $1"
    },
@@ -166,6 +172,9 @@
    },
    "lengthOfTheText": {
       "message": "Длина текста"
+   },
+   "loadingRecording": {
+      "message": "Загрузка записи…"
    },
    "loadingScreenshot": {
       "message": "Загрузка скриншота…"
@@ -191,11 +200,35 @@
    "pageRestricted": {
       "message": "На этой странице это не работает (страницы браузера, Chrome Web Store, страницы расширений)."
    },
+   "recordChoosing": {
+      "message": "Выберите, что записывать…"
+   },
+   "recordFailed": {
+      "message": "Не удалось записать:"
+   },
+   "recordSaving": {
+      "message": "Сохранение…"
+   },
+   "recordStart": {
+      "message": "Начать запись"
+   },
+   "recordStartHint": {
+      "message": "Записать вкладку, окно или экран: Chrome спросит, что записывать. Запись продолжается и при закрытой панели."
+   },
+   "recordStop": {
+      "message": "Остановить"
+   },
+   "recordingNotFound": {
+      "message": "Запись не найдена. Хранятся только 3 последние записи."
+   },
    "redo": {
       "message": "Повторить (Ctrl+Y)"
    },
    "save": {
       "message": "Сохранить"
+   },
+   "screenRecording": {
+      "message": "Запись экрана"
    },
    "screenshot": {
       "message": "Скриншот"

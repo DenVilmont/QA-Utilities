@@ -143,6 +143,12 @@
    "downloadTip": {
       "message": "下载 (Ctrl+S)"
    },
+   "downloadVideo": {
+      "message": "下载视频"
+   },
+   "downloadVideoTip": {
+      "message": "将录制内容保存为 WebM 视频"
+   },
    "downloadedAs": {
       "message": "已下载：$1"
    },
@@ -166,6 +172,9 @@
    },
    "lengthOfTheText": {
       "message": "文本长度"
+   },
+   "loadingRecording": {
+      "message": "正在加载录制内容…"
    },
    "loadingScreenshot": {
       "message": "正在加载截图…"
@@ -191,11 +200,35 @@
    "pageRestricted": {
       "message": "此页面不支持该操作（浏览器页面、Chrome 网上应用店、扩展程序页面）。"
    },
+   "recordChoosing": {
+      "message": "请选择要录制的内容…"
+   },
+   "recordFailed": {
+      "message": "录制失败："
+   },
+   "recordSaving": {
+      "message": "正在保存…"
+   },
+   "recordStart": {
+      "message": "开始录制"
+   },
+   "recordStartHint": {
+      "message": "录制标签页、窗口或整个屏幕：Chrome 会询问要录制什么。关闭面板后录制仍会继续。"
+   },
+   "recordStop": {
+      "message": "停止"
+   },
+   "recordingNotFound": {
+      "message": "未找到录制内容。仅保留最近 3 个录制。"
+   },
    "redo": {
       "message": "重做 (Ctrl+Y)"
    },
    "save": {
       "message": "保存"
+   },
+   "screenRecording": {
+      "message": "屏幕录制"
    },
    "screenshot": {
       "message": "截图"

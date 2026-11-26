@@ -143,6 +143,12 @@
    "downloadTip": {
       "message": "Télécharger (Ctrl+S)"
    },
+   "downloadVideo": {
+      "message": "Télécharger la vidéo"
+   },
+   "downloadVideoTip": {
+      "message": "Enregistrer en vidéo WebM"
+   },
    "downloadedAs": {
       "message": "Téléchargé : $1"
    },
@@ -166,6 +172,9 @@
    },
    "lengthOfTheText": {
       "message": "Longueur du texte"
+   },
+   "loadingRecording": {
+      "message": "Chargement de l'enregistrement…"
    },
    "loadingScreenshot": {
       "message": "Chargement de la capture…"
@@ -191,11 +200,35 @@
    "pageRestricted": {
       "message": "Cela ne fonctionne pas sur cette page (pages du navigateur, Chrome Web Store, pages d'extensions)."
    },
+   "recordChoosing": {
+      "message": "Choisissez quoi enregistrer…"
+   },
+   "recordFailed": {
+      "message": "Échec de l'enregistrement :"
+   },
+   "recordSaving": {
+      "message": "Enregistrement du fichier…"
+   },
+   "recordStart": {
+      "message": "Démarrer l'enregistrement"
+   },
+   "recordStartHint": {
+      "message": "Enregistrer un onglet, une fenêtre ou l'écran : Chrome demandera quoi enregistrer. L'enregistrement continue panneau fermé."
+   },
+   "recordStop": {
+      "message": "Arrêter"
+   },
+   "recordingNotFound": {
+      "message": "Enregistrement introuvable. Seuls les 3 derniers sont conservés."
+   },
    "redo": {
       "message": "Rétablir (Ctrl+Y)"
    },
    "save": {
       "message": "Sauvegarder"
+   },
+   "screenRecording": {
+      "message": "Enregistrement de l'écran"
    },
    "screenshot": {
       "message": "Capture d'écran"

@@ -143,6 +143,12 @@
    "downloadTip": {
       "message": "Descarcă (Ctrl+S)"
    },
+   "downloadVideo": {
+      "message": "Descarcă videoclipul"
+   },
+   "downloadVideoTip": {
+      "message": "Salvează înregistrarea ca video WebM"
+   },
    "downloadedAs": {
       "message": "Descărcat: $1"
    },
@@ -166,6 +172,9 @@
    },
    "lengthOfTheText": {
       "message": "Lungimea textului"
+   },
+   "loadingRecording": {
+      "message": "Se încarcă înregistrarea…"
    },
    "loadingScreenshot": {
       "message": "Se încarcă captura…"
@@ -191,11 +200,35 @@
    "pageRestricted": {
       "message": "Acest lucru nu funcționează pe această pagină (pagini ale browserului, Chrome Web Store, pagini de extensii)."
    },
+   "recordChoosing": {
+      "message": "Alegeți ce să înregistrați…"
+   },
+   "recordFailed": {
+      "message": "Înregistrarea a eșuat:"
+   },
+   "recordSaving": {
+      "message": "Se salvează…"
+   },
+   "recordStart": {
+      "message": "Pornește înregistrarea"
+   },
+   "recordStartHint": {
+      "message": "Înregistrează o filă, o fereastră sau ecranul: Chrome va întreba ce să înregistreze. Înregistrarea continuă și cu panoul închis."
+   },
+   "recordStop": {
+      "message": "Oprește"
+   },
+   "recordingNotFound": {
+      "message": "Înregistrarea nu a fost găsită. Se păstrează doar ultimele 3."
+   },
    "redo": {
       "message": "Refă (Ctrl+Y)"
    },
    "save": {
       "message": "Salvează"
+   },
+   "screenRecording": {
+      "message": "Înregistrarea ecranului"
    },
    "screenshot": {
       "message": "Captură de ecran"

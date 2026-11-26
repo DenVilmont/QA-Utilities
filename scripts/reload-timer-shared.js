@@ -18,15 +18,3 @@ export const MAX_INTERVAL_SECONDS = 86400;
 export function isValidIntervalSeconds(seconds) {
   return Number.isInteger(seconds) && seconds >= MIN_INTERVAL_SECONDS && seconds <= MAX_INTERVAL_SECONDS;
 }
-
-// 7 -> "0:07", 75 -> "1:15", 3725 -> "1:02:05"
-export function formatDuration(totalSeconds) {
-  const seconds = Math.max(0, Math.ceil(totalSeconds));
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secondsPart = String(seconds % 60).padStart(2, '0');
-
-  return hours > 0
-    ? `${hours}:${String(minutes).padStart(2, '0')}:${secondsPart}`
-    : `${minutes}:${secondsPart}`;
-}

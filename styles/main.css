@@ -327,6 +327,27 @@ button.tool-tile:disabled {
     background-color: #c62828;
 }
 
+/* Screen recording tile (Tools tab): red dot to start, red square to stop. */
+.record-icon .record-start,
+.record-icon .record-stop {
+    fill: #d32f2f;
+    stroke: none;
+}
+
+.record-icon .record-stop,
+button.recording .record-icon .record-start {
+    display: none;
+}
+
+button.recording .record-icon .record-stop {
+    display: inline;
+}
+
+button.tool-tile.recording {
+    border-color: #d32f2f;
+    box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.25);
+}
+
 /* Auto-reload page (Tools tab): one row of controls and the list of running timers. */
 .reload-timer-controls {
     display: flex;

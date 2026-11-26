@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title data-i18n-document-title="screenRecording">Screen recording</title>
+    <link rel="stylesheet" type="text/css" href="/styles/capture.css">
+    <link rel="stylesheet" type="text/css" href="/styles/recording.css">
+    <script type="module" src="/scripts/recording-page.js"></script>
+  </head>
+  <body>
+    <header class="editor-header">
+      <div class="capture-info">
+        <div class="capture-size">
+          <span id="recordingSize"></span>
+          <span class="capture-mode-badge i18n" data-i18n="screenRecording"></span>
+        </div>
+        <div class="capture-details">
+          <span id="recordingDate"></span>
+          <span id="recordingDuration"></span>
+          <span id="recordingFileSize"></span>
+        </div>
+      </div>
+      <div class="editor-actions">
+        <button id="downloadVideoButton" class="action-button primary" type="button" data-i18n-title="downloadVideoTip" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+          <span class="i18n" data-i18n="downloadVideo"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="stage recording-stage">
+      <video id="recordingVideo" class="recording-video" controls autoplay muted loop hidden></video>
+      <div id="stageMessage" class="stage-message i18n" data-i18n="loadingRecording"></div>
+    </main>
+  </body>
+</html>

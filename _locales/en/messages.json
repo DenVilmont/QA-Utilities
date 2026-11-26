@@ -143,6 +143,12 @@
    "downloadTip": {
       "message": "Download (Ctrl+S)"
    },
+   "downloadVideo": {
+      "message": "Download video"
+   },
+   "downloadVideoTip": {
+      "message": "Save the recording as a WebM video"
+   },
    "downloadedAs": {
       "message": "Downloaded: $1"
    },
@@ -166,6 +172,9 @@
    },
    "lengthOfTheText": {
       "message": "Length of the text"
+   },
+   "loadingRecording": {
+      "message": "Loading the recording…"
    },
    "loadingScreenshot": {
       "message": "Loading screenshot…"
@@ -191,11 +200,35 @@
    "pageRestricted": {
       "message": "This does not work on this page (browser pages, Chrome Web Store, extension pages)."
    },
+   "recordChoosing": {
+      "message": "Choose what to record…"
+   },
+   "recordFailed": {
+      "message": "Recording failed:"
+   },
+   "recordSaving": {
+      "message": "Saving…"
+   },
+   "recordStart": {
+      "message": "Start recording"
+   },
+   "recordStartHint": {
+      "message": "Record a tab, a window or the screen: Chrome will ask what to record. The recording goes on with the panel closed."
+   },
+   "recordStop": {
+      "message": "Stop"
+   },
+   "recordingNotFound": {
+      "message": "Recording not found. Only the last 3 recordings are kept."
+   },
    "redo": {
       "message": "Redo (Ctrl+Y)"
    },
    "save": {
       "message": "Save"
+   },
+   "screenRecording": {
+      "message": "Screen recording"
    },
    "screenshot": {
       "message": "Screenshot"

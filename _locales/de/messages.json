@@ -143,6 +143,12 @@
    "downloadTip": {
       "message": "Herunterladen (Strg+S)"
    },
+   "downloadVideo": {
+      "message": "Video herunterladen"
+   },
+   "downloadVideoTip": {
+      "message": "Aufnahme als WebM-Video speichern"
+   },
    "downloadedAs": {
       "message": "Heruntergeladen: $1"
    },
@@ -166,6 +172,9 @@
    },
    "lengthOfTheText": {
       "message": "Länge des Textes"
+   },
+   "loadingRecording": {
+      "message": "Aufnahme wird geladen…"
    },
    "loadingScreenshot": {
       "message": "Screenshot wird geladen…"
@@ -191,11 +200,35 @@
    "pageRestricted": {
       "message": "Auf dieser Seite funktioniert das nicht (Browserseiten, Chrome Web Store, Erweiterungsseiten)."
    },
+   "recordChoosing": {
+      "message": "Wählen Sie, was aufgenommen wird…"
+   },
+   "recordFailed": {
+      "message": "Aufnahme fehlgeschlagen:"
+   },
+   "recordSaving": {
+      "message": "Wird gespeichert…"
+   },
+   "recordStart": {
+      "message": "Aufnahme starten"
+   },
+   "recordStartHint": {
+      "message": "Einen Tab, ein Fenster oder den Bildschirm aufnehmen: Chrome fragt, was aufgenommen werden soll. Die Aufnahme läuft auch bei geschlossenem Panel weiter."
+   },
+   "recordStop": {
+      "message": "Stoppen"
+   },
+   "recordingNotFound": {
+      "message": "Aufnahme nicht gefunden. Nur die letzten 3 Aufnahmen werden aufbewahrt."
+   },
    "redo": {
       "message": "Wiederholen (Strg+Y)"
    },
    "save": {
       "message": "Speichern"
+   },
+   "screenRecording": {
+      "message": "Bildschirmaufnahme"
    },
    "screenshot": {
       "message": "Screenshot"

@@ -143,6 +143,12 @@
    "downloadTip": {
       "message": "Descargar (Ctrl+S)"
    },
+   "downloadVideo": {
+      "message": "Descargar vídeo"
+   },
+   "downloadVideoTip": {
+      "message": "Guardar la grabación como vídeo WebM"
+   },
    "downloadedAs": {
       "message": "Descargado: $1"
    },
@@ -166,6 +172,9 @@
    },
    "lengthOfTheText": {
       "message": "Longitud del texto"
+   },
+   "loadingRecording": {
+      "message": "Cargando la grabación…"
    },
    "loadingScreenshot": {
       "message": "Cargando captura…"
@@ -191,11 +200,35 @@
    "pageRestricted": {
       "message": "Esto no funciona en esta página (páginas del navegador, Chrome Web Store, páginas de extensiones)."
    },
+   "recordChoosing": {
+      "message": "Elige qué grabar…"
+   },
+   "recordFailed": {
+      "message": "No se pudo grabar:"
+   },
+   "recordSaving": {
+      "message": "Guardando…"
+   },
+   "recordStart": {
+      "message": "Empezar a grabar"
+   },
+   "recordStartHint": {
+      "message": "Grabar una pestaña, una ventana o la pantalla: Chrome preguntará qué grabar. La grabación sigue con el panel cerrado."
+   },
+   "recordStop": {
+      "message": "Detener"
+   },
+   "recordingNotFound": {
+      "message": "No se encontró la grabación. Solo se guardan las 3 últimas."
+   },
    "redo": {
       "message": "Rehacer (Ctrl+Y)"
    },
    "save": {
       "message": "Guardar"
+   },
+   "screenRecording": {
+      "message": "Grabación de pantalla"
    },
    "screenshot": {
       "message": "Captura de pantalla"
