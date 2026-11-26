@@ -8,8 +8,12 @@ import {saveRecording} from './recording-store.js';
 import {remuxWebm} from './video-tools.js';
 
 const VIDEO_TYPES = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
-// Enough for sharp text in a screen recording; screen content compresses well.
-const VIDEO_BITS_PER_SECOND = 6000000;
+// Video quality grows with the screen size: on a 4K screen 6 Mbit/s left the picture blurry for a moment
+// after every page change, and that blur stayed in the GIF as faint "ghosts" of the previous page.
+// Screen content compresses well, so the file grows much less than the limit.
+const BITS_PER_PIXEL_AND_FRAME = 0.08;
+const MIN_VIDEO_BITS_PER_SECOND = 6000000;
+const MAX_VIDEO_BITS_PER_SECOND = 25000000;
 const FRAME_RATE = 30;
 const CHUNK_INTERVAL_MS = 1000;
 
@@ -53,7 +57,9 @@ async function startRecording() {
   const mimeType = VIDEO_TYPES.find(type => MediaRecorder.isTypeSupported(type)) ?? '';
 
   chunks = [];
-  recorder = new MediaRecorder(stream, {mimeType, videoBitsPerSecond: VIDEO_BITS_PER_SECOND});
+  const videoBitsPerSecond = Math.round(Math.min(MAX_VIDEO_BITS_PER_SECOND, Math.max(MIN_VIDEO_BITS_PER_SECOND,
+    (settings.width ?? 0) * (settings.height ?? 0) * (settings.frameRate ?? FRAME_RATE) * BITS_PER_PIXEL_AND_FRAME)));
+  recorder = new MediaRecorder(stream, {mimeType, videoBitsPerSecond});
   recorder.addEventListener('dataavailable', event => {
     if (event.data.size > 0) {
       chunks.push(event.data);
