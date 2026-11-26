@@ -2,8 +2,9 @@
 // Runs in a worker so the page stays responsive; the page can stop it at any time (Cancel).
 //
 // Messages from the page:
-//   {type: 'gif', blob, start, end, fps}  -> {type: 'progress', value} ..., then {type: 'done', blob}
-//   {type: 'video', blob, start, end}     -> the same
+//   {type: 'gif', blob, start, end, fps, crop}  -> {type: 'progress', value} ..., then {type: 'done', blob}
+//   {type: 'video', blob, start, end, crop}     -> the same
+// crop: {left, top, width, height} in video pixels, or null for the whole picture.
 // On an error: {type: 'error', message}.
 //
 // How the GIF stays small (the same ideas as ScreenToGif's default settings):
@@ -218,7 +219,7 @@ function createPartialFrame(pixels, gifScreen, changed, width, box) {
   return {...box, index, palette, transparent: true, transparentIndex};
 }
 
-async function createGif({blob, start, end, fps}) {
+async function createGif({blob, start, end, fps, crop}) {
   const input = openWebm(blob);
   const track = await input.getPrimaryVideoTrack();
 
@@ -226,10 +227,12 @@ async function createGif({blob, start, end, fps}) {
     throw new Error('No video in the recording');
   }
 
-  const scale = Math.min(1, MAX_GIF_WIDTH / track.displayWidth);
-  const width = Math.round(track.displayWidth * scale);
-  const height = Math.round(track.displayHeight * scale);
-  const sink = new CanvasSink(track, {width, height, fit: 'fill', poolSize: 1});
+  const sourceWidth = crop?.width ?? track.displayWidth;
+  const sourceHeight = crop?.height ?? track.displayHeight;
+  const scale = Math.min(1, MAX_GIF_WIDTH / sourceWidth);
+  const width = Math.round(sourceWidth * scale);
+  const height = Math.round(sourceHeight * scale);
+  const sink = new CanvasSink(track, {width, height, fit: 'fill', poolSize: 1, ...(crop ? {crop} : {})});
   const gif = GIFEncoder();
   const gifScreen = {source: new Uint8ClampedArray(width * height * 4), shown: new Uint8ClampedArray(width * height * 4)};
   let settleTimes = [];
@@ -326,7 +329,9 @@ self.addEventListener('message', async event => {
   const job = event.data;
 
   try {
-    const blob = job.type === 'gif' ? await createGif(job) : await cutWebm(job.blob, job.start, job.end, reportProgress);
+    const blob = job.type === 'gif'
+      ? await createGif(job)
+      : await cutWebm(job.blob, {start: job.start, end: job.end, crop: job.crop, onProgress: reportProgress});
     postMessage({type: 'done', blob});
   } catch (error) {
     postMessage({type: 'error', message: error?.message ?? String(error)});

@@ -121,3 +121,97 @@
 .toast {
     bottom: 72px;
 }
+
+/* ---------- Crop: the part of the picture to save ---------- */
+
+.crop-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.crop-button {
+    gap: 6px;
+    align-items: center;
+    padding: 5px 10px;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.crop-button.active {
+    color: #fff;
+    border-color: #b36531;
+    background-color: #b36531;
+}
+
+.crop-button.active:hover:not(:disabled) {
+    background-color: #784b1e;
+}
+
+/* Lies exactly over the picture of the video (positioned by recording-crop.js). Clicks go through it
+   to the video controls, except while the rectangle is being edited. */
+.crop-overlay {
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.crop-overlay.editing {
+    pointer-events: auto;
+    cursor: crosshair;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.crop-overlay[hidden],
+.crop-box[hidden] {
+    display: none;
+}
+
+/* The huge shadow darkens everything outside the rectangle. */
+.crop-box {
+    position: absolute;
+    box-sizing: border-box;
+    border: 2px dashed #fff;
+    outline: 1px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+
+.crop-overlay.editing .crop-box {
+    cursor: move;
+}
+
+.crop-size {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #b36531;
+    pointer-events: none;
+}
+
+.crop-handle {
+    position: absolute;
+    display: none;
+    width: 12px;
+    height: 12px;
+    margin: -7px 0 0 -7px;
+    border: 2px solid #b36531;
+    background-color: #fff;
+}
+
+.crop-overlay.editing .crop-handle {
+    display: block;
+}
+
+.crop-handle-nw, .crop-handle-n, .crop-handle-ne { top: 0; }
+.crop-handle-w, .crop-handle-e { top: 50%; }
+.crop-handle-sw, .crop-handle-s, .crop-handle-se { top: 100%; }
+.crop-handle-nw, .crop-handle-w, .crop-handle-sw { left: 0; }
+.crop-handle-n, .crop-handle-s { left: 50%; }
+.crop-handle-ne, .crop-handle-e, .crop-handle-se { left: 100%; }
+.crop-handle-nw, .crop-handle-se { cursor: nwse-resize; }
+.crop-handle-ne, .crop-handle-sw { cursor: nesw-resize; }
+.crop-handle-n, .crop-handle-s { cursor: ns-resize; }
+.crop-handle-e, .crop-handle-w { cursor: ew-resize; }

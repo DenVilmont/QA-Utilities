@@ -5,6 +5,7 @@
 import {formatDuration, formatFileSize, formatFileTimestamp, formatPreciseTime} from './format.js';
 import {applyTranslations, getCurrentLanguage, setCurrentLanguage, t} from './languages.js';
 import {hideMessage, showMessage} from './notify.js';
+import {getCrop, initCrop, isCropEditing, renderCrop, resetCrop, setCropEditing} from './recording-crop.js';
 import {getRecording} from './recording-store.js';
 
 // Like ScreenToGif's default.
@@ -31,7 +32,8 @@ async function initPage() {
   [
     'recordingSize', 'recordingDate', 'recordingDuration', 'recordingFileSize', 'downloadVideoButton',
     'createGifButton', 'cancelJobButton', 'recordingVideo', 'stageMessage', 'trimPanel', 'trimStart', 'trimEnd',
-    'trimSelection', 'trimStartButton', 'trimEndButton', 'trimLabel'
+    'trimSelection', 'trimStartButton', 'trimEndButton', 'trimLabel', 'cropOverlay', 'cropBox', 'cropSize',
+    'cropButton', 'cropButtonText', 'resetCropButton'
   ].forEach(id => {
     elements[id] = document.getElementById(id);
   });
@@ -39,6 +41,7 @@ async function initPage() {
   await setCurrentLanguage(getCurrentLanguage());
   applyTranslations();
   bindEvents();
+  renderCropControls();
 
   const recordingId = new URLSearchParams(location.search).get('id');
   recording = recordingId ? await getRecording(recordingId).catch(() => null) : null;
@@ -65,7 +68,39 @@ function bindEvents() {
   elements.downloadVideoButton.addEventListener('click', downloadVideo);
   elements.createGifButton.addEventListener('click', createGif);
   elements.cancelJobButton.addEventListener('click', cancelJob);
+  elements.cropButton.addEventListener('click', () => setCropMode(!isCropEditing()));
+  elements.resetCropButton.addEventListener('click', resetCrop);
+  document.addEventListener('keydown', event => {
+    if ((event.key === 'Enter' || event.key === 'Escape') && isCropEditing()) {
+      // Otherwise Enter would also "click" the focused Crop button and switch the editing on again.
+      event.preventDefault();
+      setCropMode(false);
+    }
+  });
   window.addEventListener('storage', onStorageChange);
+  initCrop({
+    video: elements.recordingVideo,
+    cropOverlay: elements.cropOverlay,
+    cropBox: elements.cropBox,
+    cropSize: elements.cropSize
+  }, renderCropControls);
+}
+
+// ---------- Crop ----------
+
+function setCropMode(isEditing) {
+  setCropEditing(isEditing);
+  renderCropControls();
+}
+
+function renderCropControls() {
+  const crop = getCrop();
+  const isEditing = isCropEditing();
+  elements.cropButton.classList.toggle('active', isEditing);
+  elements.cropButtonText.textContent = isEditing
+    ? t('cropDone')
+    : crop ? `${crop.width} × ${crop.height}` : t('cropFrame');
+  elements.resetCropButton.hidden = !crop;
 }
 
 // ---------- Info ----------
@@ -111,6 +146,7 @@ function onVideoLoaded() {
   elements.downloadVideoButton.disabled = false;
   elements.createGifButton.disabled = duration <= 0;
   renderInfo();
+  renderCrop();
 }
 
 function renderSelection() {
@@ -153,8 +189,9 @@ function keepPlaybackInSelection() {
   }
 }
 
+// The whole length and the whole picture: the original file can be downloaded as it is.
 function isWholeVideo() {
-  return selection.start <= WHOLE_VIDEO_TOLERANCE_S && selection.end >= duration - WHOLE_VIDEO_TOLERANCE_S;
+  return !getCrop() && selection.start <= WHOLE_VIDEO_TOLERANCE_S && selection.end >= duration - WHOLE_VIDEO_TOLERANCE_S;
 }
 
 // ---------- Jobs: GIF and cut video ----------
@@ -182,7 +219,13 @@ function setBusy(progressKey) {
   elements.trimEnd.disabled = isBusy;
   elements.trimStartButton.disabled = isBusy;
   elements.trimEndButton.disabled = isBusy;
+  elements.cropButton.disabled = isBusy;
+  elements.resetCropButton.disabled = isBusy;
   elements.cancelJobButton.hidden = !isBusy;
+
+  if (isBusy && isCropEditing()) {
+    setCropMode(false);
+  }
 
   if (isBusy) {
     showMessage(t(progressKey).replace('$1', '0'), {sticky: true});
@@ -203,7 +246,7 @@ function runJob(job, progressKey) {
       }
     });
     worker.addEventListener('error', event => reject(new Error(event.message)));
-    worker.postMessage({...job, blob: recording.blob, start: selection.start, end: selection.end});
+    worker.postMessage({...job, blob: recording.blob, start: selection.start, end: selection.end, crop: getCrop()});
   }).finally(() => {
     currentJob?.worker.terminate();
     currentJob = null;
@@ -256,4 +299,5 @@ async function onStorageChange(event) {
   await setCurrentLanguage(event.newValue);
   applyTranslations();
   renderInfo();
+  renderCropControls();
 }

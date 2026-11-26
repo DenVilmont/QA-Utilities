@@ -143,6 +143,18 @@
    "creatingGif": {
       "message": "正在生成 GIF… $1 %"
    },
+   "cropDone": {
+      "message": "完成"
+   },
+   "cropFrame": {
+      "message": "裁剪画面"
+   },
+   "cropFrameHint": {
+      "message": "只保留画面的一部分：在视频上拖动绘制矩形，拖动矩形可移动，拖动小方块可调整大小"
+   },
+   "cropReset": {
+      "message": "使用完整画面"
+   },
    "currentSite": {
       "message": "当前网站"
    },

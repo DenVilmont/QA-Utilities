@@ -143,6 +143,18 @@
    "creatingGif": {
       "message": "GIF wird erstellt… $1 %"
    },
+   "cropDone": {
+      "message": "Fertig"
+   },
+   "cropFrame": {
+      "message": "Bild zuschneiden"
+   },
+   "cropFrameHint": {
+      "message": "Nur einen Teil des Bildes behalten: über das Video ziehen, um ein Rechteck zu zeichnen; Rechteck ziehen zum Verschieben, Quadrate ziehen zum Ändern der Größe"
+   },
+   "cropReset": {
+      "message": "Ganzes Bild verwenden"
+   },
    "currentSite": {
       "message": "Aktuelle Website"
    },

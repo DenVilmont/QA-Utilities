@@ -143,6 +143,18 @@
    "creatingGif": {
       "message": "Se creează GIF… $1 %"
    },
+   "cropDone": {
+      "message": "Gata"
+   },
+   "cropFrame": {
+      "message": "Decupează imaginea"
+   },
+   "cropFrameHint": {
+      "message": "Păstrează doar o parte din imagine: trageți pe video pentru a desena un dreptunghi, trageți-l pentru a-l muta, trageți pătratele pentru a-l redimensiona"
+   },
+   "cropReset": {
+      "message": "Folosește toată imaginea"
+   },
    "currentSite": {
       "message": "Site-ul curent"
    },

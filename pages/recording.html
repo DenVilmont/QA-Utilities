@@ -37,6 +37,9 @@
 
     <main class="stage recording-stage">
       <video id="recordingVideo" class="recording-video" controls autoplay muted hidden></video>
+      <div id="cropOverlay" class="crop-overlay" hidden>
+        <div id="cropBox" class="crop-box" hidden><span id="cropSize" class="crop-size"></span></div>
+      </div>
       <div id="stageMessage" class="stage-message i18n" data-i18n="loadingRecording"></div>
     </main>
 
@@ -53,6 +56,15 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 4v16M6 6l7 6-7 6"/></svg>
       </button>
       <span id="trimLabel" class="trim-label"></span>
+      <div class="crop-controls">
+        <button id="cropButton" class="trim-button crop-button" type="button" data-i18n-title="cropFrameHint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2v16h16M2 6h16v16"/></svg>
+          <span id="cropButtonText"></span>
+        </button>
+        <button id="resetCropButton" class="trim-button" type="button" data-i18n-title="cropReset" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
     </footer>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>

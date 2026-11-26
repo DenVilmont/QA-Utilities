@@ -143,6 +143,18 @@
    "creatingGif": {
       "message": "Creating GIF… $1 %"
    },
+   "cropDone": {
+      "message": "Done"
+   },
+   "cropFrame": {
+      "message": "Crop frame"
+   },
+   "cropFrameHint": {
+      "message": "Keep only a part of the picture: drag on the video to draw a rectangle, drag it to move, drag the squares to resize"
+   },
+   "cropReset": {
+      "message": "Use the whole picture"
+   },
    "currentSite": {
       "message": "Current site"
    },

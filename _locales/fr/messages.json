@@ -143,6 +143,18 @@
    "creatingGif": {
       "message": "Création du GIF… $1 %"
    },
+   "cropDone": {
+      "message": "Terminé"
+   },
+   "cropFrame": {
+      "message": "Recadrer l'image"
+   },
+   "cropFrameHint": {
+      "message": "Ne garder qu'une partie de l'image : faites glisser sur la vidéo pour dessiner un rectangle, faites-le glisser pour le déplacer, tirez les carrés pour le redimensionner"
+   },
+   "cropReset": {
+      "message": "Utiliser toute l'image"
+   },
    "currentSite": {
       "message": "Site actuel"
    },
