@@ -8,7 +8,7 @@
       "type": "module"
    },
    "default_locale": "en",
-   "description": "QA Utilities",
+   "description": "__MSG_extensionDescription__",
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAomuNKzc6uTJhnxSYzmLVP5mNCAq6JfnLNSRwf64+7YxGoOW4ZshmfAKIcd08D2aFKw+AwlxMg+ZEStePTbIXq+v02wk+TB/uvYkbB53llqqFXkFh/5oRyi3v8HvJ49HK+hZZ7NUDYKKBmR4YJR5ccyl1C/n8XKlvHmNW3rwluamlY5N2yQ1FzhnYFtegTdjhI39SF0+qPZLInvho/64D/Nkyv0/o4tj6v5nmBQqgi1zH4yZNPYw4EM7RLXFzQwV9j00jPYzvli+FRL5rNGfVLoKcrow7j3CUvz+x4nQMLK2f3gVrG5EVn/w4N4xHvcoqUwcwVMo7qr/mlcx6bhkixQIDAQAB",
    "manifest_version": 3,
    "name": "QA Utilities",

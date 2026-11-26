@@ -182,6 +182,10 @@
    "exportFailed": {
       "message": "Не удалось сохранить файл:"
    },
+   "extensionDescription": {
+      "description": "Chrome Web Store summary and chrome://extensions description (max 132 characters).",
+      "message": "Панель для ручного тестирования: тестовый текст, спецсимволы, заметки, скриншоты с редактором, запись экрана в GIF, автообновление."
+   },
    "format": {
       "message": "Формат файла"
    },
