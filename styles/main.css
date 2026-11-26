@@ -362,7 +362,8 @@ button.tool-tile.recording {
 }
 
 button.reload-timer-preset,
-button.reload-timer-button {
+button.reload-timer-button,
+button.insert-mode-button {
     margin: 0;
     padding: 4px 7px;
     font-size: 12px;
@@ -374,12 +375,14 @@ button.reload-timer-button {
 }
 
 button.reload-timer-preset:hover,
-button.reload-timer-button:hover {
+button.reload-timer-button:hover,
+button.insert-mode-button:hover {
     background-color: #fbf3ee;
     border-color: #b36531;
 }
 
-button.reload-timer-preset.active {
+button.reload-timer-preset.active,
+button.insert-mode-button.active {
     background-color: #b36531;
     border-color: #b36531;
     color: #fff;
@@ -513,6 +516,18 @@ select.test-data-select {
     font-size: 14px;
     background-color: white;
     color: #212121;
+}
+
+/* Copy / Type / Bypass: what a click on a test value does. */
+.insert-modes {
+    display: flex;
+    gap: 4px;
+    max-width: 700px;
+    margin-bottom: 4px;
+}
+
+button.insert-mode-button {
+    flex: 1;
 }
 
 select.test-data-select:focus {

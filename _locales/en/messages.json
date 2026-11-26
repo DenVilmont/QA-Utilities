@@ -204,6 +204,45 @@
    "hexUp": {
       "message": "Increase"
    },
+   "insertBusy": {
+      "message": "Still typing the previous value"
+   },
+   "insertBypassDone": {
+      "message": "Written past the limits: $1 characters"
+   },
+   "insertModeBypass": {
+      "message": "Bypass"
+   },
+   "insertModeBypassHint": {
+      "message": "Click on a value writes it into the field with the cursor on the page at once, ignoring maxlength and key filters, then sends \"input\". To check the validation on the server."
+   },
+   "insertModeCopy": {
+      "message": "Copy"
+   },
+   "insertModeCopyHint": {
+      "message": "Click on a value copies it to the clipboard"
+   },
+   "insertModeType": {
+      "message": "Type"
+   },
+   "insertModeTypeHint": {
+      "message": "Click on a value types it character by character into the field with the cursor on the page (keydown → character → keyup). For input masks, autocomplete, search with a delay. The old text of the field is replaced."
+   },
+   "insertNoField": {
+      "message": "Click into a text field on the page first, then on the value"
+   },
+   "insertRejected": {
+      "message": "The browser did not accept this value for this type of field (for example letters in a number field)"
+   },
+   "insertTypedDone": {
+      "message": "Typed: $1 characters"
+   },
+   "insertTypedLimited": {
+      "message": "Typed $1 of $2 characters: the field did not accept the rest"
+   },
+   "insertTyping": {
+      "message": "Typing…"
+   },
    "lengthOfTheText": {
       "message": "Length of the text"
    },
