@@ -29,6 +29,42 @@
    "appName": {
       "message": "QA Утилиты"
    },
+   "autoReload": {
+      "message": "Автообновление страницы"
+   },
+   "autoReloadGoToTab": {
+      "message": "Перейти на эту вкладку"
+   },
+   "autoReloadHint": {
+      "message": "Перезагружает страницу в текущей вкладке с выбранным интервалом. Останавливается, если обновить страницу вручную, открыть в этой вкладке другую страницу или закрыть её. Работает в нескольких вкладках сразу, в том числе при закрытой панели."
+   },
+   "autoReloadInterval": {
+      "message": "каждые $1"
+   },
+   "autoReloadInvalidSeconds": {
+      "message": "Введите целое число секунд от 1 до 86400."
+   },
+   "autoReloadPresetHint": {
+      "message": "Обновлять текущую страницу с этим интервалом"
+   },
+   "autoReloadReloading": {
+      "message": "обновляется…"
+   },
+   "autoReloadSecondsHint": {
+      "message": "Свой интервал в секундах (Enter — запустить)"
+   },
+   "autoReloadSecondsPlaceholder": {
+      "message": "сек"
+   },
+   "autoReloadStart": {
+      "message": "Запустить со своим интервалом"
+   },
+   "autoReloadStop": {
+      "message": "Остановить автообновление в текущей вкладке"
+   },
+   "autoReloadStopTab": {
+      "message": "Остановить"
+   },
    "captureArea": {
       "message": "Выделить область"
    },
@@ -137,6 +173,9 @@
    "loremIpsum": {
       "message": "Lorem ipsum"
    },
+   "minutesShort": {
+      "message": "мин"
+   },
    "noActiveTab": {
       "message": "Активная вкладка не найдена."
    },
@@ -164,6 +203,9 @@
    "screenshotNotFound": {
       "message": "Скриншот не найден. Хранятся только последние 10 скриншотов."
    },
+   "secondsShort": {
+      "message": "с"
+   },
    "selectAreaOnPage": {
       "message": "Выделите область на странице (Esc или правый клик — отмена)"
    },
@@ -175,12 +217,6 @@
    },
    "strokeWidth": {
       "message": "Толщина линии"
-   },
-   "task": {
-      "message": "Задача"
-   },
-   "tasks": {
-      "message": "Задачи"
    },
    "textLength": {
       "message": "Длина текста"

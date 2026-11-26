@@ -1,9 +1,10 @@
 // Tools tab: screenshots and clearing site data.
 
 import {t} from './languages.js';
+import {hideMessage, showError, showMessage} from './notify.js';
 import {CAPTURE_MODES, cancelPendingSnip, captureArea, captureFullPage, captureVisible} from './capture-service.js';
 import {clearSiteDataAndReload} from './site-data.js';
-import {ToolError, ensureSiteAccess, getActiveTab} from './tab-access.js';
+import {ensureSiteAccess, getActiveTab} from './tab-access.js';
 
 const ACTIONS = Object.freeze({
   ...CAPTURE_MODES,
@@ -28,10 +29,9 @@ const WORKING_STATUS_KEYS = Object.freeze({
 let activeAction = null;
 let latestRunId = 0;
 
-function setStatus(text, isError = false) {
-  const statusElement = document.getElementById('toolsStatus');
-  statusElement.textContent = text;
-  statusElement.classList.toggle('error', isError);
+// "Working..." and progress messages stay on screen until the action finishes.
+function showProgress(text) {
+  showMessage(text, {sticky: true});
 }
 
 function setBusy(action) {
@@ -45,18 +45,7 @@ function setBusy(action) {
   });
 }
 
-function getErrorText(error) {
-  if (error instanceof ToolError) {
-    // Chrome's own error text helps to understand what went wrong (for example, a company policy).
-    const message = t(error.messageKey);
-    return error.details ? `${message} (${error.details})` : message;
-  }
-
-  console.error('Tool action failed.', error);
-  return `${t('actionFailed')} ${error?.message ?? ''}`.trim();
-}
-
-// `work(tab)` does the job and returns the text to show when it is finished.
+// `work(tab)` does the job and returns the text to show when it is finished (an empty text shows nothing).
 async function runTool(action, work) {
   if (activeAction === ACTIONS.area) {
     cancelPendingSnip();
@@ -67,22 +56,26 @@ async function runTool(action, work) {
   const runId = ++latestRunId;
   const workingStatus = t(WORKING_STATUS_KEYS[action]);
   setBusy(action);
-  setStatus(workingStatus);
+  showProgress(workingStatus);
 
   try {
     // Asks Chrome for site access if it was limited ("On click") in the extension settings.
     // Must stay the first "await" in this function: see ensureSiteAccess.
-    await ensureSiteAccess(() => setStatus(t('allowSiteAccess')));
-    setStatus(workingStatus);
+    await ensureSiteAccess(() => showProgress(t('allowSiteAccess')));
+    showProgress(workingStatus);
     const tab = await getActiveTab();
     const resultText = await work(tab);
 
     if (runId === latestRunId) {
-      setStatus(resultText);
+      if (resultText) {
+        showMessage(resultText);
+      } else {
+        hideMessage();
+      }
     }
   } catch (error) {
     if (runId === latestRunId) {
-      setStatus(getErrorText(error), true);
+      showError(error);
     }
   } finally {
     // A newer action (restarted "Select area") owns the UI now.
@@ -106,7 +99,7 @@ export function captureSelectedArea() {
 
 export function captureWholePage() {
   return runTool(ACTIONS.fullPage, async tab => getCaptureResultText(await captureFullPage(tab, (part, totalParts) => {
-    setStatus(t('capturingProgress').replace('$1', part).replace('$2', totalParts));
+    showProgress(t('capturingProgress').replace('$1', part).replace('$2', totalParts));
   })));
 }
 
