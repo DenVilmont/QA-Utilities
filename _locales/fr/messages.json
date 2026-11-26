@@ -182,6 +182,10 @@
    "exportFailed": {
       "message": "Impossible d'enregistrer le fichier :"
    },
+   "extensionDescription": {
+      "description": "Chrome Web Store summary and chrome://extensions description (max 132 characters).",
+      "message": "Panneau latéral pour tests manuels : texte de test, caractères de contrôle, notes, captures annotées, vidéo en GIF, rechargement."
+   },
    "format": {
       "message": "Format de fichier"
    },
