@@ -45,6 +45,7 @@ function cacheElements() {
   elements.hexUpButton = document.getElementById('hexUp');
   elements.hexDownButton = document.getElementById('hexDown');
   elements.hexCharText = document.getElementById('hexCharText');
+  elements.textLength = document.getElementById('textLength');
   elements.captureVisibleButton = document.getElementById('captureVisibleButton');
   elements.captureAreaButton = document.getElementById('captureAreaButton');
   elements.captureFullPageButton = document.getElementById('captureFullPageButton');
@@ -74,7 +75,8 @@ function bindEvents() {
   elements.clearNotebookButton.addEventListener('click', tab2.clearNotebook);
   elements.hexUpButton.addEventListener('click', () => tab1.stepHexInput(1));
   elements.hexDownButton.addEventListener('click', () => tab1.stepHexInput(-1));
-  elements.hexCharText.addEventListener('wheel', handleHexWheel);
+  elements.hexCharText.addEventListener('wheel', event => handleWheelStep(event, tab1.stepHexInput));
+  elements.textLength.addEventListener('wheel', event => handleWheelStep(event, tab1.stepTextLengthInput));
   elements.captureVisibleButton.addEventListener('click', tab3.captureVisibleArea);
   elements.captureAreaButton.addEventListener('click', tab3.captureSelectedArea);
   elements.captureFullPageButton.addEventListener('click', tab3.captureWholePage);
@@ -156,9 +158,14 @@ async function handleLanguageChange(event) {
   reloadTimer.refreshReloadTimerView();
 }
 
-function handleHexWheel(event) {
+// Mouse wheel over a number field: up = +1, down = -1. The panel does not scroll meanwhile.
+function handleWheelStep(event, step) {
   event.preventDefault();
-  tab1.stepHexInput(event.deltaY < 0 ? 1 : -1);
+
+  // Horizontal scrolling (touchpad, tilting the wheel) does not change the value.
+  if (event.deltaY !== 0) {
+    step(event.deltaY < 0 ? 1 : -1);
+  }
 }
 
 function getStoredTabId() {

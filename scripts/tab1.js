@@ -30,6 +30,13 @@ export function generateText() {
   updateGeneratedTextLengthIndicator();
 }
 
+// Mouse wheel over the length field. An empty or wrong value starts from 1.
+export function stepTextLengthInput(delta) {
+  const lengthInput = document.getElementById('textLength');
+  const currentLength = parseTextLengthInput(lengthInput.value) ?? 0;
+  lengthInput.value = String(Math.max(1, Math.min(MAX_TEXT_LENGTH, currentLength + delta)));
+}
+
 export function updateGeneratedTextLengthIndicator() {
   const textLength = getTextLength(document.getElementById('randomTextTextarea').value);
   document.getElementById('textLengthResult').textContent = textLength > 0 ? ` (${textLength})` : '';
