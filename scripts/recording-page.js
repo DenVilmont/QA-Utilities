@@ -5,6 +5,8 @@
 import {formatDuration, formatFileSize, formatFileTimestamp, formatPreciseTime} from './format.js';
 import {applyTranslations, getCurrentLanguage, setCurrentLanguage, t} from './languages.js';
 import {hideMessage, showMessage} from './notify.js';
+import {DEFAULT_GIF_SCALE, GIF_SCALES, getGifSize} from './gif-size.js';
+import {getGifScale, setGifScale} from './storage.js';
 import {getCrop, initCrop, isCropEditing, renderCrop, resetCrop, setCropEditing} from './recording-crop.js';
 import {getRecording} from './recording-store.js';
 
@@ -33,7 +35,7 @@ async function initPage() {
     'recordingSize', 'recordingDate', 'recordingDuration', 'recordingFileSize', 'downloadVideoButton',
     'createGifButton', 'cancelJobButton', 'recordingVideo', 'stageMessage', 'trimPanel', 'trimStart', 'trimEnd',
     'trimSelection', 'trimStartButton', 'trimEndButton', 'trimLabel', 'cropOverlay', 'cropBox', 'cropSize',
-    'cropButton', 'cropButtonText', 'resetCropButton'
+    'cropButton', 'cropButtonText', 'resetCropButton', 'gifScaleSelect'
   ].forEach(id => {
     elements[id] = document.getElementById(id);
   });
@@ -68,6 +70,7 @@ function bindEvents() {
   elements.downloadVideoButton.addEventListener('click', downloadVideo);
   elements.createGifButton.addEventListener('click', createGif);
   elements.cancelJobButton.addEventListener('click', cancelJob);
+  elements.gifScaleSelect.addEventListener('change', () => setGifScale(Number(elements.gifScaleSelect.value)));
   elements.cropButton.addEventListener('click', () => setCropMode(!isCropEditing()));
   elements.resetCropButton.addEventListener('click', resetCrop);
   document.addEventListener('keydown', event => {
@@ -93,7 +96,27 @@ function setCropMode(isEditing) {
   renderCropControls();
 }
 
+// "100 % · 1920 × 659": the real GIF size for the current crop (or the whole video).
+function renderGifScaleOptions() {
+  const video = elements.recordingVideo;
+  const crop = getCrop();
+  const width = crop?.width ?? video.videoWidth;
+  const height = crop?.height ?? video.videoHeight;
+  const savedScale = getGifScale();
+  const selectedScale = GIF_SCALES.includes(savedScale) ? savedScale : DEFAULT_GIF_SCALE;
+
+  elements.gifScaleSelect.replaceChildren(...GIF_SCALES.map(scale => {
+    const option = document.createElement('option');
+    const size = width && height ? getGifSize(width, height, scale) : null;
+    option.value = String(scale);
+    option.textContent = `${Math.round(scale * 100)} %${size ? ` · ${size.width} × ${size.height}` : ''}`;
+    option.selected = scale === selectedScale;
+    return option;
+  }));
+}
+
 function renderCropControls() {
+  renderGifScaleOptions();
   const crop = getCrop();
   const isEditing = isCropEditing();
   elements.cropButton.classList.toggle('active', isEditing);
@@ -147,6 +170,7 @@ function onVideoLoaded() {
   elements.createGifButton.disabled = duration <= 0;
   renderInfo();
   renderCrop();
+  renderGifScaleOptions();
 }
 
 function renderSelection() {
@@ -220,6 +244,7 @@ function setBusy(progressKey) {
   elements.trimStartButton.disabled = isBusy;
   elements.trimEndButton.disabled = isBusy;
   elements.cropButton.disabled = isBusy;
+  elements.gifScaleSelect.disabled = isBusy;
   elements.resetCropButton.disabled = isBusy;
   elements.cancelJobButton.hidden = !isBusy;
 
@@ -281,7 +306,7 @@ function downloadVideo() {
 }
 
 function createGif() {
-  void runAndSave({type: 'gif', fps: GIF_FPS}, 'creatingGif', 'gif');
+  void runAndSave({type: 'gif', fps: GIF_FPS, scale: Number(elements.gifScaleSelect.value)}, 'creatingGif', 'gif');
 }
 
 function cancelJob() {

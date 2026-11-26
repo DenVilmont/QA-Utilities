@@ -191,6 +191,9 @@
    "generateTextLine": {
       "message": "Generează linie de text"
    },
+   "gifSize": {
+      "message": "Dimensiunea GIF-ului (se reține pentru data viitoare)"
+   },
    "hexDown": {
       "message": "Micșorează"
    },

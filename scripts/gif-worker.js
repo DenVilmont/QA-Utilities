@@ -2,9 +2,10 @@
 // Runs in a worker so the page stays responsive; the page can stop it at any time (Cancel).
 //
 // Messages from the page:
-//   {type: 'gif', blob, start, end, fps, crop}  -> {type: 'progress', value} ..., then {type: 'done', blob}
+//   {type: 'gif', blob, start, end, fps, crop, scale}  -> {type: 'progress', value} ..., then {type: 'done', blob}
 //   {type: 'video', blob, start, end, crop}     -> the same
 // crop: {left, top, width, height} in video pixels, or null for the whole picture.
+// scale: GIF size chosen by the user (see gif-size.js).
 // On an error: {type: 'error', message}.
 //
 // How the GIF stays small (the same ideas as ScreenToGif's default settings):
@@ -17,11 +18,9 @@
 
 import {CanvasSink} from './vendor/mediabunny.js';
 import {GIFEncoder, applyPalette, quantize} from './vendor/gifenc.js';
+import {getGifSize} from './gif-size.js';
 import {cutWebm, openWebm} from './video-tools.js';
 
-// Wider recordings (a 4K screen) are scaled down to this width: a 4K GIF is several times heavier and slower
-// to make, and with Windows display scaling of 150-200 % the text stays readable at this width.
-const MAX_GIF_WIDTH = 1920;
 // Change detection, see findChanges(). Values chosen on real recordings of the Gestamp apps (1080p and 4K).
 const CHANGE_TUNING = Object.freeze({blockSize: 8, meanThreshold: 4, peakThreshold: 40});
 // "Settle" frames are compared with what the viewer sees instead of the original colours (see rememberPixel):
@@ -219,7 +218,7 @@ function createPartialFrame(pixels, gifScreen, changed, width, box) {
   return {...box, index, palette, transparent: true, transparentIndex};
 }
 
-async function createGif({blob, start, end, fps, crop}) {
+async function createGif({blob, start, end, fps, crop, scale}) {
   const input = openWebm(blob);
   const track = await input.getPrimaryVideoTrack();
 
@@ -229,9 +228,7 @@ async function createGif({blob, start, end, fps, crop}) {
 
   const sourceWidth = crop?.width ?? track.displayWidth;
   const sourceHeight = crop?.height ?? track.displayHeight;
-  const scale = Math.min(1, MAX_GIF_WIDTH / sourceWidth);
-  const width = Math.round(sourceWidth * scale);
-  const height = Math.round(sourceHeight * scale);
+  const {width, height} = getGifSize(sourceWidth, sourceHeight, scale);
   const sink = new CanvasSink(track, {width, height, fit: 'fill', poolSize: 1, ...(crop ? {crop} : {})});
   const gif = GIFEncoder();
   const gifScreen = {source: new Uint8ClampedArray(width * height * 4), shown: new Uint8ClampedArray(width * height * 4)};

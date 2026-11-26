@@ -9,7 +9,8 @@ const STORAGE_KEYS = Object.freeze({
   savedValues: 'savedValues',
   notebookContent: 'notebookContent',
   screenshotEditorSettings: 'screenshotEditorSettings',
-  reloadTimerSeconds: 'reloadTimerSeconds'
+  reloadTimerSeconds: 'reloadTimerSeconds',
+  gifScale: 'gifScale'
 });
 
 function getStoredString(key, fallbackValue) {
@@ -101,4 +102,14 @@ export function getReloadTimerSeconds() {
 
 export function setReloadTimerSeconds(seconds) {
   return setStoredString(STORAGE_KEYS.reloadTimerSeconds, String(seconds));
+}
+
+// GIF size chosen last time in the recording tab (1, 0.75 or 0.5); null if never chosen.
+export function getGifScale() {
+  const value = Number.parseFloat(localStorage.getItem(STORAGE_KEYS.gifScale));
+  return Number.isFinite(value) ? value : null;
+}
+
+export function setGifScale(scale) {
+  return setStoredString(STORAGE_KEYS.gifScale, String(scale));
 }

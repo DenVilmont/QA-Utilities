@@ -191,6 +191,9 @@
    "generateTextLine": {
       "message": "Создать строку текста"
    },
+   "gifSize": {
+      "message": "Размер GIF (запоминается на будущее)"
+   },
    "hexDown": {
       "message": "Уменьшить"
    },

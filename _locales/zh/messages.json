@@ -191,6 +191,9 @@
    "generateTextLine": {
       "message": "生成文本行"
    },
+   "gifSize": {
+      "message": "GIF 尺寸（下次会记住）"
+   },
    "hexDown": {
       "message": "减少"
    },

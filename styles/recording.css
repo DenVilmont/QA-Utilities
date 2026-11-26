@@ -215,3 +215,13 @@
 .crop-handle-ne, .crop-handle-sw { cursor: nesw-resize; }
 .crop-handle-n, .crop-handle-s { cursor: ns-resize; }
 .crop-handle-e, .crop-handle-w { cursor: ew-resize; }
+
+/* GIF size list next to "Create GIF". */
+.gif-scale-select {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    background-color: #fff;
+}
