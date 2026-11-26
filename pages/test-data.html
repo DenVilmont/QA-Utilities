@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title data-i18n-document-title="testDataSettings">Test data</title>
+    <link rel="stylesheet" type="text/css" href="/styles/capture.css">
+    <link rel="stylesheet" type="text/css" href="/styles/test-data.css">
+    <script type="module" src="/scripts/test-data-page.js"></script>
+  </head>
+  <body>
+    <header class="editor-header">
+      <div class="capture-info">
+        <div class="capture-size">
+          <span class="i18n" data-i18n="testData"></span>
+          <span class="capture-mode-badge i18n" data-i18n="appName"></span>
+        </div>
+        <div class="capture-details">
+          <span class="i18n" data-i18n="testDataPageHint"></span>
+        </div>
+      </div>
+      <div class="editor-actions">
+        <button id="importButton" class="action-button secondary" type="button" data-i18n-title="testDataImportHint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+          <span class="i18n" data-i18n="testDataImport"></span>
+        </button>
+        <button id="exportButton" class="action-button secondary" type="button" data-i18n-title="testDataExportHint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5M5 20h14"/></svg>
+          <span class="i18n" data-i18n="testDataExport"></span>
+        </button>
+        <button id="resetButton" class="action-button secondary" type="button" data-i18n-title="testDataResetHint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v5h5"/></svg>
+          <span class="i18n" data-i18n="testDataReset"></span>
+        </button>
+        <input id="importFileInput" type="file" accept=".json,application/json" hidden>
+      </div>
+    </header>
+
+    <main class="test-data-editor">
+      <aside class="groups-panel">
+        <div class="panel-title i18n" data-i18n="testDataGroups"></div>
+        <div id="groupList" class="group-list" role="list"></div>
+        <form id="addGroupForm" class="add-group-form">
+          <input id="newGroupName" type="text" maxlength="100" data-i18n-placeholder="testDataNewGroup">
+          <button class="add-button" type="submit" data-i18n-title="testDataAddGroup" data-i18n-aria-label="testDataAddGroup">+</button>
+        </form>
+      </aside>
+
+      <section class="group-panel">
+        <div id="noGroupMessage" class="empty-message i18n" data-i18n="testDataNoGroupSelected"></div>
+        <div id="groupEditor" class="group-editor" hidden>
+          <div class="group-editor-header">
+            <input id="groupNameInput" class="group-name-input" type="text" maxlength="100" data-i18n-placeholder="testDataGroupName">
+            <button id="deleteGroupButton" class="icon-button danger" type="button" data-i18n-title="testDataDeleteGroup" data-i18n-aria-label="testDataDeleteGroup">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>
+            </button>
+          </div>
+          <div id="sectionList" class="section-list"></div>
+          <button id="addSectionButton" class="text-button" type="button">
+            + <span class="i18n" data-i18n="testDataAddSection"></span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

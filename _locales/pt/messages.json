@@ -285,6 +285,111 @@
    "strokeWidth": {
       "message": "Espessura da linha"
    },
+   "testData": {
+      "message": "Dados de teste"
+   },
+   "testDataAddGroup": {
+      "message": "Adicionar grupo"
+   },
+   "testDataAddSection": {
+      "message": "Subgrupo"
+   },
+   "testDataAddValue": {
+      "message": "Valor"
+   },
+   "testDataChooseGroup": {
+      "message": "Escolha um grupo…"
+   },
+   "testDataDeleteGroup": {
+      "message": "Excluir grupo"
+   },
+   "testDataDeleteGroupConfirm": {
+      "message": "Excluir o grupo \"$1\" com todos os valores?"
+   },
+   "testDataDeleteSection": {
+      "message": "Excluir subgrupo"
+   },
+   "testDataDeleteSectionConfirm": {
+      "message": "Excluir o subgrupo \"$1\" com todos os valores?"
+   },
+   "testDataDragHint": {
+      "message": "Arraste para mover"
+   },
+   "testDataExport": {
+      "message": "Exportar"
+   },
+   "testDataExportHint": {
+      "message": "Salvar todos os grupos em um arquivo JSON (backup, outro computador)"
+   },
+   "testDataGroupName": {
+      "message": "Nome do grupo"
+   },
+   "testDataGroups": {
+      "message": "Grupos"
+   },
+   "testDataHideValues": {
+      "message": "Ocultar valores"
+   },
+   "testDataImport": {
+      "message": "Importar"
+   },
+   "testDataImportConfirm": {
+      "message": "Substituir todos os grupos por $1 grupos do arquivo?"
+   },
+   "testDataImportFailed": {
+      "message": "O arquivo não tem grupos de dados de teste"
+   },
+   "testDataImportHint": {
+      "message": "Carregar grupos de um arquivo JSON (substitui os atuais)"
+   },
+   "testDataImported": {
+      "message": "Grupos importados"
+   },
+   "testDataLabel": {
+      "message": "Rótulo"
+   },
+   "testDataNewGroup": {
+      "message": "Novo grupo"
+   },
+   "testDataNoGroupSelected": {
+      "message": "Escolha um grupo à esquerda ou adicione um novo"
+   },
+   "testDataNoGroups": {
+      "message": "Sem grupos: adicione-os nas configurações"
+   },
+   "testDataNoValues": {
+      "message": "Não há valores neste grupo"
+   },
+   "testDataPageHint": {
+      "message": "Grupos, subgrupos e valores para a aba Utilitários. As alterações são salvas na hora. Arraste por ⠿ para reordenar; solte um valor ou subgrupo em outro grupo para movê-lo."
+   },
+   "testDataReset": {
+      "message": "Padrão"
+   },
+   "testDataResetConfirm": {
+      "message": "Substituir todos os grupos pelo conjunto padrão? Suas alterações serão perdidas."
+   },
+   "testDataResetDone": {
+      "message": "Conjunto padrão restaurado"
+   },
+   "testDataResetHint": {
+      "message": "Substituir todos os grupos pelo conjunto padrão"
+   },
+   "testDataSectionName": {
+      "message": "Subgrupo (opcional)"
+   },
+   "testDataSettings": {
+      "message": "Configurações dos dados de teste"
+   },
+   "testDataUntitledGroup": {
+      "message": "(sem nome)"
+   },
+   "testDataUntitledSection": {
+      "message": "sem subgrupo"
+   },
+   "testDataValue": {
+      "message": "Valor"
+   },
    "textLength": {
       "message": "Comprimento do texto"
    },

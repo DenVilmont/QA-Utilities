@@ -1,6 +1,7 @@
 import {applyTranslations, t} from './languages.js';
 import {copyTextToClipboard} from './clipboard.js';
 import {getNotebookContent, getSavedValues, setNotebookContent, setSavedValues} from './storage.js';
+import {createValueRow} from './value-row.js';
 
 let savedValuesState = [];
 
@@ -81,38 +82,7 @@ function commitSavedValues(savedValues) {
 }
 
 function createSavedValueItem(value, index) {
-  const container = document.createElement('div');
-  container.className = 'saved-value-container';
-  container.setAttribute('data-saved-value-index', String(index));
-  container.setAttribute('role', 'listitem');
-
-  const saved = document.createElement('button');
-  saved.type = 'button';
-  saved.className = 'saved-value';
-  saved.setAttribute('data-action', 'copy-value');
-  saved.setAttribute('data-i18n-title', 'copy');
-  saved.textContent = value;
-
-  const copyBtn = document.createElement('button');
-  copyBtn.type = 'button';
-  copyBtn.className = 'copy-btn';
-  copyBtn.setAttribute('data-action', 'copy-value');
-  copyBtn.setAttribute('data-i18n-title', 'copy');
-  copyBtn.setAttribute('data-i18n-aria-label', 'copy');
-  copyBtn.setAttribute('aria-label', t('copy'));
-  copyBtn.innerHTML = '&#x1f5d0;';
-
-  const deleteBtn = document.createElement('button');
-  deleteBtn.type = 'button';
-  deleteBtn.className = 'delete-btn';
-  deleteBtn.setAttribute('data-action', 'delete-value');
-  deleteBtn.setAttribute('data-i18n-title', 'delete');
-  deleteBtn.setAttribute('data-i18n-aria-label', 'delete');
-  deleteBtn.setAttribute('aria-label', t('delete'));
-  deleteBtn.innerHTML = '&#x26cc;';
-
-  container.append(saved, copyBtn, deleteBtn);
-  return container;
+  return createValueRow(value, {attributes: {'data-saved-value-index': String(index)}, withDelete: true});
 }
 
 function flashExistingValue(index) {

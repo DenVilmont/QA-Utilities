@@ -60,6 +60,23 @@
           </div>
         </div>
         <div class="divider"></div>
+
+        <div class="test-data">
+          <h3 class="section-header">
+            <span class="i18n" data-i18n="testData"></span>
+            <button id="testDataSettingsButton" class="settings-button" type="button" data-i18n-title="testDataSettings" data-i18n-aria-label="testDataSettings">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+              </svg>
+            </button>
+          </h3>
+          <div class="flex-height-container">
+            <select id="testDataGroupSelect" class="test-data-select"></select>
+            <button id="clearTestDataGroupButton" class="clearTextButton" type="button" data-i18n-title="testDataHideValues" hidden>&#x26cc;</button>
+          </div>
+          <div id="testDataValues" class="test-data-values" role="list"></div>
+        </div>
       </div>
 
       <div class="tab-content tab2">

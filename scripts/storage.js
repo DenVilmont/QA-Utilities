@@ -10,7 +10,8 @@ const STORAGE_KEYS = Object.freeze({
   notebookContent: 'notebookContent',
   screenshotEditorSettings: 'screenshotEditorSettings',
   reloadTimerSeconds: 'reloadTimerSeconds',
-  gifScale: 'gifScale'
+  gifScale: 'gifScale',
+  testData: 'testData'
 });
 
 function getStoredString(key, fallbackValue) {
@@ -74,10 +75,11 @@ export function setNotebookContent(content) {
   return setStoredString(STORAGE_KEYS.notebookContent, content ?? DEFAULT_NOTEBOOK_CONTENT);
 }
 
-// Keys that other open panels (other Chrome windows) may change.
+// Keys that other open panels (other Chrome windows) or the test data page may change.
 export const SYNCED_STORAGE_KEYS = Object.freeze({
   savedValues: STORAGE_KEYS.savedValues,
-  notebookContent: STORAGE_KEYS.notebookContent
+  notebookContent: STORAGE_KEYS.notebookContent,
+  testData: STORAGE_KEYS.testData
 });
 
 // Last used tool, colour and line thickness in the screenshot editor.
@@ -112,4 +114,30 @@ export function getGifScale() {
 
 export function setGifScale(scale) {
   return setStoredString(STORAGE_KEYS.gifScale, String(scale));
+}
+
+// Test data groups (Utilities tab, edited on the test data page).
+// null: the user never changed them, the default set is used (scripts/test-data-defaults.js).
+// scripts/test-data.js checks the structure.
+export function getStoredTestData() {
+  const rawValue = localStorage.getItem(STORAGE_KEYS.testData);
+
+  if (rawValue === null) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(rawValue);
+  } catch {
+    return null;
+  }
+}
+
+export function setStoredTestData(testData) {
+  return setStoredString(STORAGE_KEYS.testData, JSON.stringify(testData));
+}
+
+// Back to the default set.
+export function removeStoredTestData() {
+  localStorage.removeItem(STORAGE_KEYS.testData);
 }
