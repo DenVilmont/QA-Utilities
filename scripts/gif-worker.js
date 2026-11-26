@@ -230,6 +230,10 @@ async function createGif({blob, start, end, fps, crop, scale}) {
   const sourceHeight = crop?.height ?? track.displayHeight;
   const {width, height} = getGifSize(sourceWidth, sourceHeight, scale);
   const sink = new CanvasSink(track, {width, height, fit: 'fill', poolSize: 1, ...(crop ? {crop} : {})});
+  // Every frame is read back pixel by pixel. Mediabunny's own canvas was created without willReadFrequently
+  // (the option only works on the first getContext call), so Chrome warned about slow readback.
+  // Frames are copied to this canvas, which is made for frequent reading.
+  const readContext = new OffscreenCanvas(width, height).getContext('2d', {willReadFrequently: true});
   const gif = GIFEncoder();
   const gifScreen = {source: new Uint8ClampedArray(width * height * 4), shown: new Uint8ClampedArray(width * height * 4)};
   let settleTimes = [];
@@ -263,8 +267,9 @@ async function createGif({blob, start, end, fps, crop, scale}) {
       continue;
     }
 
-    const context = wrapped.canvas.getContext('2d', {willReadFrequently: true});
-    const pixels = context.getImageData(0, 0, width, height).data;
+    readContext.clearRect(0, 0, width, height);
+    readContext.drawImage(wrapped.canvas, 0, 0);
+    const pixels = readContext.getImageData(0, 0, width, height).data;
 
     if (!pending) {
       const palette = quantize(pixels, MAX_COLORS + 1);
