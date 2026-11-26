@@ -223,7 +223,7 @@
       "message": "Kein aktiver Tab gefunden."
    },
    "noSiteAccess": {
-      "message": "Kein Zugriff auf Websites. Klicken Sie erneut auf eine Aufnahme-Schaltfläche und wählen Sie „Zulassen“ oder stellen Sie in chrome://extensions den Websitezugriff auf „Auf allen Websites“."
+      "message": "Kein Zugriff auf Websites. Klicken Sie erneut auf die Schaltfläche und wählen Sie „Zulassen“ oder stellen Sie in chrome://extensions Websitezugriff → „Auf allen Websites“ ein."
    },
    "notepad": {
       "message": "Notizblock"

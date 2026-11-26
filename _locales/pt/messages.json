@@ -223,7 +223,7 @@
       "message": "Nenhuma aba ativa encontrada."
    },
    "noSiteAccess": {
-      "message": "Sem acesso aos sites. Clique novamente num botão de captura e escolha \"Permitir\", ou em chrome://extensions defina Acesso ao site → \"Em todos os sites\"."
+      "message": "Sem acesso aos sites. Clique novamente no botão e escolha \"Permitir\", ou em chrome://extensions defina Acesso a sites → \"Em todos os sites\"."
    },
    "notepad": {
       "message": "Bloco de notas"

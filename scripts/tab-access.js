@@ -14,9 +14,11 @@ export class ToolError extends Error {
   }
 }
 
-// If the user set "Site access: On click / On specific sites" in chrome://extensions,
-// Chrome withholds the host permission: no tab URL, no screenshots, no access to the page.
-// Asking again shows Chrome's permission prompt; after "Allow" it is remembered.
+// Access to websites is an optional permission (manifest "optional_host_permissions"): it is not asked at
+// installation, which also keeps the Chrome Web Store review short. Every tool that works with a page asks
+// for it here; the first time Chrome shows its prompt, after "Allow" it is remembered.
+// The same prompt comes back if the user later limits "Site access" in chrome://extensions.
+// Without access: no tab URL, no screenshots, no access to the page.
 //
 // IMPORTANT: this function must be called synchronously from the click handler, before any "await".
 // Chrome shows the prompt only while it still treats the call as a user action;
