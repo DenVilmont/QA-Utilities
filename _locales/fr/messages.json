@@ -29,6 +29,42 @@
    "appName": {
       "message": "Utilitaires QA"
    },
+   "autoReload": {
+      "message": "Rechargement automatique de la page"
+   },
+   "autoReloadGoToTab": {
+      "message": "Aller à cet onglet"
+   },
+   "autoReloadHint": {
+      "message": "Recharge la page de l'onglet actuel à l'intervalle choisi. S'arrête si vous rechargez la page vous-même, ouvrez une autre page dans cet onglet ou le fermez. Fonctionne dans plusieurs onglets à la fois, même panneau fermé."
+   },
+   "autoReloadInterval": {
+      "message": "toutes les $1"
+   },
+   "autoReloadInvalidSeconds": {
+      "message": "Saisissez un nombre entier de secondes de 1 à 86400."
+   },
+   "autoReloadPresetHint": {
+      "message": "Recharger la page actuelle à cet intervalle"
+   },
+   "autoReloadReloading": {
+      "message": "rechargement…"
+   },
+   "autoReloadSecondsHint": {
+      "message": "Votre intervalle en secondes (Entrée pour démarrer)"
+   },
+   "autoReloadSecondsPlaceholder": {
+      "message": "sec"
+   },
+   "autoReloadStart": {
+      "message": "Démarrer avec votre intervalle"
+   },
+   "autoReloadStop": {
+      "message": "Arrêter le rechargement automatique dans l'onglet actuel"
+   },
+   "autoReloadStopTab": {
+      "message": "Arrêter"
+   },
    "captureArea": {
       "message": "Sélectionner une zone"
    },
@@ -137,6 +173,9 @@
    "loremIpsum": {
       "message": "Lorem ipsum"
    },
+   "minutesShort": {
+      "message": "min"
+   },
    "noActiveTab": {
       "message": "Aucun onglet actif trouvé."
    },
@@ -163,6 +202,9 @@
    },
    "screenshotNotFound": {
       "message": "Capture introuvable. Seules les 10 dernières captures sont conservées."
+   },
+   "secondsShort": {
+      "message": "s"
    },
    "selectAreaOnPage": {
       "message": "Sélectionnez une zone sur la page (Échap ou clic droit — annuler)"

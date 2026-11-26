@@ -4,7 +4,8 @@
       "default_title": "Click to open panel"
    },
    "background": {
-      "service_worker": "/scripts/service-worker.js"
+      "service_worker": "/scripts/service-worker.js",
+      "type": "module"
    },
    "default_locale": "en",
    "description": "QA Utilities",
@@ -12,10 +13,10 @@
    "manifest_version": 3,
    "name": "QA Utilities",
    "host_permissions": [ "<all_urls>" ],
-   "permissions": [ "sidePanel", "scripting", "browsingData", "cookies" ],
+   "permissions": [ "sidePanel", "scripting", "browsingData", "cookies", "storage", "alarms" ],
    "side_panel": {
       "default_path": "/pages/index.html"
    },
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.1.5.0"
+   "version": "0.1.6.0"
 }

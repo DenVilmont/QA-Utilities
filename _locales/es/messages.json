@@ -29,6 +29,42 @@
    "appName": {
       "message": "Utilidades de QA"
    },
+   "autoReload": {
+      "message": "Recarga automática de la página"
+   },
+   "autoReloadGoToTab": {
+      "message": "Ir a esta pestaña"
+   },
+   "autoReloadHint": {
+      "message": "Recarga la página de la pestaña actual con el intervalo elegido. Se detiene si recargas la página tú mismo, abres otra página en esta pestaña o la cierras. Funciona en varias pestañas a la vez, también con el panel cerrado."
+   },
+   "autoReloadInterval": {
+      "message": "cada $1"
+   },
+   "autoReloadInvalidSeconds": {
+      "message": "Introduce un número entero de segundos de 1 a 86400."
+   },
+   "autoReloadPresetHint": {
+      "message": "Recargar la página actual con este intervalo"
+   },
+   "autoReloadReloading": {
+      "message": "recargando…"
+   },
+   "autoReloadSecondsHint": {
+      "message": "Tu intervalo en segundos (Enter para iniciar)"
+   },
+   "autoReloadSecondsPlaceholder": {
+      "message": "seg"
+   },
+   "autoReloadStart": {
+      "message": "Iniciar con tu intervalo"
+   },
+   "autoReloadStop": {
+      "message": "Detener la recarga automática en la pestaña actual"
+   },
+   "autoReloadStopTab": {
+      "message": "Detener"
+   },
    "captureArea": {
       "message": "Seleccionar área"
    },
@@ -137,6 +173,9 @@
    "loremIpsum": {
       "message": "Lorem ipsum"
    },
+   "minutesShort": {
+      "message": "min"
+   },
    "noActiveTab": {
       "message": "No se encontró la pestaña activa."
    },
@@ -163,6 +202,9 @@
    },
    "screenshotNotFound": {
       "message": "Captura no encontrada. Solo se guardan las últimas 10 capturas."
+   },
+   "secondsShort": {
+      "message": "s"
    },
    "selectAreaOnPage": {
       "message": "Selecciona un área en la página (Esc o clic derecho — cancelar)"

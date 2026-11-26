@@ -29,6 +29,42 @@
    "appName": {
       "message": "Utilitare QA"
    },
+   "autoReload": {
+      "message": "Reîncărcarea automată a paginii"
+   },
+   "autoReloadGoToTab": {
+      "message": "Mergi la această filă"
+   },
+   "autoReloadHint": {
+      "message": "Reîncarcă pagina din fila curentă la intervalul ales. Se oprește dacă reîncărcați pagina manual, deschideți altă pagină în această filă sau o închideți. Funcționează în mai multe file deodată, și cu panoul închis."
+   },
+   "autoReloadInterval": {
+      "message": "la fiecare $1"
+   },
+   "autoReloadInvalidSeconds": {
+      "message": "Introduceți un număr întreg de secunde între 1 și 86400."
+   },
+   "autoReloadPresetHint": {
+      "message": "Reîncarcă pagina curentă la acest interval"
+   },
+   "autoReloadReloading": {
+      "message": "se reîncarcă…"
+   },
+   "autoReloadSecondsHint": {
+      "message": "Intervalul dvs. în secunde (Enter pentru pornire)"
+   },
+   "autoReloadSecondsPlaceholder": {
+      "message": "sec"
+   },
+   "autoReloadStart": {
+      "message": "Pornește cu intervalul dvs."
+   },
+   "autoReloadStop": {
+      "message": "Oprește reîncărcarea automată în fila curentă"
+   },
+   "autoReloadStopTab": {
+      "message": "Oprește"
+   },
    "captureArea": {
       "message": "Selectează zona"
    },
@@ -137,6 +173,9 @@
    "loremIpsum": {
       "message": "Lorem ipsum"
    },
+   "minutesShort": {
+      "message": "min"
+   },
    "noActiveTab": {
       "message": "Nu s-a găsit fila activă."
    },
@@ -163,6 +202,9 @@
    },
    "screenshotNotFound": {
       "message": "Captura nu a fost găsită. Se păstrează doar ultimele 10 capturi."
+   },
+   "secondsShort": {
+      "message": "s"
    },
    "selectAreaOnPage": {
       "message": "Selectați o zonă pe pagină (Esc sau clic dreapta — anulare)"

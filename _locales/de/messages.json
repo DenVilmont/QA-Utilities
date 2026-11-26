@@ -29,6 +29,42 @@
    "appName": {
       "message": "QA-Dienstprogramme"
    },
+   "autoReload": {
+      "message": "Seite automatisch neu laden"
+   },
+   "autoReloadGoToTab": {
+      "message": "Zu diesem Tab wechseln"
+   },
+   "autoReloadHint": {
+      "message": "Lädt die Seite im aktuellen Tab im gewählten Intervall neu. Stoppt, wenn Sie die Seite selbst neu laden, in diesem Tab eine andere Seite öffnen oder ihn schließen. Funktioniert in mehreren Tabs gleichzeitig, auch bei geschlossenem Panel."
+   },
+   "autoReloadInterval": {
+      "message": "alle $1"
+   },
+   "autoReloadInvalidSeconds": {
+      "message": "Geben Sie eine ganze Zahl von Sekunden zwischen 1 und 86400 ein."
+   },
+   "autoReloadPresetHint": {
+      "message": "Aktuelle Seite in diesem Intervall neu laden"
+   },
+   "autoReloadReloading": {
+      "message": "lädt neu…"
+   },
+   "autoReloadSecondsHint": {
+      "message": "Eigenes Intervall in Sekunden (Enter zum Starten)"
+   },
+   "autoReloadSecondsPlaceholder": {
+      "message": "Sek."
+   },
+   "autoReloadStart": {
+      "message": "Mit eigenem Intervall starten"
+   },
+   "autoReloadStop": {
+      "message": "Automatisches Neuladen im aktuellen Tab stoppen"
+   },
+   "autoReloadStopTab": {
+      "message": "Stoppen"
+   },
    "captureArea": {
       "message": "Bereich auswählen"
    },
@@ -137,6 +173,9 @@
    "loremIpsum": {
       "message": "Lorem ipsum"
    },
+   "minutesShort": {
+      "message": "Min."
+   },
    "noActiveTab": {
       "message": "Kein aktiver Tab gefunden."
    },
@@ -163,6 +202,9 @@
    },
    "screenshotNotFound": {
       "message": "Screenshot nicht gefunden. Nur die letzten 10 Screenshots werden gespeichert."
+   },
+   "secondsShort": {
+      "message": "s"
    },
    "selectAreaOnPage": {
       "message": "Wählen Sie einen Bereich auf der Seite (Esc oder Rechtsklick — abbrechen)"

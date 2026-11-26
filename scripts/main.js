@@ -1,4 +1,5 @@
 import * as languages from './languages.js';
+import * as reloadTimer from './reload-timer-panel.js';
 import * as storage from './storage.js';
 import * as tab1 from './tab1.js';
 import * as tab2 from './tab2.js';
@@ -48,6 +49,11 @@ function cacheElements() {
   elements.captureAreaButton = document.getElementById('captureAreaButton');
   elements.captureFullPageButton = document.getElementById('captureFullPageButton');
   elements.clearSiteDataButton = document.getElementById('clearSiteDataButton');
+  elements.reloadTimerPresets = document.getElementById('reloadTimerPresets');
+  elements.reloadTimerSeconds = document.getElementById('reloadTimerSeconds');
+  elements.reloadTimerStartButton = document.getElementById('reloadTimerStartButton');
+  elements.reloadTimerStopButton = document.getElementById('reloadTimerStopButton');
+  elements.reloadTimerList = document.getElementById('reloadTimerList');
 }
 
 function bindEvents() {
@@ -73,6 +79,11 @@ function bindEvents() {
   elements.captureAreaButton.addEventListener('click', tab3.captureSelectedArea);
   elements.captureFullPageButton.addEventListener('click', tab3.captureWholePage);
   elements.clearSiteDataButton.addEventListener('click', tab3.clearSiteData);
+  elements.reloadTimerPresets.addEventListener('click', reloadTimer.handlePresetClick);
+  elements.reloadTimerSeconds.addEventListener('keydown', handleReloadTimerSecondsKeydown);
+  elements.reloadTimerStartButton.addEventListener('click', reloadTimer.startCustomTimer);
+  elements.reloadTimerStopButton.addEventListener('click', reloadTimer.stopActiveTabTimer);
+  elements.reloadTimerList.addEventListener('click', reloadTimer.handleTimerListClick);
   window.addEventListener('storage', handleStorageChange);
 }
 
@@ -106,6 +117,8 @@ async function renderInitialUI() {
   tab2.loadSavedValues();
   tab2.loadNotebookContent();
   languages.applyTranslations();
+  // Not awaited: the panel must not wait for the tab list to show up.
+  reloadTimer.initReloadTimer().catch(error => console.error('Failed to load auto-reload timers.', error));
 }
 
 function activateInitialTab() {
@@ -123,6 +136,13 @@ function handleValueInputKeydown(event) {
   }
 }
 
+function handleReloadTimerSecondsKeydown(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    reloadTimer.startCustomTimer();
+  }
+}
+
 async function handleLanguageChange(event) {
   const didLoadLatestLanguage = await languages.setCurrentLanguage(event.target.value);
 
@@ -133,6 +153,7 @@ async function handleLanguageChange(event) {
   appState.language = languages.getCurrentLanguage();
   tab2.refreshSavedValuesView();
   languages.applyTranslations();
+  reloadTimer.refreshReloadTimerView();
 }
 
 function handleHexWheel(event) {

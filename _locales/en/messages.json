@@ -29,6 +29,42 @@
    "appName": {
       "message": "QA Utilities"
    },
+   "autoReload": {
+      "message": "Auto-reload page"
+   },
+   "autoReloadGoToTab": {
+      "message": "Go to this tab"
+   },
+   "autoReloadHint": {
+      "message": "Reloads the page in the current tab at the chosen interval. Stops when you reload the page yourself, open another page in this tab or close it. Works in several tabs at once, also with the panel closed."
+   },
+   "autoReloadInterval": {
+      "message": "every $1"
+   },
+   "autoReloadInvalidSeconds": {
+      "message": "Enter a whole number of seconds from 1 to 86400."
+   },
+   "autoReloadPresetHint": {
+      "message": "Reload the current page at this interval"
+   },
+   "autoReloadReloading": {
+      "message": "reloading…"
+   },
+   "autoReloadSecondsHint": {
+      "message": "Your interval in seconds (Enter to start)"
+   },
+   "autoReloadSecondsPlaceholder": {
+      "message": "sec"
+   },
+   "autoReloadStart": {
+      "message": "Start with your interval"
+   },
+   "autoReloadStop": {
+      "message": "Stop auto-reload in the current tab"
+   },
+   "autoReloadStopTab": {
+      "message": "Stop"
+   },
    "captureArea": {
       "message": "Select area"
    },
@@ -137,6 +173,9 @@
    "loremIpsum": {
       "message": "Lorem ipsum"
    },
+   "minutesShort": {
+      "message": "min"
+   },
    "noActiveTab": {
       "message": "No active tab found."
    },
@@ -163,6 +202,9 @@
    },
    "screenshotNotFound": {
       "message": "Screenshot not found. Only the last 10 screenshots are kept."
+   },
+   "secondsShort": {
+      "message": "s"
    },
    "selectAreaOnPage": {
       "message": "Select an area on the page (Esc or right click — cancel)"

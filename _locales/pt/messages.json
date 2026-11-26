@@ -29,6 +29,42 @@
    "appName": {
       "message": "Utilitários de QA"
    },
+   "autoReload": {
+      "message": "Recarregamento automático da página"
+   },
+   "autoReloadGoToTab": {
+      "message": "Ir para este separador"
+   },
+   "autoReloadHint": {
+      "message": "Recarrega a página do separador atual no intervalo escolhido. Para se recarregar a página manualmente, abrir outra página neste separador ou fechá-lo. Funciona em vários separadores ao mesmo tempo, também com o painel fechado."
+   },
+   "autoReloadInterval": {
+      "message": "a cada $1"
+   },
+   "autoReloadInvalidSeconds": {
+      "message": "Introduza um número inteiro de segundos de 1 a 86400."
+   },
+   "autoReloadPresetHint": {
+      "message": "Recarregar a página atual neste intervalo"
+   },
+   "autoReloadReloading": {
+      "message": "a recarregar…"
+   },
+   "autoReloadSecondsHint": {
+      "message": "O seu intervalo em segundos (Enter para iniciar)"
+   },
+   "autoReloadSecondsPlaceholder": {
+      "message": "seg"
+   },
+   "autoReloadStart": {
+      "message": "Iniciar com o seu intervalo"
+   },
+   "autoReloadStop": {
+      "message": "Parar o recarregamento automático no separador atual"
+   },
+   "autoReloadStopTab": {
+      "message": "Parar"
+   },
    "captureArea": {
       "message": "Selecionar área"
    },
@@ -137,6 +173,9 @@
    "loremIpsum": {
       "message": "Lorem ipsum"
    },
+   "minutesShort": {
+      "message": "min"
+   },
    "noActiveTab": {
       "message": "Nenhuma aba ativa encontrada."
    },
@@ -163,6 +202,9 @@
    },
    "screenshotNotFound": {
       "message": "Captura não encontrada. Apenas as últimas 10 capturas são guardadas."
+   },
+   "secondsShort": {
+      "message": "s"
    },
    "selectAreaOnPage": {
       "message": "Selecione uma área na página (Esc ou clique direito — cancelar)"

@@ -28,7 +28,8 @@ const WORKING_STATUS_KEYS = Object.freeze({
 let activeAction = null;
 let latestRunId = 0;
 
-function setStatus(text, isError = false) {
+// Also used by "Auto-reload page" (reload-timer-panel.js): it shows its errors in the same line.
+export function setStatus(text, isError = false) {
   const statusElement = document.getElementById('toolsStatus');
   statusElement.textContent = text;
   statusElement.classList.toggle('error', isError);
@@ -45,7 +46,7 @@ function setBusy(action) {
   });
 }
 
-function getErrorText(error) {
+export function getErrorText(error) {
   if (error instanceof ToolError) {
     // Chrome's own error text helps to understand what went wrong (for example, a company policy).
     const message = t(error.messageKey);

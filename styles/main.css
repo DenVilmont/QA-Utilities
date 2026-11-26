@@ -135,6 +135,9 @@ button:active {
 .tabs-header {
     display: flex;
     gap: 4px;
+    /* Cancels the margins of the dividers above and below, so the header is as compact as before 0.1.5.0
+       (back then the tabs were inline and their padding did not take vertical space). */
+    margin: -10px 0;
 }
 
 .header .tab-header {
@@ -316,4 +319,129 @@ button.tool-tile:disabled {
 
 .tools-status.error {
     color: #d32f2f;
+}
+
+/* Auto-reload page (Tools tab): one row of controls and the list of running timers. */
+.reload-timer-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reload-timer-presets {
+    display: flex;
+    gap: 4px;
+}
+
+button.reload-timer-preset,
+button.reload-timer-button {
+    margin: 0;
+    padding: 4px 7px;
+    font-size: 12px;
+    white-space: nowrap;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+button.reload-timer-preset:hover,
+button.reload-timer-button:hover {
+    background-color: #fbf3ee;
+    border-color: #b36531;
+}
+
+button.reload-timer-preset.active {
+    background-color: #b36531;
+    border-color: #b36531;
+    color: #fff;
+}
+
+button.reload-timer-button:disabled {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+input.reload-timer-seconds {
+    flex: 1 1 40px;
+    min-width: 40px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+input.reload-timer-seconds.active {
+    border-color: #b36531;
+    box-shadow: 0 0 0 2px rgba(179, 101, 49, 0.25);
+}
+
+.reload-timer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 6px;
+}
+
+.reload-timer-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 2px 2px 6px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.reload-timer-item.current {
+    border-color: #b36531;
+}
+
+button.reload-timer-tab {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 12px;
+    color: #333;
+    background: none;
+    border-radius: 0;
+}
+
+button.reload-timer-tab:hover {
+    background: none;
+    text-decoration: underline;
+}
+
+.reload-timer-interval {
+    color: #888;
+    white-space: nowrap;
+}
+
+.reload-timer-remaining {
+    min-width: 34px;
+    text-align: right;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+button.reload-timer-remove {
+    margin: 0;
+    padding: 2px 6px;
+    font-size: 12px;
+    color: #d32f2f;
+    background: none;
+}
+
+button.reload-timer-remove:hover {
+    background-color: #fdecea;
 }

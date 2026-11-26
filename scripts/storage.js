@@ -8,7 +8,8 @@ const STORAGE_KEYS = Object.freeze({
   checkedTabId: 'checkedTabId',
   savedValues: 'savedValues',
   notebookContent: 'notebookContent',
-  screenshotEditorSettings: 'screenshotEditorSettings'
+  screenshotEditorSettings: 'screenshotEditorSettings',
+  reloadTimerSeconds: 'reloadTimerSeconds'
 });
 
 function getStoredString(key, fallbackValue) {
@@ -91,4 +92,13 @@ export function getScreenshotEditorSettings() {
 
 export function setScreenshotEditorSettings(settings) {
   return setStoredString(STORAGE_KEYS.screenshotEditorSettings, JSON.stringify(settings));
+}
+
+// Last custom interval (in seconds) of "Auto-reload page"; an empty string if none was entered yet.
+export function getReloadTimerSeconds() {
+  return getStoredString(STORAGE_KEYS.reloadTimerSeconds, '');
+}
+
+export function setReloadTimerSeconds(seconds) {
+  return setStoredString(STORAGE_KEYS.reloadTimerSeconds, String(seconds));
 }
