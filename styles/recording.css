@@ -1,9 +1,9 @@
-/* Recording tab: the video in the middle of the page (the rest comes from capture.css). */
+/* Recording tab (the rest comes from capture.css). */
+
 .recording-stage {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
 .recording-video {
@@ -11,4 +11,113 @@
     max-height: 100%;
     background-color: #000;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.action-button.secondary {
+    color: #333;
+    background-color: #fff;
+    box-shadow: inset 0 0 0 1px #ccc;
+}
+
+.action-button.secondary:hover:not(:disabled) {
+    background-color: #fbf3ee;
+}
+
+/* ---------- Trim: the part of the video to save ---------- */
+
+.trim-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.trim-panel[hidden] {
+    display: none;
+}
+
+.trim-button {
+    display: flex;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    color: #b36531;
+    background-color: #fff;
+}
+
+.trim-button:hover:not(:disabled) {
+    border-color: #b36531;
+    background-color: #fbf3ee;
+}
+
+.trim-slider {
+    position: relative;
+    flex: 1;
+    height: 28px;
+}
+
+.trim-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 11px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #ddd;
+}
+
+.trim-selection {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 3px;
+    background-color: #b36531;
+}
+
+/* Two range inputs on top of each other: only their thumbs take clicks, the track is drawn above. */
+.trim-handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    background: none;
+    pointer-events: none;
+    appearance: none;
+}
+
+.trim-handle::-webkit-slider-runnable-track {
+    background: none;
+}
+
+.trim-handle::-webkit-slider-thumb {
+    width: 14px;
+    height: 24px;
+    border: 2px solid #b36531;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: ew-resize;
+    pointer-events: auto;
+    appearance: none;
+}
+
+.trim-handle:disabled::-webkit-slider-thumb {
+    cursor: default;
+    opacity: 0.5;
+}
+
+.trim-label {
+    min-width: 170px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: #555;
+}
+
+/* Above the trim panel. */
+.toast {
+    bottom: 72px;
 }

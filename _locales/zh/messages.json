@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "停止"
    },
+   "cancel": {
+      "message": "取消"
+   },
    "captureArea": {
       "message": "选择区域"
    },
@@ -131,8 +134,20 @@
    "copyImageTip": {
       "message": "复制到剪贴板 (Ctrl+C)"
    },
+   "createGif": {
+      "message": "生成 GIF"
+   },
+   "createGifTip": {
+      "message": "将所选部分保存为动态 GIF（每秒 15 帧）"
+   },
+   "creatingGif": {
+      "message": "正在生成 GIF… $1 %"
+   },
    "currentSite": {
       "message": "当前网站"
+   },
+   "cuttingVideo": {
+      "message": "正在剪切视频… $1 %"
    },
    "delete": {
       "message": "删除"
@@ -147,7 +162,7 @@
       "message": "下载视频"
    },
    "downloadVideoTip": {
-      "message": "将录制内容保存为 WebM 视频"
+      "message": "将所选部分保存为 WebM 视频"
    },
    "downloadedAs": {
       "message": "已下载：$1"
@@ -286,6 +301,18 @@
    },
    "tools": {
       "message": "工具"
+   },
+   "trimEnd": {
+      "message": "要保存部分的结束"
+   },
+   "trimEndHere": {
+      "message": "在这里结束（视频当前时刻）"
+   },
+   "trimStart": {
+      "message": "要保存部分的开始"
+   },
+   "trimStartHere": {
+      "message": "从这里开始（视频当前时刻）"
    },
    "undo": {
       "message": "撤销 (Ctrl+Z)"

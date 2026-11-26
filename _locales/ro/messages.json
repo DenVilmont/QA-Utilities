@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Oprește"
    },
+   "cancel": {
+      "message": "Anulează"
+   },
    "captureArea": {
       "message": "Selectează zona"
    },
@@ -131,8 +134,20 @@
    "copyImageTip": {
       "message": "Copiază în clipboard (Ctrl+C)"
    },
+   "createGif": {
+      "message": "Creează GIF"
+   },
+   "createGifTip": {
+      "message": "Salvează partea selectată ca GIF animat (15 cadre pe secundă)"
+   },
+   "creatingGif": {
+      "message": "Se creează GIF… $1 %"
+   },
    "currentSite": {
       "message": "Site-ul curent"
+   },
+   "cuttingVideo": {
+      "message": "Se taie videoclipul… $1 %"
    },
    "delete": {
       "message": "Șterge"
@@ -147,7 +162,7 @@
       "message": "Descarcă videoclipul"
    },
    "downloadVideoTip": {
-      "message": "Salvează înregistrarea ca video WebM"
+      "message": "Salvează partea selectată ca video WebM"
    },
    "downloadedAs": {
       "message": "Descărcat: $1"
@@ -286,6 +301,18 @@
    },
    "tools": {
       "message": "Instrumente"
+   },
+   "trimEnd": {
+      "message": "Sfârșitul părții de salvat"
+   },
+   "trimEndHere": {
+      "message": "Termină aici (momentul curent al videoclipului)"
+   },
+   "trimStart": {
+      "message": "Începutul părții de salvat"
+   },
+   "trimStartHere": {
+      "message": "Începe aici (momentul curent al videoclipului)"
    },
    "undo": {
       "message": "Anulează (Ctrl+Z)"

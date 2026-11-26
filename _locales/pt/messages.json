@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Parar"
    },
+   "cancel": {
+      "message": "Cancelar"
+   },
    "captureArea": {
       "message": "Selecionar área"
    },
@@ -131,8 +134,20 @@
    "copyImageTip": {
       "message": "Copiar para a área de transferência (Ctrl+C)"
    },
+   "createGif": {
+      "message": "Criar GIF"
+   },
+   "createGifTip": {
+      "message": "Guardar a parte selecionada como GIF animado (15 fotogramas por segundo)"
+   },
+   "creatingGif": {
+      "message": "A criar GIF… $1 %"
+   },
    "currentSite": {
       "message": "Site atual"
+   },
+   "cuttingVideo": {
+      "message": "A cortar o vídeo… $1 %"
    },
    "delete": {
       "message": "Excluir"
@@ -147,7 +162,7 @@
       "message": "Transferir vídeo"
    },
    "downloadVideoTip": {
-      "message": "Guardar a gravação como vídeo WebM"
+      "message": "Guardar a parte selecionada como vídeo WebM"
    },
    "downloadedAs": {
       "message": "Baixado: $1"
@@ -286,6 +301,18 @@
    },
    "tools": {
       "message": "Ferramentas"
+   },
+   "trimEnd": {
+      "message": "Fim da parte a guardar"
+   },
+   "trimEndHere": {
+      "message": "Terminar aqui (momento atual do vídeo)"
+   },
+   "trimStart": {
+      "message": "Início da parte a guardar"
+   },
+   "trimStartHere": {
+      "message": "Começar aqui (momento atual do vídeo)"
    },
    "undo": {
       "message": "Desfazer (Ctrl+Z)"

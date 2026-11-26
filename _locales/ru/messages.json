@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Остановить"
    },
+   "cancel": {
+      "message": "Отмена"
+   },
    "captureArea": {
       "message": "Выделить область"
    },
@@ -131,8 +134,20 @@
    "copyImageTip": {
       "message": "Копировать в буфер обмена (Ctrl+C)"
    },
+   "createGif": {
+      "message": "Создать GIF"
+   },
+   "createGifTip": {
+      "message": "Сохранить выбранную часть как анимированный GIF (15 кадров в секунду)"
+   },
+   "creatingGif": {
+      "message": "Создание GIF… $1 %"
+   },
    "currentSite": {
       "message": "Текущий сайт"
+   },
+   "cuttingVideo": {
+      "message": "Обрезка видео… $1 %"
    },
    "delete": {
       "message": "Удалить"
@@ -147,7 +162,7 @@
       "message": "Скачать видео"
    },
    "downloadVideoTip": {
-      "message": "Сохранить запись как видео WebM"
+      "message": "Сохранить выбранную часть как видео WebM"
    },
    "downloadedAs": {
       "message": "Скачано: $1"
@@ -286,6 +301,18 @@
    },
    "tools": {
       "message": "Инструменты"
+   },
+   "trimEnd": {
+      "message": "Конец сохраняемой части"
+   },
+   "trimEndHere": {
+      "message": "Конец здесь (текущий момент видео)"
+   },
+   "trimStart": {
+      "message": "Начало сохраняемой части"
+   },
+   "trimStartHere": {
+      "message": "Начало здесь (текущий момент видео)"
    },
    "undo": {
       "message": "Отменить (Ctrl+Z)"

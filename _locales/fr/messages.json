@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Arrêter"
    },
+   "cancel": {
+      "message": "Annuler"
+   },
    "captureArea": {
       "message": "Sélectionner une zone"
    },
@@ -131,8 +134,20 @@
    "copyImageTip": {
       "message": "Copier dans le presse-papiers (Ctrl+C)"
    },
+   "createGif": {
+      "message": "Créer un GIF"
+   },
+   "createGifTip": {
+      "message": "Enregistrer la partie sélectionnée en GIF animé (15 images par seconde)"
+   },
+   "creatingGif": {
+      "message": "Création du GIF… $1 %"
+   },
    "currentSite": {
       "message": "Site actuel"
+   },
+   "cuttingVideo": {
+      "message": "Découpage de la vidéo… $1 %"
    },
    "delete": {
       "message": "Supprimer"
@@ -147,7 +162,7 @@
       "message": "Télécharger la vidéo"
    },
    "downloadVideoTip": {
-      "message": "Enregistrer en vidéo WebM"
+      "message": "Enregistrer la partie sélectionnée en vidéo WebM"
    },
    "downloadedAs": {
       "message": "Téléchargé : $1"
@@ -286,6 +301,18 @@
    },
    "tools": {
       "message": "Outils"
+   },
+   "trimEnd": {
+      "message": "Fin de la partie à enregistrer"
+   },
+   "trimEndHere": {
+      "message": "Terminer ici (moment actuel de la vidéo)"
+   },
+   "trimStart": {
+      "message": "Début de la partie à enregistrer"
+   },
+   "trimStartHere": {
+      "message": "Commencer ici (moment actuel de la vidéo)"
    },
    "undo": {
       "message": "Annuler (Ctrl+Z)"

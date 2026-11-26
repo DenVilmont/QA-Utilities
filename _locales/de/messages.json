@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Stoppen"
    },
+   "cancel": {
+      "message": "Abbrechen"
+   },
    "captureArea": {
       "message": "Bereich auswählen"
    },
@@ -131,8 +134,20 @@
    "copyImageTip": {
       "message": "In die Zwischenablage kopieren (Strg+C)"
    },
+   "createGif": {
+      "message": "GIF erstellen"
+   },
+   "createGifTip": {
+      "message": "Den ausgewählten Teil als animiertes GIF speichern (15 Bilder pro Sekunde)"
+   },
+   "creatingGif": {
+      "message": "GIF wird erstellt… $1 %"
+   },
    "currentSite": {
       "message": "Aktuelle Website"
+   },
+   "cuttingVideo": {
+      "message": "Video wird geschnitten… $1 %"
    },
    "delete": {
       "message": "Löschen"
@@ -147,7 +162,7 @@
       "message": "Video herunterladen"
    },
    "downloadVideoTip": {
-      "message": "Aufnahme als WebM-Video speichern"
+      "message": "Den ausgewählten Teil als WebM-Video speichern"
    },
    "downloadedAs": {
       "message": "Heruntergeladen: $1"
@@ -286,6 +301,18 @@
    },
    "tools": {
       "message": "Werkzeuge"
+   },
+   "trimEnd": {
+      "message": "Ende des zu speichernden Teils"
+   },
+   "trimEndHere": {
+      "message": "Hier enden (aktuelle Stelle des Videos)"
+   },
+   "trimStart": {
+      "message": "Anfang des zu speichernden Teils"
+   },
+   "trimStartHere": {
+      "message": "Hier beginnen (aktuelle Stelle des Videos)"
    },
    "undo": {
       "message": "Rückgängig (Strg+Z)"

@@ -5,6 +5,7 @@
 
 import {MAX_RECORDING_MS, RECORDER_MESSAGES} from './recorder-shared.js';
 import {saveRecording} from './recording-store.js';
+import {remuxWebm} from './video-tools.js';
 
 const VIDEO_TYPES = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
 // Enough for sharp text in a screen recording; screen content compresses well.
@@ -85,7 +86,12 @@ async function finishRecording(settings) {
   stopStream();
 
   try {
-    const id = await saveRecording(blob, {
+    // Adds the length and the seek index that Chrome's recorder leaves out. If it fails, the original is kept.
+    const fixedBlob = await remuxWebm(blob).catch(error => {
+      console.error('Failed to rewrite the recording; keeping the original file.', error);
+      return blob;
+    });
+    const id = await saveRecording(fixedBlob, {
       createdAt: startedAt,
       durationMs,
       width: settings.width ?? 0,

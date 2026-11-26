@@ -12,6 +12,14 @@ export function formatDuration(totalSeconds) {
     : `${minutes}:${secondsPart}`;
 }
 
+// 7.43 -> "0:07.4" (tenths of a second, for choosing a part of a video).
+export function formatPreciseTime(totalSeconds) {
+  const tenths = Math.max(0, Math.round(totalSeconds * 10));
+  const minutes = Math.floor(tenths / 600);
+  const seconds = ((tenths % 600) / 10).toFixed(1).padStart(4, '0');
+  return `${minutes}:${seconds}`;
+}
+
 // Local date and time for file names: "2026-11-26_12-38-05".
 export function formatFileTimestamp(date) {
   const pad = value => String(value).padStart(2, '0');
