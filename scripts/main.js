@@ -83,6 +83,7 @@ function bindEvents() {
   elements.clearSiteDataButton.addEventListener('click', tab3.clearSiteData);
   elements.reloadTimerPresets.addEventListener('click', reloadTimer.handlePresetClick);
   elements.reloadTimerSeconds.addEventListener('keydown', handleReloadTimerSecondsKeydown);
+  elements.reloadTimerSeconds.addEventListener('wheel', event => handleWheelStep(event, reloadTimer.stepCustomSeconds));
   elements.reloadTimerStartButton.addEventListener('click', reloadTimer.startCustomTimer);
   elements.reloadTimerStopButton.addEventListener('click', reloadTimer.stopActiveTabTimer);
   elements.reloadTimerList.addEventListener('click', reloadTimer.handleTimerListClick);
@@ -158,7 +159,9 @@ async function handleLanguageChange(event) {
   reloadTimer.refreshReloadTimerView();
 }
 
-// Mouse wheel over a number field: up = +1, down = -1. The panel does not scroll meanwhile.
+// Mouse wheel over a number field (text length, HEX, auto-reload seconds): up = +1, down = -1.
+// Works when the pointer is over the field, even without clicking it. The panel does not scroll meanwhile,
+// and for the seconds field (type="number") Chrome's own wheel stepping is switched off, so it does not step twice.
 function handleWheelStep(event, step) {
   event.preventDefault();
 

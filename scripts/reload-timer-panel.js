@@ -7,6 +7,8 @@ import * as storage from './storage.js';
 import {hideMessage, showError, showMessage} from './notify.js';
 import {assertSupportedPage, ensureSiteAccess, getActiveTab} from './tab-access.js';
 import {
+  MAX_INTERVAL_SECONDS,
+  MIN_INTERVAL_SECONDS,
   PRESET_SECONDS,
   RELOAD_TIMERS_STORAGE_KEY,
   RELOAD_TIMER_MESSAGES,
@@ -18,6 +20,8 @@ let timers = {};
 let panelWindowId = null;
 let activeTabId = null;
 let countdownIntervalId = null;
+// Custom interval last written into the seconds field from the current tab's timer.
+let shownCustomSeconds = null;
 const tabTitles = new Map();
 
 function getElement(id) {
@@ -140,9 +144,13 @@ function renderControls() {
 
   secondsInput.classList.toggle('active', isCustomInterval);
 
-  if (isCustomInterval && document.activeElement !== secondsInput) {
+  // Only when the current tab's custom interval changes: the timer list is redrawn on every reload,
+  // and a value the user is choosing with the mouse wheel must not be overwritten.
+  if (isCustomInterval && currentSeconds !== shownCustomSeconds) {
     secondsInput.value = String(currentSeconds);
   }
+
+  shownCustomSeconds = isCustomInterval ? currentSeconds : null;
 
   getElement('reloadTimerStopButton').disabled = !currentTimer;
 }
@@ -214,19 +222,32 @@ export function handlePresetClick(event) {
   }
 }
 
+// Whole number of seconds in the allowed range, or null.
+function parseSecondsInput(value) {
+  const trimmedValue = value.trim();
+  const seconds = Number(trimmedValue);
+  return /^\d+$/.test(trimmedValue) && isValidIntervalSeconds(seconds) ? seconds : null;
+}
+
 export function startCustomTimer() {
   const secondsInput = getElement('reloadTimerSeconds');
-  const value = secondsInput.value.trim();
-  const seconds = Number(value);
+  const seconds = parseSecondsInput(secondsInput.value);
 
-  if (!/^\d+$/.test(value) || !isValidIntervalSeconds(seconds)) {
+  if (seconds === null) {
     showMessage(t('autoReloadInvalidSeconds'), {isError: true});
     secondsInput.focus();
     return;
   }
 
-  storage.setReloadTimerSeconds(value);
+  storage.setReloadTimerSeconds(seconds);
   void startTimerForActiveTab(seconds);
+}
+
+// Mouse wheel over the seconds field. An empty or wrong value starts from 1. Does not start the timer.
+export function stepCustomSeconds(delta) {
+  const secondsInput = getElement('reloadTimerSeconds');
+  const currentSeconds = parseSecondsInput(secondsInput.value) ?? 0;
+  secondsInput.value = String(Math.max(MIN_INTERVAL_SECONDS, Math.min(MAX_INTERVAL_SECONDS, currentSeconds + delta)));
 }
 
 export function stopActiveTabTimer() {
