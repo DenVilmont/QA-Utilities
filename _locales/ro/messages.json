@@ -223,7 +223,7 @@
       "message": "Nu s-a găsit fila activă."
    },
    "noSiteAccess": {
-      "message": "Nu există acces la site-uri. Apăsați din nou un buton de captură și alegeți „Permiteți” sau în chrome://extensions setați Accesul la site-uri → „Pe toate site-urile”."
+      "message": "Fără acces la site-uri. Apăsați din nou butonul și alegeți „Permite” sau, în chrome://extensions, setați Acces la site-uri → „Pe toate site-urile”."
    },
    "notepad": {
       "message": "Blocnotes"

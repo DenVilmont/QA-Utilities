@@ -223,7 +223,7 @@
       "message": "No active tab found."
    },
    "noSiteAccess": {
-      "message": "No access to websites. Click a capture button again and choose \"Allow\", or set Site access → \"On all sites\" in chrome://extensions."
+      "message": "No access to websites. Click the button again and choose \"Allow\", or set Site access → \"On all sites\" in chrome://extensions."
    },
    "notepad": {
       "message": "Notepad"

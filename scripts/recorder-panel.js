@@ -3,8 +3,9 @@
 
 import {formatDuration} from './format.js';
 import {t} from './languages.js';
-import {showError, showMessage} from './notify.js';
+import {hideMessage, showError, showMessage} from './notify.js';
 import {RECORDER_MESSAGES, RECORDER_STATE_KEY, RECORDER_STATUS} from './recorder-shared.js';
+import {ensureSiteAccess} from './tab-access.js';
 
 let recorderState = {status: RECORDER_STATUS.idle};
 let elapsedTimer = null;
@@ -67,10 +68,27 @@ export async function initRecorder() {
   applyState(data[RECORDER_STATE_KEY], data[RECORDER_STATE_KEY]);
 }
 
+// Access to websites is needed only for the circles on clicks: without it the recording still works.
+// Must be called synchronously from the click handler (see ensureSiteAccess).
+function askSiteAccessForClickCircles() {
+  let isPromptShown = false;
+  return ensureSiteAccess(() => {
+    isPromptShown = true;
+    showMessage(t('allowSiteAccess'), {sticky: true});
+  }).catch(() => {}).finally(() => {
+    if (isPromptShown) {
+      hideMessage();
+    }
+  });
+}
+
 export async function toggleRecording() {
-  const type = recorderState.status === RECORDER_STATUS.recording ? RECORDER_MESSAGES.stop : RECORDER_MESSAGES.start;
+  const isStarting = recorderState.status !== RECORDER_STATUS.recording;
+  const type = isStarting ? RECORDER_MESSAGES.start : RECORDER_MESSAGES.stop;
+  const accessRequest = isStarting ? askSiteAccessForClickCircles() : Promise.resolve();
 
   try {
+    await accessRequest;
     const response = await chrome.runtime.sendMessage({type});
 
     if (!response?.ok) {

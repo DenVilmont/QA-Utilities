@@ -223,7 +223,7 @@
       "message": "Aucun onglet actif trouvé."
    },
    "noSiteAccess": {
-      "message": "Aucun accès aux sites. Cliquez à nouveau sur un bouton de capture et choisissez « Autoriser », ou dans chrome://extensions réglez l'accès aux sites sur « Sur tous les sites »."
+      "message": "Pas d’accès aux sites web. Cliquez à nouveau sur le bouton et choisissez « Autoriser », ou dans chrome://extensions réglez Accès aux sites → « Sur tous les sites »."
    },
    "notepad": {
       "message": "Bloc-notes"

@@ -223,7 +223,7 @@
       "message": "No se encontró la pestaña activa."
    },
    "noSiteAccess": {
-      "message": "Sin acceso a los sitios web. Pulsa de nuevo un botón de captura y elige «Permitir», o en chrome://extensions pon Acceso a sitios → «En todos los sitios»."
+      "message": "Sin acceso a los sitios web. Pulse el botón de nuevo y elija «Permitir», o en chrome://extensions ponga Acceso a sitios → «En todos los sitios»."
    },
    "notepad": {
       "message": "Bloc de notas"
