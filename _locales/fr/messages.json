@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Arrêter"
    },
+   "cancel": {
+      "message": "Annuler"
+   },
    "captureArea": {
       "message": "Sélectionner une zone"
    },
@@ -131,8 +134,32 @@
    "copyImageTip": {
       "message": "Copier dans le presse-papiers (Ctrl+C)"
    },
+   "createGif": {
+      "message": "Créer un GIF"
+   },
+   "createGifTip": {
+      "message": "Enregistrer la partie sélectionnée en GIF animé (15 images par seconde)"
+   },
+   "creatingGif": {
+      "message": "Création du GIF… $1 %"
+   },
+   "cropDone": {
+      "message": "Terminé"
+   },
+   "cropFrame": {
+      "message": "Recadrer l'image"
+   },
+   "cropFrameHint": {
+      "message": "Ne garder qu'une partie de l'image : faites glisser sur la vidéo pour dessiner un rectangle, faites-le glisser pour le déplacer, tirez les carrés pour le redimensionner"
+   },
+   "cropReset": {
+      "message": "Utiliser toute l'image"
+   },
    "currentSite": {
       "message": "Site actuel"
+   },
+   "cuttingVideo": {
+      "message": "Découpage de la vidéo… $1 %"
    },
    "delete": {
       "message": "Supprimer"
@@ -142,6 +169,12 @@
    },
    "downloadTip": {
       "message": "Télécharger (Ctrl+S)"
+   },
+   "downloadVideo": {
+      "message": "Télécharger la vidéo"
+   },
+   "downloadVideoTip": {
+      "message": "Enregistrer la partie sélectionnée en vidéo WebM"
    },
    "downloadedAs": {
       "message": "Téléchargé : $1"
@@ -158,6 +191,9 @@
    "generateTextLine": {
       "message": "Générer une ligne de texte"
    },
+   "gifSize": {
+      "message": "Taille du GIF (mémorisée pour la prochaine fois)"
+   },
    "hexDown": {
       "message": "Diminuer"
    },
@@ -166,6 +202,9 @@
    },
    "lengthOfTheText": {
       "message": "Longueur du texte"
+   },
+   "loadingRecording": {
+      "message": "Chargement de l'enregistrement…"
    },
    "loadingScreenshot": {
       "message": "Chargement de la capture…"
@@ -191,11 +230,35 @@
    "pageRestricted": {
       "message": "Cela ne fonctionne pas sur cette page (pages du navigateur, Chrome Web Store, pages d'extensions)."
    },
+   "recordChoosing": {
+      "message": "Choisissez quoi enregistrer…"
+   },
+   "recordFailed": {
+      "message": "Échec de l'enregistrement :"
+   },
+   "recordSaving": {
+      "message": "Enregistrement du fichier…"
+   },
+   "recordStart": {
+      "message": "Démarrer l'enregistrement"
+   },
+   "recordStartHint": {
+      "message": "Enregistrer un onglet, une fenêtre ou l'écran : Chrome demandera quoi enregistrer. L'enregistrement continue panneau fermé."
+   },
+   "recordStop": {
+      "message": "Arrêter"
+   },
+   "recordingNotFound": {
+      "message": "Enregistrement introuvable. Seuls les 3 derniers sont conservés."
+   },
    "redo": {
       "message": "Rétablir (Ctrl+Y)"
    },
    "save": {
       "message": "Sauvegarder"
+   },
+   "screenRecording": {
+      "message": "Enregistrement de l'écran"
    },
    "screenshot": {
       "message": "Capture d'écran"
@@ -253,6 +316,18 @@
    },
    "tools": {
       "message": "Outils"
+   },
+   "trimEnd": {
+      "message": "Fin de la partie à enregistrer"
+   },
+   "trimEndHere": {
+      "message": "Terminer ici (moment actuel de la vidéo)"
+   },
+   "trimStart": {
+      "message": "Début de la partie à enregistrer"
+   },
+   "trimStartHere": {
+      "message": "Commencer ici (moment actuel de la vidéo)"
    },
    "undo": {
       "message": "Annuler (Ctrl+Z)"

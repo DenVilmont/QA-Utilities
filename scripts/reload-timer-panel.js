@@ -2,6 +2,7 @@
 // The timers run in the service worker (scripts/reload-timer-service.js),
 // so they keep working in several tabs at once and with the panel closed.
 
+import {formatDuration} from './format.js';
 import {t} from './languages.js';
 import * as storage from './storage.js';
 import {hideMessage, showError, showMessage} from './notify.js';
@@ -12,7 +13,6 @@ import {
   PRESET_SECONDS,
   RELOAD_TIMERS_STORAGE_KEY,
   RELOAD_TIMER_MESSAGES,
-  formatDuration,
   isValidIntervalSeconds
 } from './reload-timer-shared.js';
 

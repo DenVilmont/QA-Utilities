@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Detener"
    },
+   "cancel": {
+      "message": "Cancelar"
+   },
    "captureArea": {
       "message": "Seleccionar área"
    },
@@ -131,8 +134,32 @@
    "copyImageTip": {
       "message": "Copiar al portapapeles (Ctrl+C)"
    },
+   "createGif": {
+      "message": "Crear GIF"
+   },
+   "createGifTip": {
+      "message": "Guardar la parte seleccionada como GIF animado (15 fotogramas por segundo)"
+   },
+   "creatingGif": {
+      "message": "Creando GIF… $1 %"
+   },
+   "cropDone": {
+      "message": "Listo"
+   },
+   "cropFrame": {
+      "message": "Recortar imagen"
+   },
+   "cropFrameHint": {
+      "message": "Conservar solo una parte de la imagen: arrastre sobre el vídeo para dibujar un rectángulo, arrástrelo para moverlo y use los cuadrados para cambiar su tamaño"
+   },
+   "cropReset": {
+      "message": "Usar la imagen completa"
+   },
    "currentSite": {
       "message": "Sitio actual"
+   },
+   "cuttingVideo": {
+      "message": "Recortando el vídeo… $1 %"
    },
    "delete": {
       "message": "Borrar"
@@ -142,6 +169,12 @@
    },
    "downloadTip": {
       "message": "Descargar (Ctrl+S)"
+   },
+   "downloadVideo": {
+      "message": "Descargar vídeo"
+   },
+   "downloadVideoTip": {
+      "message": "Guardar la parte seleccionada como vídeo WebM"
    },
    "downloadedAs": {
       "message": "Descargado: $1"
@@ -158,6 +191,9 @@
    "generateTextLine": {
       "message": "Generar línea de texto"
    },
+   "gifSize": {
+      "message": "Tamaño del GIF (se recuerda para la próxima vez)"
+   },
    "hexDown": {
       "message": "Disminuir"
    },
@@ -166,6 +202,9 @@
    },
    "lengthOfTheText": {
       "message": "Longitud del texto"
+   },
+   "loadingRecording": {
+      "message": "Cargando la grabación…"
    },
    "loadingScreenshot": {
       "message": "Cargando captura…"
@@ -191,11 +230,35 @@
    "pageRestricted": {
       "message": "Esto no funciona en esta página (páginas del navegador, Chrome Web Store, páginas de extensiones)."
    },
+   "recordChoosing": {
+      "message": "Elige qué grabar…"
+   },
+   "recordFailed": {
+      "message": "No se pudo grabar:"
+   },
+   "recordSaving": {
+      "message": "Guardando…"
+   },
+   "recordStart": {
+      "message": "Empezar a grabar"
+   },
+   "recordStartHint": {
+      "message": "Grabar una pestaña, una ventana o la pantalla: Chrome preguntará qué grabar. La grabación sigue con el panel cerrado."
+   },
+   "recordStop": {
+      "message": "Detener"
+   },
+   "recordingNotFound": {
+      "message": "No se encontró la grabación. Solo se guardan las 3 últimas."
+   },
    "redo": {
       "message": "Rehacer (Ctrl+Y)"
    },
    "save": {
       "message": "Guardar"
+   },
+   "screenRecording": {
+      "message": "Grabación de pantalla"
    },
    "screenshot": {
       "message": "Captura de pantalla"
@@ -253,6 +316,18 @@
    },
    "tools": {
       "message": "Herramientas"
+   },
+   "trimEnd": {
+      "message": "Fin de la parte a guardar"
+   },
+   "trimEndHere": {
+      "message": "Terminar aquí (momento actual del vídeo)"
+   },
+   "trimStart": {
+      "message": "Inicio de la parte a guardar"
+   },
+   "trimStartHere": {
+      "message": "Empezar aquí (momento actual del vídeo)"
    },
    "undo": {
       "message": "Deshacer (Ctrl+Z)"

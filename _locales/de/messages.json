@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Stoppen"
    },
+   "cancel": {
+      "message": "Abbrechen"
+   },
    "captureArea": {
       "message": "Bereich auswählen"
    },
@@ -131,8 +134,32 @@
    "copyImageTip": {
       "message": "In die Zwischenablage kopieren (Strg+C)"
    },
+   "createGif": {
+      "message": "GIF erstellen"
+   },
+   "createGifTip": {
+      "message": "Den ausgewählten Teil als animiertes GIF speichern (15 Bilder pro Sekunde)"
+   },
+   "creatingGif": {
+      "message": "GIF wird erstellt… $1 %"
+   },
+   "cropDone": {
+      "message": "Fertig"
+   },
+   "cropFrame": {
+      "message": "Bild zuschneiden"
+   },
+   "cropFrameHint": {
+      "message": "Nur einen Teil des Bildes behalten: über das Video ziehen, um ein Rechteck zu zeichnen; Rechteck ziehen zum Verschieben, Quadrate ziehen zum Ändern der Größe"
+   },
+   "cropReset": {
+      "message": "Ganzes Bild verwenden"
+   },
    "currentSite": {
       "message": "Aktuelle Website"
+   },
+   "cuttingVideo": {
+      "message": "Video wird geschnitten… $1 %"
    },
    "delete": {
       "message": "Löschen"
@@ -142,6 +169,12 @@
    },
    "downloadTip": {
       "message": "Herunterladen (Strg+S)"
+   },
+   "downloadVideo": {
+      "message": "Video herunterladen"
+   },
+   "downloadVideoTip": {
+      "message": "Den ausgewählten Teil als WebM-Video speichern"
    },
    "downloadedAs": {
       "message": "Heruntergeladen: $1"
@@ -158,6 +191,9 @@
    "generateTextLine": {
       "message": "Textzeile generieren"
    },
+   "gifSize": {
+      "message": "GIF-Größe (wird für das nächste Mal gespeichert)"
+   },
    "hexDown": {
       "message": "Verringern"
    },
@@ -166,6 +202,9 @@
    },
    "lengthOfTheText": {
       "message": "Länge des Textes"
+   },
+   "loadingRecording": {
+      "message": "Aufnahme wird geladen…"
    },
    "loadingScreenshot": {
       "message": "Screenshot wird geladen…"
@@ -191,11 +230,35 @@
    "pageRestricted": {
       "message": "Auf dieser Seite funktioniert das nicht (Browserseiten, Chrome Web Store, Erweiterungsseiten)."
    },
+   "recordChoosing": {
+      "message": "Wählen Sie, was aufgenommen wird…"
+   },
+   "recordFailed": {
+      "message": "Aufnahme fehlgeschlagen:"
+   },
+   "recordSaving": {
+      "message": "Wird gespeichert…"
+   },
+   "recordStart": {
+      "message": "Aufnahme starten"
+   },
+   "recordStartHint": {
+      "message": "Einen Tab, ein Fenster oder den Bildschirm aufnehmen: Chrome fragt, was aufgenommen werden soll. Die Aufnahme läuft auch bei geschlossenem Panel weiter."
+   },
+   "recordStop": {
+      "message": "Stoppen"
+   },
+   "recordingNotFound": {
+      "message": "Aufnahme nicht gefunden. Nur die letzten 3 Aufnahmen werden aufbewahrt."
+   },
    "redo": {
       "message": "Wiederholen (Strg+Y)"
    },
    "save": {
       "message": "Speichern"
+   },
+   "screenRecording": {
+      "message": "Bildschirmaufnahme"
    },
    "screenshot": {
       "message": "Screenshot"
@@ -253,6 +316,18 @@
    },
    "tools": {
       "message": "Werkzeuge"
+   },
+   "trimEnd": {
+      "message": "Ende des zu speichernden Teils"
+   },
+   "trimEndHere": {
+      "message": "Hier enden (aktuelle Stelle des Videos)"
+   },
+   "trimStart": {
+      "message": "Anfang des zu speichernden Teils"
+   },
+   "trimStartHere": {
+      "message": "Hier beginnen (aktuelle Stelle des Videos)"
    },
    "undo": {
       "message": "Rückgängig (Strg+Z)"

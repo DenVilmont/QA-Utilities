@@ -1,4 +1,5 @@
 import * as languages from './languages.js';
+import * as recorder from './recorder-panel.js';
 import * as reloadTimer from './reload-timer-panel.js';
 import * as storage from './storage.js';
 import * as tab1 from './tab1.js';
@@ -50,6 +51,7 @@ function cacheElements() {
   elements.captureAreaButton = document.getElementById('captureAreaButton');
   elements.captureFullPageButton = document.getElementById('captureFullPageButton');
   elements.clearSiteDataButton = document.getElementById('clearSiteDataButton');
+  elements.recordButton = document.getElementById('recordButton');
   elements.reloadTimerPresets = document.getElementById('reloadTimerPresets');
   elements.reloadTimerSeconds = document.getElementById('reloadTimerSeconds');
   elements.reloadTimerStartButton = document.getElementById('reloadTimerStartButton');
@@ -81,6 +83,7 @@ function bindEvents() {
   elements.captureAreaButton.addEventListener('click', tab3.captureSelectedArea);
   elements.captureFullPageButton.addEventListener('click', tab3.captureWholePage);
   elements.clearSiteDataButton.addEventListener('click', tab3.clearSiteData);
+  elements.recordButton.addEventListener('click', recorder.toggleRecording);
   elements.reloadTimerPresets.addEventListener('click', reloadTimer.handlePresetClick);
   elements.reloadTimerSeconds.addEventListener('keydown', handleReloadTimerSecondsKeydown);
   elements.reloadTimerSeconds.addEventListener('wheel', event => handleWheelStep(event, reloadTimer.stepCustomSeconds));
@@ -122,6 +125,7 @@ async function renderInitialUI() {
   languages.applyTranslations();
   // Not awaited: the panel must not wait for the tab list to show up.
   reloadTimer.initReloadTimer().catch(error => console.error('Failed to load auto-reload timers.', error));
+  recorder.initRecorder().catch(error => console.error('Failed to load the recording state.', error));
 }
 
 function activateInitialTab() {
@@ -157,6 +161,7 @@ async function handleLanguageChange(event) {
   tab2.refreshSavedValuesView();
   languages.applyTranslations();
   reloadTimer.refreshReloadTimerView();
+  recorder.refreshRecorderView();
 }
 
 // Mouse wheel over a number field (text length, HEX, auto-reload seconds): up = +1, down = -1.

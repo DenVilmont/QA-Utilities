@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Остановить"
    },
+   "cancel": {
+      "message": "Отмена"
+   },
    "captureArea": {
       "message": "Выделить область"
    },
@@ -131,8 +134,32 @@
    "copyImageTip": {
       "message": "Копировать в буфер обмена (Ctrl+C)"
    },
+   "createGif": {
+      "message": "Создать GIF"
+   },
+   "createGifTip": {
+      "message": "Сохранить выбранную часть как анимированный GIF (15 кадров в секунду)"
+   },
+   "creatingGif": {
+      "message": "Создание GIF… $1 %"
+   },
+   "cropDone": {
+      "message": "Готово"
+   },
+   "cropFrame": {
+      "message": "Обрезать кадр"
+   },
+   "cropFrameHint": {
+      "message": "Оставить только часть картинки: проведите мышью по видео, чтобы нарисовать прямоугольник; тяните его, чтобы сдвинуть, и за квадратики, чтобы изменить размер"
+   },
+   "cropReset": {
+      "message": "Вернуть всю картинку"
+   },
    "currentSite": {
       "message": "Текущий сайт"
+   },
+   "cuttingVideo": {
+      "message": "Обрезка видео… $1 %"
    },
    "delete": {
       "message": "Удалить"
@@ -142,6 +169,12 @@
    },
    "downloadTip": {
       "message": "Скачать (Ctrl+S)"
+   },
+   "downloadVideo": {
+      "message": "Скачать видео"
+   },
+   "downloadVideoTip": {
+      "message": "Сохранить выбранную часть как видео WebM"
    },
    "downloadedAs": {
       "message": "Скачано: $1"
@@ -158,6 +191,9 @@
    "generateTextLine": {
       "message": "Создать строку текста"
    },
+   "gifSize": {
+      "message": "Размер GIF (запоминается на будущее)"
+   },
    "hexDown": {
       "message": "Уменьшить"
    },
@@ -166,6 +202,9 @@
    },
    "lengthOfTheText": {
       "message": "Длина текста"
+   },
+   "loadingRecording": {
+      "message": "Загрузка записи…"
    },
    "loadingScreenshot": {
       "message": "Загрузка скриншота…"
@@ -191,11 +230,35 @@
    "pageRestricted": {
       "message": "На этой странице это не работает (страницы браузера, Chrome Web Store, страницы расширений)."
    },
+   "recordChoosing": {
+      "message": "Выберите, что записывать…"
+   },
+   "recordFailed": {
+      "message": "Не удалось записать:"
+   },
+   "recordSaving": {
+      "message": "Сохранение…"
+   },
+   "recordStart": {
+      "message": "Начать запись"
+   },
+   "recordStartHint": {
+      "message": "Записать вкладку, окно или экран: Chrome спросит, что записывать. Запись продолжается и при закрытой панели."
+   },
+   "recordStop": {
+      "message": "Остановить"
+   },
+   "recordingNotFound": {
+      "message": "Запись не найдена. Хранятся только 3 последние записи."
+   },
    "redo": {
       "message": "Повторить (Ctrl+Y)"
    },
    "save": {
       "message": "Сохранить"
+   },
+   "screenRecording": {
+      "message": "Запись экрана"
    },
    "screenshot": {
       "message": "Скриншот"
@@ -253,6 +316,18 @@
    },
    "tools": {
       "message": "Инструменты"
+   },
+   "trimEnd": {
+      "message": "Конец сохраняемой части"
+   },
+   "trimEndHere": {
+      "message": "Конец здесь (текущий момент видео)"
+   },
+   "trimStart": {
+      "message": "Начало сохраняемой части"
+   },
+   "trimStartHere": {
+      "message": "Начало здесь (текущий момент видео)"
    },
    "undo": {
       "message": "Отменить (Ctrl+Z)"

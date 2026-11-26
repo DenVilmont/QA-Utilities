@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "Parar"
    },
+   "cancel": {
+      "message": "Cancelar"
+   },
    "captureArea": {
       "message": "Selecionar área"
    },
@@ -131,8 +134,32 @@
    "copyImageTip": {
       "message": "Copiar para a área de transferência (Ctrl+C)"
    },
+   "createGif": {
+      "message": "Criar GIF"
+   },
+   "createGifTip": {
+      "message": "Guardar a parte selecionada como GIF animado (15 fotogramas por segundo)"
+   },
+   "creatingGif": {
+      "message": "A criar GIF… $1 %"
+   },
+   "cropDone": {
+      "message": "Concluído"
+   },
+   "cropFrame": {
+      "message": "Recortar imagem"
+   },
+   "cropFrameHint": {
+      "message": "Manter só uma parte da imagem: arraste sobre o vídeo para desenhar um retângulo, arraste-o para o mover e use os quadrados para redimensionar"
+   },
+   "cropReset": {
+      "message": "Usar a imagem inteira"
+   },
    "currentSite": {
       "message": "Site atual"
+   },
+   "cuttingVideo": {
+      "message": "A cortar o vídeo… $1 %"
    },
    "delete": {
       "message": "Excluir"
@@ -142,6 +169,12 @@
    },
    "downloadTip": {
       "message": "Baixar (Ctrl+S)"
+   },
+   "downloadVideo": {
+      "message": "Transferir vídeo"
+   },
+   "downloadVideoTip": {
+      "message": "Guardar a parte selecionada como vídeo WebM"
    },
    "downloadedAs": {
       "message": "Baixado: $1"
@@ -158,6 +191,9 @@
    "generateTextLine": {
       "message": "Gerar linha de texto"
    },
+   "gifSize": {
+      "message": "Tamanho do GIF (fica guardado para a próxima vez)"
+   },
    "hexDown": {
       "message": "Diminuir"
    },
@@ -166,6 +202,9 @@
    },
    "lengthOfTheText": {
       "message": "Comprimento do texto"
+   },
+   "loadingRecording": {
+      "message": "A carregar a gravação…"
    },
    "loadingScreenshot": {
       "message": "Carregando captura…"
@@ -191,11 +230,35 @@
    "pageRestricted": {
       "message": "Isto não funciona nesta página (páginas do navegador, Chrome Web Store, páginas de extensões)."
    },
+   "recordChoosing": {
+      "message": "Escolha o que gravar…"
+   },
+   "recordFailed": {
+      "message": "Falha na gravação:"
+   },
+   "recordSaving": {
+      "message": "A guardar…"
+   },
+   "recordStart": {
+      "message": "Iniciar gravação"
+   },
+   "recordStartHint": {
+      "message": "Gravar um separador, uma janela ou o ecrã: o Chrome perguntará o que gravar. A gravação continua com o painel fechado."
+   },
+   "recordStop": {
+      "message": "Parar"
+   },
+   "recordingNotFound": {
+      "message": "Gravação não encontrada. Só são guardadas as 3 últimas."
+   },
    "redo": {
       "message": "Refazer (Ctrl+Y)"
    },
    "save": {
       "message": "Salvar"
+   },
+   "screenRecording": {
+      "message": "Gravação de ecrã"
    },
    "screenshot": {
       "message": "Captura de tela"
@@ -253,6 +316,18 @@
    },
    "tools": {
       "message": "Ferramentas"
+   },
+   "trimEnd": {
+      "message": "Fim da parte a guardar"
+   },
+   "trimEndHere": {
+      "message": "Terminar aqui (momento atual do vídeo)"
+   },
+   "trimStart": {
+      "message": "Início da parte a guardar"
+   },
+   "trimStartHere": {
+      "message": "Começar aqui (momento atual do vídeo)"
    },
    "undo": {
       "message": "Desfazer (Ctrl+Z)"

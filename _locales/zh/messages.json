@@ -65,6 +65,9 @@
    "autoReloadStopTab": {
       "message": "停止"
    },
+   "cancel": {
+      "message": "取消"
+   },
    "captureArea": {
       "message": "选择区域"
    },
@@ -131,8 +134,32 @@
    "copyImageTip": {
       "message": "复制到剪贴板 (Ctrl+C)"
    },
+   "createGif": {
+      "message": "生成 GIF"
+   },
+   "createGifTip": {
+      "message": "将所选部分保存为动态 GIF（每秒 15 帧）"
+   },
+   "creatingGif": {
+      "message": "正在生成 GIF… $1 %"
+   },
+   "cropDone": {
+      "message": "完成"
+   },
+   "cropFrame": {
+      "message": "裁剪画面"
+   },
+   "cropFrameHint": {
+      "message": "只保留画面的一部分：在视频上拖动绘制矩形，拖动矩形可移动，拖动小方块可调整大小"
+   },
+   "cropReset": {
+      "message": "使用完整画面"
+   },
    "currentSite": {
       "message": "当前网站"
+   },
+   "cuttingVideo": {
+      "message": "正在剪切视频… $1 %"
    },
    "delete": {
       "message": "删除"
@@ -142,6 +169,12 @@
    },
    "downloadTip": {
       "message": "下载 (Ctrl+S)"
+   },
+   "downloadVideo": {
+      "message": "下载视频"
+   },
+   "downloadVideoTip": {
+      "message": "将所选部分保存为 WebM 视频"
    },
    "downloadedAs": {
       "message": "已下载：$1"
@@ -158,6 +191,9 @@
    "generateTextLine": {
       "message": "生成文本行"
    },
+   "gifSize": {
+      "message": "GIF 尺寸（下次会记住）"
+   },
    "hexDown": {
       "message": "减少"
    },
@@ -166,6 +202,9 @@
    },
    "lengthOfTheText": {
       "message": "文本长度"
+   },
+   "loadingRecording": {
+      "message": "正在加载录制内容…"
    },
    "loadingScreenshot": {
       "message": "正在加载截图…"
@@ -191,11 +230,35 @@
    "pageRestricted": {
       "message": "此页面不支持该操作（浏览器页面、Chrome 网上应用店、扩展程序页面）。"
    },
+   "recordChoosing": {
+      "message": "请选择要录制的内容…"
+   },
+   "recordFailed": {
+      "message": "录制失败："
+   },
+   "recordSaving": {
+      "message": "正在保存…"
+   },
+   "recordStart": {
+      "message": "开始录制"
+   },
+   "recordStartHint": {
+      "message": "录制标签页、窗口或整个屏幕：Chrome 会询问要录制什么。关闭面板后录制仍会继续。"
+   },
+   "recordStop": {
+      "message": "停止"
+   },
+   "recordingNotFound": {
+      "message": "未找到录制内容。仅保留最近 3 个录制。"
+   },
    "redo": {
       "message": "重做 (Ctrl+Y)"
    },
    "save": {
       "message": "保存"
+   },
+   "screenRecording": {
+      "message": "屏幕录制"
    },
    "screenshot": {
       "message": "截图"
@@ -253,6 +316,18 @@
    },
    "tools": {
       "message": "工具"
+   },
+   "trimEnd": {
+      "message": "要保存部分的结束"
+   },
+   "trimEndHere": {
+      "message": "在这里结束（视频当前时刻）"
+   },
+   "trimStart": {
+      "message": "要保存部分的开始"
+   },
+   "trimStartHere": {
+      "message": "从这里开始（视频当前时刻）"
    },
    "undo": {
       "message": "撤销 (Ctrl+Z)"

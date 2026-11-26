@@ -4,6 +4,7 @@
 import {applyTranslations, getCurrentLanguage, setCurrentLanguage, t} from './languages.js';
 import {getCapture} from './capture-store.js';
 import {createPdfBlob} from './pdf-export.js';
+import {formatFileTimestamp} from './format.js';
 import {getScreenshotEditorSettings, setScreenshotEditorSettings} from './storage.js';
 import {
   getHandles,
@@ -1087,9 +1088,7 @@ function canvasToBlob(type, quality) {
 }
 
 function getFileName(extension) {
-  const date = new Date(state.meta?.createdAt || Date.now());
-  const pad = value => String(value).padStart(2, '0');
-  const stamp = `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}_${pad(date.getHours())}-${pad(date.getMinutes())}-${pad(date.getSeconds())}`;
+  const stamp = formatFileTimestamp(new Date(state.meta?.createdAt || Date.now()));
   let host = '';
 
   try {
