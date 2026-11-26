@@ -7,7 +7,8 @@ const STORAGE_KEYS = Object.freeze({
   language: 'language',
   checkedTabId: 'checkedTabId',
   savedValues: 'savedValues',
-  notebookContent: 'notebookContent'
+  notebookContent: 'notebookContent',
+  screenshotEditorSettings: 'screenshotEditorSettings'
 });
 
 function getStoredString(key, fallbackValue) {
@@ -76,3 +77,18 @@ export const SYNCED_STORAGE_KEYS = Object.freeze({
   savedValues: STORAGE_KEYS.savedValues,
   notebookContent: STORAGE_KEYS.notebookContent
 });
+
+// Last used tool, colour and line thickness in the screenshot editor.
+// Returns an empty object if nothing was saved yet; the editor validates the values.
+export function getScreenshotEditorSettings() {
+  try {
+    const settings = JSON.parse(localStorage.getItem(STORAGE_KEYS.screenshotEditorSettings));
+    return settings && typeof settings === 'object' ? settings : {};
+  } catch {
+    return {};
+  }
+}
+
+export function setScreenshotEditorSettings(settings) {
+  return setStoredString(STORAGE_KEYS.screenshotEditorSettings, JSON.stringify(settings));
+}

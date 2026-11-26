@@ -132,9 +132,19 @@ button:active {
     overflow-y: auto;
     padding-bottom: 10px;
 }
+.tabs-header {
+    display: flex;
+    gap: 4px;
+}
+
 .header .tab-header {
-    font-size: 16px;
-    padding: 10px;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+    padding: 8px 6px;
     background: #f1f1f1;
     cursor: pointer;
     text-align: center;
@@ -238,4 +248,72 @@ textarea {
 textarea.save-error {
     border-color: #d32f2f;
     background-color: #fff5f5;
+}
+
+.tool-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+button.tool-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    margin: 0;
+    padding: 6px 4px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+button.tool-tile:hover {
+    background-color: #fbf3ee;
+    border-color: #b36531;
+}
+
+button.tool-tile.active {
+    background-color: #fbf3ee;
+    border-color: #b36531;
+    box-shadow: 0 0 0 2px rgba(179, 101, 49, 0.25);
+}
+
+button.tool-tile:disabled {
+    opacity: 0.5;
+    cursor: default;
+    transform: none;
+}
+
+.tool-tile-icon {
+    width: 26px;
+    height: 26px;
+    padding: 4px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background-color: #f6e7dd;
+    fill: none;
+    stroke: #b36531;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tool-tile-title {
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.tools-status {
+    min-height: 16px;
+    margin-top: 10px;
+    text-align: center;
+    color: #555;
+}
+
+.tools-status.error {
+    color: #d32f2f;
 }

@@ -2,6 +2,7 @@ import * as languages from './languages.js';
 import * as storage from './storage.js';
 import * as tab1 from './tab1.js';
 import * as tab2 from './tab2.js';
+import * as tab3 from './tab3.js';
 
 const elements = {};
 
@@ -43,6 +44,10 @@ function cacheElements() {
   elements.hexUpButton = document.getElementById('hexUp');
   elements.hexDownButton = document.getElementById('hexDown');
   elements.hexCharText = document.getElementById('hexCharText');
+  elements.captureVisibleButton = document.getElementById('captureVisibleButton');
+  elements.captureAreaButton = document.getElementById('captureAreaButton');
+  elements.captureFullPageButton = document.getElementById('captureFullPageButton');
+  elements.clearSiteDataButton = document.getElementById('clearSiteDataButton');
 }
 
 function bindEvents() {
@@ -64,6 +69,10 @@ function bindEvents() {
   elements.hexUpButton.addEventListener('click', () => tab1.stepHexInput(1));
   elements.hexDownButton.addEventListener('click', () => tab1.stepHexInput(-1));
   elements.hexCharText.addEventListener('wheel', handleHexWheel);
+  elements.captureVisibleButton.addEventListener('click', tab3.captureVisibleArea);
+  elements.captureAreaButton.addEventListener('click', tab3.captureSelectedArea);
+  elements.captureFullPageButton.addEventListener('click', tab3.captureWholePage);
+  elements.clearSiteDataButton.addEventListener('click', tab3.clearSiteData);
   window.addEventListener('storage', handleStorageChange);
 }
 

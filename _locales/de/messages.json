@@ -20,17 +20,101 @@
    "WriteYourNotesHere": {
       "message": "Schreiben Sie hier Ihre Notizen..."
    },
+   "actionFailed": {
+      "message": "Etwas ist schiefgelaufen:"
+   },
+   "allowSiteAccess": {
+      "message": "Erlauben Sie den Zugriff auf Websites im geöffneten Chrome-Fenster."
+   },
    "appName": {
       "message": "QA-Dienstprogramme"
+   },
+   "captureArea": {
+      "message": "Bereich auswählen"
+   },
+   "captureAreaHint": {
+      "message": "Ziehen, um einen Teil der Seite auszuwählen"
+   },
+   "captureCancelled": {
+      "message": "Aufnahme abgebrochen"
+   },
+   "captureFailed": {
+      "message": "Aufnahme fehlgeschlagen:"
+   },
+   "captureFullPage": {
+      "message": "Ganze Seite"
+   },
+   "captureFullPageHint": {
+      "message": "Scrollt und erfasst die gesamte Seite"
+   },
+   "captureTabChanged": {
+      "message": "Aufnahme gestoppt: Der aktive Tab hat gewechselt."
+   },
+   "captureTruncated": {
+      "message": "Die Seite ist zu lang: Der untere Teil des Screenshots wurde abgeschnitten."
+   },
+   "captureVisible": {
+      "message": "Sichtbarer Bereich"
+   },
+   "captureVisibleHint": {
+      "message": "Erfasst, was auf dem Bildschirm zu sehen ist"
+   },
+   "capturing": {
+      "message": "Wird erfasst…"
+   },
+   "capturingProgress": {
+      "message": "Wird erfasst: Teil $1 von $2"
    },
    "clear": {
       "message": "Löschen"
    },
+   "clearAnnotations": {
+      "message": "Alle Zeichnungen entfernen"
+   },
+   "clearSiteData": {
+      "message": "Daten löschen"
+   },
+   "clearSiteDataHint": {
+      "message": "Löscht Cookies, localStorage, sessionStorage, IndexedDB, Cache und Service Worker der aktuellen Website und lädt die Seite neu"
+   },
+   "clearingSiteData": {
+      "message": "Website-Daten werden gelöscht…"
+   },
+   "color": {
+      "message": "Farbe"
+   },
+   "copiedToClipboard": {
+      "message": "In die Zwischenablage kopiert"
+   },
    "copy": {
       "message": "Kopieren"
    },
+   "copyFailed": {
+      "message": "Kopieren fehlgeschlagen:"
+   },
+   "copyImageTip": {
+      "message": "In die Zwischenablage kopieren (Strg+C)"
+   },
+   "currentSite": {
+      "message": "Aktuelle Website"
+   },
    "delete": {
       "message": "Löschen"
+   },
+   "download": {
+      "message": "Herunterladen"
+   },
+   "downloadTip": {
+      "message": "Herunterladen (Strg+S)"
+   },
+   "downloadedAs": {
+      "message": "Heruntergeladen: $1"
+   },
+   "exportFailed": {
+      "message": "Datei konnte nicht gespeichert werden:"
+   },
+   "format": {
+      "message": "Dateiformat"
    },
    "generate": {
       "message": "Generieren"
@@ -47,8 +131,17 @@
    "lengthOfTheText": {
       "message": "Länge des Textes"
    },
+   "loadingScreenshot": {
+      "message": "Screenshot wird geladen…"
+   },
    "loremIpsum": {
       "message": "Lorem ipsum"
+   },
+   "noActiveTab": {
+      "message": "Kein aktiver Tab gefunden."
+   },
+   "noSiteAccess": {
+      "message": "Kein Zugriff auf Websites. Klicken Sie erneut auf eine Aufnahme-Schaltfläche und wählen Sie „Zulassen“ oder stellen Sie in chrome://extensions den Websitezugriff auf „Auf allen Websites“."
    },
    "notepad": {
       "message": "Notizblock"
@@ -56,8 +149,32 @@
    "notes": {
       "message": "Notizen"
    },
+   "pageRestricted": {
+      "message": "Auf dieser Seite funktioniert das nicht (Browserseiten, Chrome Web Store, Erweiterungsseiten)."
+   },
+   "redo": {
+      "message": "Wiederholen (Strg+Y)"
+   },
    "save": {
       "message": "Speichern"
+   },
+   "screenshot": {
+      "message": "Screenshot"
+   },
+   "screenshotNotFound": {
+      "message": "Screenshot nicht gefunden. Nur die letzten 10 Screenshots werden gespeichert."
+   },
+   "selectAreaOnPage": {
+      "message": "Wählen Sie einen Bereich auf der Seite (Esc oder Rechtsklick — abbrechen)"
+   },
+   "siteDataCleared": {
+      "message": "Daten von $1 gelöscht, Seite neu geladen"
+   },
+   "siteDataFailed": {
+      "message": "Website-Daten konnten nicht gelöscht werden:"
+   },
+   "strokeWidth": {
+      "message": "Linienstärke"
    },
    "task": {
       "message": "Aufgabe"
@@ -68,7 +185,52 @@
    "textLength": {
       "message": "Textlänge"
    },
+   "textPlaceholder": {
+      "message": "Text eingeben, Enter — übernehmen"
+   },
+   "toolArrow": {
+      "message": "Pfeil (Umschalt — 45°)"
+   },
+   "toolBlur": {
+      "message": "Unschärfe"
+   },
+   "toolCrop": {
+      "message": "Zuschneiden"
+   },
+   "toolEllipse": {
+      "message": "Ellipse (Umschalt — Kreis)"
+   },
+   "toolLine": {
+      "message": "Linie (Umschalt — 45°)"
+   },
+   "toolPen": {
+      "message": "Stift"
+   },
+   "toolRect": {
+      "message": "Rechteck (Umschalt — Quadrat)"
+   },
+   "toolSelect": {
+      "message": "Zeiger: Zeichnungen auswählen, verschieben und skalieren (Doppelklick — Text bearbeiten, Entf — löschen)"
+   },
+   "toolText": {
+      "message": "Text"
+   },
+   "tools": {
+      "message": "Werkzeuge"
+   },
+   "undo": {
+      "message": "Rückgängig (Strg+Z)"
+   },
    "utils": {
       "message": "Dienstprogramme"
+   },
+   "zoomFit": {
+      "message": "An Fenster anpassen"
+   },
+   "zoomIn": {
+      "message": "Vergrößern"
+   },
+   "zoomOut": {
+      "message": "Verkleinern"
    }
 }

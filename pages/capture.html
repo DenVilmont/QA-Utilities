@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title data-i18n-document-title="screenshot">Screenshot</title>
+    <link rel="stylesheet" type="text/css" href="/styles/capture.css">
+    <script type="module" src="/scripts/capture-editor.js"></script>
+  </head>
+  <body>
+    <header class="editor-header">
+      <div class="capture-info">
+        <div class="capture-size">
+          <span id="captureSize"></span>
+          <span id="captureMode" class="capture-mode-badge"></span>
+        </div>
+        <div class="capture-details">
+          <span id="captureDate"></span>
+          <a id="captureUrl" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+        <div id="captureWarning" class="capture-warning" hidden></div>
+      </div>
+      <div class="editor-actions">
+        <button id="copyButton" class="action-button primary" type="button" data-i18n-title="copyImageTip" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>
+          <span class="i18n" data-i18n="copy"></span>
+        </button>
+        <div class="download-group">
+          <select id="formatSelect" data-i18n-title="format">
+            <option value="png">PNG</option>
+            <option value="jpg">JPG</option>
+            <option value="webp">WebP</option>
+            <option value="pdf">PDF</option>
+          </select>
+          <button id="downloadButton" class="action-button primary" type="button" data-i18n-title="downloadTip" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+            <span class="i18n" data-i18n="download"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="editor-toolbar" role="toolbar">
+      <div class="toolbar-group" id="toolButtons">
+        <button class="tool-button" type="button" data-tool="select" data-i18n-title="toolSelect">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 1.5L10 19z"/></svg>
+        </button>
+        <button class="tool-button" type="button" data-tool="pen" data-i18n-title="toolPen">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20c4-1 5-6 9-9l4-4 3 3-4 4c-3 4-8 5-9 9z"/></svg>
+        </button>
+        <button class="tool-button" type="button" data-tool="line" data-i18n-title="toolLine">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L19 5"/></svg>
+        </button>
+        <button class="tool-button" type="button" data-tool="arrow" data-i18n-title="toolArrow">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L19 5M10 5h9v9"/></svg>
+        </button>
+        <button class="tool-button" type="button" data-tool="rect" data-i18n-title="toolRect">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="1"/></svg>
+        </button>
+        <button class="tool-button" type="button" data-tool="ellipse" data-i18n-title="toolEllipse">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="8" ry="6"/></svg>
+        </button>
+        <button class="tool-button" type="button" data-tool="text" data-i18n-title="toolText">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg>
+        </button>
+        <button class="tool-button" type="button" data-tool="blur" data-i18n-title="toolBlur">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="5" height="5"/><rect x="15" y="4" width="5" height="5"/><rect x="9.5" y="9.5" width="5" height="5"/><rect x="4" y="15" width="5" height="5"/><rect x="15" y="15" width="5" height="5"/></svg>
+        </button>
+        <button class="tool-button" type="button" data-tool="crop" data-i18n-title="toolCrop">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2v16h16M2 6h16v16"/></svg>
+        </button>
+      </div>
+
+      <div class="toolbar-separator"></div>
+
+      <div class="toolbar-group" id="colorButtons" data-i18n-title="color">
+        <button class="color-button" type="button" data-color="#e53935" style="--swatch: #e53935"></button>
+        <button class="color-button" type="button" data-color="#fdd835" style="--swatch: #fdd835"></button>
+        <button class="color-button" type="button" data-color="#43a047" style="--swatch: #43a047"></button>
+        <button class="color-button" type="button" data-color="#1e88e5" style="--swatch: #1e88e5"></button>
+        <button class="color-button" type="button" data-color="#000000" style="--swatch: #000000"></button>
+        <button class="color-button" type="button" data-color="#ffffff" style="--swatch: #ffffff"></button>
+        <input id="customColor" class="custom-color" type="color" value="#e53935" data-i18n-title="color">
+      </div>
+
+      <div class="toolbar-separator"></div>
+
+      <div class="toolbar-group" id="widthButtons" data-i18n-title="strokeWidth">
+        <button class="width-button" type="button" data-width="2" style="--dot: 4px"></button>
+        <button class="width-button" type="button" data-width="4" style="--dot: 8px"></button>
+        <button class="width-button" type="button" data-width="8" style="--dot: 13px"></button>
+      </div>
+
+      <div class="toolbar-separator"></div>
+
+      <div class="toolbar-group">
+        <button id="undoButton" class="tool-button" type="button" data-i18n-title="undo" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg>
+        </button>
+        <button id="redoButton" class="tool-button" type="button" data-i18n-title="redo" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 0 0 0 12h3"/></svg>
+        </button>
+        <button id="clearButton" class="tool-button" type="button" data-i18n-title="clearAnnotations" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>
+        </button>
+      </div>
+
+      <div class="toolbar-separator"></div>
+
+      <div class="toolbar-group">
+        <button id="zoomOutButton" class="tool-button" type="button" data-i18n-title="zoomOut">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16 16l4 4"/></svg>
+        </button>
+        <span id="zoomLabel" class="zoom-label">100%</span>
+        <button id="zoomInButton" class="tool-button" type="button" data-i18n-title="zoomIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M11 8v6M16 16l4 4"/></svg>
+        </button>
+        <button id="zoomFitButton" class="tool-button" type="button" data-i18n-title="zoomFit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <main id="stage" class="stage">
+      <div id="canvasWrapper" class="canvas-wrapper" hidden>
+        <canvas id="imageCanvas"></canvas>
+        <input id="textInput" class="text-input" type="text" data-i18n-placeholder="textPlaceholder" hidden>
+      </div>
+      <div id="stageMessage" class="stage-message i18n" data-i18n="loadingScreenshot"></div>
+    </main>
+    <canvas id="overlayCanvas" class="overlay-canvas"></canvas>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

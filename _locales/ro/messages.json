@@ -20,17 +20,101 @@
    "WriteYourNotesHere": {
       "message": "Scrieți notele dvs. aici..."
    },
+   "actionFailed": {
+      "message": "Ceva nu a funcționat:"
+   },
+   "allowSiteAccess": {
+      "message": "Permiteți accesul la site-uri în fereastra Chrome care s-a deschis."
+   },
    "appName": {
       "message": "Utilitare QA"
+   },
+   "captureArea": {
+      "message": "Selectează zona"
+   },
+   "captureAreaHint": {
+      "message": "Trageți pentru a selecta o parte a paginii"
+   },
+   "captureCancelled": {
+      "message": "Captură anulată"
+   },
+   "captureFailed": {
+      "message": "Captura a eșuat:"
+   },
+   "captureFullPage": {
+      "message": "Pagina întreagă"
+   },
+   "captureFullPageHint": {
+      "message": "Derulează și capturează toată pagina"
+   },
+   "captureTabChanged": {
+      "message": "Captură oprită: fila activă s-a schimbat."
+   },
+   "captureTruncated": {
+      "message": "Pagina este prea lungă: partea de jos a capturii a fost tăiată."
+   },
+   "captureVisible": {
+      "message": "Zona vizibilă"
+   },
+   "captureVisibleHint": {
+      "message": "Capturează ce se vede pe ecran"
+   },
+   "capturing": {
+      "message": "Se capturează…"
+   },
+   "capturingProgress": {
+      "message": "Se capturează: partea $1 din $2"
    },
    "clear": {
       "message": "Goli"
    },
+   "clearAnnotations": {
+      "message": "Șterge toate desenele"
+   },
+   "clearSiteData": {
+      "message": "Șterge datele"
+   },
+   "clearSiteDataHint": {
+      "message": "Șterge cookie-urile, localStorage, sessionStorage, IndexedDB, memoria cache și service worker-ii site-ului curent și reîncarcă pagina"
+   },
+   "clearingSiteData": {
+      "message": "Se șterg datele site-ului…"
+   },
+   "color": {
+      "message": "Culoare"
+   },
+   "copiedToClipboard": {
+      "message": "Copiat în clipboard"
+   },
    "copy": {
       "message": "Copiază"
    },
+   "copyFailed": {
+      "message": "Copierea a eșuat:"
+   },
+   "copyImageTip": {
+      "message": "Copiază în clipboard (Ctrl+C)"
+   },
+   "currentSite": {
+      "message": "Site-ul curent"
+   },
    "delete": {
       "message": "Șterge"
+   },
+   "download": {
+      "message": "Descarcă"
+   },
+   "downloadTip": {
+      "message": "Descarcă (Ctrl+S)"
+   },
+   "downloadedAs": {
+      "message": "Descărcat: $1"
+   },
+   "exportFailed": {
+      "message": "Fișierul nu a putut fi salvat:"
+   },
+   "format": {
+      "message": "Format fișier"
    },
    "generate": {
       "message": "Generează"
@@ -47,8 +131,17 @@
    "lengthOfTheText": {
       "message": "Lungimea textului"
    },
+   "loadingScreenshot": {
+      "message": "Se încarcă captura…"
+   },
    "loremIpsum": {
       "message": "Lorem ipsum"
+   },
+   "noActiveTab": {
+      "message": "Nu s-a găsit fila activă."
+   },
+   "noSiteAccess": {
+      "message": "Nu există acces la site-uri. Apăsați din nou un buton de captură și alegeți „Permiteți” sau în chrome://extensions setați Accesul la site-uri → „Pe toate site-urile”."
    },
    "notepad": {
       "message": "Blocnotes"
@@ -56,8 +149,32 @@
    "notes": {
       "message": "Note"
    },
+   "pageRestricted": {
+      "message": "Acest lucru nu funcționează pe această pagină (pagini ale browserului, Chrome Web Store, pagini de extensii)."
+   },
+   "redo": {
+      "message": "Refă (Ctrl+Y)"
+   },
    "save": {
       "message": "Salvează"
+   },
+   "screenshot": {
+      "message": "Captură de ecran"
+   },
+   "screenshotNotFound": {
+      "message": "Captura nu a fost găsită. Se păstrează doar ultimele 10 capturi."
+   },
+   "selectAreaOnPage": {
+      "message": "Selectați o zonă pe pagină (Esc sau clic dreapta — anulare)"
+   },
+   "siteDataCleared": {
+      "message": "Datele $1 au fost șterse, pagina a fost reîncărcată"
+   },
+   "siteDataFailed": {
+      "message": "Datele site-ului nu au putut fi șterse:"
+   },
+   "strokeWidth": {
+      "message": "Grosimea liniei"
    },
    "task": {
       "message": "Sarcină"
@@ -68,7 +185,52 @@
    "textLength": {
       "message": "Lungimea textului"
    },
+   "textPlaceholder": {
+      "message": "Introduceți textul, Enter — aplică"
+   },
+   "toolArrow": {
+      "message": "Săgeată (Shift — 45°)"
+   },
+   "toolBlur": {
+      "message": "Estompare"
+   },
+   "toolCrop": {
+      "message": "Decupare"
+   },
+   "toolEllipse": {
+      "message": "Elipsă (Shift — cerc)"
+   },
+   "toolLine": {
+      "message": "Linie (Shift — 45°)"
+   },
+   "toolPen": {
+      "message": "Creion"
+   },
+   "toolRect": {
+      "message": "Dreptunghi (Shift — pătrat)"
+   },
+   "toolSelect": {
+      "message": "Indicator: selectați, mutați și redimensionați (dublu clic — editați textul, Delete — ștergeți)"
+   },
+   "toolText": {
+      "message": "Text"
+   },
+   "tools": {
+      "message": "Instrumente"
+   },
+   "undo": {
+      "message": "Anulează (Ctrl+Z)"
+   },
    "utils": {
       "message": "Utilitare"
+   },
+   "zoomFit": {
+      "message": "Potrivește în fereastră"
+   },
+   "zoomIn": {
+      "message": "Mărește"
+   },
+   "zoomOut": {
+      "message": "Micșorează"
    }
 }

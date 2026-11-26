@@ -20,17 +20,101 @@
    "WriteYourNotesHere": {
       "message": "Write your notes here..."
    },
+   "actionFailed": {
+      "message": "Something went wrong:"
+   },
+   "allowSiteAccess": {
+      "message": "Allow access to websites in the Chrome window that has opened."
+   },
    "appName": {
       "message": "QA Utilities"
+   },
+   "captureArea": {
+      "message": "Select area"
+   },
+   "captureAreaHint": {
+      "message": "Drag to select a part of the page"
+   },
+   "captureCancelled": {
+      "message": "Capture cancelled"
+   },
+   "captureFailed": {
+      "message": "Capture failed:"
+   },
+   "captureFullPage": {
+      "message": "Full page"
+   },
+   "captureFullPageHint": {
+      "message": "Scrolls and captures the whole page"
+   },
+   "captureTabChanged": {
+      "message": "Capture stopped: the active tab changed."
+   },
+   "captureTruncated": {
+      "message": "The page is too long: the screenshot was cut off at the bottom."
+   },
+   "captureVisible": {
+      "message": "Visible area"
+   },
+   "captureVisibleHint": {
+      "message": "Capture what you see on the screen"
+   },
+   "capturing": {
+      "message": "Capturing…"
+   },
+   "capturingProgress": {
+      "message": "Capturing: part $1 of $2"
    },
    "clear": {
       "message": "Clear"
    },
+   "clearAnnotations": {
+      "message": "Remove all drawings"
+   },
+   "clearSiteData": {
+      "message": "Clear data"
+   },
+   "clearSiteDataHint": {
+      "message": "Deletes cookies, localStorage, sessionStorage, IndexedDB, cache and service workers of the current site and reloads the page"
+   },
+   "clearingSiteData": {
+      "message": "Clearing site data…"
+   },
+   "color": {
+      "message": "Colour"
+   },
+   "copiedToClipboard": {
+      "message": "Copied to clipboard"
+   },
    "copy": {
       "message": "Copy"
    },
+   "copyFailed": {
+      "message": "Failed to copy:"
+   },
+   "copyImageTip": {
+      "message": "Copy to clipboard (Ctrl+C)"
+   },
+   "currentSite": {
+      "message": "Current site"
+   },
    "delete": {
       "message": "Delete"
+   },
+   "download": {
+      "message": "Download"
+   },
+   "downloadTip": {
+      "message": "Download (Ctrl+S)"
+   },
+   "downloadedAs": {
+      "message": "Downloaded: $1"
+   },
+   "exportFailed": {
+      "message": "Failed to save the file:"
+   },
+   "format": {
+      "message": "File format"
    },
    "generate": {
       "message": "Generate"
@@ -47,8 +131,17 @@
    "lengthOfTheText": {
       "message": "Length of the text"
    },
+   "loadingScreenshot": {
+      "message": "Loading screenshot…"
+   },
    "loremIpsum": {
       "message": "Lorem ipsum"
+   },
+   "noActiveTab": {
+      "message": "No active tab found."
+   },
+   "noSiteAccess": {
+      "message": "No access to websites. Click a capture button again and choose \"Allow\", or set Site access → \"On all sites\" in chrome://extensions."
    },
    "notepad": {
       "message": "Notepad"
@@ -56,8 +149,32 @@
    "notes": {
       "message": "Notes"
    },
+   "pageRestricted": {
+      "message": "This does not work on this page (browser pages, Chrome Web Store, extension pages)."
+   },
+   "redo": {
+      "message": "Redo (Ctrl+Y)"
+   },
    "save": {
       "message": "Save"
+   },
+   "screenshot": {
+      "message": "Screenshot"
+   },
+   "screenshotNotFound": {
+      "message": "Screenshot not found. Only the last 10 screenshots are kept."
+   },
+   "selectAreaOnPage": {
+      "message": "Select an area on the page (Esc or right click — cancel)"
+   },
+   "siteDataCleared": {
+      "message": "Data of $1 cleared, page reloaded"
+   },
+   "siteDataFailed": {
+      "message": "Failed to clear site data:"
+   },
+   "strokeWidth": {
+      "message": "Line thickness"
    },
    "task": {
       "message": "Task"
@@ -68,7 +185,52 @@
    "textLength": {
       "message": "Text Length"
    },
+   "textPlaceholder": {
+      "message": "Type text, Enter — apply"
+   },
+   "toolArrow": {
+      "message": "Arrow (Shift — 45°)"
+   },
+   "toolBlur": {
+      "message": "Blur"
+   },
+   "toolCrop": {
+      "message": "Crop"
+   },
+   "toolEllipse": {
+      "message": "Ellipse (Shift — circle)"
+   },
+   "toolLine": {
+      "message": "Line (Shift — 45°)"
+   },
+   "toolPen": {
+      "message": "Pen"
+   },
+   "toolRect": {
+      "message": "Rectangle (Shift — square)"
+   },
+   "toolSelect": {
+      "message": "Pointer: select, move and resize drawings (double click — edit text, Delete — remove)"
+   },
+   "toolText": {
+      "message": "Text"
+   },
+   "tools": {
+      "message": "Tools"
+   },
+   "undo": {
+      "message": "Undo (Ctrl+Z)"
+   },
    "utils": {
       "message": "Utils"
+   },
+   "zoomFit": {
+      "message": "Fit to window"
+   },
+   "zoomIn": {
+      "message": "Zoom in"
+   },
+   "zoomOut": {
+      "message": "Zoom out"
    }
 }

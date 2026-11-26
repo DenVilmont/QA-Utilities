@@ -20,17 +20,101 @@
    "WriteYourNotesHere": {
       "message": "Напишите свои заметки здесь..."
    },
+   "actionFailed": {
+      "message": "Что-то пошло не так:"
+   },
+   "allowSiteAccess": {
+      "message": "Разрешите доступ к сайтам в открывшемся окне Chrome."
+   },
    "appName": {
       "message": "QA Утилиты"
+   },
+   "captureArea": {
+      "message": "Выделить область"
+   },
+   "captureAreaHint": {
+      "message": "Выделите мышкой часть страницы"
+   },
+   "captureCancelled": {
+      "message": "Снимок отменён"
+   },
+   "captureFailed": {
+      "message": "Не удалось сделать снимок:"
+   },
+   "captureFullPage": {
+      "message": "Вся страница"
+   },
+   "captureFullPageHint": {
+      "message": "Прокручивает и снимает страницу целиком"
+   },
+   "captureTabChanged": {
+      "message": "Снимок остановлен: сменилась активная вкладка."
+   },
+   "captureTruncated": {
+      "message": "Страница слишком длинная: низ скриншота обрезан."
+   },
+   "captureVisible": {
+      "message": "Видимая область"
+   },
+   "captureVisibleHint": {
+      "message": "Снимок того, что видно на экране"
+   },
+   "capturing": {
+      "message": "Снимаю…"
+   },
+   "capturingProgress": {
+      "message": "Снимаю: часть $1 из $2"
    },
    "clear": {
       "message": "Очистить"
    },
+   "clearAnnotations": {
+      "message": "Удалить все рисунки"
+   },
+   "clearSiteData": {
+      "message": "Очистить данные"
+   },
+   "clearSiteDataHint": {
+      "message": "Удаляет cookies, localStorage, sessionStorage, IndexedDB, кэш и service workers текущего сайта и перезагружает страницу"
+   },
+   "clearingSiteData": {
+      "message": "Очищаю данные сайта…"
+   },
+   "color": {
+      "message": "Цвет"
+   },
+   "copiedToClipboard": {
+      "message": "Скопировано в буфер обмена"
+   },
    "copy": {
       "message": "Копировать"
    },
+   "copyFailed": {
+      "message": "Не удалось скопировать:"
+   },
+   "copyImageTip": {
+      "message": "Копировать в буфер обмена (Ctrl+C)"
+   },
+   "currentSite": {
+      "message": "Текущий сайт"
+   },
    "delete": {
       "message": "Удалить"
+   },
+   "download": {
+      "message": "Скачать"
+   },
+   "downloadTip": {
+      "message": "Скачать (Ctrl+S)"
+   },
+   "downloadedAs": {
+      "message": "Скачано: $1"
+   },
+   "exportFailed": {
+      "message": "Не удалось сохранить файл:"
+   },
+   "format": {
+      "message": "Формат файла"
    },
    "generate": {
       "message": "Создать"
@@ -47,8 +131,17 @@
    "lengthOfTheText": {
       "message": "Длина текста"
    },
+   "loadingScreenshot": {
+      "message": "Загрузка скриншота…"
+   },
    "loremIpsum": {
       "message": "Lorem ipsum"
+   },
+   "noActiveTab": {
+      "message": "Активная вкладка не найдена."
+   },
+   "noSiteAccess": {
+      "message": "Нет доступа к сайтам. Нажмите кнопку снимка ещё раз и выберите «Разрешить» или в chrome://extensions поставьте Доступ к сайтам → «На всех сайтах»."
    },
    "notepad": {
       "message": "Блокнот"
@@ -56,8 +149,32 @@
    "notes": {
       "message": "Заметки"
    },
+   "pageRestricted": {
+      "message": "На этой странице это не работает (страницы браузера, Chrome Web Store, страницы расширений)."
+   },
+   "redo": {
+      "message": "Повторить (Ctrl+Y)"
+   },
    "save": {
       "message": "Сохранить"
+   },
+   "screenshot": {
+      "message": "Скриншот"
+   },
+   "screenshotNotFound": {
+      "message": "Скриншот не найден. Хранятся только последние 10 скриншотов."
+   },
+   "selectAreaOnPage": {
+      "message": "Выделите область на странице (Esc или правый клик — отмена)"
+   },
+   "siteDataCleared": {
+      "message": "Данные $1 очищены, страница перезагружена"
+   },
+   "siteDataFailed": {
+      "message": "Не удалось очистить данные сайта:"
+   },
+   "strokeWidth": {
+      "message": "Толщина линии"
    },
    "task": {
       "message": "Задача"
@@ -68,7 +185,52 @@
    "textLength": {
       "message": "Длина текста"
    },
+   "textPlaceholder": {
+      "message": "Введите текст, Enter — применить"
+   },
+   "toolArrow": {
+      "message": "Стрелка (Shift — 45°)"
+   },
+   "toolBlur": {
+      "message": "Размытие"
+   },
+   "toolCrop": {
+      "message": "Обрезка"
+   },
+   "toolEllipse": {
+      "message": "Эллипс (Shift — круг)"
+   },
+   "toolLine": {
+      "message": "Линия (Shift — 45°)"
+   },
+   "toolPen": {
+      "message": "Карандаш"
+   },
+   "toolRect": {
+      "message": "Прямоугольник (Shift — квадрат)"
+   },
+   "toolSelect": {
+      "message": "Указатель: выбрать, перетащить и изменить размер (двойной клик — править текст, Delete — удалить)"
+   },
+   "toolText": {
+      "message": "Текст"
+   },
+   "tools": {
+      "message": "Инструменты"
+   },
+   "undo": {
+      "message": "Отменить (Ctrl+Z)"
+   },
    "utils": {
       "message": "Утилиты"
+   },
+   "zoomFit": {
+      "message": "По размеру окна"
+   },
+   "zoomIn": {
+      "message": "Увеличить"
+   },
+   "zoomOut": {
+      "message": "Уменьшить"
    }
 }

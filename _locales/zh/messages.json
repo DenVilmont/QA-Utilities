@@ -20,17 +20,101 @@
    "WriteYourNotesHere": {
       "message": "在这里写下你的笔记..."
    },
+   "actionFailed": {
+      "message": "出错了："
+   },
+   "allowSiteAccess": {
+      "message": "请在打开的 Chrome 窗口中允许访问网站。"
+   },
    "appName": {
       "message": "QA工具"
+   },
+   "captureArea": {
+      "message": "选择区域"
+   },
+   "captureAreaHint": {
+      "message": "拖动以选择页面的一部分"
+   },
+   "captureCancelled": {
+      "message": "截图已取消"
+   },
+   "captureFailed": {
+      "message": "截图失败："
+   },
+   "captureFullPage": {
+      "message": "整个页面"
+   },
+   "captureFullPageHint": {
+      "message": "滚动并截取整个页面"
+   },
+   "captureTabChanged": {
+      "message": "截图已停止：活动标签页已更改。"
+   },
+   "captureTruncated": {
+      "message": "页面太长：截图底部已被截断。"
+   },
+   "captureVisible": {
+      "message": "可见区域"
+   },
+   "captureVisibleHint": {
+      "message": "截取屏幕上可见的内容"
+   },
+   "capturing": {
+      "message": "正在截图…"
+   },
+   "capturingProgress": {
+      "message": "正在截图：第 $1 部分，共 $2 部分"
    },
    "clear": {
       "message": "清除"
    },
+   "clearAnnotations": {
+      "message": "删除所有绘图"
+   },
+   "clearSiteData": {
+      "message": "清除数据"
+   },
+   "clearSiteDataHint": {
+      "message": "删除当前网站的 Cookie、localStorage、sessionStorage、IndexedDB、缓存和 Service Worker，并重新加载页面"
+   },
+   "clearingSiteData": {
+      "message": "正在清除网站数据…"
+   },
+   "color": {
+      "message": "颜色"
+   },
+   "copiedToClipboard": {
+      "message": "已复制到剪贴板"
+   },
    "copy": {
       "message": "复制"
    },
+   "copyFailed": {
+      "message": "复制失败："
+   },
+   "copyImageTip": {
+      "message": "复制到剪贴板 (Ctrl+C)"
+   },
+   "currentSite": {
+      "message": "当前网站"
+   },
    "delete": {
       "message": "删除"
+   },
+   "download": {
+      "message": "下载"
+   },
+   "downloadTip": {
+      "message": "下载 (Ctrl+S)"
+   },
+   "downloadedAs": {
+      "message": "已下载：$1"
+   },
+   "exportFailed": {
+      "message": "无法保存文件："
+   },
+   "format": {
+      "message": "文件格式"
    },
    "generate": {
       "message": "生成"
@@ -47,8 +131,17 @@
    "lengthOfTheText": {
       "message": "文本长度"
    },
+   "loadingScreenshot": {
+      "message": "正在加载截图…"
+   },
    "loremIpsum": {
       "message": "Lorem ipsum"
+   },
+   "noActiveTab": {
+      "message": "未找到活动标签页。"
+   },
+   "noSiteAccess": {
+      "message": "没有访问网站的权限。请再次点击截图按钮并选择“允许”，或在 chrome://extensions 中将网站访问权限设为“在所有网站上”。"
    },
    "notepad": {
       "message": "记事本"
@@ -56,8 +149,32 @@
    "notes": {
       "message": "笔记"
    },
+   "pageRestricted": {
+      "message": "此页面不支持该操作（浏览器页面、Chrome 网上应用店、扩展程序页面）。"
+   },
+   "redo": {
+      "message": "重做 (Ctrl+Y)"
+   },
    "save": {
       "message": "保存"
+   },
+   "screenshot": {
+      "message": "截图"
+   },
+   "screenshotNotFound": {
+      "message": "未找到截图。仅保留最近 10 张截图。"
+   },
+   "selectAreaOnPage": {
+      "message": "在页面上选择区域（Esc 或右键 — 取消）"
+   },
+   "siteDataCleared": {
+      "message": "已清除 $1 的数据并重新加载页面"
+   },
+   "siteDataFailed": {
+      "message": "无法清除网站数据："
+   },
+   "strokeWidth": {
+      "message": "线条粗细"
    },
    "task": {
       "message": "任务"
@@ -68,7 +185,52 @@
    "textLength": {
       "message": "文本长度"
    },
+   "textPlaceholder": {
+      "message": "输入文字，Enter — 应用"
+   },
+   "toolArrow": {
+      "message": "箭头（Shift — 45°）"
+   },
+   "toolBlur": {
+      "message": "模糊"
+   },
+   "toolCrop": {
+      "message": "裁剪"
+   },
+   "toolEllipse": {
+      "message": "椭圆（Shift — 圆形）"
+   },
+   "toolLine": {
+      "message": "直线（Shift — 45°）"
+   },
+   "toolPen": {
+      "message": "画笔"
+   },
+   "toolRect": {
+      "message": "矩形（Shift — 正方形）"
+   },
+   "toolSelect": {
+      "message": "指针：选择、移动和调整绘图大小（双击 — 编辑文字，Delete — 删除）"
+   },
+   "toolText": {
+      "message": "文字"
+   },
+   "tools": {
+      "message": "工具"
+   },
+   "undo": {
+      "message": "撤销 (Ctrl+Z)"
+   },
    "utils": {
       "message": "工具"
+   },
+   "zoomFit": {
+      "message": "适应窗口"
+   },
+   "zoomIn": {
+      "message": "放大"
+   },
+   "zoomOut": {
+      "message": "缩小"
    }
 }

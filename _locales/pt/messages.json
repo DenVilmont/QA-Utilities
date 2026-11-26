@@ -20,17 +20,101 @@
    "WriteYourNotesHere": {
       "message": "Escreva suas notas aqui..."
    },
+   "actionFailed": {
+      "message": "Algo deu errado:"
+   },
+   "allowSiteAccess": {
+      "message": "Permita o acesso aos sites na janela do Chrome que se abriu."
+   },
    "appName": {
       "message": "Utilitários de QA"
+   },
+   "captureArea": {
+      "message": "Selecionar área"
+   },
+   "captureAreaHint": {
+      "message": "Arraste para selecionar uma parte da página"
+   },
+   "captureCancelled": {
+      "message": "Captura cancelada"
+   },
+   "captureFailed": {
+      "message": "Falha na captura:"
+   },
+   "captureFullPage": {
+      "message": "Página inteira"
+   },
+   "captureFullPageHint": {
+      "message": "Rola e captura a página inteira"
+   },
+   "captureTabChanged": {
+      "message": "Captura interrompida: a aba ativa mudou."
+   },
+   "captureTruncated": {
+      "message": "A página é longa demais: a parte inferior da captura foi cortada."
+   },
+   "captureVisible": {
+      "message": "Área visível"
+   },
+   "captureVisibleHint": {
+      "message": "Captura o que está visível na tela"
+   },
+   "capturing": {
+      "message": "Capturando…"
+   },
+   "capturingProgress": {
+      "message": "Capturando: parte $1 de $2"
    },
    "clear": {
       "message": "Limpar"
    },
+   "clearAnnotations": {
+      "message": "Remover todos os desenhos"
+   },
+   "clearSiteData": {
+      "message": "Limpar dados"
+   },
+   "clearSiteDataHint": {
+      "message": "Apaga cookies, localStorage, sessionStorage, IndexedDB, cache e service workers do site atual e recarrega a página"
+   },
+   "clearingSiteData": {
+      "message": "Limpando os dados do site…"
+   },
+   "color": {
+      "message": "Cor"
+   },
+   "copiedToClipboard": {
+      "message": "Copiado para a área de transferência"
+   },
    "copy": {
       "message": "Copiar"
    },
+   "copyFailed": {
+      "message": "Falha ao copiar:"
+   },
+   "copyImageTip": {
+      "message": "Copiar para a área de transferência (Ctrl+C)"
+   },
+   "currentSite": {
+      "message": "Site atual"
+   },
    "delete": {
       "message": "Excluir"
+   },
+   "download": {
+      "message": "Baixar"
+   },
+   "downloadTip": {
+      "message": "Baixar (Ctrl+S)"
+   },
+   "downloadedAs": {
+      "message": "Baixado: $1"
+   },
+   "exportFailed": {
+      "message": "Falha ao salvar o arquivo:"
+   },
+   "format": {
+      "message": "Formato do arquivo"
    },
    "generate": {
       "message": "Gerar"
@@ -47,8 +131,17 @@
    "lengthOfTheText": {
       "message": "Comprimento do texto"
    },
+   "loadingScreenshot": {
+      "message": "Carregando captura…"
+   },
    "loremIpsum": {
       "message": "Lorem ipsum"
+   },
+   "noActiveTab": {
+      "message": "Nenhuma aba ativa encontrada."
+   },
+   "noSiteAccess": {
+      "message": "Sem acesso aos sites. Clique novamente num botão de captura e escolha \"Permitir\", ou em chrome://extensions defina Acesso ao site → \"Em todos os sites\"."
    },
    "notepad": {
       "message": "Bloco de notas"
@@ -56,8 +149,32 @@
    "notes": {
       "message": "Notas"
    },
+   "pageRestricted": {
+      "message": "Isto não funciona nesta página (páginas do navegador, Chrome Web Store, páginas de extensões)."
+   },
+   "redo": {
+      "message": "Refazer (Ctrl+Y)"
+   },
    "save": {
       "message": "Salvar"
+   },
+   "screenshot": {
+      "message": "Captura de tela"
+   },
+   "screenshotNotFound": {
+      "message": "Captura não encontrada. Apenas as últimas 10 capturas são guardadas."
+   },
+   "selectAreaOnPage": {
+      "message": "Selecione uma área na página (Esc ou clique direito — cancelar)"
+   },
+   "siteDataCleared": {
+      "message": "Dados de $1 limpos, página recarregada"
+   },
+   "siteDataFailed": {
+      "message": "Falha ao limpar os dados do site:"
+   },
+   "strokeWidth": {
+      "message": "Espessura da linha"
    },
    "task": {
       "message": "Tarefa"
@@ -68,7 +185,52 @@
    "textLength": {
       "message": "Comprimento do texto"
    },
+   "textPlaceholder": {
+      "message": "Digite o texto, Enter — aplicar"
+   },
+   "toolArrow": {
+      "message": "Seta (Shift — 45°)"
+   },
+   "toolBlur": {
+      "message": "Desfocar"
+   },
+   "toolCrop": {
+      "message": "Recortar"
+   },
+   "toolEllipse": {
+      "message": "Elipse (Shift — círculo)"
+   },
+   "toolLine": {
+      "message": "Linha (Shift — 45°)"
+   },
+   "toolPen": {
+      "message": "Lápis"
+   },
+   "toolRect": {
+      "message": "Retângulo (Shift — quadrado)"
+   },
+   "toolSelect": {
+      "message": "Ponteiro: selecionar, mover e redimensionar (duplo clique — editar texto, Delete — remover)"
+   },
+   "toolText": {
+      "message": "Texto"
+   },
+   "tools": {
+      "message": "Ferramentas"
+   },
+   "undo": {
+      "message": "Desfazer (Ctrl+Z)"
+   },
    "utils": {
       "message": "Utilitários"
+   },
+   "zoomFit": {
+      "message": "Ajustar à janela"
+   },
+   "zoomIn": {
+      "message": "Aumentar zoom"
+   },
+   "zoomOut": {
+      "message": "Diminuir zoom"
    }
 }

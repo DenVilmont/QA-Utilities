@@ -12,6 +12,7 @@
       <div class="tabs-header">
         <span class="tab-header i18n" id="tab1" data-i18n="utils"></span>
         <span class="tab-header i18n" id="tab2" data-i18n="notes"></span>
+        <span class="tab-header i18n" id="tab3" data-i18n="tools"></span>
       </div>
       <div class="divider"></div>
     </div>
@@ -73,6 +74,43 @@
           <button id="saveValueButton" class="i18n" data-i18n="save"></button>
         </div>
         <div id="savedValues" class="list-items"></div>
+      </div>
+      <div class="tab-content tab3">
+        <h3><span class="i18n" data-i18n="screenshot"></span></h3>
+        <div class="tool-tiles">
+          <button id="captureVisibleButton" class="tool-tile" type="button" data-i18n-title="captureVisibleHint">
+            <svg class="tool-tile-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="12" rx="2"/>
+              <path d="M8 20h8M12 16v4"/>
+            </svg>
+            <span class="tool-tile-title i18n" data-i18n="captureVisible"></span>
+          </button>
+          <button id="captureAreaButton" class="tool-tile" type="button" data-i18n-title="captureAreaHint">
+            <svg class="tool-tile-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="1" stroke-dasharray="3 3"/>
+            </svg>
+            <span class="tool-tile-title i18n" data-i18n="captureArea"></span>
+          </button>
+          <button id="captureFullPageButton" class="tool-tile" type="button" data-i18n-title="captureFullPageHint">
+            <svg class="tool-tile-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 3h8l4 4v14H6z"/>
+              <path d="M9 12h6M9 16h6"/>
+            </svg>
+            <span class="tool-tile-title i18n" data-i18n="captureFullPage"></span>
+          </button>
+        </div>
+        <h3><span class="i18n" data-i18n="currentSite"></span></h3>
+        <div class="tool-tiles">
+          <button id="clearSiteDataButton" class="tool-tile" type="button" data-i18n-title="clearSiteDataHint">
+            <svg class="tool-tile-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 12a8 8 0 1 1-2.3-5.6"/>
+              <path d="M20 4v5h-5"/>
+              <path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/>
+            </svg>
+            <span class="tool-tile-title i18n" data-i18n="clearSiteData"></span>
+          </button>
+        </div>
+        <div id="toolsStatus" class="tools-status" role="status" aria-live="polite"></div>
       </div>
     </div>
     <div class="footer">
