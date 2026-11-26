@@ -218,12 +218,6 @@
    "strokeWidth": {
       "message": "Толщина линии"
    },
-   "task": {
-      "message": "Задача"
-   },
-   "tasks": {
-      "message": "Задачи"
-   },
    "textLength": {
       "message": "Длина текста"
    },

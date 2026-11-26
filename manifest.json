@@ -1,6 +1,6 @@
 {
    "action": {
-      "default_icon": "resourses/logo/logo.png",
+      "default_icon": "resources/logo/logo.png",
       "default_title": "Click to open panel"
    },
    "background": {

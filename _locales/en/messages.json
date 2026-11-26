@@ -218,12 +218,6 @@
    "strokeWidth": {
       "message": "Line thickness"
    },
-   "task": {
-      "message": "Task"
-   },
-   "tasks": {
-      "message": "Tasks"
-   },
    "textLength": {
       "message": "Text Length"
    },

@@ -10,141 +10,141 @@ let latestLoadRequestId = 0;
 const messageCache = new Map();
 
 function normalizeLanguage(lang) {
-    return SUPPORTED_LANGUAGES.has(lang) ? lang : DEFAULT_LANGUAGE;
+  return SUPPORTED_LANGUAGES.has(lang) ? lang : DEFAULT_LANGUAGE;
 }
 
 function normalizeMessages(messages) {
-    return Object.fromEntries(
-        Object.entries(messages || {})
-            .map(([key, value]) => [key, typeof value === 'string' ? value : value?.message])
-            .filter(([, value]) => typeof value === 'string')
-    );
+  return Object.fromEntries(
+    Object.entries(messages || {})
+      .map(([key, value]) => [key, typeof value === 'string' ? value : value?.message])
+      .filter(([, value]) => typeof value === 'string')
+  );
 }
 
 async function fetchMessages(lang) {
-    const normalizedLang = normalizeLanguage(lang);
+  const normalizedLang = normalizeLanguage(lang);
 
-    if (!messageCache.has(normalizedLang)) {
-        const fetchPromise = fetch(chrome.runtime.getURL(`_locales/${normalizedLang}/messages.json`))
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Failed to load locale "${normalizedLang}": ${response.status}`);
-                }
+  if (!messageCache.has(normalizedLang)) {
+    const fetchPromise = fetch(chrome.runtime.getURL(`_locales/${normalizedLang}/messages.json`))
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to load locale "${normalizedLang}": ${response.status}`);
+        }
 
-                return response.json();
-            })
-            .then(normalizeMessages)
-            .catch(error => {
-                console.error(`Failed to load locale messages for "${normalizedLang}".`, error);
-                messageCache.delete(normalizedLang);
-                return null;
-            });
+        return response.json();
+      })
+      .then(normalizeMessages)
+      .catch(error => {
+        console.error(`Failed to load locale messages for "${normalizedLang}".`, error);
+        messageCache.delete(normalizedLang);
+        return null;
+      });
 
-        messageCache.set(normalizedLang, fetchPromise);
-    }
+    messageCache.set(normalizedLang, fetchPromise);
+  }
 
-    return messageCache.get(normalizedLang);
+  return messageCache.get(normalizedLang);
 }
 
 async function ensureEnglishMessages() {
-    const messages = await fetchMessages(DEFAULT_LANGUAGE);
-    englishMessages = messages || {};
-    return englishMessages;
+  const messages = await fetchMessages(DEFAULT_LANGUAGE);
+  englishMessages = messages || {};
+  return englishMessages;
 }
 
 function collectTranslatableElements(root, selector) {
-    const elements = [];
+  const elements = [];
 
-    if (root?.nodeType === Node.ELEMENT_NODE && root.matches(selector)) {
-        elements.push(root);
-    }
+  if (root?.nodeType === Node.ELEMENT_NODE && root.matches(selector)) {
+    elements.push(root);
+  }
 
-    if (typeof root?.querySelectorAll === 'function') {
-        elements.push(...root.querySelectorAll(selector));
-    }
+  if (typeof root?.querySelectorAll === 'function') {
+    elements.push(...root.querySelectorAll(selector));
+  }
 
-    return elements;
+  return elements;
 }
 
 function applyTextTranslations(root) {
-    collectTranslatableElements(root, '[data-i18n]').forEach(element => {
-        element.textContent = t(element.getAttribute('data-i18n'));
-    });
+  collectTranslatableElements(root, '[data-i18n]').forEach(element => {
+    element.textContent = t(element.getAttribute('data-i18n'));
+  });
 }
 
 function applyPlaceholderTranslations(root) {
-    collectTranslatableElements(root, '[data-i18n-placeholder]').forEach(element => {
-        element.setAttribute('placeholder', t(element.getAttribute('data-i18n-placeholder')));
-    });
+  collectTranslatableElements(root, '[data-i18n-placeholder]').forEach(element => {
+    element.setAttribute('placeholder', t(element.getAttribute('data-i18n-placeholder')));
+  });
 }
 
 function applyTitleTranslations(root) {
-    collectTranslatableElements(root, '[data-i18n-title]').forEach(element => {
-        element.setAttribute('title', t(element.getAttribute('data-i18n-title')));
-    });
+  collectTranslatableElements(root, '[data-i18n-title]').forEach(element => {
+    element.setAttribute('title', t(element.getAttribute('data-i18n-title')));
+  });
 }
 
 function applyAriaLabelTranslations(root) {
-    collectTranslatableElements(root, '[data-i18n-aria-label]').forEach(element => {
-        element.setAttribute('aria-label', t(element.getAttribute('data-i18n-aria-label')));
-    });
+  collectTranslatableElements(root, '[data-i18n-aria-label]').forEach(element => {
+    element.setAttribute('aria-label', t(element.getAttribute('data-i18n-aria-label')));
+  });
 }
 
 function applyDocumentTitle() {
-    const titleElement = document.querySelector('[data-i18n-document-title]');
+  const titleElement = document.querySelector('[data-i18n-document-title]');
 
-    if (!titleElement) {
-        return;
-    }
+  if (!titleElement) {
+    return;
+  }
 
-    document.title = t(titleElement.getAttribute('data-i18n-document-title'));
+  document.title = t(titleElement.getAttribute('data-i18n-document-title'));
 }
 
 export function getCurrentLanguage() {
-    return currentLanguage;
+  return currentLanguage;
 }
 
 export async function loadMessages(lang) {
-    const normalizedLang = normalizeLanguage(lang);
-    const requestId = ++latestLoadRequestId;
-    const englishPromise = ensureEnglishMessages();
-    const languagePromise = normalizedLang === DEFAULT_LANGUAGE
-        ? englishPromise
-        : fetchMessages(normalizedLang);
+  const normalizedLang = normalizeLanguage(lang);
+  const requestId = ++latestLoadRequestId;
+  const englishPromise = ensureEnglishMessages();
+  const languagePromise = normalizedLang === DEFAULT_LANGUAGE
+    ? englishPromise
+    : fetchMessages(normalizedLang);
 
-    const [languageMessages, fallbackMessages] = await Promise.all([languagePromise, englishPromise]);
+  const [languageMessages, fallbackMessages] = await Promise.all([languagePromise, englishPromise]);
 
-    if (requestId !== latestLoadRequestId) {
-        return false;
-    }
+  if (requestId !== latestLoadRequestId) {
+    return false;
+  }
 
-    currentLanguage = normalizedLang;
-    currentMessages = languageMessages || {};
-    englishMessages = fallbackMessages || {};
+  currentLanguage = normalizedLang;
+  currentMessages = languageMessages || {};
+  englishMessages = fallbackMessages || {};
 
-    return true;
+  return true;
 }
 
 export async function setCurrentLanguage(lang) {
-    const normalizedLang = normalizeLanguage(lang);
-    setLanguage(normalizedLang);
-    return loadMessages(normalizedLang);
+  const normalizedLang = normalizeLanguage(lang);
+  setLanguage(normalizedLang);
+  return loadMessages(normalizedLang);
 }
 
 export function t(key) {
-    if (!key) {
-        return '';
-    }
+  if (!key) {
+    return '';
+  }
 
-    return currentMessages[key] || englishMessages[key] || key;
+  return currentMessages[key] || englishMessages[key] || key;
 }
 
 export function applyTranslations(root = document) {
-    applyTextTranslations(root);
-    applyPlaceholderTranslations(root);
-    applyTitleTranslations(root);
-    applyAriaLabelTranslations(root);
-    if (root === document) {
-        applyDocumentTitle();
-    }
+  applyTextTranslations(root);
+  applyPlaceholderTranslations(root);
+  applyTitleTranslations(root);
+  applyAriaLabelTranslations(root);
+  if (root === document) {
+    applyDocumentTitle();
+  }
 }

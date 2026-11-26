@@ -218,12 +218,6 @@
    "strokeWidth": {
       "message": "线条粗细"
    },
-   "task": {
-      "message": "任务"
-   },
-   "tasks": {
-      "message": "任务"
-   },
    "textLength": {
       "message": "文本长度"
    },

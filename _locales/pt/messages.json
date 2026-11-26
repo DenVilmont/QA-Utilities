@@ -218,12 +218,6 @@
    "strokeWidth": {
       "message": "Espessura da linha"
    },
-   "task": {
-      "message": "Tarefa"
-   },
-   "tasks": {
-      "message": "Tarefas"
-   },
    "textLength": {
       "message": "Comprimento do texto"
    },

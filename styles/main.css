@@ -18,13 +18,8 @@ h1 {
 
 h3 {
     margin-bottom: 5px;
-    font-size: 16px;
-    text-align: center;
-}
-
-h3 {
-    margin-bottom: 5px;
     font-size: 14px;
+    text-align: center;
 }
 
 input[type="text"] {
@@ -44,11 +39,6 @@ input::placeholder {
     font-size: 11px; 
     color: #757575;
   }
-.input-container {
-    position: relative;
-    display: inline-block;
-}
-
 button{
     background-color: #b36531;
     border: none;
@@ -87,7 +77,6 @@ button:active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    bottom: 0;
     width: 100%;
     height: 40px;
 }
@@ -310,15 +299,32 @@ button.tool-tile:disabled {
     text-align: center;
 }
 
-.tools-status {
-    min-height: 16px;
-    margin-top: 10px;
+/* Pop-up message at the bottom of the panel (scripts/notify.js). Clicks go through it. */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 56px;
+    max-width: 85vw;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
     text-align: center;
-    color: #555;
+    color: #fff;
+    background-color: #333;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translate(-50%, 10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
 }
 
-.tools-status.error {
-    color: #d32f2f;
+.toast.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.toast.error {
+    background-color: #c62828;
 }
 
 /* Auto-reload page (Tools tab): one row of controls and the list of running timers. */

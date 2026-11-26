@@ -11,7 +11,7 @@ const LOREM_WORDS = [
   'ex', 'ea', 'commodo', 'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate',
   'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint', 'occaecat', 'cupidatat',
   'non', 'proident', 'sunt', 'culpa', 'qui', 'officia', 'deserunt', 'mollit', 'anim', 'id',
-  'est', 'laborum', 'integer', 'vitae', 'justo', 'eget', 'magna', 'fermentum', 'iaculis', 'eu',
+  'est', 'laborum', 'integer', 'vitae', 'justo', 'eget', 'fermentum', 'iaculis', 'eu',
   'facilisis', 'mauris', 'pharetra', 'ultrices', 'neque', 'ornare', 'aenean', 'euismod', 'elementum', 'nisl',
   'purus', 'viverra', 'accumsan', 'lacus', 'vel', 'pellentesque', 'habitant', 'morbi', 'tristique', 'senectus'
 ];

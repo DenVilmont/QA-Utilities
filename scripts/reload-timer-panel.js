@@ -4,7 +4,7 @@
 
 import {t} from './languages.js';
 import * as storage from './storage.js';
-import {getErrorText, setStatus} from './tab3.js';
+import {hideMessage, showError, showMessage} from './notify.js';
 import {assertSupportedPage, ensureSiteAccess, getActiveTab} from './tab-access.js';
 import {
   PRESET_SECONDS,
@@ -33,21 +33,28 @@ async function sendToService(type, payload) {
 }
 
 async function runAction(work) {
-  setStatus('');
-
   try {
     await work();
   } catch (error) {
-    setStatus(getErrorText(error), true);
+    showError(error);
   }
 }
 
 // Must be called synchronously from the click / Enter handler: see ensureSiteAccess.
 function startTimerForActiveTab(seconds) {
-  const accessRequest = ensureSiteAccess(() => setStatus(t('allowSiteAccess')));
+  let isAccessPromptShown = false;
+  const accessRequest = ensureSiteAccess(() => {
+    isAccessPromptShown = true;
+    showMessage(t('allowSiteAccess'), {sticky: true});
+  });
 
   return runAction(async () => {
     await accessRequest;
+
+    if (isAccessPromptShown) {
+      hideMessage();
+    }
+
     const tab = await getActiveTab();
     assertSupportedPage(tab);
     await sendToService(RELOAD_TIMER_MESSAGES.start, {tabId: tab.id, seconds});
@@ -213,7 +220,7 @@ export function startCustomTimer() {
   const seconds = Number(value);
 
   if (!/^\d+$/.test(value) || !isValidIntervalSeconds(seconds)) {
-    setStatus(t('autoReloadInvalidSeconds'), true);
+    showMessage(t('autoReloadInvalidSeconds'), {isError: true});
     secondsInput.focus();
     return;
   }

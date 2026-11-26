@@ -218,12 +218,6 @@
    "strokeWidth": {
       "message": "Épaisseur du trait"
    },
-   "task": {
-      "message": "Tâche"
-   },
-   "tasks": {
-      "message": "Tâches"
-   },
    "textLength": {
       "message": "Longueur du texte"
    },

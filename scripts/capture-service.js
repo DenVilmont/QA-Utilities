@@ -111,7 +111,7 @@ export async function captureVisible(tab) {
 // ---------- Selected area ----------
 
 function waitForSnipResult(tab) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     function cleanup() {
       chrome.runtime.onMessage.removeListener(onMessage);
       chrome.tabs.onUpdated.removeListener(onTabUpdated);
@@ -355,6 +355,8 @@ function pageRestoreFullPage() {
 export async function captureFullPage(tab, onProgress = () => {}) {
   assertSupportedPage(tab);
   const layout = await runInPage(tab, pagePrepareFullPage);
+  let blob;
+  let meta;
 
   try {
     const {viewportHeight, band} = layout;
@@ -441,15 +443,14 @@ export async function captureFullPage(tab, onProgress = () => {}) {
 
     const finalHeight = Math.min(height, Math.round((bandBottom + lastPosition + (truncated ? 0 : bottomHeight)) * scale));
     const finalCanvas = finalHeight < height ? cropCanvasHeight(canvas, finalHeight) : canvas;
-    const blob = await canvasToPngBlob(finalCanvas);
-    const meta = createMeta(tab, CAPTURE_MODES.fullPage, finalCanvas.width, finalCanvas.height, scale, truncated);
-
-    // Give the page back to the user before the editor tab opens.
-    await runInPage(tab, pageRestoreFullPage).catch(() => {});
-    return saveAndOpenEditor(tab, blob, meta);
+    blob = await canvasToPngBlob(finalCanvas);
+    meta = createMeta(tab, CAPTURE_MODES.fullPage, finalCanvas.width, finalCanvas.height, scale, truncated);
   } finally {
+    // Give the page back to the user (also after an error) before the editor tab opens.
     await runInPage(tab, pageRestoreFullPage).catch(() => {});
   }
+
+  return saveAndOpenEditor(tab, blob, meta);
 }
 
 function cropCanvasHeight(canvas, height) {

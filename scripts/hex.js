@@ -1,5 +1,9 @@
 const MIN_CODE_POINT = 0;
 const MAX_CODE_POINT = 0x10FFFF;
+// Codes reserved for the two halves of characters above 0xFFFF (emoji and so on).
+// A half alone is not a character: the clipboard turns it into "\uFFFD" (a question mark in a diamond).
+const SURROGATE_MIN = 0xD800;
+const SURROGATE_MAX = 0xDFFF;
 const HEX_INPUT_PATTERN = /^(0x)?[0-9a-f]+$/i;
 
 // Returns the code point written in the input, or null if the input is not a valid hex number.
@@ -21,12 +25,23 @@ export function formatHexValue(value) {
 // Returns the character for the input, or null if the input is not valid.
 export function getCharacterFromHexInput(value) {
   const codePoint = parseHexInput(value);
-  return codePoint === null ? null : String.fromCodePoint(codePoint);
+  return codePoint === null || isSurrogate(codePoint) ? null : String.fromCodePoint(codePoint);
 }
 
+// The arrows and the mouse wheel jump over the surrogate codes: 0xD7FF <-> 0xE000.
 export function getSteppedHexInputValue(value, delta) {
   const codePoint = parseHexInput(value) ?? 0;
-  return formatHexValue(codePoint + delta);
+  let nextCodePoint = clampCodePoint(codePoint + delta);
+
+  if (isSurrogate(nextCodePoint)) {
+    nextCodePoint = delta > 0 ? SURROGATE_MAX + 1 : SURROGATE_MIN - 1;
+  }
+
+  return formatHexValue(nextCodePoint);
+}
+
+function isSurrogate(codePoint) {
+  return codePoint >= SURROGATE_MIN && codePoint <= SURROGATE_MAX;
 }
 
 function clampCodePoint(value) {
