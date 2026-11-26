@@ -64,6 +64,22 @@ function bindEvents() {
   elements.hexUpButton.addEventListener('click', () => tab1.stepHexInput(1));
   elements.hexDownButton.addEventListener('click', () => tab1.stepHexInput(-1));
   elements.hexCharText.addEventListener('wheel', handleHexWheel);
+  window.addEventListener('storage', handleStorageChange);
+}
+
+// Fires when another open panel (in another Chrome window) changes localStorage.
+// Reload the data from storage so this panel does not overwrite it with an outdated copy.
+function handleStorageChange(event) {
+  const changedKey = event.key;
+  const isFullClear = changedKey === null;
+
+  if (isFullClear || changedKey === storage.SYNCED_STORAGE_KEYS.savedValues) {
+    tab2.loadSavedValues();
+  }
+
+  if (isFullClear || changedKey === storage.SYNCED_STORAGE_KEYS.notebookContent) {
+    tab2.loadNotebookContent();
+  }
 }
 
 function loadInitialState() {
@@ -106,7 +122,7 @@ async function handleLanguageChange(event) {
   }
 
   appState.language = languages.getCurrentLanguage();
-  tab2.loadSavedValues();
+  tab2.refreshSavedValuesView();
   languages.applyTranslations();
 }
 

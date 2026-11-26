@@ -1,12 +1,18 @@
 {
-   "EnterValidPositiveNumber": {
-      "message": "Bitte geben Sie eine gültige positive Zahl ein"
+   "EnterValidHex": {
+      "message": "Geben Sie einen gültigen Hex-Code ein, z. B. 0x1A"
+   },
+   "EnterValidTextLength": {
+      "message": "Geben Sie eine ganze Zahl von 1 bis 100000 ein"
    },
    "EnterValueToSave": {
       "message": "Geben Sie etwas ein, um zu speichern"
    },
    "GenerateHEXsimbolAndCopy": {
       "message": "HEX-Symbol generieren und in die Zwischenablage kopieren"
+   },
+   "NotSavedStorageFull": {
+      "message": "Nicht gespeichert: Speicher ist voll"
    },
    "SaveAndCopyValues": {
       "message": "Werte speichern und kopieren"
@@ -23,8 +29,8 @@
    "copy": {
       "message": "Kopieren"
    },
-   "generarMeaningfulText": {
-      "message": "Sinnvollen Text generieren"
+   "delete": {
+      "message": "Löschen"
    },
    "generate": {
       "message": "Generieren"
@@ -38,11 +44,11 @@
    "hexUp": {
       "message": "Erhöhen"
    },
-   "delete": {
-      "message": "Löschen"
-   },
    "lengthOfTheText": {
       "message": "Länge des Textes"
+   },
+   "loremIpsum": {
+      "message": "Lorem ipsum"
    },
    "notepad": {
       "message": "Notizblock"

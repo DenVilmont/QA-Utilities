@@ -14,8 +14,15 @@ function getStoredString(key, fallbackValue) {
   return localStorage.getItem(key) || fallbackValue;
 }
 
+// Returns false if the value could not be saved (for example, the storage quota is exceeded).
 function setStoredString(key, value) {
-  localStorage.setItem(key, value);
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (error) {
+    console.error(`Failed to save "${key}" to localStorage.`, error);
+    return false;
+  }
 }
 
 function parseSavedValues(rawValue) {
@@ -36,7 +43,7 @@ export function getLanguage() {
 }
 
 export function setLanguage(language) {
-  setStoredString(STORAGE_KEYS.language, language);
+  return setStoredString(STORAGE_KEYS.language, language);
 }
 
 export function getCheckedTabId() {
@@ -44,7 +51,7 @@ export function getCheckedTabId() {
 }
 
 export function setCheckedTabId(tabId) {
-  setStoredString(STORAGE_KEYS.checkedTabId, tabId);
+  return setStoredString(STORAGE_KEYS.checkedTabId, tabId);
 }
 
 export function getSavedValues() {
@@ -53,7 +60,7 @@ export function getSavedValues() {
 
 export function setSavedValues(values) {
   const nextValues = Array.isArray(values) ? values : [...DEFAULT_SAVED_VALUES];
-  localStorage.setItem(STORAGE_KEYS.savedValues, JSON.stringify(nextValues));
+  return setStoredString(STORAGE_KEYS.savedValues, JSON.stringify(nextValues));
 }
 
 export function getNotebookContent() {
@@ -61,5 +68,11 @@ export function getNotebookContent() {
 }
 
 export function setNotebookContent(content) {
-  setStoredString(STORAGE_KEYS.notebookContent, content ?? DEFAULT_NOTEBOOK_CONTENT);
+  return setStoredString(STORAGE_KEYS.notebookContent, content ?? DEFAULT_NOTEBOOK_CONTENT);
 }
+
+// Keys that other open panels (other Chrome windows) may change.
+export const SYNCED_STORAGE_KEYS = Object.freeze({
+  savedValues: STORAGE_KEYS.savedValues,
+  notebookContent: STORAGE_KEYS.notebookContent
+});

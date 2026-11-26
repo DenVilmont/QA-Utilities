@@ -2,6 +2,8 @@ import {applyTranslations, t} from './languages.js';
 import {copyTextToClipboard} from './clipboard.js';
 import {getNotebookContent, getSavedValues, setNotebookContent, setSavedValues} from './storage.js';
 
+let savedValuesState = [];
+
 function getSavedValuesContainer() {
     return document.getElementById('savedValues');
 }
@@ -19,29 +21,51 @@ function normalizeSavedValue(value) {
 }
 
 function normalizeSavedValues(values) {
-    return Array.isArray(values)
-        ? values
-            .map(normalizeSavedValue)
-            .filter(value => value !== '')
-        : [];
+    if (!Array.isArray(values)) {
+        return [];
+    }
+
+    const normalizedValues = [];
+    const seenValues = new Set();
+
+    values.forEach(value => {
+        const normalizedValue = normalizeSavedValue(value);
+
+        if (normalizedValue === '' || seenValues.has(normalizedValue)) {
+            return;
+        }
+
+        seenValues.add(normalizedValue);
+        normalizedValues.push(normalizedValue);
+    });
+
+    return normalizedValues;
 }
 
-function readSavedValuesState() {
-    return normalizeSavedValues(getSavedValues());
+function areSavedValuesEqual(firstValues, secondValues) {
+    return Array.isArray(firstValues)
+        && Array.isArray(secondValues)
+        && firstValues.length === secondValues.length
+        && firstValues.every((value, index) => value === secondValues[index]);
 }
 
-function persistSavedValues(savedValues) {
-    setSavedValues(savedValues);
-    return savedValues;
+function setSavedValuesState(savedValues) {
+    savedValuesState = normalizeSavedValues(savedValues);
+    return savedValuesState;
 }
 
-function renderSavedValues(savedValues = readSavedValuesState()) {
+function persistSavedValuesState() {
+    setSavedValues(savedValuesState);
+    return savedValuesState;
+}
+
+function renderSavedValues() {
     const savedValuesContainer = getSavedValuesContainer();
     const fragment = document.createDocumentFragment();
 
     savedValuesContainer.setAttribute('role', 'list');
 
-    savedValues.forEach((value, index) => {
+    savedValuesState.forEach((value, index) => {
         fragment.appendChild(createSavedValueItem(value, index));
     });
 
@@ -49,22 +73,11 @@ function renderSavedValues(savedValues = readSavedValuesState()) {
     applyTranslations(savedValuesContainer);
 }
 
-function persistAndRenderSavedValues(savedValues) {
-    const nextSavedValues = persistSavedValues(savedValues);
-    renderSavedValues(nextSavedValues);
-    return nextSavedValues;
-}
-
-function syncSavedValuesState() {
-    const storedValues = getSavedValues();
-    const normalizedValues = normalizeSavedValues(storedValues);
-
-    if (storedValues.length !== normalizedValues.length ||
-        storedValues.some((value, index) => value !== normalizedValues[index])) {
-        persistSavedValues(normalizedValues);
-    }
-
-    return normalizedValues;
+function commitSavedValues(savedValues) {
+    setSavedValuesState(savedValues);
+    persistSavedValuesState();
+    renderSavedValues();
+    return savedValuesState;
 }
 
 function createSavedValueItem(value, index) {
@@ -85,6 +98,7 @@ function createSavedValueItem(value, index) {
     copyBtn.className = 'copy-btn';
     copyBtn.setAttribute('data-action', 'copy-value');
     copyBtn.setAttribute('data-i18n-title', 'copy');
+    copyBtn.setAttribute('data-i18n-aria-label', 'copy');
     copyBtn.setAttribute('aria-label', t('copy'));
     copyBtn.innerHTML = '&#x1f5d0;';
 
@@ -93,6 +107,7 @@ function createSavedValueItem(value, index) {
     deleteBtn.className = 'delete-btn';
     deleteBtn.setAttribute('data-action', 'delete-value');
     deleteBtn.setAttribute('data-i18n-title', 'delete');
+    deleteBtn.setAttribute('data-i18n-aria-label', 'delete');
     deleteBtn.setAttribute('aria-label', t('delete'));
     deleteBtn.innerHTML = '&#x26cc;';
 
@@ -125,8 +140,7 @@ function findSavedValueIndex(savedValues, candidateValue) {
 }
 
 function copySavedValue(index) {
-    const savedValues = readSavedValuesState();
-    const value = savedValues[index];
+    const value = savedValuesState[index];
 
     if (typeof value !== 'string') {
         return;
@@ -136,26 +150,22 @@ function copySavedValue(index) {
 }
 
 function deleteSavedValue(index) {
-    const savedValues = readSavedValuesState();
-
-    if (index < 0 || index >= savedValues.length) {
+    if (index < 0 || index >= savedValuesState.length) {
         return;
     }
 
-    const nextSavedValues = savedValues.filter((_, savedValueIndex) => savedValueIndex !== index);
-    persistAndRenderSavedValues(nextSavedValues);
+    commitSavedValues(savedValuesState.filter((_, savedValueIndex) => savedValueIndex !== index));
 }
 
 export function saveValue() {
     const normalizedValue = normalizeSavedValue(getValueInput().value);
-    const savedValues = readSavedValuesState();
 
     if (normalizedValue === '') {
         focusAndResetValueInput();
         return;
     }
 
-    const duplicateIndex = findSavedValueIndex(savedValues, normalizedValue);
+    const duplicateIndex = findSavedValueIndex(savedValuesState, normalizedValue);
 
     if (duplicateIndex !== -1) {
         flashExistingValue(duplicateIndex);
@@ -163,15 +173,19 @@ export function saveValue() {
         return;
     }
 
-    persistAndRenderSavedValues([...savedValues, normalizedValue]);
+    commitSavedValues([...savedValuesState, normalizedValue]);
     focusAndResetValueInput();
 }
 
 export function handleSavedValueClick(event) {
-    const actionElement = event.target.closest('[data-action]');
+    const savedValuesContainer = getSavedValuesContainer();
+    const actionElement = event.target instanceof Element
+        ? event.target.closest('[data-action]')
+        : null;
+    const action = actionElement?.getAttribute('data-action');
     const savedValueItem = actionElement?.closest('[data-saved-value-index]');
 
-    if (!actionElement || !savedValueItem || !getSavedValuesContainer().contains(savedValueItem)) {
+    if (!actionElement || !savedValueItem || !savedValuesContainer.contains(actionElement)) {
         return;
     }
 
@@ -181,31 +195,63 @@ export function handleSavedValueClick(event) {
         return;
     }
 
-    if (actionElement.getAttribute('data-action') === 'delete-value') {
+    if (action === 'delete-value') {
         deleteSavedValue(index);
         return;
     }
 
-    if (actionElement.getAttribute('data-action') === 'copy-value') {
+    if (action === 'copy-value') {
         copySavedValue(index);
     }
 }
 
 export function loadSavedValues() {
-    const savedValues = syncSavedValuesState();
-    renderSavedValues(savedValues);
+    const storedValues = getSavedValues();
+    const normalizedValues = setSavedValuesState(storedValues);
+
+    if (!areSavedValuesEqual(storedValues, normalizedValues)) {
+        persistSavedValuesState();
+    }
+
+    renderSavedValues();
+}
+
+export function refreshSavedValuesView() {
+    renderSavedValues();
+}
+
+function setNotebookSaveErrorState(hasError) {
+    const notebookElement = getNotebookElement();
+    notebookElement.classList.toggle('save-error', hasError);
+
+    if (hasError) {
+        notebookElement.setAttribute('title', t('NotSavedStorageFull'));
+    } else {
+        notebookElement.removeAttribute('title');
+    }
 }
 
 export function saveNotebookContent() {
-    const notebookContent = getNotebookElement().value;
-    setNotebookContent(notebookContent);
+    const notebookContent = getNotebookElement().value ?? '';
+    const isSaved = setNotebookContent(notebookContent);
+    setNotebookSaveErrorState(!isSaved);
+    return notebookContent;
 }
 
 export function clearNotebook() {
     getNotebookElement().value = '';
-    setNotebookContent('');
+    saveNotebookContent();
 }
 
 export function loadNotebookContent() {
-    getNotebookElement().value = getNotebookContent();
+    const notebookElement = getNotebookElement();
+    const notebookContent = getNotebookContent();
+
+    // Do not touch the textarea if nothing changed: assigning value resets the cursor position.
+    if (notebookElement.value !== notebookContent) {
+        notebookElement.value = notebookContent;
+    }
+
+    setNotebookSaveErrorState(false);
+    return notebookContent;
 }

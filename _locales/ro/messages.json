@@ -1,12 +1,18 @@
 {
-   "EnterValidPositiveNumber": {
-      "message": "Introduceți un număr pozitiv valid"
+   "EnterValidHex": {
+      "message": "Introduceți un cod hex valid, de ex. 0x1A"
+   },
+   "EnterValidTextLength": {
+      "message": "Introduceți un număr întreg de la 1 la 100000"
    },
    "EnterValueToSave": {
       "message": "Introduceți orice pentru a salva"
    },
    "GenerateHEXsimbolAndCopy": {
       "message": "Generați simbolul HEX și copiați în clipboard"
+   },
+   "NotSavedStorageFull": {
+      "message": "Nesalvat: spațiul de stocare este plin"
    },
    "SaveAndCopyValues": {
       "message": "Salvați și copiați valorile"
@@ -26,9 +32,6 @@
    "delete": {
       "message": "Șterge"
    },
-   "generarMeaningfulText": {
-      "message": "Generează text semnificativ"
-   },
    "generate": {
       "message": "Generează"
    },
@@ -43,6 +46,9 @@
    },
    "lengthOfTheText": {
       "message": "Lungimea textului"
+   },
+   "loremIpsum": {
+      "message": "Lorem ipsum"
    },
    "notepad": {
       "message": "Blocnotes"

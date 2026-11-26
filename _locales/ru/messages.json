@@ -1,12 +1,18 @@
 {
-   "EnterValidPositiveNumber": {
-      "message": "Пожалуйста, введите допустимое положительное число"
+   "EnterValidHex": {
+      "message": "Введите корректный hex-код, например 0x1A"
+   },
+   "EnterValidTextLength": {
+      "message": "Введите целое число от 1 до 100000"
    },
    "EnterValueToSave": {
       "message": "Введите что-нибудь для сохранения"
    },
    "GenerateHEXsimbolAndCopy": {
       "message": "Создать HEX-символ и скопировать в буфер обмена"
+   },
+   "NotSavedStorageFull": {
+      "message": "Не сохранено: хранилище переполнено"
    },
    "SaveAndCopyValues": {
       "message": "Сохранить и скопировать значения"
@@ -26,9 +32,6 @@
    "delete": {
       "message": "Удалить"
    },
-   "generarMeaningfulText": {
-      "message": "Генерировать осмысленный текст"
-   },
    "generate": {
       "message": "Создать"
    },
@@ -43,6 +46,9 @@
    },
    "lengthOfTheText": {
       "message": "Длина текста"
+   },
+   "loremIpsum": {
+      "message": "Lorem ipsum"
    },
    "notepad": {
       "message": "Блокнот"

@@ -84,6 +84,12 @@ function applyTitleTranslations(root) {
     });
 }
 
+function applyAriaLabelTranslations(root) {
+    collectTranslatableElements(root, '[data-i18n-aria-label]').forEach(element => {
+        element.setAttribute('aria-label', t(element.getAttribute('data-i18n-aria-label')));
+    });
+}
+
 function applyDocumentTitle() {
     const titleElement = document.querySelector('[data-i18n-document-title]');
 
@@ -137,6 +143,7 @@ export function applyTranslations(root = document) {
     applyTextTranslations(root);
     applyPlaceholderTranslations(root);
     applyTitleTranslations(root);
+    applyAriaLabelTranslations(root);
     if (root === document) {
         applyDocumentTitle();
     }

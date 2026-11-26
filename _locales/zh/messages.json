@@ -1,12 +1,18 @@
 {
-   "EnterValidPositiveNumber": {
-      "message": "请输入有效的正数"
+   "EnterValidHex": {
+      "message": "请输入有效的十六进制代码，例如 0x1A"
+   },
+   "EnterValidTextLength": {
+      "message": "请输入 1 到 100000 之间的整数"
    },
    "EnterValueToSave": {
       "message": "输入要保存的值"
    },
    "GenerateHEXsimbolAndCopy": {
       "message": "生成HEX符号并复制到剪贴板"
+   },
+   "NotSavedStorageFull": {
+      "message": "未保存：存储空间已满"
    },
    "SaveAndCopyValues": {
       "message": "保存并复制值"
@@ -26,9 +32,6 @@
    "delete": {
       "message": "删除"
    },
-   "generarMeaningfulText": {
-      "message": "生成有意义的文本"
-   },
    "generate": {
       "message": "生成"
    },
@@ -43,6 +46,9 @@
    },
    "lengthOfTheText": {
       "message": "文本长度"
+   },
+   "loremIpsum": {
+      "message": "Lorem ipsum"
    },
    "notepad": {
       "message": "记事本"
