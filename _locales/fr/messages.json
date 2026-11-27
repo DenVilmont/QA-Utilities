@@ -300,6 +300,12 @@
    "save": {
       "message": "Sauvegarder"
    },
+   "savedValuesPageHint": {
+      "message": "Les valeurs de l’onglet Notes. Les valeurs vides et en double ne sont pas enregistrées. Faites glisser ⠿ pour changer l’ordre."
+   },
+   "savedValuesSettings": {
+      "message": "Modifier les valeurs enregistrées"
+   },
    "screenRecording": {
       "message": "Enregistrement de l'écran"
    },
@@ -358,7 +364,7 @@
       "message": "Exporter"
    },
    "testDataExportHint": {
-      "message": "Enregistrer tous les groupes dans un fichier JSON (sauvegarde, autre ordinateur)"
+      "message": "Enregistrer tous les groupes et les valeurs enregistrées dans un fichier JSON (sauvegarde, autre ordinateur)"
    },
    "testDataGroupName": {
       "message": "Nom du groupe"
@@ -375,14 +381,20 @@
    "testDataImportConfirm": {
       "message": "Remplacer tous les groupes par les $1 groupes du fichier ?"
    },
+   "testDataImportConfirmBoth": {
+      "message": "Remplacer les groupes ($1) et les valeurs enregistrées ($2) par ceux du fichier ?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "Remplacer les valeurs enregistrées par les $1 valeurs du fichier ?"
+   },
    "testDataImportFailed": {
       "message": "Le fichier ne contient aucun groupe de données de test"
    },
    "testDataImportHint": {
-      "message": "Charger des groupes depuis un fichier JSON (remplace les groupes actuels)"
+      "message": "Charger les groupes et les valeurs enregistrées depuis un fichier JSON (remplace les actuels)"
    },
    "testDataImported": {
-      "message": "Groupes importés"
+      "message": "Importé depuis le fichier"
    },
    "testDataLabel": {
       "message": "Libellé"
@@ -412,7 +424,7 @@
       "message": "Jeu par défaut restauré"
    },
    "testDataResetHint": {
-      "message": "Remplacer tous les groupes par le jeu par défaut"
+      "message": "Remplacer tous les groupes par le jeu par défaut (les valeurs enregistrées restent)"
    },
    "testDataSectionName": {
       "message": "Sous-groupe (facultatif)"

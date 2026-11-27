@@ -300,6 +300,12 @@
    "save": {
       "message": "Guardar"
    },
+   "savedValuesPageHint": {
+      "message": "Los valores de la pestaña Notas. Los valores vacíos y repetidos no se guardan. Arrastra por ⠿ para cambiar el orden."
+   },
+   "savedValuesSettings": {
+      "message": "Editar valores guardados"
+   },
    "screenRecording": {
       "message": "Grabación de pantalla"
    },
@@ -358,7 +364,7 @@
       "message": "Exportar"
    },
    "testDataExportHint": {
-      "message": "Guardar todos los grupos en un archivo JSON (copia de seguridad, otro ordenador)"
+      "message": "Guardar todos los grupos y valores guardados en un archivo JSON (copia de seguridad, otro ordenador)"
    },
    "testDataGroupName": {
       "message": "Nombre del grupo"
@@ -375,14 +381,20 @@
    "testDataImportConfirm": {
       "message": "¿Sustituir todos los grupos por los $1 grupos del archivo?"
    },
+   "testDataImportConfirmBoth": {
+      "message": "¿Sustituir los grupos ($1) y los valores guardados ($2) por los del archivo?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "¿Sustituir los valores guardados por los $1 valores del archivo?"
+   },
    "testDataImportFailed": {
       "message": "El archivo no contiene grupos de datos de prueba"
    },
    "testDataImportHint": {
-      "message": "Cargar grupos desde un archivo JSON (sustituye los actuales)"
+      "message": "Cargar grupos y valores guardados desde un archivo JSON (sustituye los actuales)"
    },
    "testDataImported": {
-      "message": "Grupos importados"
+      "message": "Importado del archivo"
    },
    "testDataLabel": {
       "message": "Etiqueta"
@@ -412,7 +424,7 @@
       "message": "Conjunto por defecto restaurado"
    },
    "testDataResetHint": {
-      "message": "Sustituir todos los grupos por el conjunto por defecto"
+      "message": "Sustituir todos los grupos por el conjunto por defecto (los valores guardados se mantienen)"
    },
    "testDataSectionName": {
       "message": "Subgrupo (opcional)"

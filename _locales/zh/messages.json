@@ -300,6 +300,12 @@
    "save": {
       "message": "保存"
    },
+   "savedValuesPageHint": {
+      "message": "“笔记”选项卡中的值。空值和重复值不会被保存。拖动 ⠿ 可调整顺序。"
+   },
+   "savedValuesSettings": {
+      "message": "编辑已保存的值"
+   },
    "screenRecording": {
       "message": "屏幕录制"
    },
@@ -358,7 +364,7 @@
       "message": "导出"
    },
    "testDataExportHint": {
-      "message": "将所有分组保存为 JSON 文件（备份、其他电脑）"
+      "message": "将所有分组和已保存的值保存为 JSON 文件（备份、其他电脑）"
    },
    "testDataGroupName": {
       "message": "分组名称"
@@ -375,14 +381,20 @@
    "testDataImportConfirm": {
       "message": "用文件中的 $1 个分组替换所有分组？"
    },
+   "testDataImportConfirmBoth": {
+      "message": "用文件中的内容替换分组（$1 个）和已保存的值（$2 个）？"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "用文件中的 $1 个值替换已保存的值？"
+   },
    "testDataImportFailed": {
       "message": "文件中没有测试数据分组"
    },
    "testDataImportHint": {
-      "message": "从 JSON 文件加载分组（替换当前分组）"
+      "message": "从 JSON 文件加载分组和已保存的值（替换当前内容）"
    },
    "testDataImported": {
-      "message": "分组已导入"
+      "message": "已从文件导入"
    },
    "testDataLabel": {
       "message": "标签"
@@ -412,7 +424,7 @@
       "message": "已恢复默认数据集"
    },
    "testDataResetHint": {
-      "message": "用默认数据集替换所有分组"
+      "message": "用默认数据集替换所有分组（已保存的值保持不变）"
    },
    "testDataSectionName": {
       "message": "子分组（可选）"

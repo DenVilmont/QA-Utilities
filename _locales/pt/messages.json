@@ -300,6 +300,12 @@
    "save": {
       "message": "Salvar"
    },
+   "savedValuesPageHint": {
+      "message": "Os valores da aba Notas. Valores vazios e repetidos não são salvos. Arraste por ⠿ para reordenar."
+   },
+   "savedValuesSettings": {
+      "message": "Editar valores salvos"
+   },
    "screenRecording": {
       "message": "Gravação de ecrã"
    },
@@ -358,7 +364,7 @@
       "message": "Exportar"
    },
    "testDataExportHint": {
-      "message": "Salvar todos os grupos em um arquivo JSON (backup, outro computador)"
+      "message": "Salvar todos os grupos e valores salvos em um arquivo JSON (backup, outro computador)"
    },
    "testDataGroupName": {
       "message": "Nome do grupo"
@@ -375,14 +381,20 @@
    "testDataImportConfirm": {
       "message": "Substituir todos os grupos por $1 grupos do arquivo?"
    },
+   "testDataImportConfirmBoth": {
+      "message": "Substituir os grupos ($1) e os valores salvos ($2) pelos do arquivo?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "Substituir os valores salvos por $1 valores do arquivo?"
+   },
    "testDataImportFailed": {
       "message": "O arquivo não tem grupos de dados de teste"
    },
    "testDataImportHint": {
-      "message": "Carregar grupos de um arquivo JSON (substitui os atuais)"
+      "message": "Carregar grupos e valores salvos de um arquivo JSON (substitui os atuais)"
    },
    "testDataImported": {
-      "message": "Grupos importados"
+      "message": "Importado do arquivo"
    },
    "testDataLabel": {
       "message": "Rótulo"
@@ -412,7 +424,7 @@
       "message": "Conjunto padrão restaurado"
    },
    "testDataResetHint": {
-      "message": "Substituir todos os grupos pelo conjunto padrão"
+      "message": "Substituir todos os grupos pelo conjunto padrão (os valores salvos ficam)"
    },
    "testDataSectionName": {
       "message": "Subgrupo (opcional)"

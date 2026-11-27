@@ -300,6 +300,12 @@
    "save": {
       "message": "Save"
    },
+   "savedValuesPageHint": {
+      "message": "The values of the Notes tab. Empty values and repeats are not saved. Drag ⠿ to reorder."
+   },
+   "savedValuesSettings": {
+      "message": "Edit saved values"
+   },
    "screenRecording": {
       "message": "Screen recording"
    },
@@ -358,7 +364,7 @@
       "message": "Export"
    },
    "testDataExportHint": {
-      "message": "Save all groups to a JSON file (backup, another computer)"
+      "message": "Save all groups and saved values to a JSON file (backup, another computer)"
    },
    "testDataGroupName": {
       "message": "Group name"
@@ -375,14 +381,20 @@
    "testDataImportConfirm": {
       "message": "Replace all groups with $1 groups from the file?"
    },
+   "testDataImportConfirmBoth": {
+      "message": "Replace the groups ($1) and the saved values ($2) with the ones from the file?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "Replace the saved values with $1 values from the file?"
+   },
    "testDataImportFailed": {
       "message": "The file has no test data groups"
    },
    "testDataImportHint": {
-      "message": "Load groups from a JSON file (replaces the current ones)"
+      "message": "Load groups and saved values from a JSON file (replaces the current ones)"
    },
    "testDataImported": {
-      "message": "Groups imported"
+      "message": "Imported from the file"
    },
    "testDataLabel": {
       "message": "Label"
@@ -412,7 +424,7 @@
       "message": "Default set restored"
    },
    "testDataResetHint": {
-      "message": "Replace all groups with the default set"
+      "message": "Replace all groups with the default set (saved values stay)"
    },
    "testDataSectionName": {
       "message": "Subgroup (optional)"

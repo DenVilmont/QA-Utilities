@@ -58,6 +58,33 @@ export function setCheckedTabId(tabId) {
   return setStoredString(STORAGE_KEYS.checkedTabId, tabId);
 }
 
+// Saved values (Notes tab): trimmed, not empty, without repeats. Used by the Notes tab and the test data page.
+export function normalizeSavedValue(value) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+export function normalizeSavedValues(values) {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+
+  const normalizedValues = [];
+  const seenValues = new Set();
+
+  values.forEach(value => {
+    const normalizedValue = normalizeSavedValue(value);
+
+    if (normalizedValue === '' || seenValues.has(normalizedValue)) {
+      return;
+    }
+
+    seenValues.add(normalizedValue);
+    normalizedValues.push(normalizedValue);
+  });
+
+  return normalizedValues;
+}
+
 export function getSavedValues() {
   return parseSavedValues(localStorage.getItem(STORAGE_KEYS.savedValues));
 }

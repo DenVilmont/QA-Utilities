@@ -43,6 +43,12 @@
           <input id="newGroupName" type="text" maxlength="100" data-i18n-placeholder="testDataNewGroup">
           <button class="add-button" type="submit" data-i18n-title="testDataAddGroup" data-i18n-aria-label="testDataAddGroup">+</button>
         </form>
+        <div class="groups-divider"></div>
+        <div id="savedValuesItem" class="group-item saved-values-item" role="button" tabindex="0">
+          <svg class="item-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v18l-5-4-5 4z"/></svg>
+          <span class="group-item-name i18n" data-i18n="SaveAndCopyValues"></span>
+          <span id="savedValuesCount" class="group-item-count"></span>
+        </div>
       </aside>
 
       <section class="group-panel">
@@ -58,6 +64,19 @@
           <button id="addSectionButton" class="text-button" type="button">
             + <span class="i18n" data-i18n="testDataAddSection"></span>
           </button>
+        </div>
+
+        <div id="savedValuesEditor" class="group-editor" hidden>
+          <div class="group-editor-header">
+            <h2 class="saved-values-title i18n" data-i18n="SaveAndCopyValues"></h2>
+          </div>
+          <div class="section-card">
+            <div id="savedValueList" class="value-list"></div>
+            <button id="addSavedValueButton" class="text-button" type="button">
+              + <span class="i18n" data-i18n="testDataAddValue"></span>
+            </button>
+          </div>
+          <p class="saved-values-hint i18n" data-i18n="savedValuesPageHint"></p>
         </div>
       </section>
     </main>

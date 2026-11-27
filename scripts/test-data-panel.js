@@ -7,10 +7,8 @@ import {applyTranslations, t} from './languages.js';
 import {copyTextToClipboard} from './clipboard.js';
 import {getGroupTitle, loadGroups} from './test-data.js';
 import {createValueCard, createValueRow} from './value-row.js';
-import {showError} from './notify.js';
 import {INSERT_MODES, insertIntoPage} from './page-insert.js';
-
-const SETTINGS_PAGE = 'pages/test-data.html';
+import {SETTINGS_SECTIONS, openSettingsPage} from './settings-link.js';
 
 const elements = {};
 let groups = [];
@@ -150,25 +148,6 @@ function handleValuesClick(event) {
   }
 }
 
-// One settings tab is enough: if it is already open, switch to it.
-async function openSettings() {
-  const url = chrome.runtime.getURL(SETTINGS_PAGE);
-
-  try {
-    const [context] = await chrome.runtime.getContexts({contextTypes: ['TAB'], documentUrls: [url]});
-
-    if (context && context.tabId >= 0) {
-      await chrome.tabs.update(context.tabId, {active: true});
-      await chrome.windows.update(context.windowId, {focused: true});
-      return;
-    }
-
-    await chrome.tabs.create({url});
-  } catch (error) {
-    showError(error);
-  }
-}
-
 export function initTestData() {
   elements.groupSelect = document.getElementById('testDataGroupSelect');
   elements.clearButton = document.getElementById('clearTestDataGroupButton');
@@ -179,7 +158,7 @@ export function initTestData() {
   elements.groupSelect.addEventListener('change', handleGroupChange);
   elements.clearButton.addEventListener('click', clearGroup);
   elements.values.addEventListener('click', handleValuesClick);
-  elements.settingsButton.addEventListener('click', () => void openSettings());
+  elements.settingsButton.addEventListener('click', () => void openSettingsPage(SETTINGS_SECTIONS.groups));
   elements.modeButtons.addEventListener('click', handleModeClick);
 
   groups = loadGroups();

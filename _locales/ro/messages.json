@@ -300,6 +300,12 @@
    "save": {
       "message": "Salvează"
    },
+   "savedValuesPageHint": {
+      "message": "Valorile din fila Note. Valorile goale și repetate nu se salvează. Trageți de ⠿ pentru a schimba ordinea."
+   },
+   "savedValuesSettings": {
+      "message": "Editează valorile salvate"
+   },
    "screenRecording": {
       "message": "Înregistrarea ecranului"
    },
@@ -358,7 +364,7 @@
       "message": "Exportă"
    },
    "testDataExportHint": {
-      "message": "Salvează toate grupurile într-un fișier JSON (copie de rezervă, alt computer)"
+      "message": "Salvează toate grupurile și valorile salvate într-un fișier JSON (copie de rezervă, alt computer)"
    },
    "testDataGroupName": {
       "message": "Numele grupului"
@@ -375,14 +381,20 @@
    "testDataImportConfirm": {
       "message": "Înlocuiți toate grupurile cu cele $1 grupuri din fișier?"
    },
+   "testDataImportConfirmBoth": {
+      "message": "Înlocuiți grupurile ($1) și valorile salvate ($2) cu cele din fișier?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "Înlocuiți valorile salvate cu cele $1 valori din fișier?"
+   },
    "testDataImportFailed": {
       "message": "Fișierul nu conține grupuri de date de test"
    },
    "testDataImportHint": {
-      "message": "Încarcă grupuri dintr-un fișier JSON (le înlocuiește pe cele actuale)"
+      "message": "Încarcă grupuri și valori salvate dintr-un fișier JSON (le înlocuiește pe cele actuale)"
    },
    "testDataImported": {
-      "message": "Grupuri importate"
+      "message": "Importat din fișier"
    },
    "testDataLabel": {
       "message": "Etichetă"
@@ -412,7 +424,7 @@
       "message": "Setul implicit a fost restabilit"
    },
    "testDataResetHint": {
-      "message": "Înlocuiește toate grupurile cu setul implicit"
+      "message": "Înlocuiește toate grupurile cu setul implicit (valorile salvate rămân)"
    },
    "testDataSectionName": {
       "message": "Subgrup (opțional)"

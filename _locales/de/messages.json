@@ -300,6 +300,12 @@
    "save": {
       "message": "Speichern"
    },
+   "savedValuesPageHint": {
+      "message": "Die Werte des Tabs „Notizen“. Leere und doppelte Werte werden nicht gespeichert. An ⠿ ziehen, um die Reihenfolge zu ändern."
+   },
+   "savedValuesSettings": {
+      "message": "Gespeicherte Werte bearbeiten"
+   },
    "screenRecording": {
       "message": "Bildschirmaufnahme"
    },
@@ -358,7 +364,7 @@
       "message": "Exportieren"
    },
    "testDataExportHint": {
-      "message": "Alle Gruppen in einer JSON-Datei speichern (Sicherung, anderer Computer)"
+      "message": "Alle Gruppen und gespeicherten Werte in einer JSON-Datei speichern (Sicherung, anderer Computer)"
    },
    "testDataGroupName": {
       "message": "Gruppenname"
@@ -375,14 +381,20 @@
    "testDataImportConfirm": {
       "message": "Alle Gruppen durch $1 Gruppen aus der Datei ersetzen?"
    },
+   "testDataImportConfirmBoth": {
+      "message": "Gruppen ($1) und gespeicherte Werte ($2) durch die aus der Datei ersetzen?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "Gespeicherte Werte durch $1 Werte aus der Datei ersetzen?"
+   },
    "testDataImportFailed": {
       "message": "Die Datei enthält keine Testdaten-Gruppen"
    },
    "testDataImportHint": {
-      "message": "Gruppen aus einer JSON-Datei laden (ersetzt die aktuellen)"
+      "message": "Gruppen und gespeicherte Werte aus einer JSON-Datei laden (ersetzt die aktuellen)"
    },
    "testDataImported": {
-      "message": "Gruppen importiert"
+      "message": "Aus der Datei importiert"
    },
    "testDataLabel": {
       "message": "Beschriftung"
@@ -412,7 +424,7 @@
       "message": "Standardsatz wiederhergestellt"
    },
    "testDataResetHint": {
-      "message": "Alle Gruppen durch den Standardsatz ersetzen"
+      "message": "Alle Gruppen durch den Standardsatz ersetzen (gespeicherte Werte bleiben)"
    },
    "testDataSectionName": {
       "message": "Untergruppe (optional)"
