@@ -93,6 +93,62 @@ textarea:focus {
     min-width: 0;
 }
 
+/* Below the groups: the saved values of the Notes tab. */
+.groups-divider {
+    height: 1px;
+    margin: 12px 0 8px;
+    background-color: #ddd;
+}
+
+.saved-values-item {
+    padding-left: 8px;
+}
+
+.item-icon {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: #b36531;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.saved-values-title {
+    margin: 4px 0;
+    font-size: 18px;
+}
+
+.saved-values-hint {
+    margin: 8px 2px;
+    font-size: 12px;
+    color: #888;
+}
+
+.saved-value-input {
+    flex: 1;
+    min-width: 0;
+    font-family: Consolas, monospace !important;
+}
+
+/* A saved value that will not be stored (repeat or empty), see markUnsavedValues(). */
+.row-note {
+    flex: 0 0 auto;
+    align-self: center;
+    font-size: 12px;
+    white-space: nowrap;
+    color: #888;
+}
+
+.value-row.not-saved .saved-value-input {
+    border-color: #c62828;
+    background-color: #fff5f5;
+}
+
+.value-row.not-saved .row-note {
+    color: #c62828;
+}
+
 .add-button {
     width: 32px;
     border: none;

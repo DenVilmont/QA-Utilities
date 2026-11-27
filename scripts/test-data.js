@@ -5,9 +5,11 @@
 //   group   {name, sections: [section]}
 //   section {name, values: [value]}  - a section with an empty name has no header (a group without subgroups)
 //   value   {label, value}           - label is optional, value is copied exactly as it is (spaces included)
+//
+// The export file also has the saved values of the Notes tab (they are edited on the same page).
 
 import {DEFAULT_TEST_DATA_GROUPS} from './test-data-defaults.js';
-import {getStoredTestData, removeStoredTestData, setStoredTestData} from './storage.js';
+import {getStoredTestData, normalizeSavedValues, removeStoredTestData, setStoredTestData} from './storage.js';
 import {t} from './languages.js';
 
 const STORAGE_VERSION = 1;
@@ -74,12 +76,19 @@ export function resetGroups() {
   return getDefaultGroups();
 }
 
-export function createExportText(groups) {
-  return JSON.stringify({format: EXPORT_FORMAT, version: STORAGE_VERSION, groups: normalizeGroups(groups)}, null, 2);
+// The file has the test data groups and the saved values (Notes tab).
+export function createExportText(groups, savedValues) {
+  return JSON.stringify({
+    format: EXPORT_FORMAT,
+    version: STORAGE_VERSION,
+    groups: normalizeGroups(groups),
+    savedValues: normalizeSavedValues(savedValues)
+  }, null, 2);
 }
 
-// Accepts an exported file ({format, version, groups}) or just the list of groups.
-// Returns null if the text is not JSON or has no groups.
+// Accepts an exported file ({format, version, groups, savedValues}) or just the list of groups.
+// Returns {groups, savedValues}: null for a part the file does not have (that part is not replaced);
+// null instead of the object if the text is not JSON or has neither part.
 export function parseImportText(text) {
   let parsed;
 
@@ -90,5 +99,11 @@ export function parseImportText(text) {
   }
 
   const groups = normalizeGroups(Array.isArray(parsed) ? parsed : parsed?.groups);
-  return groups.length > 0 ? groups : null;
+  const savedValues = Array.isArray(parsed?.savedValues) ? normalizeSavedValues(parsed.savedValues) : null;
+
+  if (groups.length === 0 && savedValues === null) {
+    return null;
+  }
+
+  return {groups: groups.length > 0 ? groups : null, savedValues};
 }

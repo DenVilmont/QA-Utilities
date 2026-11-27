@@ -9,13 +9,13 @@
       "message": "输入要保存的值"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "生成HEX符号并复制到剪贴板"
+      "message": "HEX 字符"
    },
    "NotSavedStorageFull": {
       "message": "未保存：存储空间已满"
    },
    "SaveAndCopyValues": {
-      "message": "保存并复制值"
+      "message": "已保存的值"
    },
    "WriteYourNotesHere": {
       "message": "在这里写下你的笔记..."
@@ -193,7 +193,7 @@
       "message": "生成"
    },
    "generateTextLine": {
-      "message": "生成文本行"
+      "message": "文本行"
    },
    "gifSize": {
       "message": "GIF 尺寸（下次会记住）"
@@ -203,6 +203,45 @@
    },
    "hexUp": {
       "message": "增加"
+   },
+   "insertBusy": {
+      "message": "上一个值仍在输入中"
+   },
+   "insertBypassDone": {
+      "message": "已绕过限制写入：$1 个字符"
+   },
+   "insertModeBypass": {
+      "message": "绕过"
+   },
+   "insertModeBypassHint": {
+      "message": "点击某个值，会将其一次性写入页面上光标所在的字段，忽略 maxlength 和按键过滤，然后发送 input 事件。用于检查服务器端校验。"
+   },
+   "insertModeCopy": {
+      "message": "复制"
+   },
+   "insertModeCopyHint": {
+      "message": "点击某个值即复制到剪贴板"
+   },
+   "insertModeType": {
+      "message": "键入"
+   },
+   "insertModeTypeHint": {
+      "message": "点击某个值，会将其逐字符键入页面上光标所在的字段（keydown → 字符 → keyup）。适用于输入掩码、自动补全、延迟搜索。字段中的原有文本会被替换。"
+   },
+   "insertNoField": {
+      "message": "请先点击页面上的文本字段，再点击值"
+   },
+   "insertRejected": {
+      "message": "浏览器不接受此类型字段的这个值（例如数字字段中的字母）"
+   },
+   "insertTypedDone": {
+      "message": "已键入：$1 个字符"
+   },
+   "insertTypedLimited": {
+      "message": "已键入 $1/$2 个字符：字段未接受其余部分"
+   },
+   "insertTyping": {
+      "message": "正在键入…"
    },
    "lengthOfTheText": {
       "message": "文本长度"
@@ -261,6 +300,18 @@
    "save": {
       "message": "保存"
    },
+   "savedValueDuplicate": {
+      "message": "重复：不会保存"
+   },
+   "savedValueEmpty": {
+      "message": "空值：不会保存"
+   },
+   "savedValuesPageHint": {
+      "message": "“笔记”选项卡中的值。空值和重复值不会被保存。拖动 ⠿ 可调整顺序。"
+   },
+   "savedValuesSettings": {
+      "message": "编辑已保存的值"
+   },
    "screenRecording": {
       "message": "屏幕录制"
    },
@@ -284,6 +335,117 @@
    },
    "strokeWidth": {
       "message": "线条粗细"
+   },
+   "testData": {
+      "message": "测试数据"
+   },
+   "testDataAddGroup": {
+      "message": "添加分组"
+   },
+   "testDataAddSection": {
+      "message": "子分组"
+   },
+   "testDataAddValue": {
+      "message": "值"
+   },
+   "testDataChooseGroup": {
+      "message": "选择分组…"
+   },
+   "testDataDeleteGroup": {
+      "message": "删除分组"
+   },
+   "testDataDeleteGroupConfirm": {
+      "message": "删除分组“$1”及其所有值？"
+   },
+   "testDataDeleteSection": {
+      "message": "删除子分组"
+   },
+   "testDataDeleteSectionConfirm": {
+      "message": "删除子分组“$1”及其所有值？"
+   },
+   "testDataDragHint": {
+      "message": "拖动以移动"
+   },
+   "testDataExport": {
+      "message": "导出"
+   },
+   "testDataExportHint": {
+      "message": "将所有分组和已保存的值保存为 JSON 文件（备份、其他电脑）"
+   },
+   "testDataGroupName": {
+      "message": "分组名称"
+   },
+   "testDataGroups": {
+      "message": "分组"
+   },
+   "testDataHideValues": {
+      "message": "隐藏值"
+   },
+   "testDataImport": {
+      "message": "导入"
+   },
+   "testDataImportConfirm": {
+      "message": "用文件中的 $1 个分组替换所有分组？"
+   },
+   "testDataImportConfirmBoth": {
+      "message": "用文件中的内容替换分组（$1 个）和已保存的值（$2 个）？"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "用文件中的 $1 个值替换已保存的值？"
+   },
+   "testDataImportFailed": {
+      "message": "文件中没有测试数据分组"
+   },
+   "testDataImportHint": {
+      "message": "从 JSON 文件加载分组和已保存的值（替换当前内容）"
+   },
+   "testDataImported": {
+      "message": "已从文件导入"
+   },
+   "testDataLabel": {
+      "message": "标签"
+   },
+   "testDataNewGroup": {
+      "message": "新分组"
+   },
+   "testDataNoGroupSelected": {
+      "message": "在左侧选择一个分组或添加新分组"
+   },
+   "testDataNoGroups": {
+      "message": "没有分组：请在设置中添加"
+   },
+   "testDataNoValues": {
+      "message": "此分组没有值"
+   },
+   "testDataPageHint": {
+      "message": "“工具”选项卡的分组、子分组和值。更改会立即保存。拖动 ⠿ 可调整顺序；将值或子分组拖到另一个分组上即可移动过去。"
+   },
+   "testDataReset": {
+      "message": "默认"
+   },
+   "testDataResetConfirm": {
+      "message": "用默认数据集替换所有分组？你的更改将丢失。"
+   },
+   "testDataResetDone": {
+      "message": "已恢复默认数据集"
+   },
+   "testDataResetHint": {
+      "message": "用默认数据集替换所有分组（已保存的值保持不变）"
+   },
+   "testDataSectionName": {
+      "message": "子分组（可选）"
+   },
+   "testDataSettings": {
+      "message": "测试数据设置"
+   },
+   "testDataUntitledGroup": {
+      "message": "（未命名）"
+   },
+   "testDataUntitledSection": {
+      "message": "无子分组"
+   },
+   "testDataValue": {
+      "message": "值"
    },
    "textLength": {
       "message": "文本长度"

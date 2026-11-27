@@ -6,6 +6,7 @@ import * as tab1 from './tab1.js';
 import * as tab2 from './tab2.js';
 import * as tab3 from './tab3.js';
 import * as testData from './test-data-panel.js';
+import {SETTINGS_SECTIONS, openSettingsPage} from './settings-link.js';
 
 const elements = {};
 
@@ -44,6 +45,7 @@ function cacheElements() {
   elements.savedValues = document.getElementById('savedValues');
   elements.notebook = document.getElementById('notebook');
   elements.clearNotebookButton = document.getElementById('clearNotebookButton');
+  elements.savedValuesSettingsButton = document.getElementById('savedValuesSettingsButton');
   elements.hexUpButton = document.getElementById('hexUp');
   elements.hexDownButton = document.getElementById('hexDown');
   elements.hexCharText = document.getElementById('hexCharText');
@@ -76,6 +78,7 @@ function bindEvents() {
   elements.savedValues.addEventListener('click', tab2.handleSavedValueClick);
   elements.notebook.addEventListener('input', tab2.saveNotebookContent);
   elements.clearNotebookButton.addEventListener('click', tab2.clearNotebook);
+  elements.savedValuesSettingsButton.addEventListener('click', () => void openSettingsPage(SETTINGS_SECTIONS.savedValues));
   elements.hexUpButton.addEventListener('click', () => tab1.stepHexInput(1));
   elements.hexDownButton.addEventListener('click', () => tab1.stepHexInput(-1));
   elements.hexCharText.addEventListener('wheel', event => handleWheelStep(event, tab1.stepHexInput));

@@ -9,13 +9,13 @@
       "message": "Rellena algo para guardar..."
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "Generar símbolo HEX y copiar al portapapeles"
+      "message": "Carácter HEX"
    },
    "NotSavedStorageFull": {
       "message": "No guardado: el almacenamiento está lleno"
    },
    "SaveAndCopyValues": {
-      "message": "Guardar Valores"
+      "message": "Valores guardados"
    },
    "WriteYourNotesHere": {
       "message": "Escribe aquí tus notas..."
@@ -193,7 +193,7 @@
       "message": "Generar"
    },
    "generateTextLine": {
-      "message": "Generar línea de texto"
+      "message": "Línea de texto"
    },
    "gifSize": {
       "message": "Tamaño del GIF (se recuerda para la próxima vez)"
@@ -203,6 +203,45 @@
    },
    "hexUp": {
       "message": "Aumentar"
+   },
+   "insertBusy": {
+      "message": "Todavía se está escribiendo el valor anterior"
+   },
+   "insertBypassDone": {
+      "message": "Escrito saltando los límites: $1 caracteres"
+   },
+   "insertModeBypass": {
+      "message": "Saltar límites"
+   },
+   "insertModeBypassHint": {
+      "message": "Al hacer clic en un valor, se escribe de golpe en el campo con el cursor de la página, sin respetar maxlength ni los filtros de teclas, y se envía el evento input. Para comprobar la validación en el servidor."
+   },
+   "insertModeCopy": {
+      "message": "Copiar"
+   },
+   "insertModeCopyHint": {
+      "message": "Al hacer clic en un valor, se copia al portapapeles"
+   },
+   "insertModeType": {
+      "message": "Teclear"
+   },
+   "insertModeTypeHint": {
+      "message": "Al hacer clic en un valor, se teclea carácter a carácter en el campo con el cursor de la página (keydown → carácter → keyup). Para máscaras de entrada, autocompletado, búsqueda con retardo. El texto anterior del campo se sustituye."
+   },
+   "insertNoField": {
+      "message": "Primero haz clic en un campo de texto de la página y luego en el valor"
+   },
+   "insertRejected": {
+      "message": "El navegador no aceptó este valor para este tipo de campo (por ejemplo, letras en un campo numérico)"
+   },
+   "insertTypedDone": {
+      "message": "Tecleados: $1 caracteres"
+   },
+   "insertTypedLimited": {
+      "message": "Tecleados $1 de $2 caracteres: el campo no aceptó el resto"
+   },
+   "insertTyping": {
+      "message": "Tecleando…"
    },
    "lengthOfTheText": {
       "message": "Longitud del texto"
@@ -261,6 +300,18 @@
    "save": {
       "message": "Guardar"
    },
+   "savedValueDuplicate": {
+      "message": "Repetido: no se guardará"
+   },
+   "savedValueEmpty": {
+      "message": "Vacío: no se guardará"
+   },
+   "savedValuesPageHint": {
+      "message": "Los valores de la pestaña Notas. Los valores vacíos y repetidos no se guardan. Arrastra por ⠿ para cambiar el orden."
+   },
+   "savedValuesSettings": {
+      "message": "Editar valores guardados"
+   },
    "screenRecording": {
       "message": "Grabación de pantalla"
    },
@@ -284,6 +335,117 @@
    },
    "strokeWidth": {
       "message": "Grosor de línea"
+   },
+   "testData": {
+      "message": "Datos de prueba"
+   },
+   "testDataAddGroup": {
+      "message": "Añadir grupo"
+   },
+   "testDataAddSection": {
+      "message": "Subgrupo"
+   },
+   "testDataAddValue": {
+      "message": "Valor"
+   },
+   "testDataChooseGroup": {
+      "message": "Elige un grupo…"
+   },
+   "testDataDeleteGroup": {
+      "message": "Eliminar grupo"
+   },
+   "testDataDeleteGroupConfirm": {
+      "message": "¿Eliminar el grupo «$1» con todos sus valores?"
+   },
+   "testDataDeleteSection": {
+      "message": "Eliminar subgrupo"
+   },
+   "testDataDeleteSectionConfirm": {
+      "message": "¿Eliminar el subgrupo «$1» con todos sus valores?"
+   },
+   "testDataDragHint": {
+      "message": "Arrastra para mover"
+   },
+   "testDataExport": {
+      "message": "Exportar"
+   },
+   "testDataExportHint": {
+      "message": "Guardar todos los grupos y valores guardados en un archivo JSON (copia de seguridad, otro ordenador)"
+   },
+   "testDataGroupName": {
+      "message": "Nombre del grupo"
+   },
+   "testDataGroups": {
+      "message": "Grupos"
+   },
+   "testDataHideValues": {
+      "message": "Ocultar valores"
+   },
+   "testDataImport": {
+      "message": "Importar"
+   },
+   "testDataImportConfirm": {
+      "message": "¿Sustituir todos los grupos por los $1 grupos del archivo?"
+   },
+   "testDataImportConfirmBoth": {
+      "message": "¿Sustituir los grupos ($1) y los valores guardados ($2) por los del archivo?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "¿Sustituir los valores guardados por los $1 valores del archivo?"
+   },
+   "testDataImportFailed": {
+      "message": "El archivo no contiene grupos de datos de prueba"
+   },
+   "testDataImportHint": {
+      "message": "Cargar grupos y valores guardados desde un archivo JSON (sustituye los actuales)"
+   },
+   "testDataImported": {
+      "message": "Importado del archivo"
+   },
+   "testDataLabel": {
+      "message": "Etiqueta"
+   },
+   "testDataNewGroup": {
+      "message": "Nuevo grupo"
+   },
+   "testDataNoGroupSelected": {
+      "message": "Elige un grupo a la izquierda o añade uno nuevo"
+   },
+   "testDataNoGroups": {
+      "message": "No hay grupos: añádelos en los ajustes"
+   },
+   "testDataNoValues": {
+      "message": "Este grupo no tiene valores"
+   },
+   "testDataPageHint": {
+      "message": "Grupos, subgrupos y valores para la pestaña Utils. Los cambios se guardan al momento. Arrastra por ⠿ para cambiar el orden; suelta un valor o un subgrupo sobre otro grupo para moverlo allí."
+   },
+   "testDataReset": {
+      "message": "Por defecto"
+   },
+   "testDataResetConfirm": {
+      "message": "¿Sustituir todos los grupos por el conjunto por defecto? Se perderán tus cambios."
+   },
+   "testDataResetDone": {
+      "message": "Conjunto por defecto restaurado"
+   },
+   "testDataResetHint": {
+      "message": "Sustituir todos los grupos por el conjunto por defecto (los valores guardados se mantienen)"
+   },
+   "testDataSectionName": {
+      "message": "Subgrupo (opcional)"
+   },
+   "testDataSettings": {
+      "message": "Ajustes de datos de prueba"
+   },
+   "testDataUntitledGroup": {
+      "message": "(sin nombre)"
+   },
+   "testDataUntitledSection": {
+      "message": "sin subgrupo"
+   },
+   "testDataValue": {
+      "message": "Valor"
    },
    "textLength": {
       "message": "Longitud del texto"

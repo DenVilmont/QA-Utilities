@@ -9,13 +9,13 @@
       "message": "Geben Sie etwas ein, um zu speichern"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "HEX-Symbol generieren und in die Zwischenablage kopieren"
+      "message": "HEX-Zeichen"
    },
    "NotSavedStorageFull": {
       "message": "Nicht gespeichert: Speicher ist voll"
    },
    "SaveAndCopyValues": {
-      "message": "Werte speichern und kopieren"
+      "message": "Gespeicherte Werte"
    },
    "WriteYourNotesHere": {
       "message": "Schreiben Sie hier Ihre Notizen..."
@@ -193,7 +193,7 @@
       "message": "Generieren"
    },
    "generateTextLine": {
-      "message": "Textzeile generieren"
+      "message": "Textzeile"
    },
    "gifSize": {
       "message": "GIF-Größe (wird für das nächste Mal gespeichert)"
@@ -203,6 +203,45 @@
    },
    "hexUp": {
       "message": "Erhöhen"
+   },
+   "insertBusy": {
+      "message": "Der vorherige Wert wird noch getippt"
+   },
+   "insertBypassDone": {
+      "message": "Ohne Begrenzungen geschrieben: $1 Zeichen"
+   },
+   "insertModeBypass": {
+      "message": "Umgehen"
+   },
+   "insertModeBypassHint": {
+      "message": "Ein Klick auf einen Wert schreibt ihn auf einmal in das Feld mit dem Cursor auf der Seite, ohne maxlength und Tastenfilter, und sendet dann „input“. Zum Prüfen der Validierung auf dem Server."
+   },
+   "insertModeCopy": {
+      "message": "Kopieren"
+   },
+   "insertModeCopyHint": {
+      "message": "Ein Klick auf einen Wert kopiert ihn in die Zwischenablage"
+   },
+   "insertModeType": {
+      "message": "Tippen"
+   },
+   "insertModeTypeHint": {
+      "message": "Ein Klick auf einen Wert tippt ihn Zeichen für Zeichen in das Feld mit dem Cursor auf der Seite (keydown → Zeichen → keyup). Für Eingabemasken, Autovervollständigung, verzögerte Suche. Der alte Text des Feldes wird ersetzt."
+   },
+   "insertNoField": {
+      "message": "Klicken Sie zuerst in ein Textfeld auf der Seite, dann auf den Wert"
+   },
+   "insertRejected": {
+      "message": "Der Browser hat diesen Wert für diesen Feldtyp nicht angenommen (zum Beispiel Buchstaben in einem Zahlenfeld)"
+   },
+   "insertTypedDone": {
+      "message": "Getippt: $1 Zeichen"
+   },
+   "insertTypedLimited": {
+      "message": "$1 von $2 Zeichen getippt: Das Feld hat den Rest nicht angenommen"
+   },
+   "insertTyping": {
+      "message": "Tippe…"
    },
    "lengthOfTheText": {
       "message": "Länge des Textes"
@@ -261,6 +300,18 @@
    "save": {
       "message": "Speichern"
    },
+   "savedValueDuplicate": {
+      "message": "Doppelt: wird nicht gespeichert"
+   },
+   "savedValueEmpty": {
+      "message": "Leer: wird nicht gespeichert"
+   },
+   "savedValuesPageHint": {
+      "message": "Die Werte des Tabs „Notizen“. Leere und doppelte Werte werden nicht gespeichert. An ⠿ ziehen, um die Reihenfolge zu ändern."
+   },
+   "savedValuesSettings": {
+      "message": "Gespeicherte Werte bearbeiten"
+   },
    "screenRecording": {
       "message": "Bildschirmaufnahme"
    },
@@ -284,6 +335,117 @@
    },
    "strokeWidth": {
       "message": "Linienstärke"
+   },
+   "testData": {
+      "message": "Testdaten"
+   },
+   "testDataAddGroup": {
+      "message": "Gruppe hinzufügen"
+   },
+   "testDataAddSection": {
+      "message": "Untergruppe"
+   },
+   "testDataAddValue": {
+      "message": "Wert"
+   },
+   "testDataChooseGroup": {
+      "message": "Gruppe wählen…"
+   },
+   "testDataDeleteGroup": {
+      "message": "Gruppe löschen"
+   },
+   "testDataDeleteGroupConfirm": {
+      "message": "Die Gruppe „$1“ mit allen Werten löschen?"
+   },
+   "testDataDeleteSection": {
+      "message": "Untergruppe löschen"
+   },
+   "testDataDeleteSectionConfirm": {
+      "message": "Die Untergruppe „$1“ mit allen Werten löschen?"
+   },
+   "testDataDragHint": {
+      "message": "Zum Verschieben ziehen"
+   },
+   "testDataExport": {
+      "message": "Exportieren"
+   },
+   "testDataExportHint": {
+      "message": "Alle Gruppen und gespeicherten Werte in einer JSON-Datei speichern (Sicherung, anderer Computer)"
+   },
+   "testDataGroupName": {
+      "message": "Gruppenname"
+   },
+   "testDataGroups": {
+      "message": "Gruppen"
+   },
+   "testDataHideValues": {
+      "message": "Werte ausblenden"
+   },
+   "testDataImport": {
+      "message": "Importieren"
+   },
+   "testDataImportConfirm": {
+      "message": "Alle Gruppen durch $1 Gruppen aus der Datei ersetzen?"
+   },
+   "testDataImportConfirmBoth": {
+      "message": "Gruppen ($1) und gespeicherte Werte ($2) durch die aus der Datei ersetzen?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "Gespeicherte Werte durch $1 Werte aus der Datei ersetzen?"
+   },
+   "testDataImportFailed": {
+      "message": "Die Datei enthält keine Testdaten-Gruppen"
+   },
+   "testDataImportHint": {
+      "message": "Gruppen und gespeicherte Werte aus einer JSON-Datei laden (ersetzt die aktuellen)"
+   },
+   "testDataImported": {
+      "message": "Aus der Datei importiert"
+   },
+   "testDataLabel": {
+      "message": "Beschriftung"
+   },
+   "testDataNewGroup": {
+      "message": "Neue Gruppe"
+   },
+   "testDataNoGroupSelected": {
+      "message": "Wählen Sie links eine Gruppe oder fügen Sie eine neue hinzu"
+   },
+   "testDataNoGroups": {
+      "message": "Keine Gruppen: Fügen Sie sie in den Einstellungen hinzu"
+   },
+   "testDataNoValues": {
+      "message": "Diese Gruppe hat keine Werte"
+   },
+   "testDataPageHint": {
+      "message": "Gruppen, Untergruppen und Werte für den Tab „Dienstprogramme“. Änderungen werden sofort gespeichert. An ⠿ ziehen, um die Reihenfolge zu ändern; einen Wert oder eine Untergruppe auf eine andere Gruppe ziehen, um sie dorthin zu verschieben."
+   },
+   "testDataReset": {
+      "message": "Standard"
+   },
+   "testDataResetConfirm": {
+      "message": "Alle Gruppen durch den Standardsatz ersetzen? Ihre Änderungen gehen verloren."
+   },
+   "testDataResetDone": {
+      "message": "Standardsatz wiederhergestellt"
+   },
+   "testDataResetHint": {
+      "message": "Alle Gruppen durch den Standardsatz ersetzen (gespeicherte Werte bleiben)"
+   },
+   "testDataSectionName": {
+      "message": "Untergruppe (optional)"
+   },
+   "testDataSettings": {
+      "message": "Testdaten-Einstellungen"
+   },
+   "testDataUntitledGroup": {
+      "message": "(ohne Namen)"
+   },
+   "testDataUntitledSection": {
+      "message": "ohne Untergruppe"
+   },
+   "testDataValue": {
+      "message": "Wert"
    },
    "textLength": {
       "message": "Textlänge"

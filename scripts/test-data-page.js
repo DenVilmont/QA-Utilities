@@ -1,21 +1,32 @@
-// Test data page: edit the groups shown at the bottom of the Utilities tab.
-// Opened by the gear button of the "Test data" block. Every change is saved at once to localStorage;
+// Test data page: edit the groups shown at the bottom of the Utilities tab and the saved values of the Notes tab.
+// Opened by the gear buttons of the "Test data" and "Saved values" cards (scripts/settings-link.js):
+// the address ends with #groups or #saved-values. Every change is saved at once to localStorage;
 // the side panel gets a "storage" event and shows the new data.
 //
-// Left: the list of groups. Right: the chosen group, its subgroups (sections) and values.
+// Left: the list of groups, under the line "Saved values". Right: the chosen group (its subgroups and values)
+// or the saved values (one list, no subgroups, no labels).
 // Groups, subgroups and values are reordered by dragging. A value or a subgroup can also be dropped
 // on another group in the left list to move it there.
 
 import {applyTranslations, getCurrentLanguage, setCurrentLanguage, t} from './languages.js';
 import {showMessage} from './notify.js';
+import {getSavedValues, normalizeSavedValue, normalizeSavedValues, setSavedValues} from './storage.js';
 import {EXPORT_FILE_NAME, createExportText, getGroupTitle, loadGroups, parseImportText, resetGroups, saveGroups} from './test-data.js';
 import {createValueDisplay, hasInvisibleCharacters} from './value-row.js';
+
+// The end of the page address: which part is open (see scripts/settings-link.js).
+const SAVED_VALUES_HASH = 'saved-values';
+const GROUPS_HASH = 'groups';
 
 const elements = {};
 let groups = [];
 // Index of the group shown on the right, -1 = none.
 let selectedGroup = -1;
-// What is being dragged: {type: 'group' | 'section' | 'value', group, section, value} (indexes).
+// The saved values are shown on the right instead of a group.
+let isSavedValuesSelected = false;
+// Saved values as they are being edited (may have empty or repeated rows; only clean values are stored).
+let savedValues = [];
+// What is being dragged: {type: 'group' | 'section' | 'value' | 'saved', group, section, value} (indexes).
 let drag = null;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,7 +37,8 @@ async function initPage() {
   [
     'groupList', 'addGroupForm', 'newGroupName', 'noGroupMessage', 'groupEditor', 'groupNameInput',
     'deleteGroupButton', 'sectionList', 'addSectionButton', 'importButton', 'exportButton', 'resetButton',
-    'importFileInput'
+    'importFileInput', 'savedValuesItem', 'savedValuesCount', 'savedValuesEditor', 'savedValueList',
+    'addSavedValueButton'
   ].forEach(id => {
     elements[id] = document.getElementById(id);
   });
@@ -34,8 +46,30 @@ async function initPage() {
   await setCurrentLanguage(getCurrentLanguage());
   groups = loadGroups();
   selectedGroup = groups.length > 0 ? 0 : -1;
+  savedValues = normalizeSavedValues(getSavedValues());
+  isSavedValuesSelected = location.hash === `#${SAVED_VALUES_HASH}`;
   bindEvents();
   render();
+}
+
+
+// The gear of the other card was clicked while this page is open: only the "#..." changes.
+function handleHashChange() {
+  const wantsSavedValues = location.hash === `#${SAVED_VALUES_HASH}`;
+
+  if (wantsSavedValues !== isSavedValuesSelected) {
+    isSavedValuesSelected = wantsSavedValues;
+    render();
+  }
+}
+
+// The address shows what is open, so the next gear click (another "#...") is noticed by handleHashChange.
+function updateHash() {
+  const hash = `#${isSavedValuesSelected ? SAVED_VALUES_HASH : GROUPS_HASH}`;
+
+  if (location.hash !== hash) {
+    history.replaceState(null, '', hash);
+  }
 }
 
 function bindEvents() {
@@ -50,6 +84,16 @@ function bindEvents() {
   elements.importFileInput.addEventListener('change', () => void importFile());
   elements.exportButton.addEventListener('click', exportFile);
   elements.resetButton.addEventListener('click', resetToDefaults);
+  elements.savedValuesItem.addEventListener('click', selectSavedValues);
+  elements.savedValuesItem.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      selectSavedValues();
+    }
+  });
+  elements.addSavedValueButton.addEventListener('click', addSavedValue);
+  elements.savedValueList.addEventListener('input', handleSavedValueInput);
+  elements.savedValueList.addEventListener('click', handleSavedValueListClick);
 
   // Dragging
   elements.groupList.addEventListener('dragstart', handleGroupDragStart);
@@ -59,10 +103,15 @@ function bindEvents() {
   elements.groupList.addEventListener('drop', handleGroupListDrop);
   elements.sectionList.addEventListener('dragover', handleSectionListDragOver);
   elements.sectionList.addEventListener('drop', handleSectionListDrop);
+  elements.savedValueList.addEventListener('pointerdown', handleHandlePointerDown);
+  elements.savedValueList.addEventListener('dragstart', handleSavedValueDragStart);
+  elements.savedValueList.addEventListener('dragover', handleSavedValueListDragOver);
+  elements.savedValueList.addEventListener('drop', handleSavedValueListDrop);
   document.addEventListener('dragend', handleDragEnd);
   document.addEventListener('pointerup', resetDraggableRows);
 
   window.addEventListener('storage', handleStorageChange);
+  window.addEventListener('hashchange', handleHashChange);
 }
 
 // ---------- Saving ----------
@@ -73,8 +122,15 @@ function save() {
   }
 }
 
+// Saved values: only clean ones are stored (trimmed, not empty, no repeats), like the Notes tab does.
+function saveSavedValues() {
+  if (!setSavedValues(normalizeSavedValues(savedValues))) {
+    showMessage(t('NotSavedStorageFull'), {isError: true});
+  }
+}
+
 function getSelectedGroup() {
-  return groups[selectedGroup] ?? null;
+  return isSavedValuesSelected ? null : groups[selectedGroup] ?? null;
 }
 
 // Values the panel shows: an empty value is a row that was added and not filled yet.
@@ -86,14 +142,17 @@ function countValues(group) {
 
 function render() {
   renderGroupList();
+  renderSavedValuesItem();
   renderGroupEditor();
+  renderSavedValuesEditor();
   applyTranslations();
+  updateHash();
 }
 
 function renderGroupList() {
   const items = groups.map((group, index) => {
     const item = document.createElement('div');
-    item.className = index === selectedGroup ? 'group-item selected' : 'group-item';
+    item.className = index === selectedGroup && !isSavedValuesSelected ? 'group-item selected' : 'group-item';
     item.draggable = true;
     item.setAttribute('role', 'listitem');
     item.setAttribute('data-group-index', String(index));
@@ -114,9 +173,14 @@ function renderGroupList() {
   elements.groupList.replaceChildren(...items);
 }
 
+function renderSavedValuesItem() {
+  elements.savedValuesItem.classList.toggle('selected', isSavedValuesSelected);
+  elements.savedValuesCount.textContent = String(normalizeSavedValues(savedValues).length);
+}
+
 function renderGroupEditor() {
   const group = getSelectedGroup();
-  elements.noGroupMessage.hidden = group !== null;
+  elements.noGroupMessage.hidden = group !== null || isSavedValuesSelected;
   elements.groupEditor.hidden = group === null;
 
   if (!group) {
@@ -233,6 +297,12 @@ function fitTextareaHeight(textarea) {
 
 function selectGroup(index) {
   selectedGroup = index;
+  isSavedValuesSelected = false;
+  render();
+}
+
+function selectSavedValues() {
+  isSavedValuesSelected = true;
   render();
 }
 
@@ -408,7 +478,7 @@ function handleHandlePointerDown(event) {
 }
 
 function resetDraggableRows() {
-  elements.sectionList.querySelectorAll('[draggable="true"]').forEach(element => {
+  document.querySelectorAll('.value-row[draggable="true"], .section-card[draggable="true"]').forEach(element => {
     element.draggable = false;
   });
 }
@@ -462,7 +532,8 @@ function isAfter(event, element) {
 function getGroupListDrop(event) {
   const item = event.target.closest('.group-item');
 
-  if (!drag || !item) {
+  // Saved values stay saved values: they are not moved into test data groups.
+  if (!drag || !item || drag.type === 'saved') {
     return null;
   }
 
@@ -549,7 +620,7 @@ function handleGroupListDrop(event) {
   }
 
   event.preventDefault();
-  const currentGroup = getSelectedGroup();
+  const currentGroup = groups[selectedGroup];
 
   if (drag.type === 'group') {
     moveInList(groups, drag.group, dropTarget.index);
@@ -621,26 +692,47 @@ async function importFile() {
     return;
   }
 
-  const importedGroups = parseImportText(await file.text());
+  const imported = parseImportText(await file.text());
 
-  if (!importedGroups) {
+  if (!imported) {
     showMessage(t('testDataImportFailed'), {isError: true});
     return;
   }
 
-  if (!confirm(t('testDataImportConfirm').replace('$1', String(importedGroups.length)))) {
+  if (!confirm(getImportQuestion(imported))) {
     return;
   }
 
-  groups = importedGroups;
-  selectedGroup = 0;
-  save();
+  // A part the file does not have stays as it is.
+  if (imported.groups) {
+    groups = imported.groups;
+    selectedGroup = 0;
+    save();
+  }
+
+  if (imported.savedValues) {
+    savedValues = imported.savedValues;
+    saveSavedValues();
+  }
+
   render();
   showMessage(t('testDataImported'));
 }
 
+function getImportQuestion({groups: importedGroups, savedValues: importedValues}) {
+  if (importedGroups && importedValues) {
+    return t('testDataImportConfirmBoth')
+      .replace('$1', String(importedGroups.length))
+      .replace('$2', String(importedValues.length));
+  }
+
+  return importedGroups
+    ? t('testDataImportConfirm').replace('$1', String(importedGroups.length))
+    : t('testDataImportConfirmSaved').replace('$1', String(importedValues.length));
+}
+
 function exportFile() {
-  const blob = new Blob([createExportText(groups)], {type: 'application/json'});
+  const blob = new Blob([createExportText(groups, savedValues)], {type: 'application/json'});
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
@@ -654,8 +746,10 @@ function resetToDefaults() {
     return;
   }
 
+  // Only the test data groups: the saved values (logins, passwords) are the user's own, there is no default for them.
   groups = resetGroups();
   selectedGroup = groups.length > 0 ? 0 : -1;
+  isSavedValuesSelected = false;
   render();
   showMessage(t('testDataResetDone'));
 }
@@ -675,4 +769,134 @@ async function handleStorageChange(event) {
     selectedGroup = Math.min(selectedGroup, groups.length - 1);
     render();
   }
+
+  // A value was saved or deleted in the side panel (Notes tab).
+  if (event.key === 'savedValues' || event.key === null) {
+    savedValues = normalizeSavedValues(getSavedValues());
+    render();
+  }
+}
+
+// ---------- Saved values ----------
+
+function renderSavedValuesEditor() {
+  elements.savedValuesEditor.hidden = !isSavedValuesSelected;
+
+  if (isSavedValuesSelected) {
+    elements.savedValueList.replaceChildren(...savedValues.map(createSavedValueRow));
+    markUnsavedValues();
+  }
+}
+
+// Empty values and repeats are not stored (see saveSavedValues), so they would be gone after a reload:
+// such rows get a note, so it is clear before that.
+function markUnsavedValues() {
+  const seen = new Set();
+
+  elements.savedValueList.querySelectorAll('.value-row').forEach(row => {
+    const value = normalizeSavedValue(row.querySelector('input').value);
+    let noteKey = '';
+
+    if (value === '') {
+      noteKey = 'savedValueEmpty';
+    } else if (seen.has(value)) {
+      noteKey = 'savedValueDuplicate';
+    }
+
+    seen.add(value);
+    row.classList.toggle('not-saved', noteKey === 'savedValueDuplicate');
+    row.classList.toggle('empty-value', noteKey === 'savedValueEmpty');
+    const note = row.querySelector('.row-note');
+    note.hidden = noteKey === '';
+    note.textContent = noteKey ? t(noteKey) : '';
+  });
+}
+
+function createSavedValueRow(value, index) {
+  const row = document.createElement('div');
+  row.className = 'value-row';
+  row.setAttribute('data-value-index', String(index));
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'saved-value-input';
+  input.spellcheck = false;
+  input.value = value;
+  input.setAttribute('data-i18n-placeholder', 'testDataValue');
+
+  const note = document.createElement('span');
+  note.className = 'row-note';
+  note.hidden = true;
+
+  row.append(createDragHandle(), input, note, createIconButton('delete-value', 'delete'));
+  return row;
+}
+
+function addSavedValue() {
+  savedValues.push('');
+  render();
+  elements.savedValueList.querySelector('.value-row:last-child input')?.focus();
+}
+
+function handleSavedValueInput(event) {
+  const row = event.target.closest('.value-row');
+
+  if (!row) {
+    return;
+  }
+
+  savedValues[Number(row.getAttribute('data-value-index'))] = event.target.value;
+  saveSavedValues();
+  renderSavedValuesItem();
+  markUnsavedValues();
+}
+
+function handleSavedValueListClick(event) {
+  const button = event.target.closest('[data-action="delete-value"]');
+
+  if (!button) {
+    return;
+  }
+
+  savedValues.splice(Number(button.closest('.value-row').getAttribute('data-value-index')), 1);
+  saveSavedValues();
+  render();
+}
+
+function handleSavedValueDragStart(event) {
+  const row = event.target;
+
+  if (row.classList?.contains('value-row')) {
+    startDrag(event, row, {type: 'saved', value: Number(row.getAttribute('data-value-index'))});
+  }
+}
+
+function getSavedValueListDrop(event) {
+  const row = event.target.closest('.value-row');
+
+  if (drag?.type !== 'saved' || !row) {
+    return null;
+  }
+
+  const after = isAfter(event, row);
+  const index = Number(row.getAttribute('data-value-index'));
+  return {element: row, mark: after ? 'drop-after' : 'drop-before', index: index + (after ? 1 : 0)};
+}
+
+function handleSavedValueListDragOver(event) {
+  showDropMark(event, getSavedValueListDrop(event));
+}
+
+function handleSavedValueListDrop(event) {
+  const dropTarget = getSavedValueListDrop(event);
+
+  if (!dropTarget) {
+    return;
+  }
+
+  event.preventDefault();
+  moveInList(savedValues, drag.value, dropTarget.index);
+  handleDragEnd();
+  saveSavedValues();
+  render();
 }

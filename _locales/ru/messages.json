@@ -9,13 +9,13 @@
       "message": "Введите что-нибудь для сохранения"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "Создать HEX-символ и скопировать в буфер обмена"
+      "message": "HEX-символ"
    },
    "NotSavedStorageFull": {
       "message": "Не сохранено: хранилище переполнено"
    },
    "SaveAndCopyValues": {
-      "message": "Сохранить и скопировать значения"
+      "message": "Сохранённые значения"
    },
    "WriteYourNotesHere": {
       "message": "Напишите свои заметки здесь..."
@@ -193,7 +193,7 @@
       "message": "Создать"
    },
    "generateTextLine": {
-      "message": "Создать строку текста"
+      "message": "Строка текста"
    },
    "gifSize": {
       "message": "Размер GIF (запоминается на будущее)"
@@ -203,6 +203,45 @@
    },
    "hexUp": {
       "message": "Увеличить"
+   },
+   "insertBusy": {
+      "message": "Ещё печатается предыдущее значение"
+   },
+   "insertBypassDone": {
+      "message": "Записано в обход ограничений, символов: $1"
+   },
+   "insertModeBypass": {
+      "message": "В обход"
+   },
+   "insertModeBypassHint": {
+      "message": "Клик по значению сразу записывает его в поле, где стоит курсор на странице, мимо maxlength и фильтров ввода, и отправляет событие input. Для проверки валидации на сервере."
+   },
+   "insertModeCopy": {
+      "message": "Копировать"
+   },
+   "insertModeCopyHint": {
+      "message": "Клик по значению копирует его в буфер обмена"
+   },
+   "insertModeType": {
+      "message": "Печатать"
+   },
+   "insertModeTypeHint": {
+      "message": "Клик по значению печатает его посимвольно в поле, где стоит курсор на странице (keydown → символ → keyup). Для масок ввода, автокомплита, поиска с задержкой. Старый текст поля заменяется."
+   },
+   "insertNoField": {
+      "message": "Сначала поставьте курсор в поле ввода на странице, потом нажмите значение"
+   },
+   "insertRejected": {
+      "message": "Браузер не принял это значение для такого типа поля (например, буквы в числовом поле)"
+   },
+   "insertTypedDone": {
+      "message": "Напечатано символов: $1"
+   },
+   "insertTypedLimited": {
+      "message": "Напечатано $1 из $2 символов: остальное поле не приняло"
+   },
+   "insertTyping": {
+      "message": "Печатаю…"
    },
    "lengthOfTheText": {
       "message": "Длина текста"
@@ -260,6 +299,18 @@
    },
    "save": {
       "message": "Сохранить"
+   },
+   "savedValueDuplicate": {
+      "message": "Повтор — не сохранится"
+   },
+   "savedValueEmpty": {
+      "message": "Пустое — не сохранится"
+   },
+   "savedValuesPageHint": {
+      "message": "Значения вкладки «Заметки». Пустые значения и повторы не сохраняются. Перетаскивайте за ⠿, чтобы менять порядок."
+   },
+   "savedValuesSettings": {
+      "message": "Редактировать сохранённые значения"
    },
    "screenRecording": {
       "message": "Запись экрана"
@@ -319,7 +370,7 @@
       "message": "Экспорт"
    },
    "testDataExportHint": {
-      "message": "Сохранить все группы в JSON-файл (резервная копия, другой компьютер)"
+      "message": "Сохранить все группы и сохранённые значения в JSON-файл (резервная копия, другой компьютер)"
    },
    "testDataGroupName": {
       "message": "Название группы"
@@ -336,14 +387,20 @@
    "testDataImportConfirm": {
       "message": "Заменить все группы на группы из файла ($1 шт.)?"
    },
+   "testDataImportConfirmBoth": {
+      "message": "Заменить группы ($1 шт.) и сохранённые значения ($2 шт.) на те, что в файле?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "Заменить сохранённые значения на значения из файла ($1 шт.)?"
+   },
    "testDataImportFailed": {
       "message": "В файле нет групп тестовых данных"
    },
    "testDataImportHint": {
-      "message": "Загрузить группы из JSON-файла (заменяет текущие)"
+      "message": "Загрузить группы и сохранённые значения из JSON-файла (заменяет текущие)"
    },
    "testDataImported": {
-      "message": "Группы загружены"
+      "message": "Загружено из файла"
    },
    "testDataLabel": {
       "message": "Подпись"
@@ -373,7 +430,7 @@
       "message": "Стандартный набор восстановлен"
    },
    "testDataResetHint": {
-      "message": "Заменить все группы стандартным набором"
+      "message": "Заменить все группы стандартным набором (сохранённые значения не меняются)"
    },
    "testDataSectionName": {
       "message": "Подгруппа (необязательно)"

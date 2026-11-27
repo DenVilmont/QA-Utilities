@@ -1,19 +1,21 @@
-// "Test data" block at the bottom of the Utilities tab: choose a group, click a value to copy it.
-// The groups are edited on the test data page (pages/test-data.html, the gear button).
-// The chosen group is not remembered: the block is used now and then, and without a group the tab stays short.
+// "Test data" block at the bottom of the Utilities tab: choose a group, click a value to copy it
+// or, in the "Type" / "Bypass" modes, to put it into the field with the cursor on the page (scripts/page-insert.js).
+// The copy button of a row always copies. The groups are edited on the test data page (pages/test-data.html, the gear button).
+// The chosen group and mode are not remembered: the block is used now and then, and without a group the tab stays short.
 
 import {applyTranslations, t} from './languages.js';
 import {copyTextToClipboard} from './clipboard.js';
 import {getGroupTitle, loadGroups} from './test-data.js';
-import {createValueRow} from './value-row.js';
-import {showError} from './notify.js';
-
-const SETTINGS_PAGE = 'pages/test-data.html';
+import {createValueCard, createValueRow} from './value-row.js';
+import {INSERT_MODES, insertIntoPage} from './page-insert.js';
+import {SETTINGS_SECTIONS, openSettingsPage} from './settings-link.js';
 
 const elements = {};
 let groups = [];
 // Index of the chosen group, -1 = none.
 let selectedIndex = -1;
+// What a click on a value does: INSERT_MODES.copy, .type or .bypass.
+let insertMode = INSERT_MODES.copy;
 
 function renderGroupSelect() {
   const select = elements.groupSelect;
@@ -32,6 +34,10 @@ function renderGroupSelect() {
   select.value = selectedIndex >= 0 ? String(selectedIndex) : '';
   select.disabled = groups.length === 0;
   elements.clearButton.hidden = selectedIndex < 0;
+  elements.modeButtons.hidden = selectedIndex < 0;
+  elements.modeButtons.querySelectorAll('[data-mode]').forEach(button => {
+    button.classList.toggle('active', button.getAttribute('data-mode') === insertMode);
+  });
 }
 
 function renderValues() {
@@ -69,10 +75,16 @@ function renderValues() {
       const title = document.createElement('div');
       title.className = 'test-data-section-title';
       title.textContent = section.name;
+      const count = document.createElement('span');
+      count.className = 'test-data-section-count';
+      count.textContent = ` \u00B7 ${rows.length}`;
+      title.append(count);
       fragment.append(title);
     }
 
-    fragment.append(...rows);
+    const card = createValueCard();
+    card.append(...rows);
+    fragment.append(card);
   });
 
   if (!fragment.hasChildNodes()) {
@@ -102,6 +114,16 @@ function clearGroup() {
   render();
 }
 
+function handleModeClick(event) {
+  const mode = event.target.closest('[data-mode]')?.getAttribute('data-mode');
+
+  if (mode) {
+    insertMode = mode;
+    renderGroupSelect();
+  }
+}
+
+// The value itself: what the chosen mode does. The copy button next to it: always copy.
 function handleValuesClick(event) {
   const actionElement = event.target instanceof Element ? event.target.closest('[data-action="copy-value"]') : null;
   const row = actionElement?.closest('[data-value-index]');
@@ -113,27 +135,16 @@ function handleValuesClick(event) {
   const section = groups[selectedIndex]?.sections[Number(row.getAttribute('data-section-index'))];
   const item = section?.values[Number(row.getAttribute('data-value-index'))];
 
-  if (item) {
-    void copyTextToClipboard(item.value);
+  if (!item) {
+    return;
   }
-}
 
-// One settings tab is enough: if it is already open, switch to it.
-async function openSettings() {
-  const url = chrome.runtime.getURL(SETTINGS_PAGE);
+  const isCopyButton = actionElement.classList.contains('copy-btn');
 
-  try {
-    const [context] = await chrome.runtime.getContexts({contextTypes: ['TAB'], documentUrls: [url]});
-
-    if (context && context.tabId >= 0) {
-      await chrome.tabs.update(context.tabId, {active: true});
-      await chrome.windows.update(context.windowId, {focused: true});
-      return;
-    }
-
-    await chrome.tabs.create({url});
-  } catch (error) {
-    showError(error);
+  if (isCopyButton || insertMode === INSERT_MODES.copy) {
+    void copyTextToClipboard(item.value);
+  } else {
+    void insertIntoPage(item.value, insertMode);
   }
 }
 
@@ -142,11 +153,13 @@ export function initTestData() {
   elements.clearButton = document.getElementById('clearTestDataGroupButton');
   elements.values = document.getElementById('testDataValues');
   elements.settingsButton = document.getElementById('testDataSettingsButton');
+  elements.modeButtons = document.getElementById('insertModeButtons');
 
   elements.groupSelect.addEventListener('change', handleGroupChange);
   elements.clearButton.addEventListener('click', clearGroup);
   elements.values.addEventListener('click', handleValuesClick);
-  elements.settingsButton.addEventListener('click', () => void openSettings());
+  elements.settingsButton.addEventListener('click', () => void openSettingsPage(SETTINGS_SECTIONS.groups));
+  elements.modeButtons.addEventListener('click', handleModeClick);
 
   groups = loadGroups();
   render();

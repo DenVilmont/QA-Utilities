@@ -9,6 +9,7 @@ export const DEFAULT_TEST_DATA_GROUPS = [
       {
         name: '',
         values: [
+          {label: 'Mixed symbols', value: 'latín - Quis custodiet ipsos custodes?\ncirílico - кириллица.\ngriego - Ελληνικό δείγμα κειμένου.\nárabe - هذا نص عربي للتجربة.\nhebreo - טקסט לדוגמה בעברית.\ndevanagari - यह हिंदी परीक्षण वाक्य है।\nbengalí - এটি বাংলা পরীক্ষার বাক্য।\ntamil - இது தமிழ் சோதனை உரை.\ntailandés - นี่คือข้อความทดสอบภาษาไทย\ngeorgiano - ეს ქართული სატესტო ტექსტია.\narmenio - Սա հայերեն փորձնական տեքստ է։\nchino (hanzi) - 这是一个中文测试字符串。\njaponés (kanji/kana) - 日本語のテスト文字列です。\ncoreano (hangul) - 이것은 한국어 테스트 문장입니다।\netíope (geʽez) - ይህ የፈተና ጽሑፍ ነው።\nmezclado raro - lоrеm ipsμm τεst 漢字 عربى кириллица I❤︎code; café №1; naïve coöperate; Göteborg; π≈3.14159\nancho completo - Ｆｕｌｌｗｉｄｔｈ １２３４５\ndiacríticos combinantes - á é í ó ú ñ\ncomillas tipográficas - “dobles” ‘simples’ «angulares» „alemanas“\nguiones y rayas - - – — ‒ −\nflechas - → ← ↑ ↓ ⇒ ⇐ ⇑ ⇓\nsímbolos matemáticos - ℝ ℕ ℤ ℚ ℂ ∑ ∏ ∞ ≈ ≠ ≤ ≥ ± √ ∫ ∇\ndibujo de cajas -\n┌─┬─┐\n│ │ │\n└─┴─┘\nbraille - ⠋⠗⠁⠊⠇⠇⠑\nemoji - 🍣 🧪 🐍 ⚙️ 🚀 🔒 🧠 🤖 🧩\nespacios invisibles - A\u200BB · A\u2060B · A\u00A0B'},
           {label: 'Mixed scripts 1', value: 'lоrеm ipsμm τεst 漢字 عربى кириллица'},
           {label: 'Mixed scripts 2', value: 'I❤︎code — café №1; naïve coöperate; Göteborg; π≈3.14159'},
           {label: 'Bidi/RTL', value: 'abc\u202Etxt.exe\u202C'},

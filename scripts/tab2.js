@@ -1,6 +1,8 @@
 import {applyTranslations, t} from './languages.js';
 import {copyTextToClipboard} from './clipboard.js';
-import {getNotebookContent, getSavedValues, setNotebookContent, setSavedValues} from './storage.js';
+import {
+  getNotebookContent, getSavedValues, normalizeSavedValue, normalizeSavedValues, setNotebookContent, setSavedValues
+} from './storage.js';
 import {createValueRow} from './value-row.js';
 
 let savedValuesState = [];
@@ -15,32 +17,6 @@ function getValueInput() {
 
 function getNotebookElement() {
   return document.getElementById('notebook');
-}
-
-function normalizeSavedValue(value) {
-  return typeof value === 'string' ? value.trim() : '';
-}
-
-function normalizeSavedValues(values) {
-  if (!Array.isArray(values)) {
-    return [];
-  }
-
-  const normalizedValues = [];
-  const seenValues = new Set();
-
-  values.forEach(value => {
-    const normalizedValue = normalizeSavedValue(value);
-
-    if (normalizedValue === '' || seenValues.has(normalizedValue)) {
-      return;
-    }
-
-    seenValues.add(normalizedValue);
-    normalizedValues.push(normalizedValue);
-  });
-
-  return normalizedValues;
 }
 
 function areSavedValuesEqual(firstValues, secondValues) {
@@ -64,8 +40,6 @@ function renderSavedValues() {
   const savedValuesContainer = getSavedValuesContainer();
   const fragment = document.createDocumentFragment();
 
-  savedValuesContainer.setAttribute('role', 'list');
-
   savedValuesState.forEach((value, index) => {
     fragment.appendChild(createSavedValueItem(value, index));
   });
@@ -87,7 +61,7 @@ function createSavedValueItem(value, index) {
 
 function flashExistingValue(index) {
   const savedValueElement = getSavedValuesContainer()
-    .querySelector(`[data-saved-value-index="${index}"] .saved-value`);
+    .querySelector(`[data-saved-value-index="${index}"]`);
 
   if (!savedValueElement) {
     return;

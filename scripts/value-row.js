@@ -1,5 +1,5 @@
-// One row of a list of values to copy: the value itself (click = copy), a copy button and, if needed,
-// a delete button. Used by "Saved values" (Notes tab) and by the test data (Utilities tab),
+// One row of a list of values to copy: the value itself (click = copy), a copy icon and, if needed,
+// a delete icon. The rows of one list are in a white card (createValueCard). Used by "Saved values" (Notes tab) and by the test data (Utilities tab),
 // so both lists look and work the same way.
 
 import {t} from './languages.js';
@@ -79,53 +79,64 @@ export function createValueDisplay(value) {
   return fragment;
 }
 
-function createIconButton(className, action, titleKey, html) {
+const COPY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg>';
+const DELETE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+function createIconButton(className, action, titleKey, icon) {
   const button = document.createElement('button');
   button.type = 'button';
-  button.className = className;
+  button.className = `icon-button ${className}`;
   button.setAttribute('data-action', action);
   button.setAttribute('data-i18n-title', titleKey);
   button.setAttribute('data-i18n-aria-label', titleKey);
   button.setAttribute('aria-label', t(titleKey));
-  button.innerHTML = html;
+  button.innerHTML = icon;
   return button;
+}
+
+// A list of rows is put in a white card: createValueCard() + createValueRow() for each value.
+export function createValueCard() {
+  const card = document.createElement('div');
+  card.className = 'value-card';
+  card.setAttribute('role', 'list');
+  return card;
 }
 
 // attributes: data-* attributes of the row, so the click handler knows which value it is.
 // label: optional grey caption before the value.
 // singleLine: long values are cut with "…" and shown in full in the tooltip.
 export function createValueRow(value, {attributes = {}, label = '', singleLine = false, withDelete = false} = {}) {
-  const container = document.createElement('div');
-  container.className = 'saved-value-container';
-  container.setAttribute('role', 'listitem');
+  const row = document.createElement('div');
+  row.className = 'value-row';
+  row.setAttribute('role', 'listitem');
   Object.entries(attributes).forEach(([name, attributeValue]) => {
-    container.setAttribute(name, attributeValue);
+    row.setAttribute(name, attributeValue);
   });
 
-  const valueButton = document.createElement('button');
-  valueButton.type = 'button';
-  valueButton.className = singleLine ? 'saved-value single-line' : 'saved-value';
-  valueButton.setAttribute('data-action', 'copy-value');
+  const mainButton = document.createElement('button');
+  mainButton.type = 'button';
+  mainButton.className = singleLine ? 'value-row-main single-line' : 'value-row-main';
+  mainButton.setAttribute('data-action', 'copy-value');
 
   if (singleLine) {
-    valueButton.title = value;
+    mainButton.title = value;
   } else {
-    valueButton.setAttribute('data-i18n-title', 'copy');
+    mainButton.setAttribute('data-i18n-title', 'copy');
   }
 
   if (label !== '') {
     const labelElement = document.createElement('span');
     labelElement.className = 'value-label';
     labelElement.textContent = label;
-    valueButton.append(labelElement);
+    mainButton.append(labelElement);
   }
 
-  valueButton.append(createValueDisplay(value));
-  container.append(valueButton, createIconButton('copy-btn', 'copy-value', 'copy', '&#x1f5d0;'));
+  mainButton.append(createValueDisplay(value));
+  row.append(mainButton, createIconButton('copy-btn', 'copy-value', 'copy', COPY_ICON));
 
   if (withDelete) {
-    container.append(createIconButton('delete-btn', 'delete-value', 'delete', '&#x26cc;'));
+    row.append(createIconButton('delete-btn', 'delete-value', 'delete', DELETE_ICON));
   }
 
-  return container;
+  return row;
 }

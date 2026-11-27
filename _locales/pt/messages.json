@@ -9,13 +9,13 @@
       "message": "Digite qualquer coisa para salvar"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "Gerar símbolo HEX e copiar para a área de transferência"
+      "message": "Caractere HEX"
    },
    "NotSavedStorageFull": {
       "message": "Não salvo: o armazenamento está cheio"
    },
    "SaveAndCopyValues": {
-      "message": "Salvar e copiar valores"
+      "message": "Valores salvos"
    },
    "WriteYourNotesHere": {
       "message": "Escreva suas notas aqui..."
@@ -193,7 +193,7 @@
       "message": "Gerar"
    },
    "generateTextLine": {
-      "message": "Gerar linha de texto"
+      "message": "Linha de texto"
    },
    "gifSize": {
       "message": "Tamanho do GIF (fica guardado para a próxima vez)"
@@ -203,6 +203,45 @@
    },
    "hexUp": {
       "message": "Aumentar"
+   },
+   "insertBusy": {
+      "message": "Ainda digitando o valor anterior"
+   },
+   "insertBypassDone": {
+      "message": "Gravado ignorando os limites: $1 caracteres"
+   },
+   "insertModeBypass": {
+      "message": "Ignorar limites"
+   },
+   "insertModeBypassHint": {
+      "message": "Clicar em um valor o grava de uma vez no campo com o cursor na página, ignorando maxlength e filtros de teclas, e envia o evento input. Para verificar a validação no servidor."
+   },
+   "insertModeCopy": {
+      "message": "Copiar"
+   },
+   "insertModeCopyHint": {
+      "message": "Clicar em um valor o copia para a área de transferência"
+   },
+   "insertModeType": {
+      "message": "Digitar"
+   },
+   "insertModeTypeHint": {
+      "message": "Clicar em um valor o digita caractere por caractere no campo com o cursor na página (keydown → caractere → keyup). Para máscaras, autocompletar, busca com atraso. O texto antigo do campo é substituído."
+   },
+   "insertNoField": {
+      "message": "Primeiro clique em um campo de texto na página, depois no valor"
+   },
+   "insertRejected": {
+      "message": "O navegador não aceitou este valor para este tipo de campo (por exemplo, letras em um campo numérico)"
+   },
+   "insertTypedDone": {
+      "message": "Digitados: $1 caracteres"
+   },
+   "insertTypedLimited": {
+      "message": "Digitados $1 de $2 caracteres: o campo não aceitou o resto"
+   },
+   "insertTyping": {
+      "message": "Digitando…"
    },
    "lengthOfTheText": {
       "message": "Comprimento do texto"
@@ -260,6 +299,18 @@
    },
    "save": {
       "message": "Salvar"
+   },
+   "savedValueDuplicate": {
+      "message": "Repetido: não será salvo"
+   },
+   "savedValueEmpty": {
+      "message": "Vazio: não será salvo"
+   },
+   "savedValuesPageHint": {
+      "message": "Os valores da aba Notas. Valores vazios e repetidos não são salvos. Arraste por ⠿ para reordenar."
+   },
+   "savedValuesSettings": {
+      "message": "Editar valores salvos"
    },
    "screenRecording": {
       "message": "Gravação de ecrã"
@@ -319,7 +370,7 @@
       "message": "Exportar"
    },
    "testDataExportHint": {
-      "message": "Salvar todos os grupos em um arquivo JSON (backup, outro computador)"
+      "message": "Salvar todos os grupos e valores salvos em um arquivo JSON (backup, outro computador)"
    },
    "testDataGroupName": {
       "message": "Nome do grupo"
@@ -336,14 +387,20 @@
    "testDataImportConfirm": {
       "message": "Substituir todos os grupos por $1 grupos do arquivo?"
    },
+   "testDataImportConfirmBoth": {
+      "message": "Substituir os grupos ($1) e os valores salvos ($2) pelos do arquivo?"
+   },
+   "testDataImportConfirmSaved": {
+      "message": "Substituir os valores salvos por $1 valores do arquivo?"
+   },
    "testDataImportFailed": {
       "message": "O arquivo não tem grupos de dados de teste"
    },
    "testDataImportHint": {
-      "message": "Carregar grupos de um arquivo JSON (substitui os atuais)"
+      "message": "Carregar grupos e valores salvos de um arquivo JSON (substitui os atuais)"
    },
    "testDataImported": {
-      "message": "Grupos importados"
+      "message": "Importado do arquivo"
    },
    "testDataLabel": {
       "message": "Rótulo"
@@ -373,7 +430,7 @@
       "message": "Conjunto padrão restaurado"
    },
    "testDataResetHint": {
-      "message": "Substituir todos os grupos pelo conjunto padrão"
+      "message": "Substituir todos os grupos pelo conjunto padrão (os valores salvos ficam)"
    },
    "testDataSectionName": {
       "message": "Subgrupo (opcional)"

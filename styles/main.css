@@ -23,20 +23,24 @@ h3 {
 }
 
 input[type="text"] {
-    padding: 5px;
+    padding: 5px 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 100px; 
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100px;
     box-sizing: border-box;
     margin-bottom: 5px;
 }
-input[type="text"].flex-height{
-    flex: 1;
-    margin-right: 10px;
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #b36531;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(179, 101, 49, 0.2);
 }
 input::placeholder {
-    font-size: 11px; 
+    font-size: 12px;
     color: #757575;
   }
 button{
@@ -53,13 +57,6 @@ button{
     border-radius: 7px;
     transition: background-color 0.3s ease;
 }
-button.hex-btn {
-    height: 14px;
-    width: 25px;
-    padding: 0px 2px;
-    margin: 0px 5px 0px 0px;
-}
-
 button:hover {
     background-color: #784b1e;
 }
@@ -164,77 +161,286 @@ button:active {
 }
 
 textarea {
+    display: block;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 8px;
+    margin: 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     box-sizing: border-box;
     min-height: 50px;
+    font-family: inherit;
+    font-size: 13px;
     resize: vertical;
 }
-.flex-height-container, .saved-value-container {
-    display: flex;
-    align-items: center;
+
+/* ---------- Cards (Utilities and Notes tabs): a block with a title and small icon buttons on the right ---------- */
+
+.card {
     max-width: 700px;
-}
-
-.saved-value {
-    flex: 1;
-    padding: 5px;
+    margin-bottom: 8px;
+    padding: 8px 10px 10px;
+    background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 0 5px 0 0;
-    overflow-x: hidden;
-    width: 100%;
-    text-align: left;
-    font: inherit;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
-.saved-value:hover {
-    background-color: #e6e6e6;
-}
-
-.saved-value:active 
-{
-    background: #d6d6d6;
-}
-
-.notepad-header,
-.section-header {
+.card-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 2px;
+    margin-bottom: 8px;
 }
 
-.notepad-header .clearTextButton {
-    margin-left: auto;
+h3.card-title {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    margin: 0;
+    font-size: 13px;
+    text-align: left;
 }
 
+.card-title-icon {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    padding: 3px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #f6e7dd;
+}
+
+/* Line icons of the cards and their buttons. */
+.card-title-icon,
+button.icon-button svg,
+button.primary-button svg,
+button.hex-btn svg {
+    fill: none;
+    stroke: #b36531;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.card-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.card-row:last-child {
+    margin-bottom: 0;
+}
+
+.card-row input[type="text"],
+.card-row select {
+    flex: 1;
+    min-width: 0;
+    height: 32px;
+    margin: 0;
+}
+
+/* Small grey icon button (copy, clear, settings); orange under the mouse, red for clear / delete. */
+button.icon-button {
+    display: flex;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 5px;
+    border-radius: 6px;
+    background: none;
+}
+
+button.icon-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: #aaa;
+}
+
+button.icon-button:hover {
+    background-color: #f6e7dd;
+}
+
+button.icon-button:hover svg {
+    stroke: #b36531;
+}
+
+button.icon-button.delete-btn:hover {
+    background-color: #fdecea;
+}
+
+button.icon-button.delete-btn:hover svg {
+    stroke: #c62828;
+}
+
+/* The main action of a card (generate, save): filled orange. */
+button.primary-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    height: 32px;
+    min-width: 38px;
+    margin: 0;
+    padding: 0 12px;
+    border-radius: 6px;
+}
+
+button.primary-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: #fff;
+}
+
+.text-options {
+    justify-content: space-between;
+    color: #555;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    margin: 0;
+    accent-color: #b36531;
+}
+
+/* ---------- Lists of values to copy (saved values, test data), see scripts/value-row.js ---------- */
+
+.value-card {
+    max-width: 700px;
+    padding: 2px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.value-card:empty {
+    display: none;
+}
+
+.value-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0 3px 0 0;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+/* Thin line between rows; hidden around the row under the mouse, so it does not cross the outline. */
+.value-row + .value-row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 8px;
+    right: 8px;
+    height: 1px;
+    background-color: #eee;
+}
+
+.value-row:hover {
+    background-color: #fbf3ee;
+    box-shadow: inset 0 0 0 1px #b36531;
+}
+
+.value-row:hover::before,
+.value-row:hover + .value-row::before {
+    display: none;
+}
+
+button.value-row-main {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 7px 8px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.35;
+    text-align: left;
+    overflow-wrap: anywhere;
+    color: #333;
+    background: none;
+}
+
+/* Long test values (XXE, addresses) take one line; the whole value is in the tooltip. */
+button.value-row-main.single-line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+button.value-row-main:hover {
+    background: none;
+}
+
+/* The icons of a row are icon buttons (see "Cards"); the copy icon turns orange with the whole row. */
+.value-row:hover button.copy-btn svg {
+    stroke: #b36531;
+}
+
+.value-label {
+    margin-right: 6px;
+    font-size: 11px;
+    color: #999;
+}
+
+
+/* A saved value that is already in the list blinks red. */
 @keyframes flash {
-    0% { background-color: #f1f1f1; }
+    0% { background-color: #fff; }
     50% { background-color: #ffcccc; }
-    100% { background-color: #f1f1f1; }
+    100% { background-color: #fff; }
 }
   
 .flash {
     animation: flash 1s;
 }
 
-.hex-input-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
+/* Up / down next to the HEX field: one small bordered switch. */
 .hex-controls {
     display: flex;
     flex-direction: column;
-    margin: 0px 0px 6px 0px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button.hex-btn {
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background-color: #fff;
+}
+
+button.hex-btn + button.hex-btn {
+    border-top: 1px solid #eee;
+}
+
+button.hex-btn:hover {
+    background-color: #f6e7dd;
+}
+
+button.hex-btn svg {
+    width: 14px;
+    height: 14px;
 }
 
 
@@ -362,7 +568,8 @@ button.tool-tile.recording {
 }
 
 button.reload-timer-preset,
-button.reload-timer-button {
+button.reload-timer-button,
+button.insert-mode-button {
     margin: 0;
     padding: 4px 7px;
     font-size: 12px;
@@ -374,12 +581,14 @@ button.reload-timer-button {
 }
 
 button.reload-timer-preset:hover,
-button.reload-timer-button:hover {
+button.reload-timer-button:hover,
+button.insert-mode-button:hover {
     background-color: #fbf3ee;
     border-color: #b36531;
 }
 
-button.reload-timer-preset.active {
+button.reload-timer-preset.active,
+button.insert-mode-button.active {
     background-color: #b36531;
     border-color: #b36531;
     color: #fff;
@@ -413,6 +622,10 @@ input.reload-timer-seconds.active {
     flex-direction: column;
     gap: 3px;
     margin-top: 6px;
+}
+
+.reload-timer-list:empty {
+    display: none;
 }
 
 .reload-timer-item {
@@ -480,50 +693,49 @@ button.reload-timer-remove:hover {
 
 /* ---------- Test data (Utilities tab) ---------- */
 
-button.settings-button {
-    display: flex;
-    margin: 0;
-    padding: 3px;
-    color: #b36531;
-    background: none;
-    border-radius: 6px;
-}
-
-button.settings-button:hover {
-    background-color: #f6e7dd;
-}
-
-button.settings-button svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
 select.test-data-select {
-    flex: 1;
-    min-width: 0;
-    margin: 0 10px 5px 0;
-    padding: 5px;
+    padding: 0 6px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 14px;
     background-color: white;
     color: #212121;
 }
 
-select.test-data-select:focus {
-    border-color: #3f51b5;
-    outline: none;
+/* Copy / Type / Bypass: what a click on a test value does. */
+.test-data .card-row {
+    margin-bottom: 0;
 }
 
+.insert-modes {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.test-data-values:not(:empty) {
+    margin-top: 6px;
+}
+
+button.insert-mode-button {
+    flex: 1;
+}
+
+/* Subgroup title: colour instead of extra space. */
 .test-data-section-title {
-    margin: 8px 0 2px;
+    margin: 8px 0 3px;
+    font-size: 11px;
     font-weight: bold;
-    color: #757575;
+    color: #b36531;
+}
+
+.test-data-section-title:first-child {
+    margin-top: 0;
+}
+
+.test-data-section-count {
+    font-weight: normal;
+    color: #bbb;
 }
 
 .test-data-empty {
@@ -532,18 +744,6 @@ select.test-data-select:focus {
     text-align: center;
 }
 
-/* Long test values (XXE, addresses) take one line; the whole value is in the tooltip. */
-.saved-value.single-line {
-    min-width: 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.value-label {
-    margin-right: 6px;
-    font-size: 11px;
-    color: #888;
-}
 
 /* An invisible character in a value (NBSP, ZWSP, TAB...), see scripts/value-row.js. */
 .invisible-char {
