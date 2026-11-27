@@ -205,7 +205,7 @@
       "message": "Erhöhen"
    },
    "insertBusy": {
-      "message": "Der vorherige Wert wird noch getippt"
+      "message": "Der vorherige Wert wird noch getippt: „Stopp“ oder Esc drücken"
    },
    "insertBypassDone": {
       "message": "Ohne Begrenzungen geschrieben: $1 Zeichen"
@@ -234,14 +234,23 @@
    "insertRejected": {
       "message": "Der Browser hat diesen Wert für diesen Feldtyp nicht angenommen (zum Beispiel Buchstaben in einem Zahlenfeld)"
    },
+   "insertStop": {
+      "message": "Stopp"
+   },
+   "insertStopHint": {
+      "message": "Tippen stoppen (oder Esc auf der Seite). Bereits Getipptes bleibt."
+   },
    "insertTypedDone": {
       "message": "Getippt: $1 Zeichen"
    },
    "insertTypedLimited": {
       "message": "$1 von $2 Zeichen getippt: Das Feld hat den Rest nicht angenommen"
    },
+   "insertTypedStopped": {
+      "message": "Gestoppt: $1 von $2 Zeichen getippt"
+   },
    "insertTyping": {
-      "message": "Tippe…"
+      "message": "Tippe… Esc auf der Seite oder „Stopp“ zum Anhalten"
    },
    "lengthOfTheText": {
       "message": "Länge des Textes"
