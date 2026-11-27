@@ -184,7 +184,7 @@
    },
    "extensionDescription": {
       "description": "Chrome Web Store summary and chrome://extensions description (max 132 characters).",
-      "message": "Panel lateral para QA manual: texto de prueba, caracteres de control, notas, capturas con editor, grabación de pantalla en GIF."
+      "message": "Panel lateral para QA manual: datos de prueba tecleados en campos, caracteres especiales, notas, capturas con editor, vídeo a GIF."
    },
    "format": {
       "message": "Formato de archivo"

@@ -184,7 +184,7 @@
    },
    "extensionDescription": {
       "description": "Chrome Web Store summary and chrome://extensions description (max 132 characters).",
-      "message": "Seitenleiste für manuelle Tests: Testtext, Steuerzeichen, Notizen, Screenshots mit Editor, Bildschirmaufnahme als GIF, Auto-Reload."
+      "message": "Seitenleiste für manuelles QA: Testdaten direkt ins Feld tippen, Sonderzeichen, Notizen, Screenshots mit Editor, Bildschirm als GIF."
    },
    "format": {
       "message": "Dateiformat"

@@ -184,7 +184,7 @@
    },
    "extensionDescription": {
       "description": "Chrome Web Store summary and chrome://extensions description (max 132 characters).",
-      "message": "Панель для ручного тестирования: тестовый текст, спецсимволы, заметки, скриншоты с редактором, запись экрана в GIF, автообновление."
+      "message": "Панель для ручного тестирования: тестовые данные с вводом в поля, спецсимволы, заметки, скриншоты с редактором, запись экрана в GIF."
    },
    "format": {
       "message": "Формат файла"
