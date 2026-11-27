@@ -9,13 +9,13 @@
       "message": "Entrez n'importe quoi pour sauvegarder"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "Générer le symbole HEX et copier dans le presse-papiers"
+      "message": "Caractère HEX"
    },
    "NotSavedStorageFull": {
       "message": "Non enregistré : le stockage est plein"
    },
    "SaveAndCopyValues": {
-      "message": "Enregistrer et copier les valeurs"
+      "message": "Valeurs enregistrées"
    },
    "WriteYourNotesHere": {
       "message": "Écrivez vos notes ici..."
@@ -193,7 +193,7 @@
       "message": "Générer"
    },
    "generateTextLine": {
-      "message": "Générer une ligne de texte"
+      "message": "Ligne de texte"
    },
    "gifSize": {
       "message": "Taille du GIF (mémorisée pour la prochaine fois)"
@@ -203,6 +203,45 @@
    },
    "hexUp": {
       "message": "Augmenter"
+   },
+   "insertBusy": {
+      "message": "La valeur précédente est encore en cours de saisie"
+   },
+   "insertBypassDone": {
+      "message": "Écrit sans les limites : $1 caractères"
+   },
+   "insertModeBypass": {
+      "message": "Contourner"
+   },
+   "insertModeBypassHint": {
+      "message": "Un clic sur une valeur l’écrit d’un coup dans le champ où se trouve le curseur sur la page, sans tenir compte de maxlength ni des filtres de touches, puis envoie « input ». Pour vérifier la validation côté serveur."
+   },
+   "insertModeCopy": {
+      "message": "Copier"
+   },
+   "insertModeCopyHint": {
+      "message": "Un clic sur une valeur la copie dans le presse-papiers"
+   },
+   "insertModeType": {
+      "message": "Saisir"
+   },
+   "insertModeTypeHint": {
+      "message": "Un clic sur une valeur la saisit caractère par caractère dans le champ où se trouve le curseur sur la page (keydown → caractère → keyup). Pour les masques de saisie, l’autocomplétion, la recherche avec délai. L’ancien texte du champ est remplacé."
+   },
+   "insertNoField": {
+      "message": "Cliquez d’abord dans un champ de texte de la page, puis sur la valeur"
+   },
+   "insertRejected": {
+      "message": "Le navigateur n’a pas accepté cette valeur pour ce type de champ (par exemple des lettres dans un champ numérique)"
+   },
+   "insertTypedDone": {
+      "message": "Saisis : $1 caractères"
+   },
+   "insertTypedLimited": {
+      "message": "$1 caractères saisis sur $2 : le champ n’a pas accepté le reste"
+   },
+   "insertTyping": {
+      "message": "Saisie…"
    },
    "lengthOfTheText": {
       "message": "Longueur du texte"
@@ -284,6 +323,111 @@
    },
    "strokeWidth": {
       "message": "Épaisseur du trait"
+   },
+   "testData": {
+      "message": "Données de test"
+   },
+   "testDataAddGroup": {
+      "message": "Ajouter un groupe"
+   },
+   "testDataAddSection": {
+      "message": "Sous-groupe"
+   },
+   "testDataAddValue": {
+      "message": "Valeur"
+   },
+   "testDataChooseGroup": {
+      "message": "Choisissez un groupe…"
+   },
+   "testDataDeleteGroup": {
+      "message": "Supprimer le groupe"
+   },
+   "testDataDeleteGroupConfirm": {
+      "message": "Supprimer le groupe « $1 » avec toutes ses valeurs ?"
+   },
+   "testDataDeleteSection": {
+      "message": "Supprimer le sous-groupe"
+   },
+   "testDataDeleteSectionConfirm": {
+      "message": "Supprimer le sous-groupe « $1 » avec toutes ses valeurs ?"
+   },
+   "testDataDragHint": {
+      "message": "Faites glisser pour déplacer"
+   },
+   "testDataExport": {
+      "message": "Exporter"
+   },
+   "testDataExportHint": {
+      "message": "Enregistrer tous les groupes dans un fichier JSON (sauvegarde, autre ordinateur)"
+   },
+   "testDataGroupName": {
+      "message": "Nom du groupe"
+   },
+   "testDataGroups": {
+      "message": "Groupes"
+   },
+   "testDataHideValues": {
+      "message": "Masquer les valeurs"
+   },
+   "testDataImport": {
+      "message": "Importer"
+   },
+   "testDataImportConfirm": {
+      "message": "Remplacer tous les groupes par les $1 groupes du fichier ?"
+   },
+   "testDataImportFailed": {
+      "message": "Le fichier ne contient aucun groupe de données de test"
+   },
+   "testDataImportHint": {
+      "message": "Charger des groupes depuis un fichier JSON (remplace les groupes actuels)"
+   },
+   "testDataImported": {
+      "message": "Groupes importés"
+   },
+   "testDataLabel": {
+      "message": "Libellé"
+   },
+   "testDataNewGroup": {
+      "message": "Nouveau groupe"
+   },
+   "testDataNoGroupSelected": {
+      "message": "Choisissez un groupe à gauche ou ajoutez-en un nouveau"
+   },
+   "testDataNoGroups": {
+      "message": "Aucun groupe : ajoutez-en dans les paramètres"
+   },
+   "testDataNoValues": {
+      "message": "Ce groupe n’a pas de valeurs"
+   },
+   "testDataPageHint": {
+      "message": "Groupes, sous-groupes et valeurs de l’onglet Utilitaires. Les modifications sont enregistrées aussitôt. Faites glisser ⠿ pour changer l’ordre ; déposez une valeur ou un sous-groupe sur un autre groupe pour l’y déplacer."
+   },
+   "testDataReset": {
+      "message": "Par défaut"
+   },
+   "testDataResetConfirm": {
+      "message": "Remplacer tous les groupes par le jeu par défaut ? Vos modifications seront perdues."
+   },
+   "testDataResetDone": {
+      "message": "Jeu par défaut restauré"
+   },
+   "testDataResetHint": {
+      "message": "Remplacer tous les groupes par le jeu par défaut"
+   },
+   "testDataSectionName": {
+      "message": "Sous-groupe (facultatif)"
+   },
+   "testDataSettings": {
+      "message": "Paramètres des données de test"
+   },
+   "testDataUntitledGroup": {
+      "message": "(sans nom)"
+   },
+   "testDataUntitledSection": {
+      "message": "sans sous-groupe"
+   },
+   "testDataValue": {
+      "message": "Valeur"
    },
    "textLength": {
       "message": "Longueur du texte"

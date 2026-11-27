@@ -9,13 +9,13 @@
       "message": "Introduceți orice pentru a salva"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "Generați simbolul HEX și copiați în clipboard"
+      "message": "Caracter HEX"
    },
    "NotSavedStorageFull": {
       "message": "Nesalvat: spațiul de stocare este plin"
    },
    "SaveAndCopyValues": {
-      "message": "Salvați și copiați valorile"
+      "message": "Valori salvate"
    },
    "WriteYourNotesHere": {
       "message": "Scrieți notele dvs. aici..."
@@ -193,7 +193,7 @@
       "message": "Generează"
    },
    "generateTextLine": {
-      "message": "Generează linie de text"
+      "message": "Linie de text"
    },
    "gifSize": {
       "message": "Dimensiunea GIF-ului (se reține pentru data viitoare)"
@@ -203,6 +203,45 @@
    },
    "hexUp": {
       "message": "Crește"
+   },
+   "insertBusy": {
+      "message": "Valoarea anterioară încă se tastează"
+   },
+   "insertBypassDone": {
+      "message": "Scris ocolind limitele: $1 caractere"
+   },
+   "insertModeBypass": {
+      "message": "Ocolire"
+   },
+   "insertModeBypassHint": {
+      "message": "Un clic pe o valoare o scrie dintr-odată în câmpul cu cursorul de pe pagină, ignorând maxlength și filtrele de taste, apoi trimite „input”. Pentru verificarea validării pe server."
+   },
+   "insertModeCopy": {
+      "message": "Copiază"
+   },
+   "insertModeCopyHint": {
+      "message": "Un clic pe o valoare o copiază în clipboard"
+   },
+   "insertModeType": {
+      "message": "Tastează"
+   },
+   "insertModeTypeHint": {
+      "message": "Un clic pe o valoare o tastează caracter cu caracter în câmpul cu cursorul de pe pagină (keydown → caracter → keyup). Pentru măști de introducere, completare automată, căutare cu întârziere. Textul vechi din câmp este înlocuit."
+   },
+   "insertNoField": {
+      "message": "Faceți mai întâi clic într-un câmp de text de pe pagină, apoi pe valoare"
+   },
+   "insertRejected": {
+      "message": "Browserul nu a acceptat această valoare pentru acest tip de câmp (de exemplu, litere într-un câmp numeric)"
+   },
+   "insertTypedDone": {
+      "message": "Tastate: $1 caractere"
+   },
+   "insertTypedLimited": {
+      "message": "Tastate $1 din $2 caractere: câmpul nu a acceptat restul"
+   },
+   "insertTyping": {
+      "message": "Se tastează…"
    },
    "lengthOfTheText": {
       "message": "Lungimea textului"
@@ -284,6 +323,111 @@
    },
    "strokeWidth": {
       "message": "Grosimea liniei"
+   },
+   "testData": {
+      "message": "Date de test"
+   },
+   "testDataAddGroup": {
+      "message": "Adaugă grup"
+   },
+   "testDataAddSection": {
+      "message": "Subgrup"
+   },
+   "testDataAddValue": {
+      "message": "Valoare"
+   },
+   "testDataChooseGroup": {
+      "message": "Alegeți un grup…"
+   },
+   "testDataDeleteGroup": {
+      "message": "Șterge grupul"
+   },
+   "testDataDeleteGroupConfirm": {
+      "message": "Ștergeți grupul „$1” cu toate valorile?"
+   },
+   "testDataDeleteSection": {
+      "message": "Șterge subgrupul"
+   },
+   "testDataDeleteSectionConfirm": {
+      "message": "Ștergeți subgrupul „$1” cu toate valorile?"
+   },
+   "testDataDragHint": {
+      "message": "Trageți pentru a muta"
+   },
+   "testDataExport": {
+      "message": "Exportă"
+   },
+   "testDataExportHint": {
+      "message": "Salvează toate grupurile într-un fișier JSON (copie de rezervă, alt computer)"
+   },
+   "testDataGroupName": {
+      "message": "Numele grupului"
+   },
+   "testDataGroups": {
+      "message": "Grupuri"
+   },
+   "testDataHideValues": {
+      "message": "Ascunde valorile"
+   },
+   "testDataImport": {
+      "message": "Importă"
+   },
+   "testDataImportConfirm": {
+      "message": "Înlocuiți toate grupurile cu cele $1 grupuri din fișier?"
+   },
+   "testDataImportFailed": {
+      "message": "Fișierul nu conține grupuri de date de test"
+   },
+   "testDataImportHint": {
+      "message": "Încarcă grupuri dintr-un fișier JSON (le înlocuiește pe cele actuale)"
+   },
+   "testDataImported": {
+      "message": "Grupuri importate"
+   },
+   "testDataLabel": {
+      "message": "Etichetă"
+   },
+   "testDataNewGroup": {
+      "message": "Grup nou"
+   },
+   "testDataNoGroupSelected": {
+      "message": "Alegeți un grup din stânga sau adăugați unul nou"
+   },
+   "testDataNoGroups": {
+      "message": "Nu există grupuri: adăugați-le în setări"
+   },
+   "testDataNoValues": {
+      "message": "Acest grup nu are valori"
+   },
+   "testDataPageHint": {
+      "message": "Grupuri, subgrupuri și valori pentru fila Utilitare. Modificările se salvează imediat. Trageți de ⠿ pentru a schimba ordinea; plasați o valoare sau un subgrup pe alt grup pentru a-l muta acolo."
+   },
+   "testDataReset": {
+      "message": "Implicit"
+   },
+   "testDataResetConfirm": {
+      "message": "Înlocuiți toate grupurile cu setul implicit? Modificările dvs. se vor pierde."
+   },
+   "testDataResetDone": {
+      "message": "Setul implicit a fost restabilit"
+   },
+   "testDataResetHint": {
+      "message": "Înlocuiește toate grupurile cu setul implicit"
+   },
+   "testDataSectionName": {
+      "message": "Subgrup (opțional)"
+   },
+   "testDataSettings": {
+      "message": "Setări date de test"
+   },
+   "testDataUntitledGroup": {
+      "message": "(fără nume)"
+   },
+   "testDataUntitledSection": {
+      "message": "fără subgrup"
+   },
+   "testDataValue": {
+      "message": "Valoare"
    },
    "textLength": {
       "message": "Lungimea textului"

@@ -624,6 +624,10 @@ input.reload-timer-seconds.active {
     margin-top: 6px;
 }
 
+.reload-timer-list:empty {
+    display: none;
+}
+
 .reload-timer-item {
     display: flex;
     align-items: center;
