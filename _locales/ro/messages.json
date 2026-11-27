@@ -205,7 +205,7 @@
       "message": "Crește"
    },
    "insertBusy": {
-      "message": "Valoarea anterioară încă se tastează"
+      "message": "Valoarea anterioară încă se tastează: apăsați „Oprește” sau Esc"
    },
    "insertBypassDone": {
       "message": "Scris ocolind limitele: $1 caractere"
@@ -234,14 +234,23 @@
    "insertRejected": {
       "message": "Browserul nu a acceptat această valoare pentru acest tip de câmp (de exemplu, litere într-un câmp numeric)"
    },
+   "insertStop": {
+      "message": "Oprește"
+   },
+   "insertStopHint": {
+      "message": "Oprește tastarea (sau Esc pe pagină). Ce s-a tastat rămâne."
+   },
    "insertTypedDone": {
       "message": "Tastate: $1 caractere"
    },
    "insertTypedLimited": {
       "message": "Tastate $1 din $2 caractere: câmpul nu a acceptat restul"
    },
+   "insertTypedStopped": {
+      "message": "Oprit: tastate $1 din $2 caractere"
+   },
    "insertTyping": {
-      "message": "Se tastează…"
+      "message": "Se tastează… Esc pe pagină sau „Oprește” pentru a opri"
    },
    "lengthOfTheText": {
       "message": "Lungimea textului"

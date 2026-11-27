@@ -721,6 +721,14 @@ button.insert-mode-button {
     flex: 1;
 }
 
+/* "Type" while typing: the "Stop" button with the progress. */
+button.insert-mode-button.stopping,
+button.insert-mode-button.stopping:hover {
+    color: #fff;
+    background-color: #c62828;
+    border-color: #c62828;
+}
+
 /* Subgroup title: colour instead of extra space. */
 .test-data-section-title {
     margin: 8px 0 3px;

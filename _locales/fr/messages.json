@@ -205,7 +205,7 @@
       "message": "Augmenter"
    },
    "insertBusy": {
-      "message": "La valeur précédente est encore en cours de saisie"
+      "message": "La valeur précédente est encore en cours de saisie : cliquez sur « Arrêter » ou Échap"
    },
    "insertBypassDone": {
       "message": "Écrit sans les limites : $1 caractères"
@@ -234,14 +234,23 @@
    "insertRejected": {
       "message": "Le navigateur n’a pas accepté cette valeur pour ce type de champ (par exemple des lettres dans un champ numérique)"
    },
+   "insertStop": {
+      "message": "Arrêter"
+   },
+   "insertStopHint": {
+      "message": "Arrêter la saisie (ou Échap sur la page). Ce qui est déjà saisi reste."
+   },
    "insertTypedDone": {
       "message": "Saisis : $1 caractères"
    },
    "insertTypedLimited": {
       "message": "$1 caractères saisis sur $2 : le champ n’a pas accepté le reste"
    },
+   "insertTypedStopped": {
+      "message": "Arrêté : $1 caractères saisis sur $2"
+   },
    "insertTyping": {
-      "message": "Saisie…"
+      "message": "Saisie… Échap sur la page ou « Arrêter » pour arrêter"
    },
    "lengthOfTheText": {
       "message": "Longueur du texte"

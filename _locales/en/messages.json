@@ -205,7 +205,7 @@
       "message": "Increase"
    },
    "insertBusy": {
-      "message": "Still typing the previous value"
+      "message": "Still typing the previous value: press \"Stop\" or Esc"
    },
    "insertBypassDone": {
       "message": "Written past the limits: $1 characters"
@@ -234,14 +234,23 @@
    "insertRejected": {
       "message": "The browser did not accept this value for this type of field (for example letters in a number field)"
    },
+   "insertStop": {
+      "message": "Stop"
+   },
+   "insertStopHint": {
+      "message": "Stop typing (or press Esc on the page). What is already typed stays."
+   },
    "insertTypedDone": {
       "message": "Typed: $1 characters"
    },
    "insertTypedLimited": {
       "message": "Typed $1 of $2 characters: the field did not accept the rest"
    },
+   "insertTypedStopped": {
+      "message": "Stopped: typed $1 of $2 characters"
+   },
    "insertTyping": {
-      "message": "Typing…"
+      "message": "Typing… Esc on the page or \"Stop\" to stop"
    },
    "lengthOfTheText": {
       "message": "Length of the text"

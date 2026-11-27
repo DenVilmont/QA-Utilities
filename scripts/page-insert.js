@@ -2,6 +2,7 @@
 // instead of copying it. Two ways:
 //   type   - character by character: keydown -> the character -> keyup, with a short pause.
 //            Catches what reacts to keys: input masks, autocomplete, search with a delay.
+//            Can be stopped: the "Stop" button in the panel or Esc on the page.
 //   bypass - the whole value is written into the field at once, then "input" and "change" are sent.
 //            maxlength and key filters do not stop it: handy to check the validation on the server.
 //
@@ -18,7 +19,56 @@ export const INSERT_MODES = Object.freeze({copy: 'copy', type: 'type', bypass: '
 // Pause between characters when typing (milliseconds).
 const TYPE_DELAY_MS = 25;
 
-let isTyping = false;
+// Time between progress checks while typing (milliseconds).
+const PROGRESS_INTERVAL_MS = 300;
+
+// The frame where typing goes on: {tabId, frameId}; null = not typing.
+let typingTarget = null;
+// Called with {done, total} while typing and with null when it ends (the panel shows "Stop · 120/1034").
+const progressListeners = new Set();
+
+export function onTypingProgress(listener) {
+  progressListeners.add(listener);
+}
+
+function reportProgress(progress) {
+  progressListeners.forEach(listener => listener(progress));
+}
+
+export function isTypingInProgress() {
+  return typingTarget !== null;
+}
+
+// The "Stop" button. The page stops after the current character; insertIntoPage shows the result.
+export function stopTyping() {
+  if (!typingTarget) {
+    return;
+  }
+
+  chrome.scripting.executeScript({target: {tabId: typingTarget.tabId, frameIds: [typingTarget.frameId]}, func: pageStopTyping})
+    .catch(() => {});
+}
+
+function watchTypingProgress(target, total) {
+  reportProgress({done: 0, total});
+
+  const timer = setInterval(async () => {
+    try {
+      const [injection] = await chrome.scripting.executeScript({
+        target: {tabId: target.tabId, frameIds: [target.frameId]},
+        func: pageGetTypingProgress
+      });
+
+      if (typingTarget === target && injection?.result) {
+        reportProgress(injection.result);
+      }
+    } catch {
+      // The page is being reloaded or closed: typing ends by itself.
+    }
+  }, PROGRESS_INTERVAL_MS);
+
+  return () => clearInterval(timer);
+}
 
 // ---------- Runs inside the page (each frame); must not use anything from outside the function ----------
 
@@ -144,7 +194,24 @@ async function pageInsertValue(value, mode, delayMs) {
   // The Enter key gives one line break, not "\r\n".
   const keys = value.replaceAll('\r\n', '\n');
 
+  // Shared with pageGetTypingProgress / pageStopTyping: scripts of the extension injected into the same frame
+  // see the same globalThis (the extension's own isolated world, not the page's).
+  const typing = {stopped: false, done: 0, total: countCharacters(keys)};
+  globalThis.qaUtilitiesTyping = typing;
+
+  // Esc pressed by the user (isTrusted) stops typing; the page still gets the key as usual.
+  const stopOnEscape = event => {
+    if (event.isTrusted && event.key === 'Escape') {
+      typing.stopped = true;
+    }
+  };
+  window.addEventListener('keydown', stopOnEscape, true);
+
   for (const character of keys) {
+    if (typing.stopped) {
+      break;
+    }
+
     const key = {'\n': 'Enter', '\r': 'Enter', '\t': 'Tab'}[character] ?? character;
     const keyOptions = {key, bubbles: true, cancelable: true, composed: true};
 
@@ -155,11 +222,26 @@ async function pageInsertValue(value, mode, delayMs) {
     }
 
     element.dispatchEvent(new KeyboardEvent('keyup', keyOptions));
+    typing.done += 1;
     await new Promise(resolve => setTimeout(resolve, delayMs));
   }
 
+  window.removeEventListener('keydown', stopOnEscape, true);
+  globalThis.qaUtilitiesTyping = null;
   element.dispatchEvent(new Event('change', {bubbles: true}));
-  return {typed: countCharacters(getText()), expected: countCharacters(keys), rejected: false};
+  return {typed: countCharacters(getText()), expected: typing.total, rejected: false, stopped: typing.stopped};
+}
+
+// Characters typed so far, or null if nothing is being typed in this frame.
+function pageGetTypingProgress() {
+  const typing = globalThis.qaUtilitiesTyping;
+  return typing ? {done: typing.done, total: typing.total} : null;
+}
+
+function pageStopTyping() {
+  if (globalThis.qaUtilitiesTyping) {
+    globalThis.qaUtilitiesTyping.stopped = true;
+  }
 }
 
 // ---------- Side panel ----------
@@ -186,6 +268,10 @@ function getResultText(mode, result) {
       : t('insertBypassDone').replace('$1', String(result.typed));
   }
 
+  if (result.stopped) {
+    return t('insertTypedStopped').replace('$1', String(result.typed)).replace('$2', String(result.expected));
+  }
+
   return result.typed < result.expected
     ? t('insertTypedLimited').replace('$1', String(result.typed)).replace('$2', String(result.expected))
     : t('insertTypedDone').replace('$1', String(result.typed));
@@ -193,7 +279,7 @@ function getResultText(mode, result) {
 
 // Must be called synchronously from the click handler: see ensureSiteAccess.
 export function insertIntoPage(value, mode) {
-  if (isTyping) {
+  if (typingTarget) {
     showMessage(t('insertBusy'), {isError: true});
     return Promise.resolve();
   }
@@ -203,6 +289,8 @@ export function insertIntoPage(value, mode) {
     isAccessPromptShown = true;
     showMessage(t('allowSiteAccess'), {sticky: true});
   });
+
+  let stopWatching = () => {};
 
   return (async () => {
     try {
@@ -220,14 +308,16 @@ export function insertIntoPage(value, mode) {
         throw new ToolError('insertNoField');
       }
 
-      isTyping = mode === INSERT_MODES.type;
+      const target = {tabId: tab.id, frameId: frame.frameId};
 
-      if (isTyping) {
+      if (mode === INSERT_MODES.type) {
+        typingTarget = target;
+        stopWatching = watchTypingProgress(target, [...value.replaceAll('\r\n', '\n')].length);
         showMessage(t('insertTyping'), {sticky: true});
       }
 
       const [injection] = await chrome.scripting.executeScript({
-        target: {tabId: tab.id, frameIds: [frame.frameId]},
+        target: {tabId: target.tabId, frameIds: [target.frameId]},
         func: pageInsertValue,
         args: [value, mode, TYPE_DELAY_MS]
       });
@@ -240,7 +330,9 @@ export function insertIntoPage(value, mode) {
     } catch (error) {
       showError(error);
     } finally {
-      isTyping = false;
+      stopWatching();
+      typingTarget = null;
+      reportProgress(null);
     }
   })();
 }

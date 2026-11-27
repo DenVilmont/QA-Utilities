@@ -205,7 +205,7 @@
       "message": "增加"
    },
    "insertBusy": {
-      "message": "上一个值仍在输入中"
+      "message": "上一个值仍在键入中：请点击“停止”或按 Esc"
    },
    "insertBypassDone": {
       "message": "已绕过限制写入：$1 个字符"
@@ -234,14 +234,23 @@
    "insertRejected": {
       "message": "浏览器不接受此类型字段的这个值（例如数字字段中的字母）"
    },
+   "insertStop": {
+      "message": "停止"
+   },
+   "insertStopHint": {
+      "message": "停止键入（或在页面上按 Esc）。已键入的内容会保留。"
+   },
    "insertTypedDone": {
       "message": "已键入：$1 个字符"
    },
    "insertTypedLimited": {
       "message": "已键入 $1/$2 个字符：字段未接受其余部分"
    },
+   "insertTypedStopped": {
+      "message": "已停止：已键入 $1/$2 个字符"
+   },
    "insertTyping": {
-      "message": "正在键入…"
+      "message": "正在键入… 在页面上按 Esc 或点击“停止”即可停止"
    },
    "lengthOfTheText": {
       "message": "文本长度"

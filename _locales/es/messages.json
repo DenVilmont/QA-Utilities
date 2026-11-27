@@ -205,7 +205,7 @@
       "message": "Aumentar"
    },
    "insertBusy": {
-      "message": "Todavía se está escribiendo el valor anterior"
+      "message": "Todavía se está tecleando el valor anterior: pulsa «Parar» o Esc"
    },
    "insertBypassDone": {
       "message": "Escrito saltando los límites: $1 caracteres"
@@ -234,14 +234,23 @@
    "insertRejected": {
       "message": "El navegador no aceptó este valor para este tipo de campo (por ejemplo, letras en un campo numérico)"
    },
+   "insertStop": {
+      "message": "Parar"
+   },
+   "insertStopHint": {
+      "message": "Dejar de teclear (o Esc en la página). Lo ya tecleado se queda."
+   },
    "insertTypedDone": {
       "message": "Tecleados: $1 caracteres"
    },
    "insertTypedLimited": {
       "message": "Tecleados $1 de $2 caracteres: el campo no aceptó el resto"
    },
+   "insertTypedStopped": {
+      "message": "Parado: tecleados $1 de $2 caracteres"
+   },
    "insertTyping": {
-      "message": "Tecleando…"
+      "message": "Tecleando… Esc en la página o «Parar» para parar"
    },
    "lengthOfTheText": {
       "message": "Longitud del texto"

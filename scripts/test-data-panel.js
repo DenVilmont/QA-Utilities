@@ -7,7 +7,7 @@ import {applyTranslations, t} from './languages.js';
 import {copyTextToClipboard} from './clipboard.js';
 import {getGroupTitle, loadGroups} from './test-data.js';
 import {createValueCard, createValueRow} from './value-row.js';
-import {INSERT_MODES, insertIntoPage} from './page-insert.js';
+import {INSERT_MODES, insertIntoPage, isTypingInProgress, onTypingProgress, stopTyping} from './page-insert.js';
 import {SETTINGS_SECTIONS, openSettingsPage} from './settings-link.js';
 
 const elements = {};
@@ -117,6 +117,12 @@ function clearGroup() {
 function handleModeClick(event) {
   const mode = event.target.closest('[data-mode]')?.getAttribute('data-mode');
 
+  // While typing, the "Type" button is the "Stop" button.
+  if (mode === INSERT_MODES.type && isTypingInProgress()) {
+    stopTyping();
+    return;
+  }
+
   if (mode) {
     insertMode = mode;
     renderGroupSelect();
@@ -148,6 +154,20 @@ function handleValuesClick(event) {
   }
 }
 
+// While typing: the "Type" button becomes "Stop · 120/1034"; progress null = typing ended.
+function renderTypingProgress(progress) {
+  const button = elements.modeButtons.querySelector(`[data-mode="${INSERT_MODES.type}"]`);
+  button.classList.toggle('stopping', progress !== null);
+
+  if (progress) {
+    button.textContent = `${t('insertStop')} \u00B7 ${progress.done}/${progress.total}`;
+    button.title = t('insertStopHint');
+  } else {
+    button.textContent = t('insertModeType');
+    button.title = t('insertModeTypeHint');
+  }
+}
+
 export function initTestData() {
   elements.groupSelect = document.getElementById('testDataGroupSelect');
   elements.clearButton = document.getElementById('clearTestDataGroupButton');
@@ -160,6 +180,7 @@ export function initTestData() {
   elements.values.addEventListener('click', handleValuesClick);
   elements.settingsButton.addEventListener('click', () => void openSettingsPage(SETTINGS_SECTIONS.groups));
   elements.modeButtons.addEventListener('click', handleModeClick);
+  onTypingProgress(renderTypingProgress);
 
   groups = loadGroups();
   render();
