@@ -22,26 +22,25 @@ h3 {
     text-align: center;
 }
 
-/* "Length of the text" and "Lorem ipsum" under the text generator: without the big default h4 margins. */
-.randomText h4 {
-    margin: 4px 0;
-}
-
 input[type="text"] {
-    padding: 5px;
+    padding: 5px 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 100px; 
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100px;
     box-sizing: border-box;
     margin-bottom: 5px;
 }
-input[type="text"].flex-height{
-    flex: 1;
-    margin-right: 10px;
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #b36531;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(179, 101, 49, 0.2);
 }
 input::placeholder {
-    font-size: 11px; 
+    font-size: 12px;
     color: #757575;
   }
 button{
@@ -58,13 +57,6 @@ button{
     border-radius: 7px;
     transition: background-color 0.3s ease;
 }
-button.hex-btn {
-    height: 14px;
-    width: 25px;
-    padding: 0px 2px;
-    margin: 0px 5px 0px 0px;
-}
-
 button:hover {
     background-color: #784b1e;
 }
@@ -169,19 +161,157 @@ button:active {
 }
 
 textarea {
+    display: block;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 8px;
+    margin: 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     box-sizing: border-box;
     min-height: 50px;
+    font-family: inherit;
+    font-size: 13px;
     resize: vertical;
 }
-.flex-height-container {
+
+/* ---------- Cards (Utilities and Notes tabs): a block with a title and small icon buttons on the right ---------- */
+
+.card {
+    max-width: 700px;
+    margin-bottom: 8px;
+    padding: 8px 10px 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.card-header {
     display: flex;
     align-items: center;
-    max-width: 700px;
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
+h3.card-title {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    margin: 0;
+    font-size: 13px;
+    text-align: left;
+}
+
+.card-title-icon {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    padding: 3px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #f6e7dd;
+}
+
+/* Line icons of the cards and their buttons. */
+.card-title-icon,
+button.icon-button svg,
+button.primary-button svg,
+button.hex-btn svg {
+    fill: none;
+    stroke: #b36531;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.card-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.card-row:last-child {
+    margin-bottom: 0;
+}
+
+.card-row input[type="text"],
+.card-row select {
+    flex: 1;
+    min-width: 0;
+    height: 32px;
+    margin: 0;
+}
+
+/* Small grey icon button (copy, clear, settings); orange under the mouse, red for clear / delete. */
+button.icon-button {
+    display: flex;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 5px;
+    border-radius: 6px;
+    background: none;
+}
+
+button.icon-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: #aaa;
+}
+
+button.icon-button:hover {
+    background-color: #f6e7dd;
+}
+
+button.icon-button:hover svg {
+    stroke: #b36531;
+}
+
+button.icon-button.delete-btn:hover {
+    background-color: #fdecea;
+}
+
+button.icon-button.delete-btn:hover svg {
+    stroke: #c62828;
+}
+
+/* The main action of a card (generate, save): filled orange. */
+button.primary-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    height: 32px;
+    min-width: 38px;
+    margin: 0;
+    padding: 0 12px;
+    border-radius: 6px;
+}
+
+button.primary-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: #fff;
+}
+
+.text-options {
+    justify-content: space-between;
+    color: #555;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    margin: 0;
+    accent-color: #b36531;
 }
 
 /* ---------- Lists of values to copy (saved values, test data), see scripts/value-row.js ---------- */
@@ -256,38 +386,9 @@ button.value-row-main:hover {
     background: none;
 }
 
-button.value-row-icon {
-    display: flex;
-    flex: 0 0 auto;
-    margin: 0;
-    padding: 5px;
-    border-radius: 6px;
-    color: #bbb;
-    background: none;
-}
-
-button.value-row-icon svg {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.value-row:hover button.copy-btn,
-button.value-row-icon.copy-btn:hover {
-    color: #b36531;
-}
-
-button.value-row-icon:hover {
-    background-color: #f6e7dd;
-}
-
-button.delete-btn:hover {
-    color: #c62828;
-    background-color: #fdecea;
+/* The icons of a row are icon buttons (see "Cards"); the copy icon turns orange with the whole row. */
+.value-row:hover button.copy-btn svg {
+    stroke: #b36531;
 }
 
 .value-label {
@@ -296,16 +397,6 @@ button.delete-btn:hover {
     color: #999;
 }
 
-.notepad-header,
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.notepad-header .clearTextButton {
-    margin-left: auto;
-}
 
 /* A saved value that is already in the list blinks red. */
 @keyframes flash {
@@ -318,16 +409,38 @@ button.delete-btn:hover {
     animation: flash 1s;
 }
 
-.hex-input-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
+/* Up / down next to the HEX field: one small bordered switch. */
 .hex-controls {
     display: flex;
     flex-direction: column;
-    margin: 0px 0px 6px 0px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button.hex-btn {
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background-color: #fff;
+}
+
+button.hex-btn + button.hex-btn {
+    border-top: 1px solid #eee;
+}
+
+button.hex-btn:hover {
+    background-color: #f6e7dd;
+}
+
+button.hex-btn svg {
+    width: 14px;
+    height: 14px;
 }
 
 
@@ -576,56 +689,32 @@ button.reload-timer-remove:hover {
 
 /* ---------- Test data (Utilities tab) ---------- */
 
-button.settings-button {
-    display: flex;
-    margin: 0;
-    padding: 3px;
-    color: #b36531;
-    background: none;
-    border-radius: 6px;
-}
-
-button.settings-button:hover {
-    background-color: #f6e7dd;
-}
-
-button.settings-button svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
 select.test-data-select {
-    flex: 1;
-    min-width: 0;
-    margin: 0 10px 5px 0;
-    padding: 5px;
+    padding: 0 6px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 14px;
     background-color: white;
     color: #212121;
 }
 
 /* Copy / Type / Bypass: what a click on a test value does. */
+.test-data .card-row {
+    margin-bottom: 0;
+}
+
 .insert-modes {
     display: flex;
     gap: 4px;
-    max-width: 700px;
-    margin-bottom: 4px;
+    margin-top: 6px;
+}
+
+.test-data-values:not(:empty) {
+    margin-top: 6px;
 }
 
 button.insert-mode-button {
     flex: 1;
-}
-
-select.test-data-select:focus {
-    border-color: #3f51b5;
-    outline: none;
 }
 
 /* Subgroup title: colour instead of extra space. */
@@ -637,7 +726,7 @@ select.test-data-select:focus {
 }
 
 .test-data-section-title:first-child {
-    margin-top: 2px;
+    margin-top: 0;
 }
 
 .test-data-section-count {

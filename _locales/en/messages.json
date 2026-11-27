@@ -9,13 +9,13 @@
       "message": "Enter anything to save"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "Generate HEX symbol and copy to clipboard"
+      "message": "HEX character"
    },
    "NotSavedStorageFull": {
       "message": "Not saved: storage is full"
    },
    "SaveAndCopyValues": {
-      "message": "Save and Copy Values"
+      "message": "Saved values"
    },
    "WriteYourNotesHere": {
       "message": "Write your notes here..."
@@ -193,7 +193,7 @@
       "message": "Generate"
    },
    "generateTextLine": {
-      "message": "Generate text line"
+      "message": "Text string"
    },
    "gifSize": {
       "message": "GIF size (remembered for next time)"

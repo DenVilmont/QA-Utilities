@@ -85,7 +85,7 @@ const DELETE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l1
 function createIconButton(className, action, titleKey, icon) {
   const button = document.createElement('button');
   button.type = 'button';
-  button.className = `value-row-icon ${className}`;
+  button.className = `icon-button ${className}`;
   button.setAttribute('data-action', action);
   button.setAttribute('data-i18n-title', titleKey);
   button.setAttribute('data-i18n-aria-label', titleKey);

@@ -9,13 +9,13 @@
       "message": "Введите что-нибудь для сохранения"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "Создать HEX-символ и скопировать в буфер обмена"
+      "message": "HEX-символ"
    },
    "NotSavedStorageFull": {
       "message": "Не сохранено: хранилище переполнено"
    },
    "SaveAndCopyValues": {
-      "message": "Сохранить и скопировать значения"
+      "message": "Сохранённые значения"
    },
    "WriteYourNotesHere": {
       "message": "Напишите свои заметки здесь..."
@@ -193,7 +193,7 @@
       "message": "Создать"
    },
    "generateTextLine": {
-      "message": "Создать строку текста"
+      "message": "Строка текста"
    },
    "gifSize": {
       "message": "Размер GIF (запоминается на будущее)"

@@ -9,13 +9,13 @@
       "message": "Digite qualquer coisa para salvar"
    },
    "GenerateHEXsimbolAndCopy": {
-      "message": "Gerar símbolo HEX e copiar para a área de transferência"
+      "message": "Caractere HEX"
    },
    "NotSavedStorageFull": {
       "message": "Não salvo: o armazenamento está cheio"
    },
    "SaveAndCopyValues": {
-      "message": "Salvar e copiar valores"
+      "message": "Valores salvos"
    },
    "WriteYourNotesHere": {
       "message": "Escreva suas notas aqui..."
@@ -193,7 +193,7 @@
       "message": "Gerar"
    },
    "generateTextLine": {
-      "message": "Gerar linha de texto"
+      "message": "Linha de texto"
    },
    "gifSize": {
       "message": "Tamanho do GIF (fica guardado para a próxima vez)"
