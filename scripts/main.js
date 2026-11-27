@@ -5,6 +5,7 @@ import * as storage from './storage.js';
 import * as tab1 from './tab1.js';
 import * as tab2 from './tab2.js';
 import * as tab3 from './tab3.js';
+import * as testData from './test-data-panel.js';
 
 const elements = {};
 
@@ -93,7 +94,7 @@ function bindEvents() {
   window.addEventListener('storage', handleStorageChange);
 }
 
-// Fires when another open panel (in another Chrome window) changes localStorage.
+// Fires when another open panel (in another Chrome window) or the test data page changes localStorage.
 // Reload the data from storage so this panel does not overwrite it with an outdated copy.
 function handleStorageChange(event) {
   const changedKey = event.key;
@@ -105,6 +106,10 @@ function handleStorageChange(event) {
 
   if (isFullClear || changedKey === storage.SYNCED_STORAGE_KEYS.notebookContent) {
     tab2.loadNotebookContent();
+  }
+
+  if (isFullClear || changedKey === storage.SYNCED_STORAGE_KEYS.testData) {
+    testData.reloadTestData();
   }
 }
 
@@ -122,6 +127,7 @@ async function renderInitialUI() {
   await languages.setCurrentLanguage(appState.language);
   tab2.loadSavedValues();
   tab2.loadNotebookContent();
+  testData.initTestData();
   languages.applyTranslations();
   // Not awaited: the panel must not wait for the tab list to show up.
   reloadTimer.initReloadTimer().catch(error => console.error('Failed to load auto-reload timers.', error));
@@ -159,6 +165,7 @@ async function handleLanguageChange(event) {
 
   appState.language = languages.getCurrentLanguage();
   tab2.refreshSavedValuesView();
+  testData.refreshTestDataView();
   languages.applyTranslations();
   reloadTimer.refreshReloadTimerView();
   recorder.refreshRecorderView();

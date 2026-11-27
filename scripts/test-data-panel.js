@@ -1,0 +1,175 @@
+// "Test data" block at the bottom of the Utilities tab: choose a group, click a value to copy it.
+// The groups are edited on the test data page (pages/test-data.html, the gear button).
+// The chosen group is not remembered: the block is used now and then, and without a group the tab stays short.
+
+import {applyTranslations, t} from './languages.js';
+import {copyTextToClipboard} from './clipboard.js';
+import {getGroupTitle, loadGroups} from './test-data.js';
+import {createValueRow} from './value-row.js';
+import {showError} from './notify.js';
+
+const SETTINGS_PAGE = 'pages/test-data.html';
+
+const elements = {};
+let groups = [];
+// Index of the chosen group, -1 = none.
+let selectedIndex = -1;
+
+function renderGroupSelect() {
+  const select = elements.groupSelect;
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = t(groups.length > 0 ? 'testDataChooseGroup' : 'testDataNoGroups');
+
+  const options = groups.map((group, index) => {
+    const option = document.createElement('option');
+    option.value = String(index);
+    option.textContent = getGroupTitle(group);
+    return option;
+  });
+
+  select.replaceChildren(placeholder, ...options);
+  select.value = selectedIndex >= 0 ? String(selectedIndex) : '';
+  select.disabled = groups.length === 0;
+  elements.clearButton.hidden = selectedIndex < 0;
+}
+
+function renderValues() {
+  const container = elements.values;
+  const group = groups[selectedIndex];
+
+  if (!group) {
+    container.replaceChildren();
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  group.sections.forEach((section, sectionIndex) => {
+    const rows = [];
+
+    section.values.forEach((item, valueIndex) => {
+      // An empty value is a row the user has just added on the settings page and not filled yet.
+      if (item.value === '') {
+        return;
+      }
+
+      rows.push(createValueRow(item.value, {
+        attributes: {'data-section-index': String(sectionIndex), 'data-value-index': String(valueIndex)},
+        label: item.label,
+        singleLine: true
+      }));
+    });
+
+    if (rows.length === 0) {
+      return;
+    }
+
+    if (section.name !== '') {
+      const title = document.createElement('div');
+      title.className = 'test-data-section-title';
+      title.textContent = section.name;
+      fragment.append(title);
+    }
+
+    fragment.append(...rows);
+  });
+
+  if (!fragment.hasChildNodes()) {
+    const empty = document.createElement('div');
+    empty.className = 'test-data-empty';
+    empty.textContent = t('testDataNoValues');
+    fragment.append(empty);
+  }
+
+  container.replaceChildren(fragment);
+  applyTranslations(container);
+}
+
+function render() {
+  renderGroupSelect();
+  renderValues();
+}
+
+function handleGroupChange() {
+  const index = Number.parseInt(elements.groupSelect.value, 10);
+  selectedIndex = Number.isInteger(index) && groups[index] ? index : -1;
+  render();
+}
+
+function clearGroup() {
+  selectedIndex = -1;
+  render();
+}
+
+function handleValuesClick(event) {
+  const actionElement = event.target instanceof Element ? event.target.closest('[data-action="copy-value"]') : null;
+  const row = actionElement?.closest('[data-value-index]');
+
+  if (!row) {
+    return;
+  }
+
+  const section = groups[selectedIndex]?.sections[Number(row.getAttribute('data-section-index'))];
+  const item = section?.values[Number(row.getAttribute('data-value-index'))];
+
+  if (item) {
+    void copyTextToClipboard(item.value);
+  }
+}
+
+// One settings tab is enough: if it is already open, switch to it.
+async function openSettings() {
+  const url = chrome.runtime.getURL(SETTINGS_PAGE);
+
+  try {
+    const [context] = await chrome.runtime.getContexts({contextTypes: ['TAB'], documentUrls: [url]});
+
+    if (context && context.tabId >= 0) {
+      await chrome.tabs.update(context.tabId, {active: true});
+      await chrome.windows.update(context.windowId, {focused: true});
+      return;
+    }
+
+    await chrome.tabs.create({url});
+  } catch (error) {
+    showError(error);
+  }
+}
+
+export function initTestData() {
+  elements.groupSelect = document.getElementById('testDataGroupSelect');
+  elements.clearButton = document.getElementById('clearTestDataGroupButton');
+  elements.values = document.getElementById('testDataValues');
+  elements.settingsButton = document.getElementById('testDataSettingsButton');
+
+  elements.groupSelect.addEventListener('change', handleGroupChange);
+  elements.clearButton.addEventListener('click', clearGroup);
+  elements.values.addEventListener('click', handleValuesClick);
+  elements.settingsButton.addEventListener('click', () => void openSettings());
+
+  groups = loadGroups();
+  render();
+}
+
+// The groups were changed on the settings page. Keep the chosen group if it is still there:
+// same place and name, moved by dragging (found by name) or renamed (same place, the number of groups did not change).
+// Otherwise show none.
+export function reloadTestData() {
+  const selectedName = groups[selectedIndex]?.name;
+  const previousCount = groups.length;
+  groups = loadGroups();
+
+  if (selectedIndex >= 0 && groups[selectedIndex]?.name !== selectedName) {
+    const movedIndex = groups.findIndex(group => group.name === selectedName);
+    const isRenamed = movedIndex === -1 && groups.length === previousCount;
+    selectedIndex = isRenamed ? selectedIndex : movedIndex;
+  }
+
+  render();
+}
+
+// The language was changed: texts that are not in data-i18n attributes.
+export function refreshTestDataView() {
+  render();
+}

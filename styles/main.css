@@ -204,7 +204,8 @@ textarea {
     background: #d6d6d6;
 }
 
-.notepad-header {
+.notepad-header,
+.section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -471,4 +472,89 @@ button.reload-timer-remove {
 
 button.reload-timer-remove:hover {
     background-color: #fdecea;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ---------- Test data (Utilities tab) ---------- */
+
+button.settings-button {
+    display: flex;
+    margin: 0;
+    padding: 3px;
+    color: #b36531;
+    background: none;
+    border-radius: 6px;
+}
+
+button.settings-button:hover {
+    background-color: #f6e7dd;
+}
+
+button.settings-button svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+select.test-data-select {
+    flex: 1;
+    min-width: 0;
+    margin: 0 10px 5px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    color: #212121;
+}
+
+select.test-data-select:focus {
+    border-color: #3f51b5;
+    outline: none;
+}
+
+.test-data-section-title {
+    margin: 8px 0 2px;
+    font-weight: bold;
+    color: #757575;
+}
+
+.test-data-empty {
+    padding: 6px;
+    color: #888;
+    text-align: center;
+}
+
+/* Long test values (XXE, addresses) take one line; the whole value is in the tooltip. */
+.saved-value.single-line {
+    min-width: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.value-label {
+    margin-right: 6px;
+    font-size: 11px;
+    color: #888;
+}
+
+/* An invisible character in a value (NBSP, ZWSP, TAB...), see scripts/value-row.js. */
+.invisible-char {
+    display: inline-block;
+    margin: 0 1px;
+    padding: 0 3px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 10px;
+    line-height: 14px;
+    color: #666;
+    background-color: #e0e0e0;
+    vertical-align: middle;
 }

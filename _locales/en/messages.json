@@ -285,6 +285,111 @@
    "strokeWidth": {
       "message": "Line thickness"
    },
+   "testData": {
+      "message": "Test data"
+   },
+   "testDataAddGroup": {
+      "message": "Add group"
+   },
+   "testDataAddSection": {
+      "message": "Subgroup"
+   },
+   "testDataAddValue": {
+      "message": "Value"
+   },
+   "testDataChooseGroup": {
+      "message": "Choose a group…"
+   },
+   "testDataDeleteGroup": {
+      "message": "Delete group"
+   },
+   "testDataDeleteGroupConfirm": {
+      "message": "Delete the group \"$1\" with all its values?"
+   },
+   "testDataDeleteSection": {
+      "message": "Delete subgroup"
+   },
+   "testDataDeleteSectionConfirm": {
+      "message": "Delete the subgroup \"$1\" with all its values?"
+   },
+   "testDataDragHint": {
+      "message": "Drag to move"
+   },
+   "testDataExport": {
+      "message": "Export"
+   },
+   "testDataExportHint": {
+      "message": "Save all groups to a JSON file (backup, another computer)"
+   },
+   "testDataGroupName": {
+      "message": "Group name"
+   },
+   "testDataGroups": {
+      "message": "Groups"
+   },
+   "testDataHideValues": {
+      "message": "Hide values"
+   },
+   "testDataImport": {
+      "message": "Import"
+   },
+   "testDataImportConfirm": {
+      "message": "Replace all groups with $1 groups from the file?"
+   },
+   "testDataImportFailed": {
+      "message": "The file has no test data groups"
+   },
+   "testDataImportHint": {
+      "message": "Load groups from a JSON file (replaces the current ones)"
+   },
+   "testDataImported": {
+      "message": "Groups imported"
+   },
+   "testDataLabel": {
+      "message": "Label"
+   },
+   "testDataNewGroup": {
+      "message": "New group"
+   },
+   "testDataNoGroupSelected": {
+      "message": "Choose a group on the left or add a new one"
+   },
+   "testDataNoGroups": {
+      "message": "No groups: add them in the settings"
+   },
+   "testDataNoValues": {
+      "message": "No values in this group"
+   },
+   "testDataPageHint": {
+      "message": "Groups, subgroups and values for the Utilities tab. Changes are saved at once. Drag ⠿ to reorder; drop a value or a subgroup on another group to move it there."
+   },
+   "testDataReset": {
+      "message": "Defaults"
+   },
+   "testDataResetConfirm": {
+      "message": "Replace all groups with the default set? Your changes will be lost."
+   },
+   "testDataResetDone": {
+      "message": "Default set restored"
+   },
+   "testDataResetHint": {
+      "message": "Replace all groups with the default set"
+   },
+   "testDataSectionName": {
+      "message": "Subgroup (optional)"
+   },
+   "testDataSettings": {
+      "message": "Test data settings"
+   },
+   "testDataUntitledGroup": {
+      "message": "(untitled)"
+   },
+   "testDataUntitledSection": {
+      "message": "without subgroup"
+   },
+   "testDataValue": {
+      "message": "Value"
+   },
    "textLength": {
       "message": "Text Length"
    },

@@ -285,6 +285,111 @@
    "strokeWidth": {
       "message": "Толщина линии"
    },
+   "testData": {
+      "message": "Тестовые данные"
+   },
+   "testDataAddGroup": {
+      "message": "Добавить группу"
+   },
+   "testDataAddSection": {
+      "message": "Подгруппа"
+   },
+   "testDataAddValue": {
+      "message": "Значение"
+   },
+   "testDataChooseGroup": {
+      "message": "Выберите группу…"
+   },
+   "testDataDeleteGroup": {
+      "message": "Удалить группу"
+   },
+   "testDataDeleteGroupConfirm": {
+      "message": "Удалить группу «$1» со всеми значениями?"
+   },
+   "testDataDeleteSection": {
+      "message": "Удалить подгруппу"
+   },
+   "testDataDeleteSectionConfirm": {
+      "message": "Удалить подгруппу «$1» со всеми значениями?"
+   },
+   "testDataDragHint": {
+      "message": "Перетащите, чтобы переместить"
+   },
+   "testDataExport": {
+      "message": "Экспорт"
+   },
+   "testDataExportHint": {
+      "message": "Сохранить все группы в JSON-файл (резервная копия, другой компьютер)"
+   },
+   "testDataGroupName": {
+      "message": "Название группы"
+   },
+   "testDataGroups": {
+      "message": "Группы"
+   },
+   "testDataHideValues": {
+      "message": "Скрыть значения"
+   },
+   "testDataImport": {
+      "message": "Импорт"
+   },
+   "testDataImportConfirm": {
+      "message": "Заменить все группы на группы из файла ($1 шт.)?"
+   },
+   "testDataImportFailed": {
+      "message": "В файле нет групп тестовых данных"
+   },
+   "testDataImportHint": {
+      "message": "Загрузить группы из JSON-файла (заменяет текущие)"
+   },
+   "testDataImported": {
+      "message": "Группы загружены"
+   },
+   "testDataLabel": {
+      "message": "Подпись"
+   },
+   "testDataNewGroup": {
+      "message": "Новая группа"
+   },
+   "testDataNoGroupSelected": {
+      "message": "Выберите группу слева или добавьте новую"
+   },
+   "testDataNoGroups": {
+      "message": "Групп нет: добавьте их в настройках"
+   },
+   "testDataNoValues": {
+      "message": "В этой группе нет значений"
+   },
+   "testDataPageHint": {
+      "message": "Группы, подгруппы и значения для вкладки «Утилиты». Изменения сохраняются сразу. Перетаскивайте за ⠿, чтобы менять порядок; значение или подгруппу можно перетащить на другую группу слева."
+   },
+   "testDataReset": {
+      "message": "По умолчанию"
+   },
+   "testDataResetConfirm": {
+      "message": "Заменить все группы стандартным набором? Ваши изменения пропадут."
+   },
+   "testDataResetDone": {
+      "message": "Стандартный набор восстановлен"
+   },
+   "testDataResetHint": {
+      "message": "Заменить все группы стандартным набором"
+   },
+   "testDataSectionName": {
+      "message": "Подгруппа (необязательно)"
+   },
+   "testDataSettings": {
+      "message": "Настройки тестовых данных"
+   },
+   "testDataUntitledGroup": {
+      "message": "(без названия)"
+   },
+   "testDataUntitledSection": {
+      "message": "без подгруппы"
+   },
+   "testDataValue": {
+      "message": "Значение"
+   },
    "textLength": {
       "message": "Длина текста"
    },
