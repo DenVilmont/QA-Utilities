@@ -22,6 +22,11 @@ h3 {
     text-align: center;
 }
 
+/* "Length of the text" and "Lorem ipsum" under the text generator: without the big default h4 margins. */
+.randomText h4 {
+    margin: 4px 0;
+}
+
 input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
