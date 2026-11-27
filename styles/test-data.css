@@ -131,6 +131,24 @@ textarea:focus {
     font-family: Consolas, monospace !important;
 }
 
+/* A saved value that will not be stored (repeat or empty), see markUnsavedValues(). */
+.row-note {
+    flex: 0 0 auto;
+    align-self: center;
+    font-size: 12px;
+    white-space: nowrap;
+    color: #888;
+}
+
+.value-row.not-saved .saved-value-input {
+    border-color: #c62828;
+    background-color: #fff5f5;
+}
+
+.value-row.not-saved .row-note {
+    color: #c62828;
+}
+
 .add-button {
     width: 32px;
     border: none;

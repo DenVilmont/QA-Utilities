@@ -300,6 +300,12 @@
    "save": {
       "message": "Salvează"
    },
+   "savedValueDuplicate": {
+      "message": "Repetat: nu se salvează"
+   },
+   "savedValueEmpty": {
+      "message": "Gol: nu se salvează"
+   },
    "savedValuesPageHint": {
       "message": "Valorile din fila Note. Valorile goale și repetate nu se salvează. Trageți de ⠿ pentru a schimba ordinea."
    },

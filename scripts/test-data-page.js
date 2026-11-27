@@ -10,7 +10,7 @@
 
 import {applyTranslations, getCurrentLanguage, setCurrentLanguage, t} from './languages.js';
 import {showMessage} from './notify.js';
-import {getSavedValues, normalizeSavedValues, setSavedValues} from './storage.js';
+import {getSavedValues, normalizeSavedValue, normalizeSavedValues, setSavedValues} from './storage.js';
 import {EXPORT_FILE_NAME, createExportText, getGroupTitle, loadGroups, parseImportText, resetGroups, saveGroups} from './test-data.js';
 import {createValueDisplay, hasInvisibleCharacters} from './value-row.js';
 
@@ -784,7 +784,32 @@ function renderSavedValuesEditor() {
 
   if (isSavedValuesSelected) {
     elements.savedValueList.replaceChildren(...savedValues.map(createSavedValueRow));
+    markUnsavedValues();
   }
+}
+
+// Empty values and repeats are not stored (see saveSavedValues), so they would be gone after a reload:
+// such rows get a note, so it is clear before that.
+function markUnsavedValues() {
+  const seen = new Set();
+
+  elements.savedValueList.querySelectorAll('.value-row').forEach(row => {
+    const value = normalizeSavedValue(row.querySelector('input').value);
+    let noteKey = '';
+
+    if (value === '') {
+      noteKey = 'savedValueEmpty';
+    } else if (seen.has(value)) {
+      noteKey = 'savedValueDuplicate';
+    }
+
+    seen.add(value);
+    row.classList.toggle('not-saved', noteKey === 'savedValueDuplicate');
+    row.classList.toggle('empty-value', noteKey === 'savedValueEmpty');
+    const note = row.querySelector('.row-note');
+    note.hidden = noteKey === '';
+    note.textContent = noteKey ? t(noteKey) : '';
+  });
 }
 
 function createSavedValueRow(value, index) {
@@ -799,7 +824,11 @@ function createSavedValueRow(value, index) {
   input.value = value;
   input.setAttribute('data-i18n-placeholder', 'testDataValue');
 
-  row.append(createDragHandle(), input, createIconButton('delete-value', 'delete'));
+  const note = document.createElement('span');
+  note.className = 'row-note';
+  note.hidden = true;
+
+  row.append(createDragHandle(), input, note, createIconButton('delete-value', 'delete'));
   return row;
 }
 
@@ -819,6 +848,7 @@ function handleSavedValueInput(event) {
   savedValues[Number(row.getAttribute('data-value-index'))] = event.target.value;
   saveSavedValues();
   renderSavedValuesItem();
+  markUnsavedValues();
 }
 
 function handleSavedValueListClick(event) {

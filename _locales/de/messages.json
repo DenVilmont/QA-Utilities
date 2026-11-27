@@ -300,6 +300,12 @@
    "save": {
       "message": "Speichern"
    },
+   "savedValueDuplicate": {
+      "message": "Doppelt: wird nicht gespeichert"
+   },
+   "savedValueEmpty": {
+      "message": "Leer: wird nicht gespeichert"
+   },
    "savedValuesPageHint": {
       "message": "Die Werte des Tabs „Notizen“. Leere und doppelte Werte werden nicht gespeichert. An ⠿ ziehen, um die Reihenfolge zu ändern."
    },

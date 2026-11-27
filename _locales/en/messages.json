@@ -300,6 +300,12 @@
    "save": {
       "message": "Save"
    },
+   "savedValueDuplicate": {
+      "message": "Repeat: not saved"
+   },
+   "savedValueEmpty": {
+      "message": "Empty: not saved"
+   },
    "savedValuesPageHint": {
       "message": "The values of the Notes tab. Empty values and repeats are not saved. Drag ⠿ to reorder."
    },

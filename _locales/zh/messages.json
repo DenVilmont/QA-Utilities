@@ -300,6 +300,12 @@
    "save": {
       "message": "保存"
    },
+   "savedValueDuplicate": {
+      "message": "重复：不会保存"
+   },
+   "savedValueEmpty": {
+      "message": "空值：不会保存"
+   },
    "savedValuesPageHint": {
       "message": "“笔记”选项卡中的值。空值和重复值不会被保存。拖动 ⠿ 可调整顺序。"
    },

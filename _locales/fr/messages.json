@@ -300,6 +300,12 @@
    "save": {
       "message": "Sauvegarder"
    },
+   "savedValueDuplicate": {
+      "message": "Doublon : non enregistré"
+   },
+   "savedValueEmpty": {
+      "message": "Vide : non enregistré"
+   },
    "savedValuesPageHint": {
       "message": "Les valeurs de l’onglet Notes. Les valeurs vides et en double ne sont pas enregistrées. Faites glisser ⠿ pour changer l’ordre."
    },

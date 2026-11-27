@@ -300,6 +300,12 @@
    "save": {
       "message": "Salvar"
    },
+   "savedValueDuplicate": {
+      "message": "Repetido: não será salvo"
+   },
+   "savedValueEmpty": {
+      "message": "Vazio: não será salvo"
+   },
    "savedValuesPageHint": {
       "message": "Os valores da aba Notas. Valores vazios e repetidos não são salvos. Arraste por ⠿ para reordenar."
    },

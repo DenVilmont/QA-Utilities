@@ -300,6 +300,12 @@
    "save": {
       "message": "Guardar"
    },
+   "savedValueDuplicate": {
+      "message": "Repetido: no se guardará"
+   },
+   "savedValueEmpty": {
+      "message": "Vacío: no se guardará"
+   },
    "savedValuesPageHint": {
       "message": "Los valores de la pestaña Notas. Los valores vacíos y repetidos no se guardan. Arrastra por ⠿ para cambiar el orden."
    },
