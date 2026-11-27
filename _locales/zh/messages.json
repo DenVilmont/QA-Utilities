@@ -184,7 +184,7 @@
    },
    "extensionDescription": {
       "description": "Chrome Web Store summary and chrome://extensions description (max 132 characters).",
-      "message": "手动测试侧边栏：测试文本、控制字符、笔记、带编辑器的截图、屏幕录制为 GIF、自动刷新页面。"
+      "message": "手动 QA 侧边栏：测试数据直接键入字段、特殊字符、笔记、带编辑器的截图、屏幕录制转 GIF、页面自动刷新。"
    },
    "format": {
       "message": "文件格式"

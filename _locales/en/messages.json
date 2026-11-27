@@ -184,7 +184,7 @@
    },
    "extensionDescription": {
       "description": "Chrome Web Store summary and chrome://extensions description (max 132 characters).",
-      "message": "Side panel for manual QA: test text and control characters, notes, screenshots with an editor, screen recording to GIF, auto-reload."
+      "message": "Side panel for manual QA: test data typed into fields, special characters, notes, screenshots with editor, screen recording to GIF."
    },
    "format": {
       "message": "File format"

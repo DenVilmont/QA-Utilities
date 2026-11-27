@@ -13,6 +13,9 @@
    "manifest_version": 3,
    "name": "QA Utilities",
    "host_permissions": [ "<all_urls>" ],
+   "icons": {
+      "128": "resources/logo/logo.png"
+   },
    "permissions": [ "sidePanel", "scripting", "browsingData", "cookies", "storage", "alarms", "offscreen" ],
    "side_panel": {
       "default_path": "/pages/index.html"
