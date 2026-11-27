@@ -64,8 +64,6 @@ function renderSavedValues() {
   const savedValuesContainer = getSavedValuesContainer();
   const fragment = document.createDocumentFragment();
 
-  savedValuesContainer.setAttribute('role', 'list');
-
   savedValuesState.forEach((value, index) => {
     fragment.appendChild(createSavedValueItem(value, index));
   });
@@ -87,7 +85,7 @@ function createSavedValueItem(value, index) {
 
 function flashExistingValue(index) {
   const savedValueElement = getSavedValuesContainer()
-    .querySelector(`[data-saved-value-index="${index}"] .saved-value`);
+    .querySelector(`[data-saved-value-index="${index}"]`);
 
   if (!savedValueElement) {
     return;

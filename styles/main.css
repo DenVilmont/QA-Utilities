@@ -178,35 +178,122 @@ textarea {
     min-height: 50px;
     resize: vertical;
 }
-.flex-height-container, .saved-value-container {
+.flex-height-container {
     display: flex;
     align-items: center;
     max-width: 700px;
 }
 
-.saved-value {
-    flex: 1;
-    padding: 5px;
+/* ---------- Lists of values to copy (saved values, test data), see scripts/value-row.js ---------- */
+
+.value-card {
+    max-width: 700px;
+    padding: 2px;
+    background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 0 5px 0 0;
-    overflow-x: hidden;
-    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.value-card:empty {
+    display: none;
+}
+
+.value-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0 3px 0 0;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+/* Thin line between rows; hidden around the row under the mouse, so it does not cross the outline. */
+.value-row + .value-row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 8px;
+    right: 8px;
+    height: 1px;
+    background-color: #eee;
+}
+
+.value-row:hover {
+    background-color: #fbf3ee;
+    box-shadow: inset 0 0 0 1px #b36531;
+}
+
+.value-row:hover::before,
+.value-row:hover + .value-row::before {
+    display: none;
+}
+
+button.value-row-main {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 7px 8px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.35;
     text-align: left;
-    font: inherit;
+    overflow-wrap: anywhere;
+    color: #333;
+    background: none;
 }
 
-.saved-value:hover {
-    background-color: #e6e6e6;
+/* Long test values (XXE, addresses) take one line; the whole value is in the tooltip. */
+button.value-row-main.single-line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.saved-value:active 
-{
-    background: #d6d6d6;
+button.value-row-main:hover {
+    background: none;
+}
+
+button.value-row-icon {
+    display: flex;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 5px;
+    border-radius: 6px;
+    color: #bbb;
+    background: none;
+}
+
+button.value-row-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.value-row:hover button.copy-btn,
+button.value-row-icon.copy-btn:hover {
+    color: #b36531;
+}
+
+button.value-row-icon:hover {
+    background-color: #f6e7dd;
+}
+
+button.delete-btn:hover {
+    color: #c62828;
+    background-color: #fdecea;
+}
+
+.value-label {
+    margin-right: 6px;
+    font-size: 11px;
+    color: #999;
 }
 
 .notepad-header,
@@ -220,10 +307,11 @@ textarea {
     margin-left: auto;
 }
 
+/* A saved value that is already in the list blinks red. */
 @keyframes flash {
-    0% { background-color: #f1f1f1; }
+    0% { background-color: #fff; }
     50% { background-color: #ffcccc; }
-    100% { background-color: #f1f1f1; }
+    100% { background-color: #fff; }
 }
   
 .flash {
@@ -540,10 +628,21 @@ select.test-data-select:focus {
     outline: none;
 }
 
+/* Subgroup title: colour instead of extra space. */
 .test-data-section-title {
-    margin: 8px 0 2px;
+    margin: 8px 0 3px;
+    font-size: 11px;
     font-weight: bold;
-    color: #757575;
+    color: #b36531;
+}
+
+.test-data-section-title:first-child {
+    margin-top: 2px;
+}
+
+.test-data-section-count {
+    font-weight: normal;
+    color: #bbb;
 }
 
 .test-data-empty {
@@ -552,18 +651,6 @@ select.test-data-select:focus {
     text-align: center;
 }
 
-/* Long test values (XXE, addresses) take one line; the whole value is in the tooltip. */
-.saved-value.single-line {
-    min-width: 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.value-label {
-    margin-right: 6px;
-    font-size: 11px;
-    color: #888;
-}
 
 /* An invisible character in a value (NBSP, ZWSP, TAB...), see scripts/value-row.js. */
 .invisible-char {

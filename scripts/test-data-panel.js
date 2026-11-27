@@ -6,7 +6,7 @@
 import {applyTranslations, t} from './languages.js';
 import {copyTextToClipboard} from './clipboard.js';
 import {getGroupTitle, loadGroups} from './test-data.js';
-import {createValueRow} from './value-row.js';
+import {createValueCard, createValueRow} from './value-row.js';
 import {showError} from './notify.js';
 import {INSERT_MODES, insertIntoPage} from './page-insert.js';
 
@@ -77,10 +77,16 @@ function renderValues() {
       const title = document.createElement('div');
       title.className = 'test-data-section-title';
       title.textContent = section.name;
+      const count = document.createElement('span');
+      count.className = 'test-data-section-count';
+      count.textContent = ` \u00B7 ${rows.length}`;
+      title.append(count);
       fragment.append(title);
     }
 
-    fragment.append(...rows);
+    const card = createValueCard();
+    card.append(...rows);
+    fragment.append(card);
   });
 
   if (!fragment.hasChildNodes()) {
